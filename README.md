@@ -1,4 +1,5 @@
-
+<head>
+  </head>
 
 <h2>Useful Recursive Closures</h2>
 
@@ -6,14 +7,17 @@
 <p> JavaScript monads are defined in various ways online and in print. I wouldn't say any of these definitions are right or wrong. Everyone is entitled to an opinion. Some of my thoughts on the matter will be in <a href = "./">Home</a> and in an addendum. </p>
 <p>The function M() (below) returns the function go(), thereby forming a closure. The returned function is named to facilitate recursion. Here's the definition of M():</p>
 <pre>{function M (x) {
-  return function go (func) {
-      if (typeof func === "function") {
-          x = func(x);
-          return go;
-      }
-      else if (func === "stop") return x;
-  }
+    return function go (func) {
+        if (typeof func === "function") {
+            x = func(x);
+            return go;
+        }
+        else if (func === "stop") return x;
+    }
 };</pre>
+
+
+
 <p> M(x) is most useful when the closure is named or, more precisely, when the function returned by M(x) is named. When M(x) is asigned a variable name, the value of "x" in M(x) can be preserved, transformed, and later used if it is eventually needed. "x" in M(x) will correspond to the state of play in the solitaire game of Score (below), but before we get to that, let's take a closer look at M and the function returned by M(x).  </p>
 <pre>var mon = M(2);  
 mon(v=>v**4)(v=>v+5)(v=>v*2);</pre>
@@ -24,14 +28,7 @@ And later:
 <pre>var example5 = `mon('stop');  // 1764</pre>
 
 <pre>function M (x) {
-    return function go (func) {
-        if (typeof func === "function") {
-            x = func(x);
-            return go;
-        }
-        else if (func === "stop") return x;
-    }
-};</pre>
+
   
   
   
