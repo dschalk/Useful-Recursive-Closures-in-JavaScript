@@ -1,9 +1,7 @@
 <head>
 
 </head>
-  <style>
-    p {text-indent: 30px};  
-  </style>
+
 <h2>Useful Recursive Closures</h2>
 
 <p>Recursive functions returned by the simple M(x) function (no restrictions on what x can be) form closures with M that facilitate elegant function composition, sequestering state transformations inside the closure's scope, and more. A demonstration features a solitaire version of the simulated four-dice game of Score controlled inside the closure "m2 = M(x)", where x = [ [], [], [], [], [], [], [],[] ].</p>
@@ -30,7 +28,37 @@ mon(v => v*v);</pre>
 And later:
 <pre>var example5 = `mon('stop');  // 1764</pre>
 
-<pre>function M (x) {
+
+
+<p>Here are a few more simple operations on the very simple monad "mon":</p>
+<p>We can set the value of x to 4 with the expression "mon = M(4)", or by modifying mon as follows: </p>
+<pre>var m3 = M(3);
+var m4 = M(m3(s));
+m3(v => v + 3);
+m4(v => v + 4);
+
+log("m3(s) * m4(s) is", m3(s) * m4(s))
+
+m3(s) * m4(s) is 42</pre>
+<p>These abreviations will be used from now on:</p>
+<pre>var s = "stop";
+var log = console.log;
+</pre>
+<span style = "font-size:26px; color: gold; text-decoration: underline">Deep Clone:</span>
+<span>I ran the following code in the Firefox.aurora console. The result verifies that mon2 defined by "var mon2 = M(mon(s))" is a deep clone of mon. The mon2 closure is out of reach by everything in its outer scope, and the mon closure is no exception.  </span>
+<pre>{var m3 = M(3);
+var m4 = M(m3(s));
+m3(v => v + 3);
+m4(v => v + 4);
+
+log("m3(s) * m4(s) is", m3(s) * m4(s))
+
+m3(s) * m4(s) is 42}</pre>
+
+<span style = "font-size:26px; color: gold; text-decoration: underline">Function Composition:</span>
+<span>M provides a way to anonymously compose functions concisely and transparently; a good alternative to callback spahgetti. </span>
+<pre>{example6}</pre>
+
 
 
   
