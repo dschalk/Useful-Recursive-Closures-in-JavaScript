@@ -48,6 +48,23 @@ log("m3(s) * m4(s) is", m3(s) * m4(s))  // m3(s) * m4(s) is 42}</pre>
 
 <p>Next, we'll let x = [1,2,3,4] in mon3 = M(x). mon3 will operate on some functions and we'll log mon3(s) to see what happened to x. An interactive demonstration is in the online demonstration at <a href = "https://schalk2.com">https://schalk2.com</a> 
 
+<pre>function g(ar) {
+    ar.unshift(ar.pop()**3);
+    return ar;
+};
+
+function g2 (ar) {return (ar.flatMap(v => (v+1)**3))};
+
+function g3 (ar) {return (ar.flatMap(v => Math.round(v**(1/3))))};
+
+var mon3 = M([1,2,3,4]);
+
+console.log(mon3(g)(s));
+console.log(mon3(g)(s));
+console.log(mon3(g)(s));
+console.log(mon3(g)(s));
+console.log(mon3(g3)(s));</pre>
+
 <p>The function fu() is the brains behind the game of Score. Each time a number or operator is clicked, m2(fu) is called, the monad m2 is modified, and the change is reflected in the DOM. The state of play in M is an array of seven arrays. Let's call it ar. If an operator op is in ar[2] and two numbers a and b are in ar[1], fu calls calc(a,b,op) and the result is added to ar[0] and ar[3]. ar[0] are the numbers in the game interface. ar[3] hold numbers that have been computed. At least one of the numbers in ar[3] has to be used to compute 20 in order to gain a point. If the number of points reaches 5, fu causes "You win" to be displayed, sets the score back to 0, and calls runRoll, starting another round of play. </p> 
 <p>At the end of fu(), two formatting functions are Called. The first, update(), refreshes the game buttons, causing them to reflect the current state of ar. The second hides buttons that correspond to values of 'undefined' and shows buttons that correspond to numbers in ar. This is done by switching variables p in "style = 'display: p' back and forth between "none" and "inline". </p>
   
