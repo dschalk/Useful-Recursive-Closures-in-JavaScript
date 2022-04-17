@@ -40,9 +40,8 @@ var m4 = M(m3(s));
 m3(v => v + 3);
 m4(v => v + 4);
 
-log("m3(s) * m4(s) is", m3(s) * m4(s))
-
-m3(s) * m4(s) is 42}</pre>
+log("m3(s) * m4(s) is", m3(s) * m4(s))  // m3(s) * m4(s) is 42}</pre>
+<p>As expected, m3 and m4 went their separate ways. One holds 6 and the other 7. Their product is 42.</p>
 
 <span style = "font-size:26px; color: gold; text-decoration: underline">Function Composition:</span>
 <span>M provides a way to anonymously compose functions concisely and transparently; a good alternative to callback spahgetti. </span>
