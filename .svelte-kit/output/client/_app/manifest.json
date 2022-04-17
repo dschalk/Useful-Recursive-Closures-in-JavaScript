@@ -1,45 +1,58 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-5e8580f6.js",
+    "file": "start-15d7d73f.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-dd45c2ae.js"
+      "_index-cc7e2ebb.js"
     ],
     "dynamicImports": [
-      ".svelte-kit/runtime/components/layout.svelte",
+      "src/routes/__layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
-      "src/routes/index.svelte"
+      "src/routes/index.svelte",
+      "src/routes/monads.svelte"
     ]
   },
-  ".svelte-kit/runtime/components/layout.svelte": {
-    "file": "layout.svelte-23d0f029.js",
-    "src": ".svelte-kit/runtime/components/layout.svelte",
+  "src/routes/__layout.svelte": {
+    "file": "pages/__layout.svelte-1ecc2fe9.js",
+    "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-dd45c2ae.js"
+      "_index-cc7e2ebb.js"
+    ],
+    "css": [
+      "assets/pages/__layout.svelte-a523aed2.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-bb9909e1.js",
+    "file": "error.svelte-2c63e968.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-dd45c2ae.js"
+      "_index-cc7e2ebb.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-dfe298c1.js",
+    "file": "pages/index.svelte-8125f388.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-dd45c2ae.js"
+      "_index-cc7e2ebb.js"
     ]
   },
-  "_index-dd45c2ae.js": {
-    "file": "chunks/index-dd45c2ae.js"
+  "src/routes/monads.svelte": {
+    "file": "pages/monads.svelte-ac87d40b.js",
+    "src": "src/routes/monads.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-cc7e2ebb.js"
+    ]
+  },
+  "_index-cc7e2ebb.js": {
+    "file": "chunks/index-cc7e2ebb.js"
   }
 }

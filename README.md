@@ -5,7 +5,7 @@
 <h2>Useful Recursive Closures</h2>
 
 <p>Recursive functions returned by the simple M(x) function (no restrictions on what x can be) form closures with M that facilitate elegant function composition, sequestering state transformations inside the closure's scope, and more. A demonstration features a solitaire version of the simulated four-dice game of Score controlled inside the closure "m2 = M(x)", where x = [ [], [], [], [], [], [], [],[] ].</p>
-<p> JavaScript monads are defined in various ways online and in print. I wouldn't say any of these definitions are right or wrong. Everyone is entitled to an opinion. Some of my thoughts on the matter will be in <a href = "./">Home</a> and in an addendum. </p>
+<p> JavaScript monads are defined in various ways online and in print. I wouldn't say any of these definitions are right or wrong. Everyone is entitled to an opinion. Some of my thoughts on the matter will be in Home and in an addendum. </p>
 <p>The function M() (below) returns the function go(), thereby forming a closure. The returned function is named to facilitate recursion. Here's the definition of M():</p>
 <pre>{function M (x) {
     return function go (func) {
@@ -19,7 +19,7 @@
 
 
 
-<p> M(x) is most useful when the closure is named or, more precisely, when the function returned by M(x) is named. When M(x) is asigned a variable name, the value of "x" in M(x) can be preserved, transformed, and later used if it is eventually needed. "x" in M(x) will correspond to the state of play in the solitaire game of Score (below), but before we get to that, let's take a closer look at M and the function returned by M(x).  </p>
+<p> M(x) is most useful when the closure is named or, more precisely, when the function returned by M(x) is named. When M(x) is assigned a variable name, the value of "x" in M(x) can be preserved, transformed, and later used if it is eventually needed. "x" in M(x) will correspond to the state of play in the solitaire game of Score (below), but before we get to that, let's take a closer look at M and the function returned by M(x).  </p>
 <pre>var mon = M(2);  
 mon(v=>v**4)(v=>v+5)(v=>v*2);</pre>
 The value of x can be obtained later
@@ -43,11 +43,13 @@ log("m3(s) * m4(s) is", m3(s) * m4(s))  // m3(s) * m4(s) is 42}</pre>
 <p>As expected, m3 and m4 went their separate ways. One holds 6 and the other 7. Their product is 42.</p>
 
 <span style = "font-size:26px; color: gold; text-decoration: underline">Function Composition:</span>
-<span>M provides a way to anonymously compose functions concisely and transparently; a good alternative to callback spahgetti. </span>
+<span>M provides a way to anonymously compose functions concisely and transparently; a good alternative to callback spaghetti. </span>
 <pre>{M(2)(v=>v+1)(v=>v*2)(v=>v*7)(s) // 42}</pre>
 
-<p>The function fu() is the brains behing the game of Score. Each time a number or operator is clicked, m2(fu) is called, the monad m2 is modified, and the change is reflected in the DOM. The state of play in M is an array of seven arrays. Let's call it ar. If an operator op is in ar[2] and two numbers a and b are in ar[1], fu calls calc(a,b,op) and the result is added to ar[0] and ar[3]. ar[0] are the numbers in the game interface. ar[3] hold numbers that have been computed. At least one of the numbers in ar[3] has to be used to compute 20 in order to gain a point. If the number of points reaches 5, fu causes "You win" to be displayed, sets the score back to 0, and calls runRoll, starting another round of play. </p> 
-<p>At the end of fu(), two formatting functions are Called. The first, update(), refreshes the game buttons, causing them to reflect the current state of ar. The second hides buttons that correspond to values of undefine and shows buttons that correspond to numbers in ar. This is done by switching variables p in "style = 'display: p' back and forth between "none" and "inline". </p>
+<p>Next, we'll let x = [1,2,3,4] in mon3 = M(x). mon3 will operate on some functions and we'll log mon3(s) to see what happened to x. An interactive demonstration is in the online demonstration at <a href = "https://schalk2.com">https://schalk2.com</a> 
+
+<p>The function fu() is the brains behind the game of Score. Each time a number or operator is clicked, m2(fu) is called, the monad m2 is modified, and the change is reflected in the DOM. The state of play in M is an array of seven arrays. Let's call it ar. If an operator op is in ar[2] and two numbers a and b are in ar[1], fu calls calc(a,b,op) and the result is added to ar[0] and ar[3]. ar[0] are the numbers in the game interface. ar[3] hold numbers that have been computed. At least one of the numbers in ar[3] has to be used to compute 20 in order to gain a point. If the number of points reaches 5, fu causes "You win" to be displayed, sets the score back to 0, and calls runRoll, starting another round of play. </p> 
+<p>At the end of fu(), two formatting functions are Called. The first, update(), refreshes the game buttons, causing them to reflect the current state of ar. The second hides buttons that correspond to values of 'undefined' and shows buttons that correspond to numbers in ar. This is done by switching variables p in "style = 'display: p' back and forth between "none" and "inline". </p>
   
 <pre>function fu (a) {                                 
   a[5].push(clone(a));

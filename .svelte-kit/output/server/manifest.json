@@ -10,12 +10,15 @@
       ".svelte-kit/build/hooks.js"
     ]
   },
-  ".svelte-kit/runtime/components/layout.svelte": {
-    "file": "entries/fallbacks/layout.svelte.js",
-    "src": ".svelte-kit/runtime/components/layout.svelte",
+  "src/routes/__layout.svelte": {
+    "file": "entries/pages/__layout.svelte.js",
+    "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "imports": [
       "_index-2dc61825.js"
+    ],
+    "css": [
+      "assets/entries/pages/__layout.svelte-df079604.css"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
@@ -29,6 +32,14 @@
   "src/routes/index.svelte": {
     "file": "entries/pages/index.svelte.js",
     "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-2dc61825.js"
+    ]
+  },
+  "src/routes/monads.svelte": {
+    "file": "entries/pages/monads.svelte.js",
+    "src": "src/routes/monads.svelte",
     "isEntry": true,
     "imports": [
       "_index-2dc61825.js"

@@ -3,11 +3,12 @@ export const manifest = {
 	assets: new Set(["favicon.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		entry: {"file":"start-5e8580f6.js","js":["start-5e8580f6.js","chunks/index-dd45c2ae.js"],"css":[]},
+		entry: {"file":"start-15d7d73f.js","js":["start-15d7d73f.js","chunks/index-cc7e2ebb.js"],"css":[]},
 		nodes: [
 			() => import('./server/nodes/0.js'),
 			() => import('./server/nodes/1.js'),
-			() => import('./server/nodes/2.js')
+			() => import('./server/nodes/2.js'),
+			() => import('./server/nodes/3.js')
 		],
 		routes: [
 			{
@@ -19,6 +20,17 @@ export const manifest = {
 				path: "/",
 				shadow: null,
 				a: [0,2],
+				b: [1]
+			},
+			{
+				type: 'page',
+				id: "monads",
+				pattern: /^\/monads\/?$/,
+				names: [],
+				types: [],
+				path: "/monads",
+				shadow: null,
+				a: [0,3],
 				b: [1]
 			}
 		],
