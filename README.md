@@ -46,16 +46,8 @@ log("m3(s) * m4(s) is", m3(s) * m4(s))  // m3(s) * m4(s) is 42}</pre>
 <span>M provides a way to anonymously compose functions concisely and transparently; a good alternative to callback spahgetti. </span>
 <pre>{M(2)(v=>v+1)(v=>v*2)(v=>v*7)(s) // 42}</pre>
 
-
-
-  
-  
-  
-  
-  
-  
-  
-  
+<p>The function fu() is the brains behing the game of Score. Each time a number or operator is clicked, m2(fu) is called, the monad m2 is modified, and the change is reflected in the DOM. The state of play in M is an array of seven arrays. Let's call it ar. If an operator op is in ar[2] and two numbers a and b are in ar[1], fu calls calc(a,b,op) and the result is added to ar[0] and ar[3]. ar[0] are the numbers in the game interface. ar[3] hold numbers that have been computed. At least one of the numbers in ar[3] has to be used to compute 20 in order to gain a point. If the number of points reaches 5, fu causes "You win" to be displayed, sets the score back to 0, and calls runRoll, starting another round of play. </p> 
+<p>At the end of fu(), two formatting functions are Called. The first, update(), refreshes the game buttons, causing them to reflect the current state of ar. The second hides buttons that correspond to values of undefine and shows buttons that correspond to numbers in ar. This is done by switching variables p in "style = 'display: p' back and forth between "none" and "inline". </p>
   
 <pre>function fu (a) {                                 
   a[5].push(clone(a));
