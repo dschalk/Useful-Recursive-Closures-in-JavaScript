@@ -29,17 +29,6 @@ And later:
 <pre>var example5 = `mon('stop');  // 1764</pre>
 
 
-
-<p>Here are a few more simple operations on the very simple monad "mon":</p>
-<p>We can set the value of x to 4 with the expression "mon = M(4)", or by modifying mon as follows: </p>
-<pre>var m3 = M(3);
-var m4 = M(m3(s));
-m3(v => v + 3);
-m4(v => v + 4);
-
-log("m3(s) * m4(s) is", m3(s) * m4(s))
-
-m3(s) * m4(s) is 42</pre>
 <p>These abreviations will be used from now on:</p>
 <pre>var s = "stop";
 var log = console.log;
