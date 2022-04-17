@@ -13,17 +13,17 @@
       }
       else if (func === "stop") return x;
   }
-};}</pre>
+};</pre>
 <p> M(x) is most useful when the closure is named or, more precisely, when the function returned by M(x) is named. When M(x) is asigned a variable name, the value of "x" in M(x) can be preserved, transformed, and later used if it is eventually needed. "x" in M(x) will correspond to the state of play in the solitaire game of Score (below), but before we get to that, let's take a closer look at M and the function returned by M(x).  </p>
-var example3 = `var mon = M(2);  
-mon(v=>v**4)(v=>v+5)(v=>v*2);`;
-// The value of x can be obtained later
-var example4 = `mon('stop');  // 42
-mon(v => v*v);`;
-// And later:
-var example5 = `mon('stop');  // 1764`;
+<pre>var mon = M(2);  
+mon(v=>v**4)(v=>v+5)(v=>v*2);</pre>
+The value of x can be obtained later
+<pre>mon('stop');  // 42
+mon(v => v*v);</pre>
+And later:
+<pre>var example5 = `mon('stop');  // 1764</pre>
 
-var oldMonad =`function M (x) {
+<pre>function M (x) {
     return function go (func) {
         if (typeof func === "function") {
             x = func(x);
@@ -31,7 +31,7 @@ var oldMonad =`function M (x) {
         }
         else if (func === "stop") return x;
     }
-};`
+};</pre>
   
   
   
