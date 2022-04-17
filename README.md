@@ -1,4 +1,8 @@
-<head> </head>
+<head>
+  <style>
+    p {text-indent: 30px};  
+  </style>
+</head>
 
 <h2>Useful Recursive Closures</h2>
 
