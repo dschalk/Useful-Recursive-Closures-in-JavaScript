@@ -1,4 +1,5 @@
 import { Adapter } from '@sveltejs/kit';
+import './ambient.js';
 
 declare global {
 	const ENV_PREFIX: string;
@@ -10,5 +11,4 @@ interface AdapterOptions {
 	envPrefix?: string;
 }
 
-declare function plugin(options?: AdapterOptions): Adapter;
-export = plugin;
+export default function plugin(options?: AdapterOptions): Adapter;
