@@ -27,13 +27,6 @@
   var dF3x = () => {};
   var dF3ar = () => {};
 
-  /*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
-var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
-var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
-var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
-var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
-var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
-
   var b0 = "blue";
   var b1 = "blue";
   var b2 = "blue";
@@ -2409,8 +2402,7 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
     return elapsedTime;
   }`;
 
-  
- var colors = `.blue {
+  var colors = `.blue {
     height: 60px;
     width: 60px;
     background-color: rgb(116, 116, 253);
@@ -2446,12 +2438,13 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
     background-color: white;
     border-radius: 10px;
   } `;
-  
+
   // ***********************************************************
   // ***********************************************************
   // ***********************************************************
 </script>
- <!--
+
+<!--
 
   ***********************************************************
   ***********************************************************
@@ -3029,46 +3022,41 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
       the m-M(x) closure in these two ways: background-color = m(dF3x)[a][b] or
       class = m(df3x)[a][b] where a is 0, 1, 2, 3, 4, or 5 and b is 0 or 8, or
       any number between 0 and 8. When a and b are in these ranges, the
-      expression m(dF3x)[a][b] resolves to one of these strings: "blue",
-      "green", "red", "orange", "yellow", or "white". The classes blue, green,
-      red, orange, yellow, and white have "background-color" elements
-      corresponding to their names. So, for example, on the starting (solved)
-      cube, the expression m(dF3x)[0][0] resolves to the string "blue" causing
-      the statements "style = 'background-color: m(dF3x)[0][0]' and "class =
-      'm(dF3x)[0][0]'" to result in blue backgrounds.
+      expression m(dF3x)[a][b] resolves to "blue","green", "red", "orange",
+      "yellow", or "white". The classes blue, green, red, orange, yellow, and
+      white have "background-color" elements corresponding to their names. So,
+      for example, on the starting (solved) cube, the expression m(dF3x)[0][0]
+      resolves to the string "blue" causing the statements "style =
+      'background-color: m(dF3x)[0][0]' and "class = 'm(dF3x)[0][0]'" to result
+      in blue backgrounds.
     </p>
 
     <p>
-      m(dF3x)[3] is x's nine-element array that, when the cube is solved, has
-      all-orange background colors. The three buttons below have the colors of
-      the first three elements of the third element of x because the buttons
-      contain the statements "style = 'm(dF3x)[3][0], m(dF3x)[3][1], and
-      m(dF3x)[3][2]. Notice how the colors of the buttons correspond to those of
-      the top row of the front face of the Rubik's cube representation.
-      Repeatedly pressing "Scramble" illustrates this.
+      m(dF3x)[3] is x's fourth-from-the-left nine-element array of strings. When
+      the cube is solved, each of its elements are variables pointing to the
+      string "orange." The three buttons below have the colors of the first
+      three elements of the fourth element of x because the buttons contain the
+      statements "style = 'm(dF3x)[3][0], m(dF3x)[3][1], and m(dF3x)[3][2].
+      Notice how the colors of the buttons correspond to those of the top row of
+      the front face of the Rubik's cube representation. Repeatedly pressing
+      "Scramble" illustrates this.
     </p>
 
     <div>
       <button
         style="background-color:{m(dF3x)[3][0]}; color: black; font-size:30px"
-        on:click={() => {
-          m = m(F);
-        }}
-        >m = m(F)
+        on:click={() => {}}
+        >m(dF3x)[3][0] = {m(dF3x)[3][0]}
       </button>
       <button
         style="background-color:{m(dF3x)[3][1]}; color: black; font-size:30px"
-        on:click={() => {
-          m = m(Cx);
-        }}
-        >m = m(Cx)
+        on:click={() => {}}
+        >m(dF3x)[3][1] = {m(dF3x)[3][1]}
       </button>
       <button
         style="background-color:{m(dF3x)[3][2]}; color: black; font-size:30px"
-        on:click={() => {
-          m = m(L);
-        }}
-        >m = m(L)
+        on:click={() => {}}
+        >m(dF3x)[3][2] {m(dF3x)[3][2]}
       </button>
     </div>
     <h2>Rotating the Left, Back, and Bottom Faces</h2>
@@ -3136,27 +3124,16 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
       while running this application illustrates this.
     </p>
     <pre>{test7}</pre>
-    <span> id="test">
-      Clicking on the "Scramble" button (or pressing the "W" key)
-      pseudo-randomizes the order of 40 references to functions that create the
-      illusion of turning the faces and middle sections of the simulated Rubik's
-      cube.</span> <a href="./cub3e7#et"/>  <span>Transformation of the cube are very efficient. A sequence of one
-      million scrambles runs on my system in around 8.5 seconds. The "with array
-      building" (et2 version) runs only a little slower than the alternative et
-      version.
-    </span>
+    <span id="test"></span>
+
     <h2>The elapsed time is {elapsedTime} milliseconds.</h2>
 
-    <button on:click={et}>10,000 Scrambles</button>
-    <button on:click={et2}>10,000 Scrambles without initiation</button>
+    <button on:click={et2}>10,000 Scrambles</button>
     <br />
     <span style="font-size:25px">
       &nbsp;&nbsp;&nbsp;&nbsp; Move list length:
     </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
-    <pre>{etCode}</pre>
     <pre>{et2Code}</pre>
-
-    <pre></pre>
   </div>
   <div></div>
 </section>
@@ -3611,7 +3588,6 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
     content: "w8";
   }
 
-  
   .blue {
     height: 60px;
     width: 60px;

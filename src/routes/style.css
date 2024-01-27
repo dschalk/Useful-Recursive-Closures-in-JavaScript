@@ -1,15 +1,16 @@
 
-html {background-color:#0c0c0c;}
+html {background-color:#000;}
 
 div {
     color: blue;
 }
 
 body {
+    background-color: #121;
     font-size: 22px;
     color: darkblue;
     padding-left: 3%;
-    padding-right: 3%;
+    padding-right: 3%demo.png;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 20px;

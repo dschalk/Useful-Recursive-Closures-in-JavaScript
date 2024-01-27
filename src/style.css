@@ -73,12 +73,14 @@ h1, h2 {
 }
 
 span {
-    color: rgb(214, 247, 214);
+    color: rgb(219, 253, 244);
+    font-size: 24px;
 }
 
 p span {
     /*text-transform: uppercase; */
-    color: rgb(214, 247, 214);
+    color: rgb(219, 253, 244);
+    font-size: 24px;
 }
 
 a {

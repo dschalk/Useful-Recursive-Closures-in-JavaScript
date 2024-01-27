@@ -494,7 +494,19 @@ m(rd)(dF3x);   // 42 `;
         </div>
       </div>`;
 
-  var classCode2 = `const b0 = 'blue';
+  var classCode2 = `x = [ bb, gg, rr, oo, yy, ww ]
+
+  Where 
+  const bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
+  const gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
+  const rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
+  const oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
+  const yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
+  const ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+
+  and
+  
+  const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
   const b3 = 'blue';
@@ -554,18 +566,20 @@ m(rd)(dF3x);   // 42 `;
   const w7 = 'white';
   const w8 = 'white';
 
-  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
-  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
-  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
-  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
-  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
-  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
-
-  var m = M([bb, gg, rr, oo, yy, ww]);`;
+  m = M([bb, gg, rr, oo, yy, ww]);`;
   var v1 = ` var  m = M(3)`;
 
   var v2 = `M()(()=>3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
-  var v3 = `M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
+
+  var v3 = `x = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) 
+console.log('x is', x);`
+/*
+var v3b = `m = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)
+console.log('m(dF3x) is', m(dF3x));`
+
+var v3c = `m(v=>v+4)(v=>v*3)
+console.log('m(dF3x) is', m(dF3x));`
+  */
   var v4 = `m = M(3)`;
   var v5 = "m(dF3x)  // 3";
   var v6 = `m(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)`;
@@ -827,7 +841,7 @@ var Masync = `function M (x) {
             return go;
           }
         }`;
-var dF3xCode = `dF3x = () => {}`;
+var dF3xCode = "dF3x = () => {}"
 
 // *********************************************************
 // *********************************************************
@@ -839,29 +853,56 @@ var dF3xCode = `dF3x = () => {}`;
 
 
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
-  <h1 style="text-align: center">Recursive Closures</h1>
+  <h1 style="text-align: center; color: #f5ee9f">Recursive Closures</h1>
   
-  <h3>The inner function "m" ( defined as "go" in the outer function ) is recursive</h3>
-  <p>Where m = M(x),</p>
-  <p>x can be any value,</p>
-  <p>M is</p>     
+  <h3>The inner function "m" ( defined below as "go" in the outer function M ) is recursive</h3>
+  <p> m = M(x),</p>
+  <p> Where x can be any value and M is</p>
 
   <pre class="dis">{Mdis}</pre>
   <pre class="play">{Mplay}</pre>
   <pre class="dis">{Mend}</pre>
-  <p> and the flag dF3x can be any value; including null, an image, or a function. In order to facilitate future type-checking, "func" is defined here as a function; namely, <span style = "color: gold; font-size: 24px; font-weight:bold" >{dF3xCode} </p>
-  <h2>The usefulness of dF3x in the <a style = "font-size: 28px" href = "./cube7">simulated Rubik's cube</a></h2>
-    
-  <p> In the  m-M(x) closure representing the Rubik's cube, x is an array of six nine-member arrays of strings with the names of colors. In the solved cube, the arrays in x are, moving sequentially from x[0] to x[5], entirely "blue, green, red, orange, yellow, and white."  </p>
+  <p> The flag dF3x can be any value; including null, an image, or a function. In order to facilitate future type-checking, "func" is defined here as a function; namely: <span style = "margin: 0px; color: #f5ee9f">{dF3xCode}</span>. </p>
+
+<span> When the closure isn't named, there's no danger of a memory leak:</span>
+<br>
+<span style = "color: #f5ee9f"> x = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x)</span><br> 
+<span style = "color: #f5ee9f"> console.log(x) &nbsp;&nbsp;  // 10 </span>
+<br><br>
+<span> When the closure is named, it remains at least as long as the browser tab remains open, longer with persistent storage.</span>
+<br>
+
+<span style = "color: #f5ee9f"> m = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)</span><br> 
+<span style = "color: #f5ee9f"> console.log(x) &nbsp;&nbsp;  // 10 </span> <br>
+<span style = "color: #f5ee9f">m(v=>v+4)(v=>v*3)</span> <br>
+<span style = "color: #f5ee9f"> console.log(x) &nbsp;&nbsp;  // 42 </span>
+
+<p> For more examples, and to see m-M(x) closures handle asynchronous functions, go to <a href="./async5">Async</a>.</p>
+
+<h1 style = "text-align: center; color: #f5ee9f"> A Fast and Efficient Virtual Rubik's Cube </h1>
+<p> The x in the m-M(x) closure is always an array of six nine-member arrays of the strings "blue, green, red, orange, yellow, and white." User input calls m(func) for some function "func." If func is dF3x, x is returned. Otherwise, x becomes func(x), which is still an array of six nine-member arrays with the strings rearranged (unless func is the identity function). </p>
+<p> Whenever any of the six nine-element arrays in x get reconstituted with with new or differently-ordered strings, the background colors of the 54 divs that constitute the virtual Rubik's automatically change accordingly. That's because the divs have CSS classes named "blue, green, red, orange, yellow, and white" with corresponding background colors. What are just strings in the m-M(x) closure are class names in the DOM. Here's the solved-cube definitions of x in the m-M(x) closure, the definitions of the six CSS classes, and the permanent structure of the 54 div representation of the Rubik's cube: </p>  
+
+<pre>{classCode2}</pre>
+    <p> Here are the div class names that get automatically rearranged whenever the strings in the m-M(x) closure are rearranged. Functions that rearrange the locations of strings in the m-M(x) closure make it seem that the divs constituting the faces of the virtual Rubik's cube have rearranged.          , its sides, or its middle sections have rotated 90 degrees:  </p>
+  <pre>{css}</pre>
+
+  <p>
+    The 54 divs that combine to represent the cube in the DOM are shown below. Strings rearrange in the m-M(x) closure causing div class assignments to rearrange thereby creating the illusion that the whole cube, its faces, or its middle sections have rotated.
+     
+    The visual representation that appears in the browser is on the next page, <a
+      href="./cube7">Rubik's cube</a
+    >
+  </p>
+    <pre>{dom}</pre>
+  <p>
+  
 
   <h2> The Three Visible Sides of the Simulated Rubik's Cube</h2>
   <p> You can rotate the entire cube by clicking on the middle square of any side, pressing the 'X', 'Y', and 'Z' keys, or clicking on the "X rotate", "Y rotate", or "Z rotate" buttons. Such rotations change which sides are displayed, but they are always designated 'top', 'front', and 'right-side' for purposes of rotating sides and middle sections. For example, pres'e front divs, and nine right-side divs contain buttons with classes named "blue, green, red, orange, yellow, and white." Each of these classes has a "background-color" attribute identical to its name. </p>
   <p> The statement, "class = m(dF3x)[j][k], where j is 0, 1, 2, 3, 4, or 5 specifies 'blue', 'green', 'red', 'orange', 'yellow', or 'white' respectively, and k is the location   an integer und-color of one of the squares on one of the faces of the Rubik's cube representation in the DOM."</p>
 
-  <p> Likewise, the statement "style = 'background-color: m(dF3x)[j][k]'" can specify the color of one of the 54 squares that constitute the simulated Rubik's cube in the DOM. Here's a demonstration on the Rubik's cube page: <a href="./cube7#coolcow"><span style="font-weight:bold; color:#ff99dd;"> Demonstration</span></a>. Don't just repeatedly click "Scramble". Also, read the definitions that precede it. Tell me what you think. </p>
-  <h3>End of Chapter One</h3><br>
-  <div class="light">Anonymous Closures Performs Anonymous Computations:</div>
-  <pre>{v3}</pre>
+  <p> Likewise, the statement "style = 'background-color: m(dF3x)[j][k]'" can specify the color of one of the 54 squares that constitute the simulated Rubik's cube in the DOM. Here's a demonstration on the Rubik's cube page: <a href="./cube7#coolcow"><span style="font-weight:bold; color:#ff99dd;"> Demonstration</span></a>. After you click "Scramble" multiple times, I recommend that you read the definitions that precede it. Counterintuitive things are happening, some of which will be explained in the next section. </p>
   <p> Composing function this way is elegant, transparent, and efficient. Scrambling the Rubik's cube involves calling a random sequence of 40 functions that rotate faces and middle sections of the Simulated Rubik's cube. Running this application on localhost:5173, my desktop computer can scramble the cube 1,000 times in less than 300 milliseconds. <a href = "./cube7#test">Try it here</a>   </p>
   <p> The statement resolves to 10. No variable points to the transient closure, which is transient because it is not assigned to a variable and is, therefore, ripe for removal by the garbage collector immediately upon resolution to 10. </p>
   <p> M(3) at the beginning of the above computation returns go. The function go operates on v=>v**3, v=>v*4, v=>v-8, Math.sqrt, and dF3x. Then, being unreachable by any variable assignment, disappears from memory whenever the garbage collector gets around to removing it. </p>
@@ -871,28 +912,25 @@ var dF3xCode = `dF3x = () => {}`;
     <span>Encapsulated State:</span>
     <pre>{v4}</pre>
     <pre>{v5}</pre>
-    <span>Sometime later (the garbage collector ignores closures):</span>
+    <span>Sometime later:</span>
     <pre>{v6}</pre>
     <pre>{v7}</pre>
     <pre>{v8}</pre>
-    <pre>{v9}</pre>
+    <pre>{v9} // The JavaScript garbage collector ignores closures </pre>
   </div>
-  <span class="teaser">Rubik's Cube Simulation</span>
-  <span class="teaser"
-    >***********************************************************************
+  <span id = "sim" class="teaser">Back to the Rubik's Cube Simulation</span>
+  <span class="teaser">***********************************************************************
     <br />
-    <p> In the Rubik's cube application, the m-M(x) closure is defined as follows: </p>
+    <p> In the <a style = "color: #FCAACC" href = ./cube7>Rubik's cube application</a>, x in the m-M(x) closure is defined as:  </p>
     <pre>{classCode2}</pre>
-    <p> The visual representation in the browser is constructed so that bb, gg, rr, oo, yy, and ww correspond to its right, left, back, front, top, and bottom faces respectively. The fact that x[3] represents the front face of the cube is especially relevant in the discussion that follows. </p>
+    <p> In the solved cube, bb, gg, rr, oo, yy, and ww correspond to its right, left, back, front, top, and bottom faces respectively. Notice that in the DOM representation of the Rubik's cube (below), only the top, front, and right side of the cube contain buttons. Click the center of the right side of the cube or press 'X' on the keyboard. Now the front is white, but it has an embedded button  </p>
 
     Case 1 -- Clicking on the three visible sides of the cube.</span>
-  
+  <p> Although some or all of the 54 divs that constitute the representation a Rubik's cube seem to move in response to certain mouse clicks and key presses, they never do. If func is the function dF3x, m(func) is a reference to the to the array of six nine-member arrays of strings named "x" in the m-M(x) closure. m(dF3x) === x. Mutating one mutates the other. Otherwise, calling m(func) results in x => func(x) in the m-M(x) closure where x has become func(x). </p> 
   <p>
     The value held in the m-M(x) closure in the Rubik's cube application, "x", is always an array of six nine-member
-    references to the strings "blue, green, red, orange, yellow, and white." The nine front-facing squares seen in the browser are all colored according to the nine strings referenced in xk[3]. In the starting cube, also known as the "solved cube," x[3] is the array "oo", the array of all nine references to "orange." Here's the first of the six parts of the 54 div representation of the Rubik's cube in the DOM: </p>
+    references to the strings "blue, green, red, orange, yellow, and white." The nine front-facing squares seen in the browser are all colored according to the nine strings referenced in x[j][k]. In the starting cube, also known as the "solved cube," x[3] is the array "oo", the array of all nine references to "orange." Here's the first of the six parts of the 54 div representation of the Rubik's cube in the DOM: </p>
     <pre>{DOMfront}</pre>
-    <p> Here are the definitions of the classes that get reassigned to divs during the course of manipulating it with key presses and mouse clicks:  </p>
-  <pre>{css}</pre>
     <p> The third button down from the top and the final button of the front face (see above) contain the statement "m = m(F)". These correspond to the upper right and lower right corners of the cube representation in the browser. Clicking the upper right or lower right corners of the cube, therefore, mutates x in the m=M(x) closure into the value returned by F(x), which is named "temp". </p>
     <pre>{Fcode}</pre>
     <p> Pressing the "F" key and clicking on the "F" button are other ways of rotating the front face clockwise 90 degrees. All three methods rely on the statement, "m = m(F)". The "m =" part of the statement m = m(F) triggers reactivity in this Sveltekit application, giving users almost instantaneous feedback from their key presses and mouse clicks. </p>
@@ -901,8 +939,6 @@ var dF3xCode = `dF3x = () => {}`;
       <img src={Cubeshot} alt="Image of the Rubik's cube " style="width:200px;height:210px;">
     
     <p> The changes to the top face, with three classes reassigned from x[1] (previously all green), and the changes to the right face, three classes reassigned from x[4] (previously all yellow), demonstrate the correspondence between the function "F" and the visual representation in the browser. And, of course, the observed changes are what you get when you turn the front face of your own solved cube, assuming you have one.   </p>
-
-
 
   <p> Clicking the center of each face rearranges x in the m-M(x) closure, thereby automatically rearranging some of the class assignments of the 54 dives in the DOM. In the browser, this creates the appearance of 90 degree clockwise rotation of the entire cube around the axes perpendicular to the clicked centers. Pressing the x, y, and z Keys has the same effects. Holding down SHIFT while pressing these keys creates the appearance of counterclockwise rotation. There are also buttons for clockwise rotations, and "back" buttons for counterclockwise rotation.</p>
 
@@ -971,38 +1007,9 @@ var dF3xCode = `dF3x = () => {}`;
       >***********************************************************************</span
     >
     <div class="background">
-      <p style="color: lightgreen; font-size: 28px; font-weight: bold ">
-        Biographical Background:
-      </p>
-      <p style="color: lightgreen;">
-        Indiana University awarded me a bachelor'S degree in chemistry in 1979,
-        a master's degree in mathematics in 1981, and a doctor of jurisprudence degree
-        in law in 1990. Sun Microsysystems certified me as a Java Programmer and Java
-        Website Developer on or about 2002, which helped qualify me to work on a project at Indiana
-        University with the job title, "Programmer-Systems Analyst." I took only one computer-related course at Indiana University, titled something like "Introduction to Fortran."
-      </p>
-      <p style="color: lightgreen;"> Back in the 1980s, I learned to contact online bulletin boards over the telephone. In 1995, I learned some JavaScript playing around with what was then an amazing Netscape Navigator browser. Then I learned to use some web application frameworks for my law practice website. Programming fascinated me, and over the years I learned to write simple programs in numerous languages. My very first language was Fortran, which I learned in college while working on my bachelor's degree in chemistry.  </p>
-        <p style="color: lightgreen;"> My son, Alexander, enjoyed a dice game called "score" that he learned in school, so I developed an online, multi-player version in the Haskell programming language. Users can modify the game and prompt it to display any and all possible solutions. I found a binary version I compiled with the Glasgow Haskell Compiler (GHC) in 2014. It runs online at http://schalk2:3055. There isn't a working secure version. https://score.schalk2.com loads the login screen, but goes no further than that. Here's a link: <a href="http://schalk2.com:3055" target="_blank">Game of score</a>. The code is at <a href = "https://github.com/dschalk/score2">https://github.com/dschalk/score2</a> </p> 
-
-
-
-      <p style="color: lightgreen;">
-        I'll never again get involved in a Java project and I can't imagine ever
-        again needing React. After developing an elaborate online multi-player
-        game in the Haskel programming language, still using React for the user
-        interface, I decided to stick with JavaScript and simple frameworks.
-        This is a SvelteKit application.
-      </p>
-      <p style="color: lightgreen;">
-        While it makes sense to develop web applications with a few elaborate
-        functions in conjunction with reusable small ones, I decided to try the
-        opposite approach. What I discovered is worth sharing, to say the least,
-        so here it is.
-      </p>
-
       <p>
-        The code samples at the top of this page shows that function composition
-        using M can't be more transparent, concise, and maintainable. Going
+        The code samples at the top of this page show that function composition
+        using M is as transparent and concise as it can possibly be. Going
         beyond numerical computations, M holds the ever-changing state of play
         in the<a href="./score">Game of Score</a>. That application functions properly, but the code needs to be refactored and cleaned up. The simulated Rubik's cube is a simple m-M(x) closure where x is an array of six nine-member arrays of strings. A slightly modified version of M is introduced to facilitate reversing a series of moves. 
       </p>
@@ -1079,29 +1086,16 @@ var dF3xCode = `dF3x = () => {}`;
 
       <h2>Handling Intermittant Promises</h2>
 
-      This slightly modified version of M can handle both ordinary data and promises:
+      <p>This slightly modified version of M can handle both ordinary functions and promises:</p>
       
         <pre>{Masync}</pre>
 
-      A real time demonstration of m(dF3x) delivering promises, one by one, along with definitions of the asynchronous functions used, can be found here: <a href = "./async5">Async</a> These are the composite 
-funtions used in the demonstration:
-    <p>m(addP(3)) (squareP) (v => v - 7) (dF3x).then(v => (D = v)) = 42 </p>
-      
-      <p>m(v => v / 42) (multP(6)) (v=>v * 7) (dF3x).then(v => (A = v)) = 42 </p>
-      
-      <p>m(addP(7)) (Math.sqrt) (v => v * 6) (dF3x).then(a => (C = a)) = 42 </p>
-      
-      <p>m(divP(14)) (v => v**3) (addP(5)) (dF3x).then(v => (D = v)) = 42 </p>
+      <p>Here's a demonstration: <a href = "./async5">Async</a></p> 
 
   
-
-
-
+<!-- <p> Solving a virtual Rubik's cube in a browser is most efficiently accomplished with keystrokes, rather than mouse clicks and drags. I know of only two online Rubik's cube that respond properly to instructions from the keyboard: <a href="cstimer.net">csTimer</a> and <a href="./cube7">This Site</a>. For example, "F" might turn the front face 90 degrees, as expected; but after turning the whole cube 90 degrees clockwise, "F" turns the left face of the cube. "F" should always turn the front face, no matter how many times the whole cube has been turned.  </p> -->
 
 <!--
-      <h1>STOP</h1>
-      <p>This is where the revision ends.</p> 
-      paypal card denominations
 
       <p>
         The <a href="./cube7">Simulated Rubik's cube</a> page has gone through improvements,
@@ -1319,6 +1313,26 @@ funtions used in the demonstration:
 <slot />
 
 <style>
+h2 {
+  color: #f5ee9f;
+}
+
+span {
+    color: rgb(219, 253, 244);
+    font-size: 24px;
+    margin: 3%;
+
+}
+
+
+  a {
+    color: magenta;
+  } 
+
+  a:hover {
+    color: white;
+    background-color: #000;
+  }
 
   img {
     width: 25%;
@@ -1361,12 +1375,9 @@ funtions used in the demonstration:
   .white {
     height: 60px;
     width: 60px;
-    background-color: white;
-    border-radius: 10px;
   }
 
   .teaser {
-    font-style: italic;
     font-size: 32px;
     color: #ffccaa;
   }

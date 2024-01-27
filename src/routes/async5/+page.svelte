@@ -169,13 +169,13 @@
 <p> In the demonstration below, functions composed of mixtures of ordinary functions and promises eventually resolve as expected. "x" in the m-M(x) closure begins with the number 4: <span style="color:aqua">m = M(4) </span>.</p>
 <button on:click = {restart} data.sveltekit.reload>Restart</button>
 
-<p style="color:aqua">m(addP(3)) (squareP) (v => v - 7) (dF3x).then(v => (D = v)) = {A} </p>    
+<p style="color: #FAF">m(addP(3)) (squareP) (v => v - 7) (dF3x).then(v => (D = v)) = {A} </p>    
 
-<p style="color:aqua">m(v => v / 42) (multP(6)) (v=>v * 7) (dF3x).then(v => (A = v)) = {B} </p>
+<p style="color:#FAF">m(v => v / 42) (multP(6)) (v=>v * 7) (dF3x).then(v => (A = v)) = {B} </p>
 
-<p style="color:aqua">m(addP(7)) (Math.sqrt) (v => v * 6) (dF3x).then(a => (C = a)) = {C} </p>
+<p style="color:#FAF">m(addP(7)) (Math.sqrt) (v => v * 6) (dF3x).then(a => (C = a)) = {C} </p>
 
-<p style="color:aqua">m(divP(14)) (v => v**3) (addP(5)) (dF3x).then(v => (D = v)) = {D} </p>
+<p style="color:#FAF">m(divP(14)) (v => v**3) (addP(5)) (dF3x).then(v => (D = v)) = {D} </p>
 
 <p> The asynchronous functions used above are in this list:</p>
 <pre>{functionCode}</pre>
