@@ -1,6 +1,8 @@
 <script>
   import clickDemo from "$lib/clickDemo.png";
   import oppH from "$lib/oppH.png";
+  import red from "$lib/red.png";
+  import green from "$lib/green.png";
   // import Image from './Image.svelte'
   var log = console.log;
   var ERROR = "";
@@ -27,94 +29,6 @@
   var dF3x = () => {};
   var dF3ar = () => {};
 
-  var b0 = "blue";
-  var b1 = "blue";
-  var b2 = "blue";
-  var b3 = "blue";
-  var b4 = "blue";
-  var b5 = "blue";
-  var b6 = "blue";
-  var b7 = "blue";
-  var b8 = "blue";
-
-  var g0 = "green";
-  var g1 = "green";
-  var g2 = "green";
-  var g3 = "green";
-  var g4 = "green";
-  var g5 = "green";
-  var g6 = "green";
-  var g7 = "green";
-  var g8 = "green";
-
-  var r0 = "red";
-  var r1 = "red";
-  var r2 = "red";
-  var r3 = "red";
-  var r4 = "red";
-  var r5 = "red";
-  var r6 = "red";
-  var r7 = "red";
-  var r8 = "red";
-
-  var o0 = "orange";
-  var o1 = "orange";
-  var o2 = "orange";
-  var o3 = "orange";
-  var o4 = "orange";
-  var o5 = "orange";
-  var o6 = "orange";
-  var o7 = "orange";
-  var o8 = "orange";
-
-  var y0 = "yellow";
-  var y1 = "yellow";
-  var y2 = "yellow";
-  var y3 = "yellow";
-  var y4 = "yellow";
-  var y5 = "yellow";
-  var y6 = "yellow";
-  var y7 = "yellow";
-  var y8 = "yellow";
-
-  var w0 = "white";
-  var w1 = "white";
-  var w2 = "white";
-  var w3 = "white";
-  var w4 = "white";
-  var w5 = "white";
-  var w6 = "white";
-  var w7 = "white";
-  var w8 = "white";
-
-  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
-  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
-  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
-  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
-  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
-  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
-
-  let m = M([bb, gg, rr, oo, yy, ww]);
-  var m2 = M2([bb, gg, rr, oo, yy, ww]);
-
-  var cubeStart = JSON.parse(JSON.stringify([bb, gg, rr, oo, yy, ww]));
-
-  function clone(ar) {
-    JSON.parse(JSON.stringify(ar));
-  }
-
-  var cloneCode = `function clone (ar) {
-    JSON.parse(JSON.stringify(ar));
-  }`;
-
-  function M2(x, ar = []) {
-    return function go(func) {
-      if (func === dF3x) return x;
-      else x = func(x);
-      return go;
-    };
-  }
-
   function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
@@ -125,26 +39,44 @@
     };
   }
 
-  var test7 = `function M(x, ar = []) {
+  var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], ["green", "green", "green", "green", "green", "green", "green", "green", "green"], ["red", "red", "red", "red", "red", "red", "red", "red", "red"], ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"], ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]);
+
+  var mCode = `var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], ["green", "green", "green", "green", "green", "green", "green", "green", "green"], ["red", "red", "red", "red", "red", "red", "red", "red", "red"], ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"], ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]);`
+
+    var cubeStart = [["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], ["green", "green", "green", "green", "green", "green", "green", "green", "green"], ["red", "red", "red", "red", "red", "red", "red", "red", "red"], ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"], ["white", "white", "white", "white", "white", "white", "white", "white", "white"]];
+
+    function clone(ar) {
+      JSON.parse(JSON.stringify(ar))
+    }                                                                                                                                                                                               var test7 = `function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
       ar.push(func);
-        console.log(m(dF3ar) === ar); // true
       return go;
     };
   };`;
 
-  var Start = () => {
+  function Start () {
     index = 1;
-    m = M(cubeStart);
-  };
+    m = M([["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], ["green", "green", "green", "green", "green", "green", "green", "green", "green"], ["red", "red", "red", "red", "red", "red", "red", "red", "red"], ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"], ["white", "white", "white", "white", "white", "white", "white", "white", "white"]]);
+  }; 
+
+  var startCode = `const Start = function Start () {
+    index = 1;
+    m = M([["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], 
+    ["green", "green", "green", "green", "green", "green", "green", "green", "green"], 
+    ["red", "red", "red", "red", "red", "red", "red", "red", "red"], 
+    ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], 
+    ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow], 
+    ["white", "white", "white", "white", "white", "white", "white", "white", "white"]]);
+  };`;
 
   $: Sally = m(dF3ar).length;
 
   function reverse() {
-    let fu = m(dF3ar).pop();
+    let fu = m(dF3ar).pop()
+    console.log("fu is", fu);
     // Removes the function being reversed from x.
     let foo = (v) => fu(fu(fu(v)));
     // foo is the inverse of fu.
@@ -172,77 +104,7 @@
         return go;
       };
     }; 
-    
-    let m = M(x)`;
-
-  var classCode2 = `var b0 = 'blue';
-  var b1 = 'blue';
-  var b2 = 'blue';
-  var b3 = 'blue';
-  var b4 = 'blue';
-  var b5 = 'blue';
-  var b6 = 'blue';
-  var b7 = 'blue';
-  var b8 = "blue";
-
-  var g0 = 'green';
-  var g1 = 'green';
-  var g2 = 'green';
-  var g3 = 'green';
-  var g4 = 'green';
-  var g5 = 'green';
-  var g6 = 'green';
-  var g7 = 'green';
-  var g8 = "green";
-
-  var r0 = 'red';
-  var r1 = 'red';
-  var r2 = 'red';
-  var r3 = 'red';
-  var r4 = 'red';
-  var r5 = 'red';
-  var r6 = 'red';
-  var r7 = 'red';
-  var r8 = "red";
-
-  var o0 = 'orange';
-  var o1 = 'orange';
-  var o2 = 'orange';
-  var o3 = 'orange';
-  var o4 = 'orange';
-  var o5 = 'orange';
-  var o6 = 'orange';
-  var o7 = 'orange';
-  var o8 = "orange";
-
-  var y0 = 'yellow';
-  var y1 = 'yellow';
-  var y2 = 'yellow';
-  var y3 = 'yellow';
-  var y4 = 'yellow';
-  var y5 = 'yellow';
-  var y6 = 'yellow';
-  var y7 = 'yellow';
-  var y8 = "yellow";
-
-  var w0 = 'white';
-  var w1 = 'white';
-  var w2 = 'white';
-  var w3 = 'white';
-  var w4 = 'white';
-  var w5 = 'white';
-  var w6 = 'white';
-  var w7 = 'white';
-  var w8 = 'white';
-
-  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
-  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
-  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
-  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
-  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
-  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
-
-  let m = M([bb, gg, rr, oo, yy, ww]);`;
+  let m = M(x)`;
 
   var Xro = function Xro(ar) {
     let temp = [];
@@ -2208,95 +2070,47 @@
     border-radius: 10px;
   }`;
 
-  var dom = `<div id="steady">
-  <div class="container">
-    <div class={cu}>
-      <div class="face front">
-        <div class="grid" >
-          <div> <button class={m(dF3x)[3][0]} on:click = {() => {m = m(Fz)}} /> </div> 
-          <div> <button class={m(dF3x)[3][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div> <button class={m(dF3x)[3][2]} on:click = {() => {m = m(F)}} /> </div>  
-          <div> <button class={m(dF3x)[3][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div> <button class={m(dF3x)[3][4]} on:click = {() => {m = m(Zro)}} /> </div>
-          <div><button class={m(dF3x)[3][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[3][6]} on:click = {() => {m = m(Fz)}} /> </div> 
-          <div><button class={m(dF3x)[3][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[3][8]} on:click = {() => {m = m(F)}} /> </div> 
-        </div>
-      </div>
-
-      <div class="face back">
-        <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
-        </div>
-      </div>
-
-      <div class="face right">
-        <div class="grid">
-         <div><button class={m(dF3x)[0][0]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][1]} on:click = {() => {m = m(Cz)}} /> </div> 
-         <div><button class={m(dF3x)[0][2]} on:click = {() => {m = m(R)}} /> </div> 
-          <div><button class={m(dF3x)[0][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div> <button class={m(dF3x)[0][4]} on:click = {() => {m = m(Xro)}} /> </div>
-          <div><button class={m(dF3x)[0][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[0][6]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][7]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[0][8]} on:click = {() => {m = m(R)}} /> </div> 
-        </div>
-      </div>
-
-      <div class="face left">
-        <div class="grid">
-          <div class={m(dF3x)[1][0]} />
-          <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
-          <div class={m(dF3x)[1][3]} />
-          <div class={m(dF3x)[1][4]} />
-          <div class={m(dF3x)[1][5]} />
-          <div class={m(dF3x)[1][6]} />
-          <div class={m(dF3x)[1][7]} />
-          <div class={m(dF3x)[1][8]} />
-        </div>
-      </div>
-
-      <div class="face top">
-        <div class="grid">
-          <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
-          <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div> 
-          <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Cz)}} /> </div> 
-          <div> <button class={m(dF3x)[4][4]} on:click = {() => {m = m(Yro)}} /> </div>
-          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
-          <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[4][8]} on:click = {() => {m = m(U)}} /> </div> 
-        </div>
-      </div>
-
-      <div class="face bottom">
-        <div class="grid">
-          <div class={m(dF3x)[5][0]} />
-          <div class={m(dF3x)[5][1]} />
-          <div class={m(dF3x)[5][2]} />
-          <div class={m(dF3x)[5][3]} />
-          <div class={m(dF3x)[5][4]} />
-          <div class={m(dF3x)[5][5]} />
-          <div class={m(dF3x)[5][6]} />
-          <div class={m(dF3x)[5][7]} />
-          <div class={m(dF3x)[5][8]} />
-        </div>
-      </div>
-    </div>
+var dom =  `<div class="face front">
+  <div class="grid">
+    <button style="background-color: {m(dF3x)[3][0]}" on:click={() => {m = m(Fz)}}/>
+    <button style="background-color: {m(dF3x)[3][1]}" on:click={() => {m = m(Cx)}}/>
+     <button style="background-color: {m(dF3x)[3][2]}" on:click={() => {m = m(F)}}/>
+     <button style="background-color: {m(dF3x)[3][3]}" on:click={() => {m = m(Cyr)}}/>
+     <button style="background-color: {m(dF3x)[3][4]}" on:click={() => {m = m(Zro)}}/>
+     <button style="background-color: {m(dF3x)[3][5]}" on:click={() => {m = m(Cy)}}/>
+     <button style="background-color: {m(dF3x)[3][6]}" on:click={() => {m = m(Fz)}}/>
+     <button style="background-color: {m(dF3x)[3][7]}" on:click={() => {m = m(Cxr)}}/>
+     <button style="background-color: {m(dF3x)[3][8]}" on:click={() => {m = m(F)}}/>
   </div>
-</div>`;
+</div>
+
+<div class="face right">
+  <div class="grid">
+    <button style="background-color: {m(dF3x)[0][0]}" on:click={() => {m = m(Rz)}}/>
+    <button style="background-color: {m(dF3x)[0][1]}" on:click={() => {m = m(Cz)}}/>
+    <button style="background-color: {m(dF3x)[0][2]}" on:click={() => {m = m(R)}}/>
+    <button style="background-color: {m(dF3x)[0][3]}" on:click={() => {m = m(Cyr)}}/>
+    <button style="background-color: {m(dF3x)[0][4]}" on:click={() => {m = m(Xro)}}/>
+    <button style="background-color: {m(dF3x)[0][5]}" on:click={() => {m = m(Cy)}}/>
+    <button style="background-color: {m(dF3x)[0][6]}" on:click={() => {m = m(Rz)}}/>
+    <button style="background-color: {m(dF3x)[0][7]}" on:click={() => {m = m(Czr)}}/>
+    <button style="background-color: {m(dF3x)[0][8]}" on:click={() => {m = m(R)}}/>
+  </div>
+</div>
+
+<div class="face top">
+  <div class="grid">
+    <button style="background-color: {m(dF3x)[4][0]}" on:click={() => {m = m(Uz)}}/>
+    <button style="background-color: {m(dF3x)[4][1]}" on:click={() => {m = m(Cx)}}/>
+    <button style="background-color: {m(dF3x)[4][2]}" on:click={() => {m = m(U)}}/>
+    <button style="background-color: {m(dF3x)[4][3]}" on:click={() => {m = m(Cz)}}/>
+    <button style="background-color: {m(dF3x)[4][4]}" on:click={() => {m = m(Yro)}}/>
+    <button style="background-color: {m(dF3x)[4][5]}" on:click={() => {m = m(Czr)}}/>
+    <button style="background-color: {m(dF3x)[4][6]}" on:click={() => {m = m(Uz)}}/>
+    <button style="background-color: {m(dF3x)[4][7]}" on:click={() => {m = m(Cxr)}}/>
+    <button style="background-color: {m(dF3x)[4][8]}" on:click={() => {m = m(U)}}/>
+  </div>        
+</div>`        
 
   var a = 0;
   var b = 0;
@@ -2439,1469 +2253,1193 @@
     border-radius: 10px;
   } `;
 
+var general = `    <div> 
+        <button class={m(dF3x)[a][b]} on:click={() => {m = m(func)}}/>
+    </div> `
+
+var precise = `    <div> 
+        <button class={m(dF3x)[3][0]} on:click={() => {m = m(Fz)}}/>
+    </div> `
+
+var orangeCode =`.orange {
+        height: 60px;
+        width: 60px;
+        background-color: orange;
+        border-radius: 10px;
+    }`
+Start();
+Start();
+
   // ***********************************************************
   // ***********************************************************
   // ***********************************************************
+
 </script>
-
-<!--
-
-  ***********************************************************
-  ***********************************************************
-  *********************************************************** 
-
-
-
-
-  -->
 
 <svelte:window on:keypress={handleEvent} />
 <section class="columns">
-  <div style="width: 70%">
-    <!-- <button on:click={() => console.log("test of m(dF3x is", m(dF3x))}>test</button>
-    <button on:click={() => console.log("test2 of m2(dF3x is", m2(dF3x))}>test2</button> -->
-    <p>
-      A closure referred to as "m-M(x)", where m = M( [bb,gg,rr,oo,yy,ww] ) and
-      bb, gg, rr, oo, yy, and ww are nine-member arrays of the strings "blue,
-      green, red, orange, yellow, and white" respectively, encapsulates a
-      representation of the state of a Rubik's cube (definition below, result on
-      the right). The recursive function "m" operates on pure functions that
-      rearrange the strings in x without causing side effects, other than those
-      affecting the DOM and manifested in the browser on the right.
-    </p>
-    <p>
-      The representation of the Rubik's cube encapsulated in the m-M(x) closure
-      is embedded in the 54 divs of the DOM representation of the cube in the
-      form m(dF3x)[j][k]. These strings designate CSS class selectors with
-      background-color = m(dF3x)[j][k]. Rearranging the strings in m-M(x)
-      closure automatically changes what is seen in the browser.
-    </p>
+    <div style="width: 70%">
 
-    <pre class="dis">{Mdis}</pre>
-    <pre class="play" id="yes">{Mplay}</pre>
-    <pre class="dis">{Mend}</pre>
+<h1>A Virtual Rubik's Cube</h1>
 
-    <button on:click={Start}>Start</button>
-    <button on:click={shu}>Scramble</button>
-    <button on:click={reverse}>Reverse</button>
 
-    <!--<span style="color:darkred; font-weight:bold">m(dF3ar).length = {Sally}</span> -->
-    <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
+    <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of strings corresponding to the 54 squares of a Rubik's cube:  </p>
+<pre>{test7}</pre>
+    <p> The empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to facilitate taking back moves by pressing the "Q" key or clicking "Reverse." The code enabling this eunctionality is shown further down this page.</p>
 
-    <span style="font-size:25px">
-      &nbsp;&nbsp;&nbsp;&nbsp; Move list length:
-    </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
+<h2>Callbacks Rearrange x in the m-M(x) Closure</h2>
 
-    <br />
-    <button on:click={() => (m = m(Xro))}>X rotate</button>
-    <button on:click={() => (m = m(Yro))}>Y rotate</button>
-    <button on:click={() => (m = m(Zro))}>Z rotate</button>
-    <br />
-    <button on:click={() => (m = m(Xror))}>X back</button>
-    <button on:click={() => (m = m(Yror))}>Y back</button>
-    <button on:click={() => (m = m(Zror))}>Z back</button>
-
-    <br />
-    <button on:click={() => (m = m(U))}>U</button>
-    <button on:click={() => (m = m(D))}>D</button>
-    <button on:click={() => (m = m(R))}>R</button>
-    <button on:click={() => (m = m(L))}>L</button>
-    <button on:click={() => (m = m(F))}>F</button>
-    <button on:click={() => (m = m(B))}>B</button>
-    <button on:click={() => (m = m(Cx))}>M</button>
-    <button on:click={() => (m = m(Cy))}>E</button>
-    <button on:click={() => (m = m(Cz))}>S</button>
-    <br />
-    <button on:click={() => (m = m(Uz))}>U'</button>
-    <button on:click={() => (m = m(Dz))}>D'</button>
-    <button on:click={() => (m = m(Rz))}>R'</button>
-    <button on:click={() => (m = m(Lz))}>L'</button>
-    <button on:click={() => (m = m(Fz))}>F'</button>
-    <button on:click={() => (m = m(Bz))}>B'</button>
-    <button on:click={() => (m = m(Cxr))}>M'</button>
-    <button on:click={() => (m = m(Cyr))}>E'</button>
-    <button on:click={() => (m = m(Czr))}>S'</button>
-    <div style="margin-left: 1px">
-      <p>
-        Pressing the u, d, r, l, f, b, m, e, s, x, y, and z keys has the same
-        effect as clicking the corresponding (capitalized) buttons. Holding down
-        the "Shift" key (or activating "CapsLock") while pressing the keys
-        causes the reverse effect. Pressing v, w, and q is equivalent to
-        clicking on Start, Scramble, and Reverse, respectively.
-      </p>
-      <p>
-        Clicking on either of two left corners of each face of the cube causes
-        that face to rotate counterclockwise 90 degrees. Clicking on either of
-        two right corners of each face of the cube causes that face to rotate
-        clockwise 90 degrees. Clicking on edges rotates the centers rather than
-        faces. Clicking on the centers of the right, top, and front rotates the
-        entire cube on the X, Y and Z axes, respectively. Clicking the center of
-        any face makes it rotate clockwise.
-      </p>
-      <p>
-        Of course, nothing actually rotates. Rearranging references to strings
-        in the m-M(x) closure creates the illusion in the browser that part or
-        all of the cube rotated.
-      </p>
-
-      <h2 style="text-align: center;">Some Algorithm Shortcuts</h2>
-      <p></p>
-      <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
-      <br />
-      <button on:click={triclock}
-        >Triangle Clockwise: M2 U' M U2 M' U' M2</button
-      >
-      <br />
-      <button on:click={tricounterclock}
-        >Triangle CounterClockwise: M2 U M U2 M' U M2</button
-      >
-      <br />
-      <button on:click={edgesOpposite}
-        >Edges Opposite: M M Uz M M U U M M Uz M M</button
-      >
-      <br />
-      <button on:click={edgesAdjacent}
-        >Edges Adjacent: M M U M M U M U U M M U U M U U</button
-      >
-      <br />
-      <button on:click={doubleFish}>doubleFish R' F R B' R' F' R B </button>
-      <br />
-      <button on:click={sune}>Sune: R U R' U R U2 R'</button>
-      <br />
-      <button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
-      <br />
-      <button on:click={sexy}>Sexy: R U R' U'</button>
-      <br />
-      <button on:click={reverse_sexy}>Reverse Sexy: U R U' R'</button>
-      <br />
-      <button on:click={orient_corners}>Revolve: U R U' L' U R' U' L</button>
-      <br />
-      <button on:click={reverse_orient_corners}
-        >Reverse Revolve: L' U R U' L U R' U'</button
-      >
-      <br />
-      <button on:click={sledgehammer}>Sledgehammer: R' F R F' </button>
-      <br />
-
-      <button on:click={oppH1}>oppH1: R U R' U R U' R' U R U U R'</button>
-      <br />
-      <button on:click={oppH3}>oppH3: F R U R' U' R U R' U' R U R' U' F'</button
-      >
-      <br />
-      <button on:click={niklas}>Niklas: R U' L' U R' U' L</button>
-      <br />
-      <button on:click={reverse_niklas}>Reverse Niklas: L' U R U' L U R'</button
-      >
-      <p>
-        Press the "v" key or click <button on:click={Start}>Start</button> to
-        see each face of the cube with 9 identically colored divs. Click on the
-        <button on:click={Xrotate}>X rotate</button>,
-        <button on:click={Yrotate}>Y rotate</button>, and
-        <button on:click={Zrotate}>Z rotate</button>
-        buttons to see the main cube from various angles, or click on the
-        <button on:click={rotate9}>Rotate A</button>
-        and <button on:click={tilt9}>Rotate B</button> buttons to turn the
-        alternate-view cube. The alternate-view cube (center bottom) can be
-        returned to its starting orientation only be rotations or re-loading
-        this page. <button on:click={Start}>Start</button> will give the sides
-        of the alternate-view cube uniform colors (like the main cube), but its
-        orientation relateve to the main cube doesn't change. This is by design.
-        Click
-        <button on:click={rotate9}>Rotate A</button>, then
-        <button on:click={shu}>Scramble</button>, and finally,
-        <button on:click={Start}>Start</button>.
-      </p>
-
-      <p>
-        See the <a href="./">previous page</a> for detailed definitions. This page
-        shows how images in the DOM are made to react to rearrangements of the elements
-        of a six nine-member arrays of strings in the script, User mouse clicks and
-        key presses call m(func), where func is some function and m is defined as
-        m = M(x) where x is the array of six nine-member arrays of strings mentioned
-        above.
-      </p>
-    </div>
-  </div>
-</section>
-<!---->
-<div id="steady">
-  <div class="container">
-    <div class={cu}>
-      <div class="face front">
-        <div class="grid">
-          <div>
-            <button
-              class={m(dF3x)[3][0]}
-              on:click={() => {
-                m = m(Fz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][1]}
-              on:click={() => {
-                m = m(Cx);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][2]}
-              on:click={() => {
-                m = m(F);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][3]}
-              on:click={() => {
-                m = m(Cy);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][4]}
-              on:click={() => {
-                m = m(Zro);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][5]}
-              on:click={() => {
-                m = m(Cyr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][6]}
-              on:click={() => {
-                m = m(Fz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][7]}
-              on:click={() => {
-                m = m(Cxr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[3][8]}
-              on:click={() => {
-                m = m(F);
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="face back">
-        <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
-        </div>
-      </div>
-
-      <div class="face right">
-        <div class="grid">
-          <div>
-            <button
-              class={m(dF3x)[0][0]}
-              on:click={() => {
-                m = m(Rz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][1]}
-              on:click={() => {
-                m = m(Cz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][2]}
-              on:click={() => {
-                m = m(R);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][3]}
-              on:click={() => {
-                m = m(Cy);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][4]}
-              on:click={() => {
-                m = m(Xro);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][5]}
-              on:click={() => {
-                m = m(Cyr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][6]}
-              on:click={() => {
-                m = m(Rz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][7]}
-              on:click={() => {
-                m = m(Czr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[0][8]}
-              on:click={() => {
-                m = m(R);
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="face left">
-        <div class="grid">
-          <div><button class={m(dF3x)[1][0]} /></div>
-          <div><button class={m(dF3x)[1][1]} /></div>
-          <div><button class={m(dF3x)[1][2]} /></div>
-          <div><button class={m(dF3x)[1][3]} /></div>
-          <div><button class={m(dF3x)[1][4]} /></div>
-          <div><button class={m(dF3x)[1][5]} /></div>
-          <div><button class={m(dF3x)[1][6]} /></div>
-          <div><button class={m(dF3x)[1][7]} /></div>
-          <div><button class={m(dF3x)[1][8]} /></div>
-        </div>
-      </div>
-
-      <div class="face top">
-        <div class="grid">
-          <div>
-            <button
-              class={m(dF3x)[4][0]}
-              on:click={() => {
-                m = m(Uz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][1]}
-              on:click={() => {
-                m = m(Cx);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][2]}
-              on:click={() => {
-                m = m(U);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][3]}
-              on:click={() => {
-                m = m(Cz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][4]}
-              on:click={() => {
-                m = m(Yro);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][5]}
-              on:click={() => {
-                m = m(Czr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][6]}
-              on:click={() => {
-                m = m(Uz);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][7]}
-              on:click={() => {
-                m = m(Cxr);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              class={m(dF3x)[4][8]}
-              on:click={() => {
-                m = m(U);
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="face bottom">
-        <div class="grid">
-          <div><button class={m(dF3x)[5][0]} /></div>
-          <div><button class={m(dF3x)[5][1]} /></div>
-          <div><button class={m(dF3x)[5][2]} /></div>
-          <div><button class={m(dF3x)[5][3]} /></div>
-          <div><button class={m(dF3x)[5][4]} /></div>
-          <div><button class={m(dF3x)[5][5]} /></div>
-          <div><button class={m(dF3x)[5][6]} /></div>
-          <div><button class={m(dF3x)[5][7]} /></div>
-          <div><button class={m(dF3x)[5][8]} /></div>
-        </div>
-      </div>
-    </div>
-    <br /><br /><br /><br />
-    <button on:click={Start}>Start</button>
-    <br /><br />
-    <button on:click={shu}>Scramble</button>
-  </div>
-</div>
-
-<!--
+<p>The "V" key and "Start" button re-set the cube to its solved configuration by declaring "m = M(x)" for:   
   
-<div id="steady2">
-  <div style = "text-align:center; margin-bottom:14px">
-    <button style="font-size: 17px" on:click={rotate9}>Rotate A</button>
-    <button style="font-size: 17px" on:click={tilt9}>Rotate B</button></div>
-  <br><br>
-  <div class="container">
-    <div id={cu9}>
-      <div class="face front">
-        <div class="grid" >
-          <div> <button class={m(dF3x)[2][0]} on:click = {() => {m = m(Bz)}} /> </div> 
-          <div> <button class={m(dF3x)[2][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div> <button class={m(dF3x)[2][2]} on:click = {() => {m = m(B)}} /> </div>  
-          <div> <button class={m(dF3x)[2][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div> <button class={m(dF3x)[2][4]} on:click = {() => {m = m(Zro)}} /> </div>
-          <div><button class={m(dF3x)[2][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[2][6]} on:click = {() => {m = m(Bz)}} /> </div> 
-          <div><button class={m(dF3x)[2][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[2][8]} on:click = {() => {m = m(B)}} /> </div> 
+<pre> x = [ ['{m(dF3x)[0][0]}','{m(dF3x)[0][1]}','{m(dF3x)[0][2]}','{m(dF3x)[0][3]}','{m(dF3x)[0][4]}','{m(dF3x)[0][5]}','{m(dF3x)[0][6]}','{m(dF3x)[0][7]}','{m(dF3x)[0][8]}'],  // <span style="color:red">Right side</span>
+['{m(dF3x)[1][0]}','{m(dF3x)[1][1]}','{m(dF3x)[1][2]}','{m(dF3x)[1][3]}','{m(dF3x)[1][4]}','{m(dF3x)[1][5]}','{m(dF3x)[1][6]}','{m(dF3x)[1][7]}','{m(dF3x)[1][8]}'],
+['{m(dF3x)[2][0]}','{m(dF3x)[2][1]}','{m(dF3x)[2][2]}','{m(dF3x)[2][3]}','{m(dF3x)[2][4]}','{m(dF3x)[2][5]}','{m(dF3x)[2][6]}','{m(dF3x)[2][7]}','{m(dF3x)[2][8]}'],
+['{m(dF3x)[3][0]}','{m(dF3x)[3][1]}','{m(dF3x)[3][2]}','{m(dF3x)[3][3]}','{m(dF3x)[3][4]}','{m(dF3x)[3][5]}','{m(dF3x)[3][6]}','{m(dF3x)[3][7]}','{m(dF3x)[3][8]}'],   // <span style="color:red">Front</span>
+['{m(dF3x)[4][0]}','{m(dF3x)[4][1]}','{m(dF3x)[4][2]}','{m(dF3x)[4][3]}','{m(dF3x)[4][4]}','{m(dF3x)[4][5]}','{m(dF3x)[4][6]}','{m(dF3x)[4][7]}','{m(dF3x)[4][8]}'],  // <span style="color:red">Top</span>
+['{m(dF3x)[5][0]}','{m(dF3x)[5][1]}','{m(dF3x)[5][2]}','{m(dF3x)[5][3]}','{m(dF3x)[5][4]}','{m(dF3x)[5][5]}','{m(dF3x)[5][6]}','{m(dF3x)[5][7]}', '{m(dF3x)[5][8]}'] ] </pre>
+
+<p> x[0], x[3], and x[4] correspond to the right side, front, and top faces of the cube, respectively. Pressing the "F" key calls m(F), causing the value of x (whatever it happens to be at the time) to update to F(x) in the m-M(x) closure. Corresponding to the rearrangement of x (see above), the front face of the cube will seem to have rotated clockwise 90 degrees. Here's the <a href = "./#Fdef">definition of "F." </p>
+
+<h2> The Browser Image</h2>
+<p> Here's the HTML code for the Rubik's cube image on the right:   </p>
+<pre>{dom}</pre>
+<p> Changing x in the m-M(x) JavaScript closure changes m(dF3x) embedded in the HTML code for the cube because they both point to the same place in memory. x === m(dF3x) returns "true." on in memory. Changing the value of x changes the value of m(dF3x) and vice versa. </p> 
+<p> The 27 buttons constituting the visible half of the simulated Rubik's cube never move. Pressing "Y" when the cube is in the starting configuration rearranges background colors to this configuration: </p>
+ <img
+                src={red}
+                alt="Red side demo"
+                style="width:150px;height:155px;"
+            />
+
+<p> Press "Y" again and see this:</p>
+ <img
+                src={green}
+                alt="Green side demo"
+                style="width:150px;height:155px;"
+            />
+<p> x[0] went from all blue (in the starting configuration), to all red (code is below) to all green (a little further down).</p>  
+<pre>
+  x = [ ['red','red','red','red','red','red','red','red','red'],  // Right side
+  ['orange','orange','orange','orange','orange','orange','orange','orange','orange'],
+  ['green','green','green','green','green','green','green','green','green'],
+  ['blue','blue','blue','blue','blue','blue','blue','blue','blue'],   // Front
+  ['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow'],  // Top
+  ['white','white','white','white','white','white','white','white', 'white'] ] 
+</pre>
+<p> And then ...</p>
+<pre>
+  x = [ ['green','green','green','green','green','green','green','green','green'],  // Right side
+  ['blue','blue','blue','blue','blue','blue','blue','blue','blue'],
+  ['orange','orange','orange','orange','orange','orange','orange','orange','orange'],
+  ['red','red','red','red','red','red','red','red','red'],   // Front
+  ['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow'],  // Top
+  ['white','white','white','white','white','white','white','white', 'white'] ] 
+</pre>
+<p> x[3]'s background colors went from orange to blue to red. The cube seems to have rotated, but all of the divs and buttons remained stationary. Rearranging strings in the m-M(x) closure by pressing "Y", thereby rearranging the background colors of some of the simulated Rubik's cube buttons, created the illusion.  </p>
+
+        <button on:click={reverse}>Reverse</button>
+        <span style="font-size:25px">
+            &nbsp;&nbsp;&nbsp;&nbsp; Move list length:
+        </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
+        <br />
+        <button on:click={() => (m = m(Xro))}>X rotate</button>
+        <button on:click={() => (m = m(Yro))}>Y rotate</button>
+        <button on:click={() => (m = m(Zro))}>Z rotate</button>
+        <br />
+        <button on:click={() => (m = m(Xror))}>X back</button>
+        <button on:click={() => (m = m(Yror))}>Y back</button>
+        <button on:click={() => (m = m(Zror))}>Z back</button>
+
+        <br />
+        <button on:click={() => (m = m(U))}>U</button>
+        <button on:click={() => (m = m(D))}>D</button>
+        <button on:click={() => (m = m(R))}>R</button>
+        <button on:click={() => (m = m(L))}>L</button>
+        <button on:click={() => (m = m(F))}>F</button>
+        <button on:click={() => (m = m(B))}>B</button>
+        <button on:click={() => (m = m(Cx))}>M</button>
+        <button on:click={() => (m = m(Cy))}>E</button>
+        <button on:click={() => (m = m(Cz))}>S</button>
+        <br />
+        <button on:click={() => (m = m(Uz))}>U'</button>
+        <button on:click={() => (m = m(Dz))}>D'</button>
+        <button on:click={() => (m = m(Rz))}>R'</button>
+        <button on:click={() => (m = m(Lz))}>L'</button>
+        <button on:click={() => (m = m(Fz))}>F'</button>
+        <button on:click={() => (m = m(Bz))}>B'</button>
+        <button on:click={() => (m = m(Cxr))}>M'</button>
+        <button on:click={() => (m = m(Cyr))}>E'</button>
+        <button on:click={() => (m = m(Czr))}>S'</button>
+        <div style="margin-left: 1px">
+            <p>
+                Pressing the u, d, r, l, f, b, m, e, s, x, y, and z keys has the
+                same effect as clicking the corresponding (capitalized) buttons.
+                Holding down the "Shift" key (or activating "CapsLock") while
+                pressing the keys causes the reverse effect. Pressing v, w, and
+                q is equivalent to clicking on Start, Scramble, and Reverse,
+                respectively.
+            </p>
+            <p>
+                Clicking on either of two left corners of each face of the cube
+                causes that face to seem to rotate counterclockwise 90 degrees. Clicking
+                on either of two right corners of each face of the cube causes
+                that face to rotate clockwise 90 degrees. Clicking on edges
+                rotates center sections, rather than faces. Clicking on the centers
+                of the right, top, and front rotates the entire cube clockwise on the X, Y
+                and Z axes, respectively. 
+            </p>
+            <p>
+                Of course, nothing actually rotates. Rearranging strings in the m-M(x) closure, thereby automatically rearranging the background colors of the buttons inside of the divs that constitute the virtual Rubik's cube, makes it seem that rotation occurred.
+            </p>
+
+            <h2 style="text-align: center;">Some Algorithm Shortcuts</h2>
+            <p></p>
+            <button on:click={corners}
+                >PLL Corners: R' F R' B2 R F' R' B2 R2</button
+            >
+            <br />
+            <button on:click={triclock}
+                >Triangle Clockwise: M2 U' M U2 M' U' M2</button
+            >
+            <br />
+            <button on:click={tricounterclock}
+                >Triangle CounterClockwise: M2 U M U2 M' U M2</button
+            >
+            <br />
+            <button on:click={edgesOpposite}
+                >Edges Opposite: M M Uz M M U U M M Uz M M</button
+            >
+            <br />
+            <button on:click={edgesAdjacent}
+                >Edges Adjacent: M M U M M U M U U M M U U M U U</button
+            >
+            <br />
+            <button on:click={doubleFish}
+                >doubleFish R' F R B' R' F' R B
+            </button>
+            <br />
+            <button on:click={sune}>Sune: R U R' U R U2 R'</button>
+            <br />
+            <button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
+            <br />
+            <button on:click={sexy}>Sexy: R U R' U'</button>
+            <br />
+            <button on:click={reverse_sexy}>Reverse Sexy: U R U' R'</button>
+            <br />
+            <button on:click={orient_corners}
+                >Revolve: U R U' L' U R' U' L</button
+            >
+            <br />
+            <button on:click={reverse_orient_corners}
+                >Reverse Revolve: L' U R U' L U R' U'</button
+            >
+            <br />
+            <button on:click={sledgehammer}>Sledgehammer: R' F R F' </button>
+            <br />
+
+            <button on:click={oppH1}>oppH1: R U R' U R U' R' U R U U R'</button>
+            <br />
+            <button on:click={oppH3}
+                >oppH3: F R U R' U' R U R' U' R U R' U' F'</button
+            >
+            <br />
+            <button on:click={niklas}>Niklas: R U' L' U R' U' L</button>
+            <br />
+            <button on:click={reverse_niklas}
+                >Reverse Niklas: L' U R U' L U R'</button
+            >
+            <p>
+                Press the "v" key or click <button on:click={Start}
+                    >Start</button>
+                  Then click
+                <button on:click={Xrotate}>X rotate</button>,
+                <button on:click={Yrotate}>Y rotate</button>, and
+                <button on:click={Zrotate}>Z rotate</button>
+                buttons to see the main cube from various angles.
+            </p>
+            <br><br>
         </div>
-      </div>
-
-      <div class="face back">
-        <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
-        </div>
-      </div>
-
-      <div class="face right">
-        <div class="grid">
-         <div><button class={m(dF3x)[0][0]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][1]} on:click = {() => {m = m(Cz)}} /> </div> 
-         <div><button class={m(dF3x)[0][2]} on:click = {() => {m = m(R)}} /> </div> 
-          <div><button class={m(dF3x)[0][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div> <button class={m(dF3x)[0][4]} on:click = {() => {m = m(Xro)}} /> </div>
-          <div><button class={m(dF3x)[0][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[0][6]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][7]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[0][8]} on:click = {() => {m = m(R)}} /> </div> 
-        </div>
-      </div>
-
-      <div class="face left">
-        <div class="grid">
-          <div class={m(dF3x)[1][0]} />
-          <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
-          <div class={m(dF3x)[1][3]} />
-          <div class={m(dF3x)[1][4]} />
-          <div class={m(dF3x)[1][5]} />
-          <div class={m(dF3x)[1][6]} />
-          <div class={m(dF3x)[1][7]} />
-          <div class={m(dF3x)[1][8]} />
-        </div>
-      </div>
-
-      <div class="face top">
-        <div class="grid">
-          <div><button class={m(dF3x)[4][0]} /> </div> 
-          <div><button class={m(dF3x)[4][1]} /> </div> 
-          <div><button class={m(dF3x)[4][2]} /> </div> 
-          <div><button class={m(dF3x)[4][3]} /> </div> 
-          <div><button class={m(dF3x)[4][4]} /> </div>
-          <div><button class={m(dF3x)[4][5]} /> </div> 
-          <div><button class={m(dF3x)[4][6]} /> </div> 
-          <div><button class={m(dF3x)[4][7]} /> </div> 
-          <div><button class={m(dF3x)[4][8]} /> </div> 
-        </div>
-      </div>
-
-      <div class="face bottom">
-        <div class="grid">
-          <div><button class={m(dF3x)[5][0]} on:click = {() => {m = m(Dz)}} /> </div> 
-          <div><button class={m(dF3x)[5][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div><button class={m(dF3x)[5][2]} on:click = {() => {m = m(D)}}  /> </div>
-          <div><button class={m(dF3x)[5][3]} on:click = {() => {m = m(Cz)}} /> </div> 
-          <div><button class={m(dF3x)[5][4]} on:click = {() => {m = m(Yro)}} /> </div>
-          <div><button class={m(dF3x)[5][5]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[5][6]} on:click = {() => {m = m(Dz)}}/> </div> 
-          <div><button class={m(dF3x)[5][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[5][8]} on:click = {() => {m = m(D)}}> </div> 
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
-    -->
-
-<section id="coolcow" clas="columns">
-  <div style="width: 70%">
-    <p id="cow8">Continued from the <a href="./#cow7"> previous page </a></p>
-    <p>
-      Clicking one of the buttons (below) causes the function displayed on it to
-      run. For example, click "R" calls the function R. Pressing the "R" key and
-      clicking the upper or lower right squares does the same thing. code on its
-      face to execute. For example, clicking on the m = m(L) button causes <br
-      />&#160;&#160;&#160; (1) m(L) to execute, which causes <br /> &#160;&#160;&#160;
-      (2) x in the m-M(x) closure to mutate into L(x).
-    </p>
-
-    <p>
-      For the sake of clarity, I'll spell this out in more than the usual amount
-      of detail: The background color of a button or div can be set with x in
-      the m-M(x) closure in these two ways: background-color = m(dF3x)[a][b] or
-      class = m(df3x)[a][b] where a is 0, 1, 2, 3, 4, or 5 and b is 0 or 8, or
-      any number between 0 and 8. When a and b are in these ranges, the
-      expression m(dF3x)[a][b] resolves to "blue","green", "red", "orange",
-      "yellow", or "white". The classes blue, green, red, orange, yellow, and
-      white have "background-color" elements corresponding to their names. So,
-      for example, on the starting (solved) cube, the expression m(dF3x)[0][0]
-      resolves to the string "blue" causing the statements "style =
-      'background-color: m(dF3x)[0][0]' and "class = 'm(dF3x)[0][0]'" to result
-      in blue backgrounds.
-    </p>
-
-    <p>
-      m(dF3x)[3] is x's fourth-from-the-left nine-element array of strings. When
-      the cube is solved, each of its elements are variables pointing to the
-      string "orange." The three buttons below have the colors of the first
-      three elements of the fourth element of x because the buttons contain the
-      statements "style = 'm(dF3x)[3][0], m(dF3x)[3][1], and m(dF3x)[3][2].
-      Notice how the colors of the buttons correspond to those of the top row of
-      the front face of the Rubik's cube representation. Repeatedly pressing
-      "Scramble" illustrates this.
-    </p>
-
-    <div>
-      <button
-        style="background-color:{m(dF3x)[3][0]}; color: black; font-size:30px"
-        on:click={() => {}}
-        >m(dF3x)[3][0] = {m(dF3x)[3][0]}
-      </button>
-      <button
-        style="background-color:{m(dF3x)[3][1]}; color: black; font-size:30px"
-        on:click={() => {}}
-        >m(dF3x)[3][1] = {m(dF3x)[3][1]}
-      </button>
-      <button
-        style="background-color:{m(dF3x)[3][2]}; color: black; font-size:30px"
-        on:click={() => {}}
-        >m(dF3x)[3][2] {m(dF3x)[3][2]}
-      </button>
     </div>
-    <h2>Rotating the Left, Back, and Bottom Faces</h2>
-    <p>METHOD ONE -- The fastest method:</p>
-    <p>
-      The left, back, and bottom faces can be turned clockwise by pressing L, B,
-      and D, respectively. Hold down the SHIFT key for counterclockwise
-      rotation.
-    </p>
-    <p>METHOD TWO -- Clicking on the cube</p>
-    <p>
-      Click the top center 3 times to bring the green face forward. <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right top or bottom square.
-      <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the top center 3 more times, bringing
-      the red face forward. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the
-      right top or bottom square. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the
-      top center two times to re-orient the cube. <br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right center to bring up the bottom
-      face. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right top or bottom
-      square. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right center 3 more
-      times to re-orient the cube.
-    </p>
+</section>
+<div id="steady">
+    <div class="container">
+        <div class={cu}>
+            <div class="face front">
+                <div class="grid">
+                    <button style="background-color: {m(dF3x)[3][0]}" on:click={() => {m = m(Fz)}}/>
+                    <button style="background-color: {m(dF3x)[3][1]}" on:click={() => {m = m(Cx)}}/>
+                    <button style="background-color: {m(dF3x)[3][2]}" on:click={() => {m = m(F)}}/>
+                    <button style="background-color: {m(dF3x)[3][3]}" on:click={() => {m = m(Cyr)}}/>
+                    <button style="background-color: {m(dF3x)[3][4]}" on:click={() => {m = m(Zro)}}/>
+                    <button style="background-color: {m(dF3x)[3][5]}" on:click={() => {m = m(Cy)}}/>
+                    <button style="background-color: {m(dF3x)[3][6]}" on:click={() => {m = m(Fz)}}/>
+                    <button style="background-color: {m(dF3x)[3][7]}" on:click={() => {m = m(Cxr)}}/>
+                    <button style="background-color: {m(dF3x)[3][8]}" on:click={() => {m = m(F)}}/>
+                </div>
+            </div>
 
-    <p>
-      This is the expected result of pressing "LBD" or following the
-      instructions of Method 2 (above): <img
-        src={clickDemo}
-        alt="Click demo"
-        style="width:150px;height:155px;"
-      />
-    </p>
+            <div class="face right">
+                <div class="grid">
+                    <button style="background-color: {m(dF3x)[0][0]}" on:click={() => {m = m(Rz)}}/>
+                    <button style="background-color: {m(dF3x)[0][1]}" on:click={() => {m = m(Cz)}}/>
+                    <button style="background-color: {m(dF3x)[0][2]}" on:click={() => {m = m(R)}}/>
+                    <button style="background-color: {m(dF3x)[0][3]}" on:click={() => {m = m(Cyr)}}/>
+                    <button style="background-color: {m(dF3x)[0][4]}" on:click={() => {m = m(Xro)}}/>
+                    <button style="background-color: {m(dF3x)[0][5]}" on:click={() => {m = m(Cy)}}/>
+                    <button style="background-color: {m(dF3x)[0][6]}" on:click={() => {m = m(Rz)}}/>
+                    <button style="background-color: {m(dF3x)[0][7]}" on:click={() => {m = m(Czr)}}/>
+                    <button style="background-color: {m(dF3x)[0][8]}" on:click={() => {m = m(R)}}/>
+                </div>
+            </div>
+            <div class="face top">
+                <div class="grid">
+                    <button style="background-color: {m(dF3x)[4][0]}" on:click={() => {m = m(Uz)}}/>
+                    <button style="background-color: {m(dF3x)[4][1]}" on:click={() => {m = m(Cx)}}/>
+                    <button style="background-color: {m(dF3x)[4][2]}" on:click={() => {m = m(U)}}/>
+                    <button style="background-color: {m(dF3x)[4][3]}" on:click={() => {m = m(Cz)}}/>
+                    <button style="background-color: {m(dF3x)[4][4]}" on:click={() => {m = m(Yro)}}/>
+                    <button style="background-color: {m(dF3x)[4][5]}" on:click={() => {m = m(Czr)}}/>
+                    <button style="background-color: {m(dF3x)[4][6]}" on:click={() => {m = m(Uz)}}/>
+                    <button style="background-color: {m(dF3x)[4][7]}" on:click={() => {m = m(Cxr)}}/>
+                    <button style="background-color: {m(dF3x)[4][8]}" on:click={() => {m = m(U)}}/>
+                </div>        
+            </div>        
+                  </div>
 
-    <h2>The Amazing Reverse Function</h2>
-    <p>
-      The value held n the closure m-M(x) is transformed whenever a user presses
-      certain keys or clicks the mouse over certain parts of the browser
-      display. These actions call m(func), automatically resulting in the
-      mutation of x into func(x). Such mutations automatically change parts of
-      the DOM where x, exposed as m(dF3x), determines the CSS background-color
-      of elements. This is done directly as "background-color = 'm(dF3x)[j][k]"
-      or indirectly as "class = 'm(dF3x)[j][k]" for integers j and k in the
-      ranges of 0,6 for j and 0,8 for k.
-    </p>
-    <p>
-      The definitions of "func" in m(func), as described above, can be found
-      selectively at <a href="./">Home</a> and comprehensively in the
-      <a href="https://github.com/dschalk/Recursive-Closures"
-        >Github repository</a
-      >. "reverse" works differently. It works with this modified version of M:
-    </p>
-    <pre>{newMcode}</pre>
+                  <br><br><br><br>
+        <button on:click={shu}>Scramble</button>
+        <br><br>
+        <button on:click={Start}>Start</button>
 
-    <p>
-      Clicking the "Reverse" button or pressing the Q key does not directly
-      cause m to run; they just cause "reverse()" to run. m is called twice
-      inside of reverse.
-    </p>
+    </div>
+      </div>
 
-    <pre>{reverseCode}</pre>
-    <p>
-      The function reverse works because m(dF3ar) passes ar by reference, not
-      value. m(dF3ar) in the "reverse" function refers to the same location in
-      memory as ar in the m-M(x) closure. Logging "m(dF3ar === temp (below)
-      while running this application illustrates this.
-    </p>
-    <pre>{test7}</pre>
-    <span id="test"></span>
+<section id="coolcow" class="columns">
+    <div style="width: 70%">
+        <p id="cow8">
+            Continued from the <a href="./#cow7"> previous page </a>
+        </p>
+        <div>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][0]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][0] = {m(dF3x)[3][0]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][1]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][1] = {m(dF3x)[3][1]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][2]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][2] = {m(dF3x)[3][2]}
+            </button>
+            <br /><br />
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][3]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][3] = {m(dF3x)[3][3]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][4]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][4] = {m(dF3x)[3][4]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][5]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][5] = {m(dF3x)[3][5]}
+            </button>
+            <br /><br />
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][6]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][6] = {m(dF3x)[3][6]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][7]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][7] = {m(dF3x)[3][7]}
+            </button>
+            <button
+                style="background-color:{m(
+                    dF3x,
+                )[3][8]}; color: black; font-size:30px"
+                on:click={() => {}}
+                >m(dF3x)[3][8] = {m(dF3x)[3][2]}
+            </button>
+        </div>
+        <h2>Rotating the Left, Back, and Bottom Faces</h2>
+        <p>METHOD ONE -- The fastest method:</p>
+        <p>
+            The left, back, and bottom faces can be turned clockwise by pressing
+            L, B, and D, respectively. Hold down the SHIFT key for
+            counterclockwise rotation.
+        </p>
+        <p>METHOD TWO -- Clicking on the cube</p>
+        <p>
+            Click the top center 3 times to bring the green face forward. <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right top or bottom square.
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the top center 3 more times, bringing
+            the red face forward. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click
+            the right top or bottom square. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Click the top center two times to re-orient the cube. <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right center to bring up the
+            bottom face. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right
+            top or bottom square. <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the
+            right center 3 more times to re-orient the cube.
+        </p>
 
-    <h2>The elapsed time is {elapsedTime} milliseconds.</h2>
+        <p>
+            This is the expected result of pressing "LBD" or following the
+            instructions of Method 2 (above): <img
+                src={clickDemo}
+                alt="Click demo"
+                style="width:150px;height:155px;"
+            />
+        </p>
 
-    <button on:click={et2}>10,000 Scrambles</button>
-    <br />
-    <span style="font-size:25px">
-      &nbsp;&nbsp;&nbsp;&nbsp; Move list length:
-    </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
-    <pre>{et2Code}</pre>
-  </div>
-  <div></div>
+        <h2>The Amazing Reverse Function</h2>
+        <p>
+            The value held n the closure m-M(x) is transformed whenever a user
+            presses certain keys or clicks the mouse over certain parts of the
+            browser display. These actions call m(func), automatically resulting
+            in the mutation of x into func(x). Such mutations automatically
+            change parts of the DOM where x, exposed as m(dF3x), determines the
+            CSS background-color of elements. This is done directly as
+            "background-color = 'm(dF3x)[j][k]" or indirectly as "class =
+            'm(dF3x)[j][k]" for integers j and k in the ranges of 0,6 for j and
+            0,8 for k.
+        </p>
+        <p>
+            The definitions of "func" in m(func), as described above, can be
+            found selectively at <a href="./">Home</a> and comprehensively in
+            the
+            <a href="https://github.com/dschalk/Recursive-Closures"
+                >Github repository</a
+            >. "reverse" works differently. It works with this modified version
+            of M:
+        </p>
+        <pre>{newMcode}</pre>
+
+        <p>
+            Clicking the "Reverse" button or pressing the Q key does not
+            directly cause m to run; they just cause "reverse()" to run. m is
+            called twice inside of reverse.
+        </p>
+
+        <pre>{reverseCode}</pre>
+        <p>
+            The function reverse works because m(dF3ar) passes ar by reference,
+            not value. m(dF3ar) in the "reverse" function refers to the same
+            location in memory as ar in the m-M(x) closure. Logging "m(dF3ar ===
+            temp (below) while running this application illustrates this.
+        </p>
+        <pre>{test7}</pre>
+        <span id="test"></span>
+
+        <h2>The elapsed time is {elapsedTime} milliseconds.</h2>
+
+        <button on:click={et2}>10,000 Scrambles</button>
+        <br />
+        <span style="font-size:25px">
+            &nbsp;&nbsp;&nbsp;&nbsp; Move list length:
+        </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
+        <pre>{et2Code}</pre>
+        <h2>Move List</h2>
+        <span>{m(dF3ar)}</span>
+        <h2>END</h2>
+    </div>
+    <div></div>
 </section>
 
 <slot />
 
 <style>
-  ::before,
-  ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    ::before,
+    ::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-  .dis {
-    color: #fe0374;
-    font-weight: bold;
-    font-size: 28px;
-  }
+    button {
+      height: 60px;
+      border-radius: 10px;
+    }
 
-  .play {
-    color: yellow;
-    font-weight: bold;
-    font-size: 28px;
-  }
+    .dis {
+        color: #fe0374;
+        font-weight: bold;
+        font-size: 28px;
+    }
 
-  .light {
-    color: rgb(172, 231, 243);
-  }
+    .play {
+        color: yellow;
+        font-weight: bold;
+        font-size: 28px;
+    }
 
-  .cell {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-family: Arial;
-    font-size: 3rem;
-    font-weight: bold;
-    background: white;
-  }
+    .light {
+        color: rgb(172, 231, 243);
+    }
 
-  .o0::before {
-    width: 60px;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o0";
-  }
+    .cell {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-family: Arial;
+        font-size: 3rem;
+        font-weight: bold;
+        background: white;
+    }
 
-  .o1::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o1";
-  }
+    .o0::before {
+        width: 60px;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o0";
+    }
 
-  .o2::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o2";
-  }
+    .o1::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o1";
+    }
 
-  .o3::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o3";
-  }
+    .o2::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o2";
+    }
 
-  .o4::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o4";
-  }
+    .o3::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o3";
+    }
 
-  .o5::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o5";
-  }
+    .o4::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o4";
+    }
 
-  .o6::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o6";
-  }
+    .o5::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o5";
+    }
 
-  .o7::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o7";
-  }
+    .o6::before {
+        font-size: 42px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o6";
+    }
 
-  .o8::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o8";
-  }
+    .o7::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o7";
+    }
 
-  .r0::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r0";
-  }
+    .o8::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: orange;
+        content: "o8";
+    }
 
-  .r1::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r1";
-  }
+    .r0::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r0";
+    }
 
-  .r2::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r2";
-  }
+    .r1::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r1";
+    }
 
-  .r3::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r3";
-  }
+    .r2::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r2";
+    }
 
-  .r4::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r4";
-  }
+    .r3::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r3";
+    }
 
-  .r5::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r5";
-  }
+    .r4::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r4";
+    }
 
-  .r6::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r6";
-  }
+    .r5::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r5";
+    }
 
-  .r7::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r7";
-  }
+    .r6::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r6";
+    }
 
-  .r8::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r8";
-  }
+    .r7::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r7";
+    }
 
-  .g0::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g0";
-  }
+    .r8::before {
+        font-size: 40px;
+        font-weight: bold;
+        background-color: red;
+        content: "r8";
+    }
 
-  .g1::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g1";
-  }
+    .g0::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g0";
+    }
 
-  .g2::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g2";
-  }
+    .g1::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g1";
+    }
 
-  .g3::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g3";
-  }
+    .g2::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g2";
+    }
 
-  .g4::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g4";
-  }
+    .g3::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g3";
+    }
 
-  .g5::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g5";
-  }
+    .g4::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g4";
+    }
 
-  .g6::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g6";
-  }
+    .g5::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g5";
+    }
 
-  .g7::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g7";
-  }
+    .g6::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g6";
+    }
 
-  .g8::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g8";
-  }
+    .g7::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g7";
+    }
 
-  .b0::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b0";
-  }
+    .g8::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: green;
+        content: "g8";
+    }
 
-  .b1::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b1";
-  }
+    .b0::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b0";
+    }
 
-  .b2::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b2";
-  }
+    .b1::before {
+        color: yellow;
+        font-size: 40px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b1";
+    }
 
-  .b3::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b3";
-  }
+    .b2::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b2";
+    }
 
-  .b4::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b4";
-  }
+    .b3::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b3";
+    }
 
-  .b5::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b5";
-  }
+    .b4::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b4";
+    }
 
-  .b6::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b6";
-  }
+    .b5::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b5";
+    }
 
-  .b7::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b7";
-  }
+    .b6::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b6";
+    }
 
-  .b8::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b8";
-  }
+    .b7::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b7";
+    }
 
-  .y0::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y0";
-  }
+    .b8::before {
+        color: yellow;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: blue;
+        content: "b8";
+    }
 
-  .y1::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y1";
-  }
+    .y0::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y0";
+    }
 
-  .y2::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y2";
-  }
+    .y1::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y1";
+    }
 
-  .y3::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y3";
-  }
+    .y2::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y2";
+    }
 
-  .y4::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y4";
-  }
+    .y3::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y3";
+    }
 
-  .y5::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y5";
-  }
+    .y4::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y4";
+    }
 
-  .y6::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y6";
-  }
+    .y5::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y5";
+    }
 
-  .y7::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y7";
-  }
+    .y6::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y6";
+    }
 
-  .y8::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y8";
-  }
+    .y7::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y7";
+    }
 
-  .w0::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w0";
-  }
-  .w1::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w1";
-  }
+    .y8::before {
+        color: blue;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: yellow;
+        content: "y8";
+    }
 
-  .w2::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w2";
-  }
+    .w0::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w0";
+    }
+    .w1::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w1";
+    }
 
-  .w3::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w3";
-  }
+    .w2::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w2";
+    }
 
-  .w4::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w4";
-  }
+    .w3::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w3";
+    }
 
-  .w5::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w5";
-  }
+    .w4::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w4";
+    }
 
-  .w6::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w6";
-  }
+    .w5::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w5";
+    }
 
-  .w7::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w7";
-  }
+    .w6::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w6";
+    }
 
-  .w8::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w8";
-  }
+    .w7::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w7";
+    }
 
-  .blue {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(116, 116, 253);
-    border-radius: 10px;
-  }
-  .green {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(76, 251, 76);
-    border-radius: 10px;
-  }
-  .red {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(252, 97, 97);
-    border-radius: 10px;
-  }
-  .orange {
-    height: 60px;
-    width: 60px;
-    background-color: orange;
-    border-radius: 10px;
-  }
-  .yellow {
-    height: 60px;
-    width: 60px;
-    background-color: yellow;
-    border-radius: 10px;
-  }
-  .white {
-    height: 60px;
-    width: 60px;
-    background-color: white;
-    border-radius: 10px;
-  }
+    .w8::before {
+        color: black;
+        font-size: 42px;
+        font-weight: bold;
+        background-color: white;
+        content: "w8";
+    }
 
-  .container {
-    width: 198px;
-    height: 198px;
-    perspective: 1000px;
-    /*background-color: black; */
-    /*float: right;*/
-    margin-right: 7%;
-    color: aqua;
-    /*float: right;
+    .blue {
+        height: 60px;
+        width: 60px;
+        background-color: rgb(116, 116, 253);
+        border-radius: 10px;
+    }
+    .green {
+        height: 60px;
+        width: 60px;
+        background-color: rgb(76, 251, 76);
+        border-radius: 10px;
+    }
+    .red {
+        height: 60px;
+        width: 60px;
+        background-color: rgb(252, 97, 97);
+        border-radius: 10px;
+    }
+    .orange {
+        height: 60px;
+        width: 60px;
+        background-color: orange;
+        border-radius: 10px;
+    }
+    .yellow {
+        height: 60px;
+        width: 60px;
+        background-color: yellow;
+        border-radius: 10px;
+    }
+    .white {
+        height: 60px;
+        width: 60px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .container {
+        width: 198px;
+        height: 198px;
+        perspective: 1000px;
+        /*background-color: black; */
+        /*float: right;*/
+        margin-right: 7%;
+        color: aqua;
+        /*float: right;
   margin-right: 35%;
   margin-top: 15%; */
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(3, 60px);
-    grid-gap: 7px;
-    justify-content: center;
-  }
-
-  .grid2 {
-    display: grid;
-    grid-template-columns: repeat(3, 190px);
-    grid-template-rows: repeat(3, 190px);
-    grid-gap: 5px;
-    justify-content: center;
-  }
-
-  .cube2 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(150deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  .cube4 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(60deg);
-    /* animation: spin 5s infinite linear;*/
-  }
-
-  .cube3 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(240deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  .cube1 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-25deg) rotateY(335deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube5 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(30deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube6 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(120deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube7 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(210deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  .cube8 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(300deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  #cube9 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(25deg) rotateY(155deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  #cube92 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(25deg) rotateY(65deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  #cube93 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(25deg) rotateY(-25deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  #cube94 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(25deg) rotateY(-115deg);
-    /* animation: spin 5s infinite linear;*/
-  }
-
-  #cube95 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-25deg) rotateY(-205deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  #cube96 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-25deg) rotateY(-295deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  #cube97 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-25deg) rotateY(335deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  #cube98 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-25deg) rotateY(245deg);
-    /*animation: spin 5s infinite linear; */
-  }
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: grey;
-  }
-  .top {
-    transform: rotateX(90deg) translateZ(100px);
-  }
-  .bottom {
-    transform: rotateX(-90deg) translateZ(100px);
-  }
-
-  .right {
-    transform: rotateY(90deg) translateZ(100px);
-  }
-  .left {
-    transform: rotateY(-90deg) translateZ(100px);
-  }
-
-  .front {
-    transform: rotateX(0deg) translateZ(100px);
-  }
-  .back {
-    transform: rotateX(-180deg) translateZ(100px);
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotateX(0deg) rotateY(0deg);
     }
-    to {
-      transform: rotateX(360deg) rotateY(360deg);
-    }
-  }
 
-  .rite {
-    float: right;
-    /* position: absolute;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(3, 60px);
+        grid-gap: 7px;
+        justify-content: center;
+    }
+
+    .grid2 {
+        display: grid;
+        grid-template-columns: repeat(3, 190px);
+        grid-template-rows: repeat(3, 190px);
+        grid-gap: 5px;
+        justify-content: center;
+    }
+
+    .cube2 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-30deg) rotateY(150deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    .cube4 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-30deg) rotateY(60deg);
+        /* animation: spin 5s infinite linear;*/
+    }
+
+    .cube3 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-30deg) rotateY(240deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    .cube1 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-25deg) rotateY(335deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    .cube5 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-210deg) rotateY(30deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    .cube6 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-210deg) rotateY(120deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    .cube7 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-210deg) rotateY(210deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    .cube8 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-210deg) rotateY(300deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    #cube9 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(25deg) rotateY(155deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    #cube92 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(25deg) rotateY(65deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    #cube93 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(25deg) rotateY(-25deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    #cube94 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(25deg) rotateY(-115deg);
+        /* animation: spin 5s infinite linear;*/
+    }
+
+    #cube95 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-25deg) rotateY(-205deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    #cube96 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-25deg) rotateY(-295deg);
+        /*animation: spin 5s infinite linear;*/
+    }
+
+    #cube97 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-25deg) rotateY(335deg);
+        /*animation: spin 5s infinite linear; */
+    }
+
+    #cube98 {
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: rotateX(-25deg) rotateY(245deg);
+        /*animation: spin 5s infinite linear; */
+    }
+    .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+    }
+    .top {
+        transform: rotateX(90deg) translateZ(100px);
+    }
+    .bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    .right {
+        transform: rotateY(90deg) translateZ(100px);
+    }
+    .left {
+        transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    .front {
+        transform: rotateX(0deg) translateZ(100px);
+    }
+    .back {
+        transform: rotateX(-180deg) translateZ(100px);
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+        to {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+    }
+
+    .rite {
+        float: right;
+        /* position: absolute;
   right: 25%;
   top: 12%; */
-  }
+    }
 
-  h1 {
-    text-align: center;
-    color: #dd00ff;
-  }
+    h1 {
+        text-align: center;
+        color: #f3c95e;
+    }
 
-  #col-1 {
-    position: fixed;
-    width: 50%;
-    left: 5;
-    height: 100%;
-  }
+    #col-1 {
+        position: fixed;
+        width: 50%;
+        left: 5;
+        height: 100%;
+    }
 
-  #col-2 {
-    position: fixed;
-    right: 0%;
-    top: 400px;
-  }
+    #col-2 {
+        position: fixed;
+        right: 0%;
+        top: 400px;
+    }
 
-  .col-3 {
-    position: fixed;
-    right: 12%;
-    top: 20%;
-    width: 35%;
-  }
+    .col-3 {
+        position: fixed;
+        right: 12%;
+        top: 20%;
+        width: 35%;
+    }
 
-  #steady {
-    position: fixed;
-    top: 180px;
-    left: 75.5%;
-  }
+    #steady {
+        position: fixed;
+        top: 180px;
+        left: 75.5%;
+    }
 
-  #steady2 {
-    position: fixed;
-    top: 420px;
-    left: 75.5%;
-  }
+    #steady2 {
+        position: fixed;
+        top: 420px;
+        left: 75.5%;
+    }
 
-  h3 {
-    color: #ffccff;
-  }
+    h3 {
+        color: #ffccff;
+    }
 
-  img {
-    width: 44%;
-    height: 44%;
-  }
+    img {
+        width: 44%;
+        height: 44%;
+    }
 
-  .img2 {
-    width: 150px;
-    height: 155px;
-  }
+    .img2 {
+        width: 150px;
+        height: 155px;
+    }
 
-  div {
-    color: blue;
-  }
+    div {
+        color: blue;
+    }
 
-  h2 {
-    text-align: center;
-    font-size: 40px;
-    color: rgb(255, 134, 198);
-  }
+    h2 {
+        text-align: center;
+        font-size: 40px;
+        color: rgb(255, 134, 198);
+    }
 
-  /* *********************************************************** */
-  /* *************************************************************** */
-  /* *************************************************************** */
+    /* *********************************************************** */
+    /* *************************************************************** */
+    /* *************************************************************** */
 </style>
