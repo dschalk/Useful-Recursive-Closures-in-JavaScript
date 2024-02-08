@@ -34,7 +34,7 @@
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      ar.push(func);
+      ar.push(func.name);
       return go;
     };
   }
@@ -47,12 +47,12 @@
 
     function clone(ar) {
       JSON.parse(JSON.stringify(ar))
-    }                                                                                                                                                                                               var test7 = `function M(x, ar = []) {
+    }                                                                                                                        var test7 = `function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      ar.push(func);
+      ar.push(func.name);
       return go;
     };
   };`;
@@ -74,33 +74,12 @@
 
   $: Sally = m(dF3ar).length;
 
-  function reverse() {
-    let fu = m(dF3ar).pop()
-    console.log("fu is", fu);
-    // Removes the function being reversed from x.
-    let foo = (v) => fu(fu(fu(v)));
-    // foo is the inverse of fu.
-    m(foo)(dF3ar).pop();
-    // After x = foo(x) reverses fu, foo is popped off of ar.
-    m = m;
-  }
-
-  var reverseCode = `function reverse () { 
-    let fu = m(dF3ar).pop(); 
-    // Removes the function being reversed from x.
-    let foo = v => fu(fu(fu(v))); 
-    // foo is the inverse of fu.
-    m(foo)(dF3ar).pop();     
-    // After x = foo(x) reverses fu, foo is popped off of ar.
-    m = m;
-};`;
-
   var newMcode = `  function M(x, ar = []) {
       return function go(func) {
         if (func === dF3x) return x;
         if (func === dF3ar) return ar;
         else x = func(x);
-        ar.push(func);
+        ar.push(func.name);
         return go;
       };
     }; 
@@ -1943,9 +1922,9 @@
     L,
     F,
     B,
-    Cx,
-    Cy,
-    Cz,
+    Yro,
+    Xro,
+    Zro,
     U,
     D,
     R,
@@ -2130,7 +2109,7 @@ var dom =  `<div class="face front">
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      ar.push(func);
+      ar.push(func.name);
       return go;
     };
   };
@@ -2150,9 +2129,6 @@ var dom =  `<div class="face front">
           <div><button class={m(dF3x)[3][8]} on:click = {() => {m = m(F)}} /> </div> 
         </div>
       </div>`;
-
-  var Mdis = `    function M (x) {
-      return function`;
 
   var Mplay = `              go (func) {
         if (func === dF3x) return x;
@@ -2268,7 +2244,51 @@ var orangeCode =`.orange {
         border-radius: 10px;
     }`
 Start();
-Start();
+Start()  
+
+const mve = new Map();
+  mve.set('R', Rz);
+  mve.set('L', Lz);
+  mve.set('U', Uz);
+  mve.set('D', Dz);
+  mve.set('F', Fz);
+  mve.set('B', Bz);
+  mve.set('Cx', Cxr);
+  mve.set('Cy', Cyr);
+  mve.set('Cz', Czr);  
+  mve.set('Xro', Xror);
+  mve.set('Yro', Yror);
+  mve.set('Zro', Zror);
+
+const mveCode = `const mve = new Map();
+  mve.set('R', Rz);
+  mve.set('L', Lz);
+  mve.set('U', Uz);
+  mve.set('D', Dz);
+  mve.set('F', Fz);
+  mve.set('B', Bz);
+  mve.set('Cx', Cxr);
+  mve.set('Cy', Cyr);
+  mve.set('Cz', Czr);  
+  mve.set('Xro', Xror);
+  mve.set('Yro', Yror);
+  mve.set('Zro', Zror);`
+
+  function reverse () { 
+    let fu = m(dF3ar).pop(); 
+    m = m(mve.get(fu));
+    m(dF3ar).pop();     
+};
+
+  const reverseCode = `function reverse () { 
+    let fu = m(dF3ar).pop(); 
+      // "fu" is the most recently called function's name.
+    m = m(mve.get(fu)); 
+      // The dictionary provides the reverse of fu.
+    m(dF3ar).pop(); 
+      // Discards the function name added to ar in the previous move.    
+};`
+
 
   // ***********************************************************
   // ***********************************************************
@@ -2618,42 +2638,23 @@ Start();
         </p>
 
         <h2>The Amazing Reverse Function</h2>
-        <p>
-            The value held n the closure m-M(x) is transformed whenever a user
-            presses certain keys or clicks the mouse over certain parts of the
-            browser display. These actions call m(func), automatically resulting
-            in the mutation of x into func(x). Such mutations automatically
-            change parts of the DOM where x, exposed as m(dF3x), determines the
-            CSS background-color of elements. This is done directly as
-            "background-color = 'm(dF3x)[j][k]" or indirectly as "class =
-            'm(dF3x)[j][k]" for integers j and k in the ranges of 0,6 for j and
-            0,8 for k.
-        </p>
-        <p>
-            The definitions of "func" in m(func), as described above, can be
-            found selectively at <a href="./">Home</a> and comprehensively in
-            the
-            <a href="https://github.com/dschalk/Recursive-Closures"
-                >Github repository</a
-            >. "reverse" works differently. It works with this modified version
-            of M:
-        </p>
-        <pre>{newMcode}</pre>
-
-        <p>
-            Clicking the "Reverse" button or pressing the Q key does not
-            directly cause m to run; they just cause "reverse()" to run. m is
-            called twice inside of reverse.
-        </p>
-
+        <p> Here's the function "reverse":</p>
         <pre>{reverseCode}</pre>
+        <p> And this is the dictionary it uses:</p>
+        <pre>{mveCode}</pre>
+
         <p>
-            The function reverse works because m(dF3ar) passes ar by reference,
-            not value. m(dF3ar) in the "reverse" function refers to the same
-            location in memory as ar in the m-M(x) closure. Logging "m(dF3ar ===
-            temp (below) while running this application illustrates this.
+            The array of six nine-member arrays of strings held in the m-M(x) closure is transformed whenever a user
+            presses certain keys, or clicks the mouse over buttons or various parts of the displayed cube image. These actions call m(func) for functions "func" that rearrange strings in the m-M(x) closure, making it seem as though the virtual Rubik's cube, one of its six sides, or one of its three middle sections have rotated 90 degrees. This works because the strings in the m-M(x) closure are exposed in "background-color = m(dF3x)[j][k]" for 0 and positive integers j less than 6 and k less than nine. </p>
+        <p>
+            Some of the definitions of "func" in m(func) expressions (described above), can be
+            found at <a href="./">Home</a>. All of them are in the <a href="https://github.com/dschalk/Recursive-Closures"
+                >Github repository</a>. Each time m(func) is called, func's name is appended to ar in M. Rapidly clicking on "10,000 Scrambles" five times and waiting for it to finish indicates that 2,000,000 simulated 90 degree turns were performed and recorded in ar in around 3 seconds. 
         </p>
-        <pre>{test7}</pre>
+        <p> The efficiency of the "reverse" function can be observed by clicking "Scramble" five times and then holding down the "Q" key. You can watch the simulated cube perform 200 reverse moves in about five seconds.</p>
+    
+        <pre>{reverseCode}</pre>
+
         <span id="test"></span>
 
         <h2>The elapsed time is {elapsedTime} milliseconds.</h2>
