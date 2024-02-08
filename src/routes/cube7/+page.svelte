@@ -2247,18 +2247,20 @@ Start();
 Start()  
 
 const mve = new Map();
-  mve.set('R', Rz);
-  mve.set('L', Lz);
-  mve.set('U', Uz);
-  mve.set('D', Dz);
-  mve.set('F', Fz);
-  mve.set('B', Bz);
-  mve.set('Cx', Cxr);
-  mve.set('Cy', Cyr);
-  mve.set('Cz', Czr);  
-  mve.set('Xro', Xror);
-  mve.set('Yro', Yror);
-  mve.set('Zro', Zror);
+  mve.set('z', Rz);
+  mve.set('Z', Lz);
+  mve.set('O', Uz);
+  mve.set('W', Dz);
+  mve.set('w', Dz);
+  mve.set('_e', Fz);
+  mve.set('X', Bz);
+  mve.set('F', Cxr);
+  mve.set('r', Cyr);
+  mve.set('le', Czr);  
+  mve.set('me', Xror);
+  mve.set('ae', Yror);
+  mve.set('J', Zror);
+  mve.set('Q', Zror);
 
 const mveCode = `const mve = new Map();
   mve.set('R', Rz);
@@ -2289,6 +2291,18 @@ const mveCode = `const mve = new Map();
       // Discards the function name added to ar in the previous move.    
 };`
 
+// x,G,se,G,$,$,x,G,x,Be,O,se,me,A,x,O,me,$,A,A,O,me,se,$,F,x,A,J,se,z,O,me,$,pe,x,se,$,z,$,O
+
+// A,se,me,x,A,z,F,x,z,x,G,G,F,O,O,pe,se,$,$,O,$,F,me,$,A,G,G,A,se,$,O,se,O,x,z,F,me,me,F,$
+
+
+
+// O,K,z,Z,Ce,X,F,r,le
+// me,ae,J
+
+
+
+
 
   // ***********************************************************
   // ***********************************************************
@@ -2302,7 +2316,7 @@ const mveCode = `const mve = new Map();
 
 <h1>A Virtual Rubik's Cube</h1>
 
-
+<pre>{m(dF3ar)}</pre>
     <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of strings corresponding to the 54 squares of a Rubik's cube:  </p>
 <pre>{test7}</pre>
     <p> The empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to facilitate taking back moves by pressing the "Q" key or clicking "Reverse." The code enabling this eunctionality is shown further down this page.</p>
