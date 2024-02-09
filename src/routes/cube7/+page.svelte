@@ -53,7 +53,7 @@
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      ar.push(func.name);
+      ar.push(func.key);
       return go;
     };
   };`;
@@ -80,7 +80,7 @@
         if (func === dF3x) return x;
         if (func === dF3ar) return ar;
         else x = func(x);
-        ar.push(func.name);
+        ar.push(func.key);
         return go;
       };
     }; 
@@ -2710,7 +2710,7 @@ const mveCode = `const mve = new Map();
             The array of six nine-member arrays of strings held in the m-M(x) closure is transformed whenever a user
             presses certain keys, or clicks the mouse over buttons or various parts of the displayed cube image. These actions call m(func) for functions "func" that rearrange strings in the m-M(x) closure, making it seem as though the virtual Rubik's cube, one of its six sides, or one of its three middle sections have rotated 90 degrees. This works because the strings in the m-M(x) closure are exposed in "background-color = m(dF3x)[j][k]" statements for 0 and positive integers j less than 6 and k less than nine, in the 27 buttons that constitute the visible faces of the virtual Rubik's cube seen in the browser. </p>
 
-            Note: The attribute "key" added to the functions "func" discussed above are identical to the built-in string attributes "name." When trying to use "func.name," it was discovered that running "build" mutated names in the "ar" array in M, but an array of "func.key" emerged unchanged.  
+            <p>Note: The attribute "key" added to the functions "func" discussed above are identical to the built-in string attributes "name." When trying to use "func.name," it was discovered that running "build" mutated names in the "ar" array in M, but an array of "func.key" emerged unchanged.</p>  
         <p>
             Some of the definitions of "func" in m(func) expressions (described above), can be
             found at <a href="./">Home</a>. All of them are in the <a href="https://github.com/dschalk/Recursive-Closures"
