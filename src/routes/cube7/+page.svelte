@@ -3,6 +3,7 @@
   import oppH from "$lib/oppH.png";
   import red from "$lib/red.png";
   import green from "$lib/green.png";
+  import func from "$lib/function.png";
   // import Image from './Image.svelte'
   var log = console.log;
   var ERROR = "";
@@ -2363,7 +2364,7 @@ const mveCode = `const mve = new Map();
     <div style="width: 70%">
 
 <h1>A Virtual Rubik's Cube</h1>
-<h2>FUCK{Xro.key}YOU</h2>
+<h2>{m(dF3ar)}</h2>
 <pre>{m(dF3ar)}</pre>
     <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of strings corresponding to the 54 squares of a Rubik's cube:  </p>
 <pre>{test7}</pre>
@@ -2710,13 +2711,25 @@ const mveCode = `const mve = new Map();
             The array of six nine-member arrays of strings held in the m-M(x) closure is transformed whenever a user
             presses certain keys, or clicks the mouse over buttons or various parts of the displayed cube image. These actions call m(func) for functions "func" that rearrange strings in the m-M(x) closure, making it seem as though the virtual Rubik's cube, one of its six sides, or one of its three middle sections have rotated 90 degrees. This works because the strings in the m-M(x) closure are exposed in "background-color = m(dF3x)[j][k]" statements for 0 and positive integers j less than 6 and k less than nine, in the 27 buttons that constitute the visible faces of the virtual Rubik's cube seen in the browser. </p>
 
-            <p>Note: The attribute "key" added to the functions "func" discussed above are identical to the built-in string attributes "name." When trying to use "func.name," it was discovered that running "build" mutated names in the "ar" array in M, but an array of "func.key" emerged unchanged.</p>  
+            <p>Note: The attribute "key" added to the functions "func" discussed above are identical to the built-in string attributes "name." When trying to use "func.name," it was discovered that running "build" mutated names in the "ar" array in M, but an array of "func.key" emerged unchanged.</p>   
         <p>
             Some of the definitions of "func" in m(func) expressions (described above), can be
             found at <a href="./">Home</a>. All of them are in the <a href="https://github.com/dschalk/Recursive-Closures"
-                >Github repository</a>. Each time m(func) is called, func's name is appended to ar in M. Rapidly clicking on "10,000 Scrambles" five times and waiting for it to finish indicates that 2,000,000 simulated 90 degree turns were performed and recorded in ar in around 3 seconds. 
+                >Github repository</a>. Each time m(func) is called, func's key is appended to ar in M. Rapidly clicking on "10,000 Scrambles" five times and waiting for it to finish indicates that 2,000,000 simulated 90 degree turns were performed and recorded in ar in around 3 seconds. 
         </p>
-        <p> The efficiency of the "reverse" function can be observed by clicking "Scramble" five times and then holding down the "Q" key. You can watch the simulated cube perform 200 reverse moves in about five seconds.</p>
+        <h3>*********************************************************</h3>
+        <p> I'll continue using SvelteKit, but I'm perturbed by having to add the attribute "key" to my functions when I would prefer to use the already-present attribute "name." Notice "func.key" in the definition of M at the top of this page. If "ar" in "M" contains "func.name" for each function that is called, SvelteKet renames many of them, causing the function "reverse" to fail.  </p>
+        <p> Functions are objects in JavaScript. Here's a screenshot of simple function's internals taken in Firefox Developer Tools (accessed by pressing F12). </p>
+        
+ <img
+                src={func}
+                alt="Screenshot"
+                style="width:800px;height:600px;"
+            />
+        
+        <p> Why SvelteKit mangles arrays of func.name but not func.key escapes me. I'm glad that whoever "optimized" SvelteKit this way spared developer-added attributes. </p>
+        <h3>*********************************************************</h3>
+        <p> The efficiency of the "reverse" function can be observed by clicking "Scramble" or pressing the "W" key five times, and then holding down the "Q" key. You can watch the simulated cube perform 200 reverse moves in about five seconds.</p>
     
         <pre>{reverseCode}</pre>
 
