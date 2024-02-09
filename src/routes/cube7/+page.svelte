@@ -24,17 +24,18 @@
   function setIndex() {
     index = 1;
   }
+  
   var Amos;
 
   var dF3x = () => {};
   var dF3ar = () => {};
 
-  function M(x, ar = []) {
+  function M(x, ar =[]) {
     return function go(func) {
       if (func === dF3x) return x;
-      if (func === dF3ar) return ar;
-      else x = func(x);
-      ar.push(func.name);
+      else if (func === dF3ar) return ar;
+      x = func(x);
+      ar.push(func.key);
       return go;
     };
   }
@@ -2109,7 +2110,7 @@ var dom =  `<div class="face front">
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      ar.push(func.name);
+      ar.push(func.key);
       return go;
     };
   };
@@ -2247,20 +2248,74 @@ Start();
 Start()  
 
 const mve = new Map();
-  mve.set('z', Rz);
-  mve.set('Z', Lz);
-  mve.set('O', Uz);
-  mve.set('W', Dz);
-  mve.set('w', Dz);
-  mve.set('_e', Fz);
-  mve.set('X', Bz);
-  mve.set('F', Cxr);
-  mve.set('r', Cyr);
-  mve.set('le', Czr);  
-  mve.set('me', Xror);
-  mve.set('ae', Yror);
-  mve.set('J', Zror);
-  mve.set('Q', Zror);
+  mve.set('R', Rz);
+  mve.set('L', Lz);
+  mve.set('U', Uz);
+  mve.set('D', Dz);
+  mve.set('F', Fz);
+  mve.set('B', Bz);
+  mve.set('Cx', Cxr);
+  mve.set('Cy', Cyr);
+  mve.set('Cz', Czr);  
+  mve.set('Xro', Xror);
+  mve.set('Yro', Yror);
+  mve.set('Zro', Zror);
+
+  const ob = {'R': Rz, 
+  'L': Lz,
+  'U': Uz,  
+  'D': Dz,
+  'F': Fz,
+  'B': Bz,
+  'Cx': Cxr,
+  'Cy': Cyr,
+  'Cz': Czr,  
+  'Xro': Xror,
+  'Yro': Yror,
+  'Zro': Zror
+  }
+
+  var obCode = `const ob = {'R': Rz, 
+  'L': Lz,
+  'U': Uz,  
+  'D': Dz,
+  'F': Fz,
+  'B': Bz,
+  'Cx': Cxr,
+  'Cy': Cyr,
+  'Cz': Czr,  
+  'Xro': Xror,
+  'Yro': Yror,
+  'Zro': Zror
+  }`
+
+  const obj = {R: Rz, 
+  L: Lz,
+  U: Uz,  
+  D: Dz,
+  F: Fz,
+  B: Bz,
+  Cx: Cxr,
+  Cy: Cyr,
+  Cz: Czr,  
+  Xro: Xror,
+  Yro: Yror,
+  Zro: Zror
+  }
+
+  R.key = 'R'; 
+  L.key = 'L';
+  U.key = 'U';  
+  D.key = 'D';
+  F.key = 'F';
+  B.key = 'B';
+  Cx.key = 'Cx';
+  Cy.key = 'Cy';
+  Cz.key = 'Cz';
+  Xro.key = 'Xro';
+  Yro.key = 'Yro';
+  Zro.key = 'Zro';
+  
 
 const mveCode = `const mve = new Map();
   mve.set('R', Rz);
@@ -2277,45 +2332,38 @@ const mveCode = `const mve = new Map();
   mve.set('Zro', Zror);`
 
   function reverse () { 
-    let fu = m(dF3ar).pop(); 
-    m = m(mve.get(fu));
-    m(dF3ar).pop();     
+    let fu = ob[m(dF3ar).pop()]; 
+      // The string "m(dF3ar).pop()" is a key; fu is its value.
+    m = m(fu)  // fu is the reverse of "m(dF3ar).pop()"
+    m(dF3ar).pop(); // This removes fu.key from ar in M    
 };
 
   const reverseCode = `function reverse () { 
-    let fu = m(dF3ar).pop(); 
-      // "fu" is the most recently called function's name.
-    m = m(mve.get(fu)); 
-      // The dictionary provides the reverse of fu.
-    m(dF3ar).pop(); 
-      // Discards the function name added to ar in the previous move.    
+    let fu = ob[m(dF3ar).pop()]; 
+      // The string "m(dF3ar).pop()" points to an inverse function in ob (below).
+    m = m(fu)
+    m(dF3ar).pop();     
+};
 };`
 
-// x,G,se,G,$,$,x,G,x,Be,O,se,me,A,x,O,me,$,A,A,O,me,se,$,F,x,A,J,se,z,O,me,$,pe,x,se,$,z,$,O
-
-// A,se,me,x,A,z,F,x,z,x,G,G,F,O,O,pe,se,$,$,O,$,F,me,$,A,G,G,A,se,$,O,se,O,x,z,F,me,me,F,$
-
-
-
-// O,K,z,Z,Ce,X,F,r,le
-// me,ae,J
-
-
-
-
-
   // ***********************************************************
   // ***********************************************************
   // ***********************************************************
-
 </script>
+
+
+
+
+
+
+
 
 <svelte:window on:keypress={handleEvent} />
 <section class="columns">
     <div style="width: 70%">
 
 <h1>A Virtual Rubik's Cube</h1>
-
+<h2>FUCK{Xro.key}YOU</h2>
 <pre>{m(dF3ar)}</pre>
     <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of strings corresponding to the 54 squares of a Rubik's cube:  </p>
 <pre>{test7}</pre>
@@ -2654,12 +2702,15 @@ const mveCode = `const mve = new Map();
         <h2>The Amazing Reverse Function</h2>
         <p> Here's the function "reverse":</p>
         <pre>{reverseCode}</pre>
-        <p> And this is the dictionary it uses:</p>
-        <pre>{mveCode}</pre>
+        <p> And this is the key-value lookup table:</p>
+        <pre>{obCode}</pre>
+
 
         <p>
             The array of six nine-member arrays of strings held in the m-M(x) closure is transformed whenever a user
-            presses certain keys, or clicks the mouse over buttons or various parts of the displayed cube image. These actions call m(func) for functions "func" that rearrange strings in the m-M(x) closure, making it seem as though the virtual Rubik's cube, one of its six sides, or one of its three middle sections have rotated 90 degrees. This works because the strings in the m-M(x) closure are exposed in "background-color = m(dF3x)[j][k]" for 0 and positive integers j less than 6 and k less than nine. </p>
+            presses certain keys, or clicks the mouse over buttons or various parts of the displayed cube image. These actions call m(func) for functions "func" that rearrange strings in the m-M(x) closure, making it seem as though the virtual Rubik's cube, one of its six sides, or one of its three middle sections have rotated 90 degrees. This works because the strings in the m-M(x) closure are exposed in "background-color = m(dF3x)[j][k]" statements for 0 and positive integers j less than 6 and k less than nine, in the 27 buttons that constitute the visible faces of the virtual Rubik's cube seen in the browser. </p>
+
+            Note: The attribute "key" added to the functions "func" discussed above are identical to the built-in string attributes "name." When trying to use "func.name," it was discovered that running "build" mutated names in the "ar" array in M, but an array of "func.key" emerged unchanged.  
         <p>
             Some of the definitions of "func" in m(func) expressions (described above), can be
             found at <a href="./">Home</a>. All of them are in the <a href="https://github.com/dschalk/Recursive-Closures"
