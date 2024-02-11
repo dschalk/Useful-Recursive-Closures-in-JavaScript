@@ -49,15 +49,16 @@
 
     function clone(ar) {
       JSON.parse(JSON.stringify(ar))
-    }                                                                                                                        var test7 = `function M(x, ar = []) {
+    }                                                                                                                        var test7 = `function M(x, ar =[]) {
     return function go(func) {
       if (func === dF3x) return x;
-      if (func === dF3ar) return ar;
-      else x = func(x);
+      else if (func === dF3ar) return ar;
+      x = func(x);
       ar.push(func.key);
       return go;
     };
-  };`;
+  }`
+
 
   function Start () {
     index = 1;
@@ -77,6 +78,15 @@
   $: Sally = m(dF3ar).length;
 
   var newMcode = `  function M(x, ar = []) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      else if (func === dF3ar) return ar;
+      x = func(x);
+      if (Object.keys(func).length === 1) ar.push(func.key);
+      return go;
+    };
+  }
+
       return function go(func) {
         if (func === dF3x) return x;
         if (func === dF3ar) return ar;
@@ -2262,21 +2272,19 @@ const mve = new Map();
   mve.set('Yro', Yror);
   mve.set('Zro', Zror);
 
-  const ob = {'R': Rz, 
-  'L': Lz,
-  'U': Uz,  
-  'D': Dz,
-  'F': Fz,
-  'B': Bz,
-  'Cx': Cxr,
-  'Cy': Cyr,
-  'Cz': Czr,  
-  'Xro': Xror,
-  'Yro': Yror,
-  'Zro': Zror
-  }
+  const ob = {'R': Rz, 'L': Lz, 'U': Uz, 'D': Dz, 'F': Fz, 'B': Bz, 'Cx': Cxr, 'Cy': Cyr, 'Cz': Czr, 'Xro': Xror, 'Yro': Yror, 'Zro': Zror, 'Rz': R, 'Lz': L, 'Uz': U, 'Dz': D, 'Fz': F, 'Bz': B, 'Cxr': Cx, 'Cyr': Cy, 'Czr': Cz, 'Xror': Xro, 'Yror': Yro, 'Zror': Zro};
 
-  var obCode = `const ob = {'R': Rz, 
+
+
+  const obCode = `const ob = {'R': Rz, 'L': Lz, 'U': Uz, 'D': Dz, 'F': Fz, 'B': Bz, 
+  'Cx': Cxr, 'Cy': Cyr, 'Cz': Czr, 'Xro': Xror, 'Yro': Yror, 
+  'Zro': Zror, 'Rz': R, 'Lz': L, 'Uz': U, 'Dz': D, 'Fz': F, 
+  'Bz': B, 'Cxr': Cx, 'Cyr': Cy, 'Czr': Cz, 'Xror': Xro, 
+  'Yror': Yro, 'Zror': Zro`;
+  
+  
+
+  /*var obCode = `const ob = {'R': Rz, 
   'L': Lz,
   'U': Uz,  
   'D': Dz,
@@ -2288,7 +2296,7 @@ const mve = new Map();
   'Xro': Xror,
   'Yro': Yror,
   'Zro': Zror
-  }`
+  }` */
 
   const obj = {R: Rz, 
   L: Lz,
@@ -2317,6 +2325,22 @@ const mve = new Map();
   Yro.key = 'Yro';
   Zro.key = 'Zro';
   
+  Rz.key = 'Rz'; 
+  Lz.key = 'Lz';
+  Uz.key = 'Uz';  
+  Dz.key = 'Dz';
+  Fz.key = 'Fz';
+  Bz.key = 'Bz';
+  Cxr.key = 'Cxr';
+  Cyr.key = 'Cyr';
+  Czr.key = 'Czr';
+  Xror.key = 'Xror';
+  Yror.key = 'Yror';
+  Zror.key = 'Zror';
+  
+  var keys = `R.key = 'R'; L.key = 'L'; U.key = 'U'; D.key = 'D'; F.key = 'F'; B.key = 'B'; Cx.key = 'Cx'; 
+  Cy.key = 'Cy'; Cz.key = 'Cz'; Xro.key = 'Xro'; Yro.key = 'Yro'; Zro.key = 'Zro';`
+  
 
 const mveCode = `const mve = new Map();
   mve.set('R', Rz);
@@ -2333,18 +2357,13 @@ const mveCode = `const mve = new Map();
   mve.set('Zro', Zror);`
 
   function reverse () { 
-    let fu = ob[m(dF3ar).pop()]; 
-      // The string "m(dF3ar).pop()" is a key; fu is its value.
-    m = m(fu)  // fu is the reverse of "m(dF3ar).pop()"
-    m(dF3ar).pop(); // This removes fu.key from ar in M    
+    m(ob[m(dF3ar).pop()]); // pops the key and runs m on the value   
+    m(dF3ar).pop();
 };
 
   const reverseCode = `function reverse () { 
-    let fu = ob[m(dF3ar).pop()]; 
-      // The string "m(dF3ar).pop()" points to an inverse function in ob (below).
-    m = m(fu)
-    m(dF3ar).pop();     
-};
+    m(ob[m(dF3ar).pop()]); // pops the key and runs m on value   
+    m(dF3ar).pop();
 };`
 
   // ***********************************************************
@@ -2366,13 +2385,26 @@ const mveCode = `const mve = new Map();
 <h1>A Virtual Rubik's Cube</h1>
 <h2>{m(dF3ar)}</h2>
 <pre>{m(dF3ar)}</pre>
-    <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of strings corresponding to the 54 squares of a Rubik's cube:  </p>
+    <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white" corresponding to the colors of the nine squares of each of the six sides of a 3 X 3 Rubik's cube:  </p>
 <pre>{test7}</pre>
-    <p> The empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to facilitate taking back moves by pressing the "Q" key or clicking "Reverse." The code enabling this eunctionality is shown further down this page.</p>
+    <p> The default empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to work with the function reverse() and the 12 <span style="color:#fa8cef">name:inverse</span> key:value pairs in pairs of ob. 
+<pre>{reverseCode}</pre>
+<pre>{obCode}</pre>
 
+      <p>
+      When a user presses a key or clicks a mouse button that calls m on one of the twelve functions , two things happen inside of M.  "func" that rearrange the strings of x in the m-M(x) closure, a string naming func gets pushed into ar. 
+      
+
+The object named 'ob' has twelve key:value pairs: the six names of the six functions that 
+
+
+      everse" calls reverse(), which pops the name of the most recently called function off of ar, calls its inverse, and pops the inverse function off of ar. The code is shown further down this page.</p>
+
+<p> The object ob contains 12 key:value pairs of the names and inverses of the functions that exchange and rearrange the elements of the six nine-member arrays of strings that constitute x in the m-M() closure.</p>
+<pre>{obCode}</pre>
 <h2>Callbacks Rearrange x in the m-M(x) Closure</h2>
 
-<p>The "V" key and "Start" button re-set the cube to its solved configuration by declaring "m = M(x)" for:   
+<p> Clicking the "Start" button (or pressing "V") refreshes the m-M(x) closure by declaring "m = M(x)" where   
   
 <pre> x = [ ['{m(dF3x)[0][0]}','{m(dF3x)[0][1]}','{m(dF3x)[0][2]}','{m(dF3x)[0][3]}','{m(dF3x)[0][4]}','{m(dF3x)[0][5]}','{m(dF3x)[0][6]}','{m(dF3x)[0][7]}','{m(dF3x)[0][8]}'],  // <span style="color:red">Right side</span>
 ['{m(dF3x)[1][0]}','{m(dF3x)[1][1]}','{m(dF3x)[1][2]}','{m(dF3x)[1][3]}','{m(dF3x)[1][4]}','{m(dF3x)[1][5]}','{m(dF3x)[1][6]}','{m(dF3x)[1][7]}','{m(dF3x)[1][8]}'],
@@ -2459,15 +2491,15 @@ const mveCode = `const mve = new Map();
                 same effect as clicking the corresponding (capitalized) buttons.
                 Holding down the "Shift" key (or activating "CapsLock") while
                 pressing the keys causes the reverse effect. Pressing v, w, and
-                q is equivalent to clicking on Start, Scramble, and Reverse,
+                q is equivalent to clicking Start, Scramble, and Reverse,
                 respectively.
             </p>
             <p>
-                Clicking on either of two left corners of each face of the cube
+                clicking either of two left corners of each face of the cube
                 causes that face to seem to rotate counterclockwise 90 degrees. Clicking
                 on either of two right corners of each face of the cube causes
-                that face to rotate clockwise 90 degrees. Clicking on edges
-                rotates center sections, rather than faces. Clicking on the centers
+                that face to rotate clockwise 90 degrees. clicking edges
+                rotates center sections, rather than faces. clicking the centers
                 of the right, top, and front rotates the entire cube clockwise on the X, Y
                 and Z axes, respectively. 
             </p>
@@ -2676,7 +2708,7 @@ const mveCode = `const mve = new Map();
             L, B, and D, respectively. Hold down the SHIFT key for
             counterclockwise rotation.
         </p>
-        <p>METHOD TWO -- Clicking on the cube</p>
+        <p>METHOD TWO -- clicking the cube</p>
         <p>
             Click the top center 3 times to bring the green face forward. <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Click the right top or bottom square.
@@ -2715,7 +2747,7 @@ const mveCode = `const mve = new Map();
         <p>
             Some of the definitions of "func" in m(func) expressions (described above), can be
             found at <a href="./">Home</a>. All of them are in the <a href="https://github.com/dschalk/Recursive-Closures"
-                >Github repository</a>. Each time m(func) is called, func's key is appended to ar in M. Rapidly clicking on "10,000 Scrambles" five times and waiting for it to finish indicates that 2,000,000 simulated 90 degree turns were performed and recorded in ar in around 3 seconds. 
+                >Github repository</a>. Each time m(func) is called, func's key is appended to ar in M. Rapidly clicking "10,000 Scrambles" five times and waiting for it to finish indicates that 2,000,000 simulated 90 degree turns were performed and recorded in ar in around 3 seconds. 
         </p>
         <h3>*********************************************************</h3>
         <p> I'll continue using SvelteKit, but I'm perturbed by having to add the attribute "key" to my functions when I would prefer to use the already-present attribute "name." Notice "func.key" in the definition of M at the top of this page. If "ar" in "M" contains "func.name" for each function that is called, SvelteKet renames many of them, causing the function "reverse" to fail.  </p>
