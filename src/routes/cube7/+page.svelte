@@ -1998,7 +1998,7 @@
     else if (e.keyCode === 113) reverse();
     else if (e.keyCode === 105) previous();
     else if (e.keyCode === 73) getSaved();
-    else if (e.keyCode === 111) save();
+    else if (e.keyCode === 111) m(Zro)(Zro)(Yro);
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
@@ -2362,8 +2362,8 @@ const mveCode = `const mve = new Map();
 };
 
   const reverseCode = `function reverse () { 
-    m(ob[m(dF3ar).pop()]); // pops the key and runs m on value   
-    m(dF3ar).pop();
+    m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
+    m(dF3ar).pop();  // Throw away the above value.
 };`
 
   // ***********************************************************
@@ -2385,7 +2385,9 @@ const mveCode = `const mve = new Map();
 <h1>A Virtual Rubik's Cube</h1>
 <h2>{m(dF3ar)}</h2>
 <pre>{m(dF3ar)}</pre>
-    <p> This version of the m-M(x) closure encapsulates an array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white" corresponding to the colors of the nine squares of each of the six sides of a 3 X 3 Rubik's cube:  </p>
+    <p> The version of the m-M(x) closure used on this page encapsulates an array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white." Callbacks from user key presses and mouse clicks can relocate strings on from one location on an array to another, or to a different array in x. There will always be 9 of each color string.</p>
+    <p> The nine strings of the array x[3] correspond exactly to the nine buttons constituting the front of virtual Rubik's cube. These are all orange on the starting and solved cube.</p>
+    <p> The right side of the virtual Rubik's cube matches x[0] and the top matches x[4]. In the browser buttons, x[0], x[3], and x[4] are exposed as m(dF3ar)[0], m(dF3ar)[3], and m(dF3ar)[4], as defined in M: </p>
 <pre>{test7}</pre>
     <p> The default empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to work with the function reverse() and the 12 <span style="color:#fa8cef">name:inverse</span> key:value pairs in pairs of ob. 
 <pre>{reverseCode}</pre>
@@ -2622,9 +2624,10 @@ The object named 'ob' has twelve key:value pairs: the six names of the six funct
                   </div>
 
                   <br><br><br><br>
-        <button on:click={shu}>Scramble</button>
+        <button style="height=80px" on:click={() => m = m(Zro)(Zro)(Yro)}>Other View<br>(Press O)</button>
         <br><br>
-        <button on:click={Start}>Start</button>
+        <button style = 'font-size: 14px; height:30px;' on:click={shu}>Scramble</button>
+        <button style = 'font-size: 14px; height:30px;'on:click={Start}>Start</button>
 
     </div>
       </div>
@@ -2795,6 +2798,12 @@ The object named 'ob' has twelve key:value pairs: the six names of the six funct
     button {
       height: 60px;
       border-radius: 10px;
+    }
+
+    .less {
+      font-size:14;
+      height: 25px;
+      border-radius: 4px;
     }
 
     .dis {
