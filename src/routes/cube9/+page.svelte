@@ -38,7 +38,6 @@
       else if (func === dF3ar) return ar;
       x = func(x);
       ar.push(func.key);
-      console.log("func.key is", func.key);
       return go;
     };
   }
@@ -2279,17 +2278,26 @@ const mve = new Map();
    'Lz': L, 'Uz': U, 'Dz': D, 'Fz': F, 'Bz': B, 'Cxr': Cx, 'Cyr': Cy, 'Czr': Cz,
    'Xror': Xro, 'Yror': Yro, 'Zror': Zro};`
   
-    R.key = 'R'; L.key = 'L'; U.key = 'U'; D.key = 'D'; F.key = 'F'; B.key = 'B'; Cx.key = 'Cx'; Cy.key = 'Cy'; Cz.key = 'Cz'; Xro.key = 'Xro'; Yro.key = 'Yro'; Zro.key = 'Zro';
+    var keys = `R.key = 'R'; L.key = 'L'; U.key = 'U'; D.key = 'D'; F.key = 'F'; B.key = 'B'; Cx.key = 'Cx'; 
+  Cy.key = 'Cy'; Cz.key = 'Cz'; Xro.key = 'Xro'; Yro.key = 'Yro'; Zro.key = 'Zro';`
   
   var foo;
 
   function reverse () { 
-    m = m(ob[m(dF3ar).pop()]); 
+    console.log("Starting reverse");
+    var foo = m(dF3ar).pop(); 
+    console.log("Oh yes");
+    console.log("foo and ob(foo)", foo, ob[foo]);
+    console.log("m(dF3x)", m(dF3x));
+    console.log("m(dF3ar)", m(dF3ar));
+    m(foo);
     m(dF3ar).pop();
+    console.log("m(dF3x)", m(dF3x));
+    console.log("m(dF3ar)", m(dF3ar));
 };
 
   const reverseCode = `function reverse () { 
-    m = m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
+    m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
     m(dF3ar).pop(); // Discard the function that m just pushed onto ar.
   }` 
 

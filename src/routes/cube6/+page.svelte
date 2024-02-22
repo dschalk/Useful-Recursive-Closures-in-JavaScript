@@ -2503,13 +2503,13 @@ b
     </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
 
     <br />
-    <button on:click={() => (m = m(Xro))}>X rotate</button>
-    <button on:click={() => (m = m(Yro))}>Y rotate</button>
-    <button on:click={() => (m = m(Zro))}>Z rotate</button>
+    <button on:click={() => (m = m(Xro))}>X</button>
+    <button on:click={() => (m = m(Yro))}>Y</button>
+    <button on:click={() => (m = m(Zro))}>Z</button>
     <br />
-    <button on:click={() => (m = m(Xror))}>X back</button>
-    <button on:click={() => (m = m(Yror))}>Y back</button>
-    <button on:click={() => (m = m(Zror))}>Z back</button>
+    <button on:click={() => (m = m(Xror))}>X</button>
+    <button on:click={() => (m = m(Yror))}>Y</button>
+    <button on:click={() => (m = m(Zror))}>Z</button>
 
     <br />
     <button on:click={() => (m = m(U))}>U</button>
