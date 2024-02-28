@@ -27,6 +27,51 @@
     index = 1;
   }
   
+    function wait(ms) {
+    return new Promise(r => setTimeout(r, ms));
+    }
+    
+    async function squareP (x) {
+      await wait(300)
+      return x*x;
+    }
+
+
+    let divPinverse = a => async b => {
+      await wait (300)
+      return a/b;
+    }
+    
+        let addP =  x => async y => {
+      await wait(500)
+      return parseInt(x,10) + parseInt(y,10);
+    }
+    
+    let doubleP = async y => {
+      await wait(600)
+      return 2 * parseInt(y,10) 
+    }
+    
+    let multP = x => async y => {
+      await wait(600)
+      return x * y;
+    }
+    
+    let divP = a => async b => {
+      await wait (300)
+      return b/a;
+    }
+    
+    async function idP (x) {
+      await wait(5)
+      return x;
+    }
+    
+    async function cubeP (x) {
+      await wait(600)
+      return x*x*x;
+    }
+
   var Amos;
 
   var dF3x = () => {};
@@ -38,6 +83,7 @@
       else if (func === dF3ar) return ar;
       x = func(x);
       ar.push(func.key);
+      console.log("func.key is", func.key);
       return go;
     };
   }
@@ -2278,31 +2324,158 @@ const mve = new Map();
    'Lz': L, 'Uz': U, 'Dz': D, 'Fz': F, 'Bz': B, 'Cxr': Cx, 'Cyr': Cy, 'Czr': Cz,
    'Xror': Xro, 'Yror': Yro, 'Zror': Zro};`
   
-    var keys = `R.key = 'R'; L.key = 'L'; U.key = 'U'; D.key = 'D'; F.key = 'F'; B.key = 'B'; Cx.key = 'Cx'; 
-  Cy.key = 'Cy'; Cz.key = 'Cz'; Xro.key = 'Xro'; Yro.key = 'Yro'; Zro.key = 'Zro';`
+    R.key = 'R'; L.key = 'L'; U.key = 'U'; D.key = 'D'; F.key = 'F'; B.key = 'B'; Cx.key = 'Cx'; Cy.key = 'Cy'; Cz.key = 'Cz'; Xro.key = 'Xro'; Yro.key = 'Yro'; Zro.key = 'Zro';
+    Rz.key = 'Rz'; Lz.key = 'Lz'; Uz.key = 'Uz'; Dz.key = 'Dz'; Fz.key = 'Fz'; Bz.key = 'Bz'; Cxr.key = 'Cxr'; Cyr.key = 'Cyr'; Czr.key = 'Czr'; Xror.key = 'Xror'; Yror.key = 'Yror'; Zror.key = 'Zror';
   
   var foo;
 
   function reverse () { 
-    console.log("Starting reverse");
-    var foo = m(dF3ar).pop(); 
-    console.log("Oh yes");
-    console.log("foo and ob(foo)", foo, ob[foo]);
-    console.log("m(dF3x)", m(dF3x));
-    console.log("m(dF3ar)", m(dF3ar));
-    m(foo);
+    m = m(ob[m(dF3ar).pop()]); 
     m(dF3ar).pop();
-    console.log("m(dF3x)", m(dF3x));
-    console.log("m(dF3ar)", m(dF3ar));
 };
 
   const reverseCode = `function reverse () { 
-    m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
+    m = m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
     m(dF3ar).pop(); // Discard the function that m just pushed onto ar.
   }` 
 
 var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}" 
     on:click={() => {m = m(Cyr)}} />`
+    
+    async function faces () {
+      await wait(700)
+      m = m(R)
+      await wait(700)
+      m = m(R)
+      await wait(700)
+      m = m(R)
+      await wait(700)
+      m = m(R)
+      await wait(700)
+      m = m(L)
+      await wait(700)
+      m = m(L)
+
+      await wait(700)
+      m = m(L)
+      await wait(700)
+      m = m(L)
+      await wait(700)
+      m = m(U)
+      await wait(700)
+      m = m(U)
+      await wait(700)
+      m = m(U)
+
+      await wait(700)
+      m = m(U)
+      await wait(700)
+      m = m(D)
+      await wait(700)
+      m = m(D)
+      await wait(700)
+      m = m(D)
+      await wait(700)
+      m = m(D)
+
+      await wait(700)
+      m = m(F)
+      await wait(700)
+      m = m(F)
+      await wait(700)
+      m = m(F)
+      await wait(700)
+      m = m(F)
+      await wait(700)
+      m = m(B)
+
+      await wait(1700)
+      m = m(B)
+      await wait(1700)
+      m = m(B)
+      await wait(1700)
+      m = m(B)
+      await wait(1700)
+      m = m(Bz)
+      await wait(700)
+      m = m(Fz)
+
+      await wait(700)
+      m = m(Dz)
+      await wait(700)
+      m = m(Uz)
+      await wait(700)
+      m = m(Lz)
+      await wait(700)
+      m = m(Rz)
+      await wait(700)
+      m = m(R)
+      
+      await wait(700)
+      m = m(L)
+      await wait(700)
+      m = m(U)
+      await wait(700)
+      m = m(D)
+      await wait(700)
+      m = m(F)
+      await wait(700)
+      m = m(B)
+      }
+    
+    async function middles () {
+      await wait(700)
+      m = m(Cx)
+      await wait(700)
+      m = m(Cy)
+      await wait(700)
+      m = m(Cz)
+      await wait(700)
+      m = m(Czr)
+      await wait(700)
+      m = m(Cyr)
+      await wait(700)
+      m = m(Cxr)
+    }
+
+    async function all () {
+      await wait(700)
+      m = m(Xro)
+      await wait(700)
+      m = m(Xro)
+      await wait(700)
+      m = m(Xro)
+      await wait(700)
+      m = m(Xro)
+      await wait(700)
+      m = m(Yro)
+      await wait(700)
+      m = m(Yro)
+      await wait(700)
+      m = m(Yro)
+      await wait(700)
+      m = m(Yro)
+      await wait(700)
+      m = m(Zro)
+      await wait(700)
+      m = m(Zro)
+      await wait(700)
+      m = m(Zro)
+      await wait(700)
+      m = m(Zro)
+      await wait(700)
+      m = m(Zror)
+      await wait(700)
+      m = m(Yror)
+      await wait(700)
+      m = m(Xror)
+      await wait(700)
+      m = m(Xro)
+      await wait(700)
+      m = m(Yro)
+      await wait(700)
+      m = m(Zro)
+    }
 
 
   // ***********************************************************
@@ -2353,14 +2526,22 @@ var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}"
         <button on:click={() => (m = m(Yror))}>Y'</button>
         <button on:click={() => (m = m(Zror))}>Z'</button>
 
-        <br />
-    <p> Pressing "U", "D", "R", "L", "F", or "B" keys, or clicking their corresponding buttons (above), rearranges some of the background colors of the 9 buttons that constitute each face of the virtual cube, simulating the result of turning the top, bottom, right, left, front, and back faces, respectively, of the virtual cube 90%. "M", "E", and "S" turn the middle sections 90 degrees. X", "Y", and "Z" turn the whole cube clockwise 90 degrees around the traditional x, y, and z axes. The single quote marks signify inverses, which can be run on the keyboard by simultaneously holding down the Shift key. </p>
+        <br /><br>
+        <p> NOTE: The words "turn" and "twists" below are used figuratively. No HTML elements actually turn or twist. CSS classes, named after the colors of the 54 elements of x in the m-M(x) closure, get rearranged on the virtual Rubik's cube, as explained below and on the <a href = "./">Home</a> page.</p>
+        <p> After user key presses and button clicks, the "background-color" elements of rearranged CSS classes on the virtual Rubik's cube mimic what the corresponding actions would have changed on a real cube. Under the hood, the 27 squares that appear on the three visible sides of the virtual Rubik's cube image are HTML buttons. Click them to see what they do.</p>
+        <span> Click </span><button style = "height:32px" on:click={faces}>faces</button> <span> to turn the right, left, top, bottom, front, and back faces with the functions R, L, U ("top"), D ("bottom"), F, and B, followed by a few more twists.</span>
+
+ <span> Click </span><button style = "height:32px" on:click={middles}>middle sections</button> <span> to turn the three middle sections. </span>
+
+ <span> Click </span><button style = "height:32px" on:click={all}>whole cube</button> <span> to turn the cube 90 degrees on its X, Y, and Z axes. Hold down the 'Q' key to rapidly reverse every move in order, starting with the most recent move.</span>
+
+
+    <p> Pressing "U", "D", "R", "L", "F", or "B" keys, or clicking their corresponding buttons (above), rearranges some of the background colors of the 9 buttons that constitute each fae of the virtual cube, simulating the result of turning the top, bottom, right, left, front, and back faces, respectively, of the virtual cube 90%. "M", "E", and "S" turn the middle sections 90 degrees. X", "Y", and "Z" turn the whole cube clockwise 90 degrees around the traditional x, y, and z axes. The single quote marks signify inverses, which can be run on the keyboard by simultaneously holding down the Shift key. </p>
  <pre>{buttonCode}</pre>
       
       <p> The elements of the array of six arrays held in the m-M(x) closure are embedded (by means of expressions "m(dF3ar)[j][k]") in the 27 buttons of the visible sides of the virtual Rubik's cube. If a user presses a key or clicks a button that calls m(func) -- thereby running x => func(x) in the m-M(x) closure -- each of the 27 copies of m in the method m (dF3ar) in the simulated Rubik's cube in the DOM immediately updates by returning the  func(x). And if, for example, the string to which x[3][3] points in the closure changes from from 'green' to 'red', the value of m(dF3ar)[3][3] in the DOM will likewise change, and the color of the left square in the second row of the forward facing of the virtual Rubik's cube will be observed to change from red to green.  </p>
 
     <p> The nine strings of the array x[3] correspond exactly to the nine buttons constituting the front of virtual Rubik's cube. These are all orange on the starting and solved cube.</p>
-dd   
 
 <pre>{reverseCode}</pre>
 
@@ -2748,6 +2929,9 @@ dd
     </div>
     <div></div>
 </section>
+<button on:click = {console.log(m(dF3x))}>log x</button>
+<button on:click = {console.log((m(dF3ar)))}>log arcd</button>
+
 
 <slot />
 
@@ -3250,7 +3434,7 @@ dd
     .container {
         width: 198px;
         height: 198px;
-        perspective: 1000px;
+        perspective: 700px;
         /*background-color: black; */
         /*float: right;*/
         margin-right: 7%;

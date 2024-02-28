@@ -34,7 +34,7 @@ function rotateCube() {
 <nav>
         <a href="./">Home</a>
 
-        <a href="./cube7">Rubik's Cube</a>
+        <a href="./cube9">Rubik's Cube</a>
 
         <a href="./score">Game of Score</a>
 

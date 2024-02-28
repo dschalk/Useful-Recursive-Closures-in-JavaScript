@@ -2740,6 +2740,9 @@ dd
     </div>
     <div></div>
 </section>
+<button on:click = {console.log(m(dF3x))}>log x</button>
+<button on:click = {console.log((m(dF3ar)))}>log arcd</button>
+
 
 <slot />
 
