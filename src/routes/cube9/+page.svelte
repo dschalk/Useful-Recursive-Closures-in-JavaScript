@@ -2341,140 +2341,145 @@ const mve = new Map();
 
 var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}" 
     on:click={() => {m = m(Cyr)}} />`
-    
+   
+ var F7 = '';  
+function f77 (x) {F7 = x};
+
+function multiverse (n) {
+  for (let k = 0; k < n; k+=1) {
+    reverse();
+  }
+}
+
     async function faces () {
-      await wait(700)
+      f77("R")
+      await wait(400)
       m = m(R)
-      await wait(700)
+      await wait(400)
       m = m(R)
-      await wait(700)
+      await wait(400)
       m = m(R)
-      await wait(700)
+      await wait(400)
       m = m(R)
-      await wait(700)
-      m = m(L)
-      await wait(700)
-      m = m(L)
-
-      await wait(700)
-      m = m(L)
-      await wait(700)
-      m = m(L)
-      await wait(700)
-      m = m(U)
-      await wait(700)
-      m = m(U)
-      await wait(700)
-      m = m(U)
-
-      await wait(700)
-      m = m(U)
-      await wait(700)
-      m = m(D)
-      await wait(700)
-      m = m(D)
-      await wait(700)
-      m = m(D)
-      await wait(700)
-      m = m(D)
-
-      await wait(700)
-      m = m(F)
-      await wait(700)
-      m = m(F)
-      await wait(700)
-      m = m(F)
-      await wait(700)
-      m = m(F)
-      await wait(700)
-      m = m(B)
-
-      await wait(1700)
-      m = m(B)
-      await wait(1700)
-      m = m(B)
-      await wait(1700)
-      m = m(B)
-      await wait(1700)
-      m = m(Bz)
-      await wait(700)
-      m = m(Fz)
-
-      await wait(700)
-      m = m(Dz)
-      await wait(700)
-      m = m(Uz)
-      await wait(700)
-      m = m(Lz)
-      await wait(700)
-      m = m(Rz)
-      await wait(700)
-      m = m(R)
+      await wait(400);
       
-      await wait(700)
+      f77("L")
+  
       m = m(L)
-      await wait(700)
+      await wait(400)
+      m = m(L)
+      await wait(400)
+      m = m(L)
+      await wait(400)
+      m = m(L)
+
+    f77("U")
+      await wait(400)
       m = m(U)
-      await wait(700)
+      await wait(400)
+      m = m(U)
+      await wait(400)
+      m = m(U)
+      await wait(400)
+      m = m(U)
+      
+      f77("D")
+      await wait(400)
       m = m(D)
-      await wait(700)
-      m = m(F)
-      await wait(700)
+      await wait(400)
+      m = m(D)
+      await wait(400)
+      m = m(D)
+      await wait(400)
+      m = m(D)
+
+      f77("B")
+      await wait(400)
       m = m(B)
-      }
-    
+      await wait(400)
+      m = m(B)
+      await wait(400)
+      m = m(B)
+      await wait(400)
+      m = m(B)
+      
+      f77("F")
+      await wait(400)
+      m = m(F)
+      await wait(400)
+      m = m(F)
+      await wait(400)
+      m = m(F)
+      await wait(400)
+      m = m(F)
+      f77("")
+      Multiverse(24);
+    }
+
     async function middles () {
-      await wait(700)
+      f77("M")
+      await wait(500)
       m = m(Cx)
-      await wait(700)
+      await wait(500)
+      m = m(Cx)
+      await wait(500)
+      m = m(Cx)
+      await wait(500)
+      m = m(Cx)
+      
+      f77("E")
+      await wait(500)
       m = m(Cy)
-      await wait(700)
+      await wait(500)
+      m = m(Cy)
+      await wait(500)
+      m = m(Cy)
+      await wait(500)
+      m = m(Cy)     
+      
+      f77("S")
+      await wait(500)
       m = m(Cz)
-      await wait(700)
-      m = m(Czr)
-      await wait(700)
-      m = m(Cyr)
-      await wait(700)
-      m = m(Cxr)
+      await wait(500)
+      m = m(Cz)
+      await wait(500)
+      m = m(Cz)
+      await wait(500)
+      m = m(Cz)
+      f77("")
+      Start();
     }
 
     async function all () {
-      await wait(700)
+      f77("X")
+      await wait(400)
       m = m(Xro)
-      await wait(700)
+      await wait(400)
       m = m(Xro)
-      await wait(700)
+      await wait(400)
       m = m(Xro)
-      await wait(700)
+      await wait(400)
       m = m(Xro)
-      await wait(700)
+      f77("Y")
+      await wait(400)
       m = m(Yro)
-      await wait(700)
+      await wait(400)
       m = m(Yro)
-      await wait(700)
+      await wait(400)
       m = m(Yro)
-      await wait(700)
+      await wait(400)
       m = m(Yro)
-      await wait(700)
+      f77("Z")
+      await wait(400)
       m = m(Zro)
-      await wait(700)
+      await wait(400)
       m = m(Zro)
-      await wait(700)
+      await wait(400)
       m = m(Zro)
-      await wait(700)
+      await wait(400)
       m = m(Zro)
-      await wait(700)
-      m = m(Zror)
-      await wait(700)
-      m = m(Yror)
-      await wait(700)
-      m = m(Xror)
-      await wait(700)
-      m = m(Xro)
-      await wait(700)
-      m = m(Yro)
-      await wait(700)
-      m = m(Zro)
+      f77("")
+      Start();
     }
 
 
@@ -2723,6 +2728,8 @@ var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}"
     </div>
 </section>
 <div id="steady">
+  <h2>{F7}</h2>
+  <br>
     <div class="container">
         <div class={cu}>
             <div class="face front">
@@ -3434,7 +3441,7 @@ var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}"
     .container {
         width: 198px;
         height: 198px;
-        perspective: 700px;
+        perspective: 800px;
         /*background-color: black; */
         /*float: right;*/
         margin-right: 7%;
@@ -3673,7 +3680,7 @@ var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}"
 
     #steady {
         position: fixed;
-        top: 180px;
+        top: 100px;
         left: 75.5%;
     }
 
