@@ -2345,13 +2345,8 @@ var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}"
  var F7 = '';  
 function f77 (x) {F7 = x};
 
-function multiverse (n) {
-  for (let k = 0; k < n; k+=1) {
-    reverse();
-  }
-}
 
-    async function faces () {
+  async function faces () {
       f77("R")
       await wait(400)
       m = m(R)
@@ -2412,8 +2407,15 @@ function multiverse (n) {
       m = m(F)
       await wait(400)
       m = m(F)
-      f77("")
-      Multiverse(24);
+      for (let k = 0; k < 24; k+=1){
+          await wait(300)
+          m = m(ob[m(dF3ar).pop()]);
+          console.log(m(dF3x));
+          m(dF3ar).pop();
+          f77(23 - k);
+      }
+        await wait(500)
+        f77("");
     }
 
     async function middles () {
@@ -2446,8 +2448,15 @@ function multiverse (n) {
       m = m(Cz)
       await wait(500)
       m = m(Cz)
-      f77("")
-      Start();
+      for (let k = 0; k < 12; k+=1){
+          await wait(300)
+          m = m(ob[m(dF3ar).pop()]);
+          console.log(m(dF3x));
+          m(dF3ar).pop();
+          f77(11 - k);
+      }
+        await wait(500)
+        f77("");
     }
 
     async function all () {
@@ -2478,8 +2487,15 @@ function multiverse (n) {
       m = m(Zro)
       await wait(400)
       m = m(Zro)
-      f77("")
-      Start();
+      for (let k = 0; k < 12; k+=1){
+          await wait(300)
+          m = m(ob[m(dF3ar).pop()]);
+          console.log(m(dF3x));
+          m(dF3ar).pop();
+          f77(11 - k);
+      }
+        await wait(500)
+        f77("");
     }
 
 
