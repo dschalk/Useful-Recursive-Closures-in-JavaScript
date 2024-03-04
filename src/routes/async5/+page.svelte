@@ -199,7 +199,7 @@
 
 
 
-<p> Using the modified version of M below, m can handle mixtures of synchronous and asynchronous arguments. To see this in action, click "Restart" (below).</p>
+<p> Using the modified version of M below, m can handle mixtures of synchronous and asynchronous arguments. idP(a) has no effect if a is a promise. Otherwise, idP transforms a into a promise. To see this in action, click "Restart" (below).</p>
 <pre>{Mcode}</pre>
 
 <p id='yes'> In the demonstration below, "m" is given mixtures of simple functions and promises.  </p>

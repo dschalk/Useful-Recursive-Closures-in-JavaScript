@@ -596,12 +596,12 @@ var mCode = `      var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", 
       ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"],
       ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]);`
 
-var Fcode2 = `      var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
-      ["green", "green", "green", "green", "green", "green", "green", "green", "green"],
-      ["yellow", "red", "red", "yellow", "red", "red", "yellow", "red", "red"],
-      ["orange", "orange", "white", "orange", "orange", "white", "orange", "orange", "white"],
-      ["yellow", "yellow", "orange", "yellow", "yellow", "orange", "yellow", "yellow", "orange"],
-      ["white", "white", "red", "white", "white", "red", "white", "white", "red"] ]);`
+var Fcode2 = `      var m = M([ ["yellow", "blue", "blue", "yellow", "blue", "blue", "yellow", "blue", "blue"],
+      ["green", "green", "white", "green", "green", "white", "green", "green", "white"],
+      ["red", "red", "red", "red", "red", "red", "red", "red", "red"],
+      ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"],
+      ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "green", "green", "green"],
+      ["blue", "blue", "blue", "white", "white", "white", "white", "white", "white"] ]);`
 
 var functionF = `function F(ar) {
     let temp = [];
@@ -669,8 +669,6 @@ var functionF = `function F(ar) {
     return temp;
 } `;
 
-
-
 // *********************************************************
 // *********************************************************
 // *********************************************************
@@ -678,16 +676,10 @@ var functionF = `function F(ar) {
 
 
 
-
-
-
-
-
-
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
   <h1 style="text-align: center; color: #f5ee9f">Recursive Closures</h1>
   
-  <h3 style="text-indent:3% ">"M" returns the recursive function "go", making "m", in the m-M(x) closure defined by m = M(x), likewise recursive. "x" can be any value. "func" t be a function that operates on "x", unless it is the flag "dF3x" prompting the return of x. "dF3x" is never called, and is defined as a function for consistency.</h3>
+  <h3 style="text-indent:3% ">"M" returns the recursive function "go", making "m", in the m-M(x) closure defined by m = M(x), likewise recursive. "x" can be any value. "func" is a function that operates on "x", unless it is "dF3x", a flag that serves only to prompt the return of x, and is never called. </h3>
 
   <pre class="dis">{Mdis}</pre>
   <pre class="play">{Mplay}</pre>
@@ -706,12 +698,7 @@ var functionF = `function F(ar) {
 
 <p>  &nbsp;&nbsp;&nbsp; For more examples, and to see m-M(x) closures handle asynchronous functions, go to <a href="./async5#yes">Async</a>.</p>
 
-
-
-
-
 <h1 style = "text-align: center; color: #f5ee9f"> A Fast and Efficient Virtual Rubik's Cube </h1>
-
 
 <p> The JavaScript representation of the virtual Rubik's cube visible in the browser is contained in an m-M(x) closure where x starts out as an array of 6 nine-member arrays of strings. All 9 members of x[0] are the string "blue". x[1] is all "green", x[2] all "red", x[3] all "orange", x[4] all "yellow", and the 9 members of x[5] are the string "white". </p>
 <p> The virtual Rubik's cube in the DOM and displayed in the browser consists of 9 front-facing buttons, 9 top buttons, and 9 side buttons. Each of the 27 buttons containin a "style = ' background-color: m(dF3x)[ j ][ k ] ' " statements. Since user invoked functions are reactive, and m(dF3x) returns the current value of x in the m-M(x) closure, user key presses and button clicks that rearrange the strings in x immediately rearrange the colors of the 9 squares of each of the three visible sides of the virtual Rubik's cube.   </p>
@@ -719,8 +706,7 @@ var functionF = `function F(ar) {
 <pre>{domCube}</pre>
 <p> And here's the JavaScript representation of the virtual Rubik's cube:</p>
 <pre>{mCode}</pre>
-<p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) rearranges to this:</p>
-
+<p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) rearranges to th
 <pre>{Fcode2}</pre>
 <p> And the cube looks like this:</p>
  <img
@@ -728,9 +714,15 @@ var functionF = `function F(ar) {
                 alt="Cube after F"                                              
                 style="width:150px;height:155px;"
             />
-<p> When a user presses the "F" key, m(F) runs, causing x => F(x) and the changes shown above. Here's the definition of F: </p>
+<p> When a user presses the "F" key, m(F) runs, causing x => F(x). The return value of F(x) when x is in its starting configuration is shown above. Here's the definition of F: </p>
 
 <pre>{functionF}</pre>
+<p> The values of the strings F rearranges are not relevant. The first thing F(x) does is move the string that happens to be at x[4][6] to a new location; namely, x[0][0], Near the bottom of F, we see that x[0][0] goes to x[5][2]. Whatever happened to be at x[5][2] ends up at x[1][8]. x remains an array of six nine-member arrays of strings, maintaining its one-to-one correspondence with the six, nine-cubit sides of the virtual Rubik's cube. None of the functions available to users change the structure of x, just as solving a real Rubik's does not change the number of cubits on each side of the cube.
+  
+
+
+
+
 
 
 
