@@ -1,7 +1,8 @@
 <script>
   import Cubeshot from "$lib/Cubeshot.png"
   import CubeshotR from "$lib/CubeshotR.png"
-
+  import F from "$lib/F.png"
+  
   var Mdisplay = `function M (x) {
     return function</span> go (func) {
     if (func === dF3x) return x;
@@ -585,7 +586,90 @@ var Masync = `function M (x) {
             return go;
           }
         }`;
+        
 var dF3xCode = "dF3x = () => {}"
+
+var mCode = `      var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
+      ["green", "green", "green", "green", "green", "green", "green", "green", "green"],
+      ["red", "red", "red", "red", "red", "red", "red", "red", "red"],
+      ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"],
+      ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"],
+      ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]);`
+
+var Fcode2 = `      var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
+      ["green", "green", "green", "green", "green", "green", "green", "green", "green"],
+      ["yellow", "red", "red", "yellow", "red", "red", "yellow", "red", "red"],
+      ["orange", "orange", "white", "orange", "orange", "white", "orange", "orange", "white"],
+      ["yellow", "yellow", "orange", "yellow", "yellow", "orange", "yellow", "yellow", "orange"],
+      ["white", "white", "red", "white", "white", "red", "white", "white", "red"] ]);`
+
+var functionF = `function F(ar) {
+    let temp = [];
+    temp[0] = [
+      ar[4][6],
+      ar[0][1],
+      ar[0][2],
+      ar[4][7],
+      ar[0][4],
+      ar[0][5],
+      ar[4][8],
+      ar[0][7],
+      ar[0][8],
+    ];
+
+    temp[1] = [
+      ar[1][0],
+      ar[1][1],
+      ar[5][0],
+      ar[1][3],
+      ar[1][4],
+      ar[5][1],
+      ar[1][6],
+      ar[1][7],
+      ar[5][2],
+    ];
+
+    temp[2] = ar[2];
+
+    temp[3] = [
+      ar[3][6],
+      ar[3][3],
+      ar[3][0],
+      ar[3][7],
+      ar[3][4],
+      ar[3][1],
+      ar[3][8],
+      ar[3][5],
+      ar[3][2],
+    ];
+
+    temp[4] = [
+      ar[4][0],
+      ar[4][1],
+      ar[4][2],
+      ar[4][3],
+      ar[4][4],
+      ar[4][5],
+      ar[1][8],
+      ar[1][5],
+      ar[1][2],
+    ];
+
+    temp[5] = [
+      ar[0][6],
+      ar[0][3],
+      ar[0][0],
+      ar[5][3],
+      ar[5][4],
+      ar[5][5],
+      ar[5][6],
+      ar[5][7],
+      ar[5][8],
+    ];
+    return temp;
+} `;
+
+
 
 // *********************************************************
 // *********************************************************
@@ -633,6 +717,23 @@ var dF3xCode = "dF3x = () => {}"
 <p> The virtual Rubik's cube in the DOM and displayed in the browser consists of 9 front-facing buttons, 9 top buttons, and 9 side buttons. Each of the 27 buttons containin a "style = ' background-color: m(dF3x)[ j ][ k ] ' " statements. Since user invoked functions are reactive, and m(dF3x) returns the current value of x in the m-M(x) closure, user key presses and button clicks that rearrange the strings in x immediately rearrange the colors of the 9 squares of each of the three visible sides of the virtual Rubik's cube.   </p>
 <p> Here's the HTML code:</p>
 <pre>{domCube}</pre>
+<p> And here's the JavaScript representation of the virtual Rubik's cube:</p>
+<pre>{mCode}</pre>
+<p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) rearranges to this:</p>
+
+<pre>{Fcode2}</pre>
+<p> And the cube looks like this:</p>
+ <img
+                src={F}
+                alt="Cube after F"                                              
+                style="width:150px;height:155px;"
+            />
+<p> When a user presses the "F" key, m(F) runs, causing x => F(x) and the changes shown above. Here's the definition of F: </p>
+
+<pre>{functionF}</pre>
+
+
+
 
 
 <h1 style = "text-align: center; color: #f5ee9f"> The Game of Score </h1>
