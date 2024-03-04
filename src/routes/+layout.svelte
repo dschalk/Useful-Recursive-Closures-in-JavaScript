@@ -20,6 +20,8 @@ function rotateCube() {
   requestAnimationFrame(rotateCube);
 }
 
+function double (x) {return x + x};
+
 	})
 </script>
 

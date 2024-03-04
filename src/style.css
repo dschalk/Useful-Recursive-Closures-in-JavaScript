@@ -28,6 +28,11 @@ p {
     color: rgb(195, 219, 255);
 }
 
+h3 {
+    color: gold;
+    font-size: 22px;
+}
+
 .columns {
     column-count: 2;
     display: flex;

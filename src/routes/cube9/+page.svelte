@@ -2342,7 +2342,7 @@ const mve = new Map();
 var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}" 
     on:click={() => {m = m(Cyr)}} />`
    
- var F7 = '';  
+var F7 = '';  
 function f77 (x) {F7 = x};
 
 
@@ -2498,7 +2498,7 @@ function f77 (x) {F7 = x};
         f77("");
     }
 
-
+    
   // ***********************************************************
   // ***********************************************************
   // ***********************************************************
@@ -2517,7 +2517,7 @@ function f77 (x) {F7 = x};
 
 <h1>A Virtual Rubik's Cube</h1>
 <pre>{test7}</pre>
-    <p> The default empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to work with the function reverse() and the 24 name:inverse (key:value) pairs in  ob. 
+    <p> The default empty array "ar" was added to the <a href="./">basic m-M(x) closure</a> to work with the function reverse(). Modifying "M" wasn't necessary, but the elegant simplicity of reversing moves with the modified "M" was irresistable.  
 <pre>{reverseCode}</pre>
     <p> The version of the m-M(x) closure used on this page encapsulates an array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white." Users have at their disposal 12 basic functions (top row below) and their inverses (bottom row).</p> 
 
@@ -2547,14 +2547,20 @@ function f77 (x) {F7 = x};
         <button on:click={() => (m = m(Yror))}>Y'</button>
         <button on:click={() => (m = m(Zror))}>Z'</button>
 
-        <br /><br>
-        <p> NOTE: The words "turn" and "twists" below are used figuratively. No HTML elements actually turn or twist. CSS classes, named after the colors of the 54 elements of x in the m-M(x) closure, get rearranged on the virtual Rubik's cube, as explained below and on the <a href = "./">Home</a> page.</p>
-        <p> After user key presses and button clicks, the "background-color" elements of rearranged CSS classes on the virtual Rubik's cube mimic what the corresponding actions would have changed on a real cube. Under the hood, the 27 squares that appear on the three visible sides of the virtual Rubik's cube image are HTML buttons. Click them to see what they do.</p>
-        <span> Click </span><button style = "height:32px" on:click={faces}>faces</button> <span> to turn the right, left, top, bottom, front, and back faces with the functions R, L, U ("top"), D ("bottom"), F, and B, followed by a few more twists.</span>
+        <br />
+        <p> User key presses and button clicks cause the 54 strings in the m-M(x) closure to rearrange. The virtual cube image on the right consists of 27 buttons with statements " style = 'background-color = m(dF3x)[ j ][ k ]' " for positive whole numbers j less than 6 and k less than 9. If the string at some position x[ j ][ k ] is replaced by a different string after a key press or button click, that string determines the color of the button containing the statement
+      " style = 'background-color = m(dF3x)[ j ][ k ]' ."  </p>
+        
+          <h3 style = "text-align: center; font-size:36px">Four Key-Presses / Four Button-clicks Demonstration</h3>
+        <span> Click </span><button style = "height:32px; padding:0" on:click={faces}>faces</button> <span> to turn the right, left, top, bottom, front, and back faces with the functions R, L, U ("top"), D ("bottom"), F, and B  .</span>
+ <span> Click </span><button style = "height:32px; padding:0" on:click={middles}>middle sections</button> <span> to turn the three middle sections. </span>
+ <span> Click </span><button style = "height:32px; padding:0" on:click={all}>whole cube</button> <span> to turn the cube 90 degrees on its X, Y, and Z axes. Hold down the 'Q' key to rapidly reverse every move in order, starting with the most recent move.</span>
 
- <span> Click </span><button style = "height:32px" on:click={middles}>middle sections</button> <span> to turn the three middle sections. </span>
+          <h3 style = "text-align: center; font-size:36px">The 27 buttons of the virtual Rubik's cube never move.</h3>
+        <p> The positions of the 54 elements of "x" in the closure change in response to user input, but the positions of the 27 buttons of the virtual Rubik's cube are permanently fixed. The 9 buttons of the outward facing side of the cube image have background colors <span style = "color:{m(dF3x)[3][0]}">m(dF3x)[ 3 ][ 0 ],</span> <span style = "color:{m(dF3x)[3][1]}">m(dF3x)[ 3 ][ 1 ]</span>, ...<span style = "color:{m(dF3x)[3][8]}"> m(dF3x)[ 3 ][ 8 ]</span> starting in the upper-left button and ending in the lower-right button. As x[3] changes in the closure, so the front-facing side of the virtual Rubik's changes.  </p>
 
- <span> Click </span><button style = "height:32px" on:click={all}>whole cube</button> <span> to turn the cube 90 degrees on its X, Y, and Z axes. Hold down the 'Q' key to rapidly reverse every move in order, starting with the most recent move.</span>
+
+
 
 
     <p> Pressing "U", "D", "R", "L", "F", or "B" keys, or clicking their corresponding buttons (above), rearranges some of the background colors of the 9 buttons that constitute each face of the virtual cube, simulating the result of turning the top, bottom, right, left, front, and back faces, respectively, of a Rubik's cube 90%. "M", "E", and "S" turn the middle sections 90 degrees. X", "Y", and "Z" turn the whole cube clockwise 90 degrees around the traditional x, y, and z axes. The single quote marks signify inverses, which can be run on the keyboard by simultaneously holding down the Shift key. </p>
@@ -2953,10 +2959,7 @@ function f77 (x) {F7 = x};
     <div></div>
 </section>
 <button on:click = {console.log(m(dF3x))}>log x</button>
-<button on:click = {console.log((m(dF3ar)))}>log arcd</button>
-
-
-<slot />
+<button on:click = {console.log((m(dF3ar)))}>log ar</button>
 
 <style>
     ::before,
@@ -3734,3 +3737,5 @@ function f77 (x) {F7 = x};
     /* *************************************************************** */
     /* *************************************************************** */
 </style>
+
+<slot />
