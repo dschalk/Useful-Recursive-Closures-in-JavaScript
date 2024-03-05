@@ -706,7 +706,7 @@ var functionF = `function F(ar) {
 <pre>{domCube}</pre>
 <p> And here's the JavaScript representation of the virtual Rubik's cube:</p>
 <pre>{mCode}</pre>
-<p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) rearranges to th
+<p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) rearranges to this configuration:
 <pre>{Fcode2}</pre>
 <p> And the cube looks like this:</p>
  <img
@@ -717,7 +717,9 @@ var functionF = `function F(ar) {
 <p> When a user presses the "F" key, m(F) runs, causing x => F(x). The return value of F(x) when x is in its starting configuration is shown above. Here's the definition of F: </p>
 
 <pre>{functionF}</pre>
-<p> The values of the strings F rearranges are not relevant. The first thing F(x) does is move the string that happens to be at x[4][6] to a new location; namely, x[0][0], Near the bottom of F, we see that x[0][0] goes to x[5][2]. Whatever happened to be at x[5][2] ends up at x[1][8]. x remains an array of six nine-member arrays of strings, maintaining its one-to-one correspondence with the six, nine-cubit sides of the virtual Rubik's cube. None of the functions available to users change the structure of x, just as solving a real Rubik's does not change the number of cubits on each side of the cube.
+<p> F populates a temporary array "temp" with values from x, then returns temp, making it the updated value of x. The values of the strings F places in temp are not relevant. Everything is done according to locations without regard to whether the strings happen to be "blue", "green", "red", "orange", "yellow", or "white".</p>
+<p> Looking at x after the transformation (above), we see that the first thing F(x) does is move the string that happens to be at x[4][6] to x[0][0], Near the bottom of F, we see that x[0][0] goes to x[5][2]. Whatever happened to be at x[5][2] ends up at x[1][8].</p>
+<p> x remains an array of six nine-member arrays of strings, maintaining its one-to-one correspondence with the six, nine-cubit sides of the virtual Rubik's cube. None of the functions available to users change the structure of x, just as solving a real Rubik's does not change the number of cubits on each side of the cube.
   
 
 
