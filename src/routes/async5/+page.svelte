@@ -192,12 +192,49 @@
 
     }`
 
-    restart();
+    restart();  
+
+
+// Create a generator function with multiple yields
+var log = console.log;
+
+
+var G = '';
+
+function* generatorFunction() {
+  yield `m(v=>v**3)`
+  yield `m(dF3x)  // 3`
+  yield `m(v=>v**3)(v=>v*2)(v=>v-12)`
+  yield `m(dF3x)  // 42`
+  yield `m(v=>v+7)(Math.sqrt)(dF3x)  // 7`
+  return ''
+}
+
+var generator = generatorFunction()
+
+function cow () {
+    console.log("Fuck you")
+    var z = generator.next().value;
+    console.log("z is", z);
+    if (z != undefined) G = z
+    else G = '';
+}
+
+  function handleEvent(e) {
+    if (e.keyCode === 59) cow();
+  }
+cow();
+console.log("Fuck you")
 
 </script>
 
 
 
+
+
+
+
+<svelte:window on:keypress={handleEvent} />
 
 <p> Using the modified version of M below, m can handle mixtures of synchronous and asynchronous arguments. idP(a) has no effect if a is a promise. Otherwise, idP transforms a into a promise. To see this in action, click "Restart" (below).</p>
 <pre>{Mcode}</pre>
@@ -221,6 +258,13 @@
 
 <p> Here's the restart code: </p>
 <pre>{restartCode}</pre>
+
+<h2>m = M(3)</h2>
+<h2>{G}</h2>
+
+<br><br><br>
+
+
 
 <br><br><br>
 <br><br><br>

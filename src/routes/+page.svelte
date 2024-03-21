@@ -13,14 +13,13 @@
   dF3x = () => {}; `;
 
   var Mdis = `    function M (x) {
-      return function go (func)`;
-
-  var Mplay = `      {
-        if (func === dF3x) return x;
-        else x = func(x);
-        return go;
-      }`;
-  var Mend = `    }`
+      return function go (func)
+        {
+            if (func === dF3x) return x;
+            else x = func(x);
+            return go;
+        }
+    }`
 
   var MMdisplay =
     "    function M (x) { \
@@ -669,32 +668,140 @@ var functionF = `function F(ar) {
     return temp;
 } `;
 
-// *********************************************************
+ var Fbeginning = `let temp = [];
+temp[0] = [
+ar[4][6]`; // This will become x[0][0] when F returns temp.
+
+var Fend = `temp[5] = [
+    ar[0][6],
+    ar[0][3],
+    ar[0][0],
+    ar[5][3],
+    ar[5][4],
+    ar[5][5],
+    ar[5][6],
+    ar[5][7],
+    ar[5][8], ];
+return temp;
+`;
+
+var F5 = '';   
+var F6 = '';  
+function f66 (x) {F6 = x};
+
+    async function anon () {
+      f5 = "m = M(3)"; }
+    async function anon2 () {
+      m = m(v => v**3)
+      await wait(500)
+      m = m(Cx)
+      await wait(500)
+      m = m(Cx)
+      await wait(500)
+      m = m(Cx)
+      
+      f77("E")
+      await wait(500)
+      m = m(Cy)
+      await wait(500)
+      m = m(Cy)
+      await wait(500)
+      m = m(Cy)
+      await wait(500)
+      m = m(Cy)     
+      
+      f77("S")
+      await wait(500)
+      m = m(Cz)
+      await wait(500)
+      m = m(Cz)
+      await wait(500)
+      m = m(Cz)
+      await wait(500)
+      m = m(Cz)
+      for (let k = 0; k < 12; k+=1){
+          await wait(300)
+          m = m(ob[m(dF3ar).pop()]);
+          console.log(m(dF3x));
+          m(dF3ar).pop();
+          f77(11 - k);
+      }
+        await wait(500)
+        f77("");
+    }
+
+
+
+
+var H = '';
+var I = '';
+var G = '';
+
+function* generatorFunction() {
+  yield `m(dF3x) // 3 (as expected from the definition of M)`
+  yield "m(v=>v**3) . . . causing 3 => 3**3 = 27"
+  yield "m(dF3x) // 27 (as expected)"
+  yield "m(v=>v*2)(v=>v-12) evaluates from left to right; i.e., (2 * 27) - 12."
+  yield `m(dF3x)  // 42`
+  yield `m(v=>v+7)(Math.sqrt)(dF3x)  // x in the m-M(x) closure is now sqrt(42 + 7) = 7`
+  yield `m(v = v * 6) // Back to 42`
+  yield `m(dF3x)  // 42, as expected`
+  yield H = '';
+  yield I = '';
+  yield ``
+  generator = generatorFunction();
+}
+
+var generator = generatorFunction()
+
+function cow () {
+    I = "m = M(3) defines m and an m-M(x) closure holding the number 3"
+    var z = generator.next().value;
+    if (z != undefined) G = z
+    else {
+      I = '';
+      generatorFunction();
+    }
+    return generator;
+}
+
+  function handleEvent(e) {
+    if (e.keyCode === 59) cow();
+  }
+
+  var x;
+  var x3 = `    const dF3x = () => {}`
+
+//  *********************************************************
 // *********************************************************
 // *********************************************************
 </script>
 
 
+<svelte:window on:keypress={handleEvent} />
 
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
   <h1 style="text-align: center; color: #f5ee9f">Recursive Closures</h1>
   
-  <h3 style="text-indent:3% ">"M" returns the recursive function "go", making "m", in the m-M(x) closure defined by m = M(x), likewise recursive. "x" can be any value. "func" is a function that operates on "x", unless it is "dF3x", a flag that serves only to prompt the return of x, and is never called. </h3>
-
-  <pre class="dis">{Mdis}</pre>
-  <pre class="play">{Mplay}</pre>
-  <pre class="dis">{Mend}</pre>
-
-<span> &nbsp;&nbsp;&nbsp; Anonymous closures can perform computations without leaving behind anything that persists in memory.</span> <br>
-<span style = "color: #f5ee9f"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x)  // 10</span><br> 
-<br><br>
-<span>  &nbsp;&nbsp;&nbsp; When the closure is named, it remains at least as long as a browser tab remains open; longer with persistent storage.</span>
+  <p style="text-indent:3% ">"M" returns the recursive function "go". "m-M(x) closures" refers to closure created by defining "m" as the recursive function return by "M" when "m = M(x)" runs. "M" is defined below, "x" can be any JavaScript value, and "func" is either dF3x or a function that operates on x.  </p>
+  <div style="<color:#880000; font-size:32">
+  <pre>{x3}</pre>
+  <pre>{Mdis}</pre>
+  <pre>{I}</pre>
+  <pre>{H}</pre>
+  <pre>{G}</pre>
+  </div>
+<span> &nbsp;&nbsp;&nbsp; Anonymous closures can perform computations without leaving persistent closures in memory. The results might be assigned to variables, placed in persistent objects, memorialized in log files, and so forth; but the closures that produced those results are subject to immediate garbage collection. Here an example: </span><span style = "color: #f5ee9f; font-size:28px"> console.log( M( 3 )( v=>v**3 )( v=>v*4 )( v=>v-8 )( Math.sqrt )( dF3x ) ) // 42 </span><br> 
+<br>
+<span>  &nbsp;&nbsp;&nbsp; The variable "m" (above) is a number. The closure that performed the computation is gone, out of reach and subject to garbage collection. But, when the closure is named, it remains at least as long as a browser tab remains open; longer with persistent storage.</span>
 <br>
 
 <span style = "color: #f5ee9f">  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; m = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)</span><br> 
-<span style = "color: #f5ee9f"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  console.log(m(dF3x)) &nbsp;&nbsp;  // 10 </span> <br>
-<span style = "color: #f5ee9f"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; m(v=>v+4)(v=>v*3) &nbsp;&nbsp;   // &nbsp; (10 + 4) * 3</span> <br>
-<span style = "color: #f5ee9f"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  console.log(m(dF3x)) &nbsp;&nbsp;  // 42 </span>
+<span style = "color: #f5ee9f; font-size:28px"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; console.log ( "m is", m ) &nbsp;&nbsp;&nbsp;&nbsp; // m is function go(func)
+</span><br> 
+<span style = "color: #f5ee9f; font-size:28px"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  console.log(m(dF3x)) &nbsp;&nbsp;  // 10 </span>  <br>
+<span style = "color: #f5ee9f; font-size:28px"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; m(v=>v+4)(v=>v*3) &nbsp;&nbsp;   // &nbsp; </span> <br>
+<span style = "color: #f5ee9f; font-size:28px"> &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  console.log(m(dF3x)) &nbsp;&nbsp;  // 42  </span>
 
 <p>  &nbsp;&nbsp;&nbsp; For more examples, and to see m-M(x) closures handle asynchronous functions, go to <a href="./async5#yes">Async</a>.</p>
 
@@ -714,18 +821,17 @@ var functionF = `function F(ar) {
                 alt="Cube after F"                                              
                 style="width:150px;height:155px;"
             />
-<p> When a user presses the "F" key, m(F) runs, causing x => F(x). The return value of F(x) when x is in its starting configuration is shown above. Here's the definition of F: </p>
+<p> When a user presses the "F" key, m(F) runs, causing x => F(x). The return value of F(x) when x is in its starting configuration is shown above. Here's the definition of F:
 
 <pre>{functionF}</pre>
-<p> F populates a temporary array "temp" with values from x, then returns temp, making it the updated value of x. The values of the strings F places in temp are not relevant. Everything is done according to locations without regard to whether the strings happen to be "blue", "green", "red", "orange", "yellow", or "white".</p>
+<p> F populates a temporary array "temp" with values taken from locations on x specified by the definition of F. It begins with 
+  <pre>{Fbeginning}</pre> 
+  <p> F ends with:</p>
+  <pre>{Fend}</pre> 
+  <p>R replaces the first three elements of temp[5] with whatever strings happen to be at x[0][6], x[0][3]Then F returns temp, causing it to replace the current value of x. The values of the strings F places in temp are not relevant.   locations without regard to whether the strings happen to be "blue", "green", "red", "orange", "yellow", or "white".
 <p> Looking at x after the transformation (above), we see that the first thing F(x) does is move the string that happens to be at x[4][6] to x[0][0], Near the bottom of F, we see that x[0][0] goes to x[5][2]. Whatever happened to be at x[5][2] ends up at x[1][8].</p>
 <p> x remains an array of six nine-member arrays of strings, maintaining its one-to-one correspondence with the six, nine-cubit sides of the virtual Rubik's cube. None of the functions available to users change the structure of x, just as solving a real Rubik's does not change the number of cubits on each side of the cube.
   
-
-
-
-
-
 
 
 
@@ -756,7 +862,7 @@ h2 {
 span {
     color: rgb(219, 253, 244);
     font-size: 24px;
-    margin: 3%;
+    margin: 0%;
 
 }
 

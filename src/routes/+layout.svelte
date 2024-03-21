@@ -36,11 +36,15 @@ function double (x) {return x + x};
 <nav>
         <a href="./">Home</a>
 
-        <a href="./cube9">Rubik's Cube</a>
+        <a href="./cube">Rubik's Cube</a>
 
-        <a href="./score">Game of Score</a>
+        <a href = "./matrix">Matrix</a>
+        
+        <a href="./pagejs">page.js</a>
 
         <a href="./async5">Async</a>
+        
+        <a href="./score">Game of Score</a>
 
         <!--<a href="./functional">Functional</a>
 
