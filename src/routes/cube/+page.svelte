@@ -3607,109 +3607,8 @@ king.bar4 = [
         ],
     ]; */
     
-    function test2 () {
-        log(compare1())
-        m(U)
-        log(compare1())
-        m(U)
-        log(compare1())
-        m(U)
-        log(compare1())
-        M(U)
-        log(compare2())
-        log(compare3())
-        log(compare4())
-        log(compare5())
-        log(compare6())
-    }
-    
-    async function solveL () {
-        // console.log("compare1()", compare1())
-    if (compare1() === 1) return 1;
-        else m(U); 
-        if (compare1() === 1) return 1;
-        else m(U); 
-        if (compare1() === 1) return 1;
-        else m(U); 
-        if (compare1() === 1) return 1 
-        else {
-            log("Going to compare2");
-            compare2()
-        }
-        
-        // console.log("compare2()", compare2());
-        if (compare2() === 1) return 1;
-        else m(U); 
-        if (compare2()) return 1;
-        else m(U); 
-        if (compare2()) return 1;
-        else m(U); 
-        if (compare2()) return 1;
-        else {
-            log("Going to compare3");
-            compare3()
-        }
-        
-        
-    if (compare3()) return;
-        else m(U); 
-        if (compare3()) return;
-        else m(U); 
-        if (compare3()) return;
-        else m(U); 
-        if (compare3()) return;
-        
-    if (compare4()) return;
-        else m(U); 
-        if (compare4()) return;
-        else m(U); 
-        if (compare4()) return;
-        else m(U); 
-        if (compare4()) return;
-        else m(U); 
-        
-    if (compare5()) return;
-        else m(U); 
-        if (compare5()) return;
-        else m(U); 
-        if (compare5()) return;
-        else m(U); 
-        if (compare5()) return;
-        else m(U); 
-        
-    if (compare6()) return;
-        else m(U); 
-        if (compare6()) return;
-        else m(U); 
-        if (compare6()) return;
-        else m(U); 
-        if (compare6()) return;
-        else m(U); 
-    }
-    
     var B12 = '';
 
-    function check() {
-        console.log(compare(m(dF3x), king.L1));
-        if (compare(m(dF3x), king.L1) === "Different") return "Different"
-        else {king.L1s(); B12 = "Matches king.L1"; return}
-        if (compare(m(dF3x), king.L2) === "Different") return "Different"
-        else {king.L2s(); B12 = "Matches king.L2"; return} 
-        if (compare(m(dF3x), king.L3) === "Different") return "Different"
-        else {king.L3s(); B12 = "Matches king.L3"; return}
-        if (compare(m(dF3x), king.L4) === "Different") return "Different"
-        else {king.L3s(); B12 = "Matches king.L3"; return}
-        if (compare(m(dF3x), king.L5) === "Different") return "Different"
-        else {king.L3s(); B12 = "Matches king.L3"; return}
-        if (compare(m(dF3x), king.L6) === "Different") return "Different"
-        else {king.L3s(); B12 = "Matches king.L3"; return}
-        if  (compare(m(dF3x), king.bar1) === "Different") king.bar1s();
-        else {king.L3s(); B12 = "Matches king.L3"; return}
-        if (compare(m(dF3x), king.bar2) === "Different") king.bar2s()
-        else {king.L3s(); B12 = "Matches king.L3"; return } 
-        return;
-    } 
-   
     function queenL1() {
         m = m(() => king.L1);
     }
@@ -3873,13 +3772,13 @@ king.bar4 = [
 
     function compare7 () {
         nn += 1;
-        console.log("In compare1");
+        console.log("In compare7");
         var ar = [];
         var a = m(dF3x);
         var b = king.bar1
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L1s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.bar1s(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
@@ -3894,62 +3793,62 @@ king.bar4 = [
 
     function compare8 () {
         nn += 1;
-        console.log("In compare2");
+        console.log("In compare8");
         var ar = [];
         var a = m(dF3x);
-        var b = king.L2
+        var b = king.bar2
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {king.L2s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {king.bar2s(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
-            compare2();
+            compare8();
             }
         else {
             nn = 0;
             m(U);
-            compare3();
+            compare9();
         }
     }
 
     function compare9 () {
         nn += 1;
-        console.log("In compare3");
+        console.log("In compare9");
         var ar = [];
         var a = m(dF3x);
-        var b = king.L3
+        var b = king.bar3
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
         if (JSON.stringify(a1) == JSON.stringify(b1)) {
-            king.L3s(); 
+            king.bar3s(); 
             console.log("Success in compare3")
             return 1;
         }
         else if (nn < 4) {
             console.log("In compare3. nn is less than 4", nn);
             m(U);
-            compare3();
+            compare9();
             }
         else {
             nn = 0;
-            compare4();
+            compare10();
         }
     }
 
     function compare10 () {
         nn += 1;
-        console.log("In compare4");
+        console.log("In compare10");
         var ar = [];
         var a = m(dF3x);
-        var b = king.L4
+        var b = king.bar4
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L4s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.bar4s(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
-            compare4();
+            compare10();
         }
     }
 
@@ -4701,9 +4600,8 @@ king.bar4 = [
         <img src={func} alt="Screenshot" style="width:800px;height:600px;" />
 
         <p>
-            Why SvelteKit mangles arrays of func.name but not func.key escapes
-            me. I'm glad that whoever "optimized" SvelteKit this way spared
-            developer-added attributes.
+            I had to add the "key" attribute. Why SvelteKit build mangles func.name but not my added func.key escapes
+            me. I'm glad that whoever "optimized" SvelteKit this way spared developer-added attributes. Of course, I would have preferred to use the built-in "name" attribute, but I won't have time to make a pull request and submit a modified version of build.
         </p>
         <h3>*********************************************************</h3>
         <p>
@@ -4715,52 +4613,67 @@ king.bar4 = [
 
         <pre>{reverseCode}</pre>
 
+        <h3>*********************************************************</h3>
+
+    <p> After solving the first two layers, if you happen to have one of the 24 possible 'L' shapes, or one the 16 possible bar shapes on top, one of the buttons below will show you how to finish solving the cube. If you have an 'L' shape, "Solve L" will see if your configuation matches king_1. To see what it is, click the king_1 button (below). If king_1 and your configuration don't match, it will call U(), turning your cube's top 90 degrees, and try again. If there is still no match after trying two more 90 degree turns, it will move on to king_2. It keeps going until it finds a match and shows the solution. If it gets all the way to king_6 and the first three tries fail, it's a sure bet that the 24th attempt will succeed. </p>
+    <p> You can test this by clicking "king_6", the pressing 'U' three times. If pressing F12 makes a console available, you can see the log of 23 test failurs and then then, one by one, the moves that complete the solution.</p>
+
+
+
         <span id="test"></span>
         <p style = "text-align: right">{m(dF3ar)}</p>
-    <br><br><br>
     </div>
-    <br><br><br><br><br><br>
+
 </section>
-<h2>{B12}</h2>
-<button on:click={console.log(m(dF3x))}>log x</button>
-<button on:click={console.log(m(dF3ar))}>log ar</button>
-<button on:click={king.L1s}>king.L1s</button>
+<h2 style = "color:bb000; font-size:24px">{B12}</h2>
+<button on:click={compare1}>Solve L</button>
+<button on:click={compare7}>Solve Bar</button>
+<br /><br />
+<br /><br />
+
+
+<!-- <button on:click={king.L1s}>king.L1s</button>
 <button on:click={king.L2s}>king.L2s</button>
 <button on:click={king.L3s}>king.L3s</button>
 <button on:click={king.L4s}>king.L4s</button>
 <button on:click={king.L5s}>king.L5s</button>
 <button on:click={king.L6s}>king.L6s</button>
+<br /><br />
 
 <button on:click={king.bar1s}>king.bar1s</button>
 <button on:click={king.bar2s}>king.bar2s</button>
 <button on:click={king.bar3s}>king.bar3s</button>
 <button on:click={king.bar4s}>king.bar4s</button>
-<br /><br />
+<br /><br /> -->
 <button on:click={queenL1}>king.L1</button>
 <button on:click={queenL2}>king.L2</button>
 <button on:click={queenL3}>king.L3</button>
 <button on:click={queenL4}>king.L4</button>
 <button on:click={queenL5}>king.L5</button>
 <button on:click={queenL6}>king.L6</button>
+<br /><br />
 
 <button on:click={queenbar1}>king.bar1</button>
 <button on:click={queenbar2}>king.bar2</button>
 <button on:click={queenbar3}>king.bar3</button>
 <button on:click={queenbar4}>king.bar4</button>
-<br /><br />
+<br /><br /> 
+<button on:click={console.log(m(dF3x))}>log x</button>
+<button on:click={console.log(m(dF3ar))}>log ar</button>
 
-<button on:click={test2}>test2</button>
-<button on:click={solveL}>solveL</button>
-<button on:click={check}>check</button>
-<button on:click={compare1}>compare1</button>
-<button on:click={compare2}>compare2</button>
+<!--<button on:click={compare2}>compare2</button>
 <button on:click={compare3}>compare3</button>
 <button on:click={compare4}>compare4</button>
 <button on:click={compare5}>compare5</button>
 <button on:click={compare6}>compare6</button>
-<a href = "$lib/page.js">page.js</a>
+<br /><br />   -->
 
-        <h2>The elapsed time is {elapsedTime} milliseconds.</h2>
+<!--<button on:click={compare8}>compare8</button>
+<button on:click={compare9}>compare9</button>
+<button on:click={compare10}>compare10</button> -->
+
+        <h3>*********************************************************</h3>
+        <h2 style = "text-align:left">400,000 rotations (10,000 scrambles) in {elapsedTime} milliseconds.</h2>
 
         <button on:click={et2}>10,000 Scrambles</button>
         <br />
