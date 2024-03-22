@@ -1,0 +1,1 @@
+{"version":3,"file":"clickDemo-sft4wEEt.js","sources":["../../../.svelte-kit/adapter-node/chunks/clickDemo.js"],"sourcesContent":["const clickDemo = \"/_app/immutable/assets/clickDemo.YknCW9Gq.png\";\nexport {\n  clickDemo as c\n};\n"],"names":[],"mappings":"AAAK,MAAC,SAAS,GAAG;;;;"}

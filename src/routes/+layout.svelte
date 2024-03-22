@@ -38,10 +38,6 @@ function double (x) {return x + x};
 
         <a href="./cube">Rubik's Cube</a>
 
-        <a href = "./matrix">Matrix</a>
-        
-        <a href="./pagejs">page.js</a>
-
         <a href="./async5">Async</a>
         
         <a href="./score">Game of Score</a>
