@@ -25,8 +25,7 @@
         return new Promise(r => setTimeout(r, ms));
     }
     
-    
-    var Mcode = `    var dF3x = () => {}; 
+        var Mcode = `    var dF3x = () => {}; 
 
     function M (x) {
         return function go (func){
@@ -36,16 +35,7 @@
         };
     };
     
-    const m = M(3); 
-    
-    async function idP (x) {
-      await wait(5)
-      return x;
-    } ;
-
-    function wait(ms) {
-        return new Promise(r => setTimeout(r, ms));
-    }`;
+    const m = M(3); `;
     
     var A;
 
@@ -227,12 +217,6 @@ cow();
 console.log("Fuck you")
 
 </script>
-
-
-
-
-
-
 
 <svelte:window on:keypress={handleEvent} />
 

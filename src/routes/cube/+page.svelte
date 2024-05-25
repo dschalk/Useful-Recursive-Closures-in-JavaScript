@@ -5,6 +5,26 @@
     import red from "$lib/red.png";
     import green from "$lib/green.png";
     import func from "$lib/function.png";
+    import F12 from "$lib/transformations/F12.png";
+    import OLL47 from "$lib/OLL47.png";
+    import L47 from "$lib/OLL47.png";
+    import OLL48 from "$lib/OLL48.png";
+    import OLL49 from "$lib/OLL49.png";
+    import OLL50 from "$lib/OLL50.png";
+    import OLL53 from "$lib/OLL53.png";
+    import OLL54 from "$lib/OLL54.png";
+    import OLL1 from "$lib/OLL1.png";
+    import OLL2 from "$lib/OLL2.png";
+    import OLL3 from "$lib/OLL3.png";
+    import OLL4 from "$lib/OLL4.png";
+    import OLL17 from "$lib/OLL17.png";
+    import OLL18 from "$lib/OLL18.png";
+    import OLL19 from "$lib/OLL19.png";
+    import OLL20 from "$lib/OLL20.png";
+    import OLL51 from "$lib/OLL51.png";
+    import OLL52 from "$lib/OLL52.png";
+    import OLL55 from "$lib/OLL55.png";
+    import OLL56 from "$lib/OLL56.png";
     // import Image from './Image.svelte'
     var log = console.log;
     var ERROR = "";
@@ -24,6 +44,10 @@
     // import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
     var m;
     var index = 1;
+    var t = 300;
+     
+    console.log("t is", t);
+
     function setIndex() {
         index = 1;
     }
@@ -89,7 +113,7 @@
             if (func === dF3x) return x;
             else if (func === dF3ar) return ar;
             x = func(x);
-            ar.push(func.name);
+            if (func.key) ar.push(func.key);
             console.log("func.key is", func.key);
             return go;
         };
@@ -153,8 +177,6 @@
             "white",
         ],
     ]);
-
-    var mCode = `var m = M([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"], ["green", "green", "green", "green", "green", "green", "green", "green", "green"], ["red", "red", "red", "red", "red", "red", "red", "red", "red"], ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"], ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"], ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]);`;
 
     var cubeStart = [
         [
@@ -320,9 +342,9 @@
         return go;
       };
     }; 
-  let m = M(x)`;
+  let m = m(x)`;
 
-    var Xro = function Xro(ar) {
+    var Xro = function xro(ar) {
         let temp = [];
         temp[0] = [
             ar[0][6],
@@ -425,6 +447,9 @@
         return temp;
     };
 
+    var x = Xro;
+    var xz = Xror;
+
     // var Xror = x => Xro(Xro(Xro(x)));
 
     var Yro = function Yro(ar) {
@@ -489,6 +514,8 @@
         return temp;
     };
 
+    var y = Yro;
+    var yz = Yror
     //  var Yror = x => Yro(Yro(Yro(x)));
 
     var Zro = function Zro(ar) {
@@ -632,6 +659,9 @@
         ];
         return temp;
     };
+
+    var z = Zro;
+    var zz = Zror;
 
     // var Zror = x => Zro(Zro(Zro(x)));
 
@@ -781,6 +811,8 @@
         return temp;
     };
 
+    var G = Cz;
+    var Gz = Czr
     var Cx = function Cx(ar) {
         let temp = [];
 
@@ -1679,6 +1711,7 @@
     return temp;
   }`;
 
+
     var Rz = function Rz(ar) {
         // Verified
         let temp = [];
@@ -1955,10 +1988,19 @@
         return x;
     }
 
+    function Tz(x) {
+        x = m(Rz)(Cx)(dF3x);
+        return x;
+    }
+
     var UfuncCode = `var Ufunc = () => {
     m(U);
     m = m;  // This triggers the DOM update
   };`;
+
+    var generic = () => {
+        m = m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
+    }  
 
     var corners = () => {
         m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
@@ -2015,7 +2057,7 @@
         m(R)(U)(U)(Rz)(Uz)(R)(Uz)(Rz);
         m = m;
     };
-
+            
     var sexy = () => {
         m(R)(U)(Rz)(Uz);
         m = m;
@@ -2198,7 +2240,15 @@
     }
 
     function handleEvent(e) {
-        console.log(e.keyCode);
+        console.log('e.target.id is', e.target.id);
+        console.log("e.target.value is", e.target.value);
+        console.log("typeof e.originalTarget.id is", typeof e.originalTarget.id);
+        if (e.target.id = 'timeID')  {
+            t = e.target.value;
+            console.log('YOURSELF, AND KNOW SOMETHING', t);
+        }
+        
+        else console.log("XXXXXXXXXXXXXXXXXX FUBAR");
         if (e.keyCode === 85) m(Uz);
         else if (e.keyCode === 117) m(U);
         else if (e.keyCode === 97) m(R)(Cxr);
@@ -2216,6 +2266,7 @@
         else if (e.keyCode === 66) m(Bz);
         else if (e.keyCode === 98) m(B);
         else if (e.keyCode === 77) m(Cxr);
+        else if (e.keyCode === 116) m(T);
         else if (e.keyCode === 109) m(Cx);
         else if (e.keyCode === 69) m(Cyr);
         else if (e.keyCode === 101) m(Cy);
@@ -2556,7 +2607,7 @@
     Xror.key = "Xror";
     Yror.key = "Yror";
     Zror.key = "Zror";
-
+    T.key = "T";
     var foo;
 
     function reverse() {
@@ -2690,6 +2741,53 @@ await wait(400);
         f77("");
     }
 
+    var fmovesCode = `async function fmoves (ar, t = 100) { // Pauses for 100 microseconds.
+        m(dF3ar).length = 0;              // Empties ar
+        for (let k = 0; k < ar.length ; k += 1) {
+            await wait(t);
+            m = m(ar[k]);
+        };
+    };`;    
+
+var sides2 = () => fmoves([T,U,Rz,Uz,Tz,F,R,Fz], 0);
+
+var corners = () => fmoves ([Rz,F,Rz,B,B,R,Fz,Rz,B,B,R,R],75);
+var test8 = () => fmoves([
+  Cx,
+  Cx,
+  Uz,
+  Cx,
+  Cx,
+  U,
+  U,
+  Cx,
+  Cx,
+  Uz,
+  Cx,
+  Cx,
+  Rz,
+  Cx,
+  U,
+  R,
+  Cxr,
+  R,
+  Cxr,
+  Uz,
+  R,
+  Cxr,
+  R,
+  Cxr,
+  Uz,
+  R,
+  Cxr,
+  R,
+  Cxr,
+  U,
+  Rz,
+  Cx
+]);
+    
+
     async function all() {
         f77("X");
         await wait(400);
@@ -2728,12 +2826,19 @@ await wait(400);
         await wait(500);
         f77("");
     }
-    var A = () => (m = m(R)(Cxr));
+    var A = () => (m = m(R)(Cxr));  
     var Az = () => (m = m(Rz)(Cx))
     var configArr = [];
     var king = {};
-   // king.L1s = () => (m = m(F)(pause(1500))(R)(pause(1500))(U)(pause(1500))(Rz)(pause(1500))(Uz)(pause(1500))(R)(pause(1500))(U)(pause(1500))(Rz)(pause(1500))(Uz)(pause(1500))(Fz));
-    
+
+   king.Lx1st = () => fmoves([(Cx)(Cx)(U)(Cx)(Cx)(U)(U)(Cx)(Cx)(U)(Cx)(Cx)(U)(F)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(Fz)]);
+
+   var ZZ = () => fmoves([]);
+
+   
+   // king.L1st = () => (m = m(F)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(Fz));
+   king.L1st = () => fmoves([F,R,U,Rz,Uz,R,U,Rz,Uz,Fz]);
+   king.L1L2stst = () => fmoves([Rz,Cx,U,R,Cxr,R,Cxr,Uz,R,Cxr,R,Cxr,Uz,R,Cxr,R,Cxr,U,Rz,Cx])  
     king.L1s = async function () {
         m(dF3ar).length = 0;
         m = m(F)
@@ -2759,16 +2864,12 @@ await wait(400);
     }
 
     var L2a = [(Fz),(Lz),(Uz),(L),(U),(Lz),(Uz),(L),(U),(F)];
-
-    king.L2s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < L2a.length ; k += 1) {
-        await wait(1000)
-        m = m(L2a[k])
-    }
-} 
-
-    var L3a = [(R),(Cxr),(Uz),(R),(Cxr),(R),(Cxr),(U),(R),(Cxr),(R),(Cxr),(U),(R),(Cxr),(R),(Cxr),(Uz),(R),(Cxr)]
+ 
+    king.L2st = () => fmoves([Fz,Lz,Uz,L,U,Lz,Uz,L,U,F]);
+    
+     var L3a = [(R),(Cxr),(Uz),(R),(Cxr),(R),(Cxr),(U),(R),(Cxr),(R),(Cxr),(U),(R),(Cxr),(R),(Cxr),(Uz),(R),(Cxr)]
+    
+    king.L3st = () => fmoves(L3a); 
 
     king.L3s = async function () {
         m(dF3ar).length = 0;
@@ -2778,7 +2879,9 @@ await wait(400);
         }
     } 
 
-     var L4a = [(Rz),(Cx),(U),(R),(Cxr),(R),(Cxr),(Uz),(R),(Cxr),(R),(Cxr),(Uz),(R),(Cxr),(R),(Cxr),(U),(Rz),(Cx)]
+var L4a = [Tz,U,T,T,Uz,T,T,Uz,T,T,U,T,T,T]
+
+    king.L4st = () => fmoves(L4a);
 
     king.L4s = async function () {
         m(dF3ar).length = 0;
@@ -2787,68 +2890,158 @@ await wait(400);
         m = m(L4a[k])
         }
     } 
-
-    var L5a = [(Rz),(Cx),(Uz),(R),(Uz),(Rz),(U),(R),(Uz),(Rz),(U),(U),(R),(Cxr)];
+    var L5a = [Rz,Cx,Uz,R,Uz,Rz,U,R,Uz,Rz,U,U,R,Cxr];
+    king.L5st = () => fmoves(L5a);
     
-    king.L5s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < L5a.length; k += 1) {
-        await wait(1000)
-        m = m(L5a[k]);
-        };
-    } 
-    
-    var L6a = [(R),(Cxr),(U),(Rz),(U),(R),(Uz),(Rz),(U),(R),(U),(U),(Rz),(Cx)];
+    var L6a = [R,Cxr,U,Rz,U,R,Uz,Rz,U,R,U,U,Rz,Cx];
+    king.L6st = () => fmoves(L6a);
 
-    king.L6s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < L6a.length; k += 1) {
-        await wait(1000)
-        m = m(L6a[k])
-        }
-    } 
+    var opposite = () => m = m(Cx)(Cx)(Uz)(Cx)(Cx)(U)(U)(Cx)(Cx)(Uz)(Cx)(Cx)(Yro)
 
+   var ZZ = () => fmoves([]);
 
-    var B1a = [(F),(U),(R),(Uz),(Rz),(U),(R),(Uz),(Rz),(Fz)]
+function f23 (ar) {
+    for (let k = 0; k < ar.length; k += 1)
+    m = m(ar[k]); 
+}
 
-    king.bar1s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < B1a.length; k += 1) {
-        await wait(1000)
-        m = m(B1a[k])
-        }
-    } 
+    king.L1x = [
+  [
+    "green",
+    "blue",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "orange",
+    "green",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "blue",
+    "yellow",
+    "blue",
+    "red",
+    "yellow",
+    "yellow",
+    "red",
+    "orange",
+    "orange"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
 
-    var B2a = [(F),(R),(U),(Rz),(Uz),(R),(Fz),(R),(Cxr),(U),(Rz),(Uz),(Rz),(Cx)]
-    
-    king.bar2s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < B2a.length; k += 1) {
-        await wait(1000)
-        m = m(B2a[k])
-        }
-    } 
-
-    var B3a = [(R),(U),(Rz),(U),(R),(Uz),(B),(Uz),(Bz),(Rz)]
-
-    king.bar3s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < B3a.length; k += 1) {
-        await wait(1000)
-        m = m(B3a[k])
-        }
-    } 
-    var B4a = [(R),(U),(U),(R),(R),(Uz),(R),(Uz),(Rz),(U),(U),(F),(R),(Fz)]
-
-// R U2 R2 U' R U' R' U2 F R F'
-
-    king.bar4s = async function () {
-        m(dF3ar).length = 0;
-        for (let k = 0; k < B4a.length; k += 1) {
-        await wait(1000)
-        m = m(B4a[k])
-        }
-    } 
+    king.L0 = [
+  [
+    "orange",
+    "yellow",
+    "red",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "red",
+    "red",
+    "orange",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "yellow",
+    "green",
+    "yellow",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "green",
+    "yellow",
+    "blue",
+    "yellow",
+    "yellow",
+    "orange",
+    "green",
+    "blue",
+    "blue"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
 
     king.L6 = [
         [
@@ -3154,7 +3347,7 @@ await wait(400);
     "white"
   ]
 ]
-
+/*
     king.bar1 = [
         [
             "yellow",
@@ -3212,7 +3405,77 @@ await wait(400);
             "white",
             "white",
         ],
-    ];
+    ];  */
+
+king.bar1 = [
+  [
+    "yellow",
+    "red",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "red",
+    "green",
+    "orange",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "blue",
+    "yellow",
+    "yellow",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "blue",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "green",
+    "orange",
+    "red",
+    "yellow",
+    "yellow",
+    "yellow",
+    "green",
+    "blue",
+    "orange"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
+
 
     king.bar3 = [
   [
@@ -3609,53 +3872,59 @@ king.bar4 = [
     
     var B12 = '';
 
+    function queenL1x() {
+        m = M(king.L1x);
+    } 
+
     function queenL1() {
-        m = m(() => king.L1);
+        m = M(king.L1);
     }
     function queenL2() {
-        m = m(() => king.L2);
+        m = M(king.L2);
     }
     function queenL3() {
-        m = m(() => king.L3);
+        m = M(king.L3);
     }
     function queenL4() {
-        m = m(() => king.L4);
+        m = M(king.L4);
     }
     function queenL5() {
-        m = m(() => king.L5);
+        m = M(king.L5);
     }
     function queenL6() {
-        m = m(() => king.L6);
+        m = M(king.L6);
     }
     function queenbar1() {
-        m = m(() => king.bar1);
+        m = M(king.bar1);
     }
     function queenbar2() {
-        m = m(() => king.bar2);
+        m = M(king.bar2);
     }
-
+    
     function queenbar3() {
-        m = m(() => king.bar3);
+        m = M(king.bar3);
     }
 
     function queenbar4() {
-        m = m(() => king.bar4);
+        m = M(king.bar4);
     }
 
     var nn = 0;
 
-    function compare1 () {
-        nn += 1;
-        console.log("In compare1");
+    function compare1x () {
+        nn = nn + 1;
+        console.log("In compare1. nn is now", nn);
         var ar = [];
         var a = m(dF3x);
-        var b = king.L1
+        var b = king.L1x
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L1s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.Lx1st(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
+            nn = nn;
             m(U);
+            B12 = "In compare1"
             compare1();
             }
         else {
@@ -3665,17 +3934,50 @@ king.bar4 = [
         }
     }
 
+    function compare1 () {
+        B12 = "In compare2"
+        setTimeout(() => B12 = '',3000);
+        nn = nn + 1;
+        console.log("In compare1. nn is now", nn);
+        var ar = [];
+        var a = m(dF3x);
+        var b = king.L1
+        var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
+        var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {
+            nn = 0; 
+            king.L1st();
+            console.log("nn is", nn);
+            return 1
+        }
+        else if (nn < 4) {
+            nn = nn;
+            m(U);
+            compare1();
+            }   
+        else {
+            nn = 0;
+            m(U);
+            compare2();
+        }
+    }
+
     function compare2 () {
-        nn += 1;
+        setTimeout(() => B12 = '',3000);
+        nn += 1; 
+        B12 = "In compare1"
         console.log("In compare2");
         var ar = [];
         var a = m(dF3x);
         var b = king.L2
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {king.L2s(); return 1} 
-        console.log("nn is", nn);
-        if (nn < 4) {
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {
+            king.L2st(); 
+            console.log("nn is", nn)
+            return 1
+        }
+        else if (nn < 4) {
             m(U);
             compare2();
             }
@@ -3687,6 +3989,8 @@ king.bar4 = [
     }
 
     function compare3 () {
+        B12 = "In compare3"
+        setTimeout(() => B12 = '',3000);
         nn += 1;
         console.log("In compare3");
         var ar = [];
@@ -3695,7 +3999,7 @@ king.bar4 = [
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
         if (JSON.stringify(a1) == JSON.stringify(b1)) {
-            king.L3s(); 
+            king.L3st(); 
             console.log("Success in compare3")
             return 1;
         }
@@ -3706,11 +4010,14 @@ king.bar4 = [
             }
         else {
             nn = 0;
+            M(U);
             compare4();
         }
     }
 
     function compare4 () {
+        B12 = "In compare4"
+        setTimeout(() => B12 = '',3000);
         nn += 1;
         console.log("In compare4");
         var ar = [];
@@ -3718,7 +4025,7 @@ king.bar4 = [
         var b = king.L4
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L4s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L4st(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
@@ -3733,13 +4040,15 @@ king.bar4 = [
 
     function compare5 () {
         nn += 1;
+        B12 = "In compare5"
+        setTimeout(() => B12 = '',3000);
         console.log("In compare5");
         var ar = [];
         var a = m(dF3x);
         var b = king.L5
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L5s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L5st(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
@@ -3753,6 +4062,7 @@ king.bar4 = [
     }
 
     function compare6 () {
+        B12 = "In compare6"
         nn += 1;
         console.log("In compare6");
         var ar = [];
@@ -3760,17 +4070,36 @@ king.bar4 = [
         var b = king.L6
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L6s(); return 1} 
-        console.log("nn is", nn);
-        if (nn < 4) {
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.L6st(); return 1} 
+        else if (nn < 4) {
             m(U);
             compare6();
+            }
+        else {
+            nn = 0;
+            m(U);
+            compare7();
         }
     }
 
+    /*    if (nn < 4) {
+            m(U);
+            console.log("In compare6. nn is", nn);
+            compare6();
+        }        var a = m(dF3x);
+        var b = king.bar4
+        var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
+        var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.bar4st(); return 1} 
+        console.log("nn is", nn);
+        else {console.log("FAIL nn is", nn); B12 = "FAIL"};
+    }
+    */
 
 
     function compare7 () {
+        B12 = "In compare7"
+
         nn += 1;
         console.log("In compare7");
         var ar = [];
@@ -3778,7 +4107,12 @@ king.bar4 = [
         var b = king.bar1
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.bar1s(); return 1} 
+        console.log("In compare7. a1 and b1 are", a1, b1);
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {
+            nn = 0; 
+            fmoves([F,U,R,Uz,Rz,U,R,Uz,Rz,Fz])    
+            return 1;
+        } 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
@@ -3792,6 +4126,7 @@ king.bar4 = [
     }
 
     function compare8 () {
+        B12 = "In compare8"
         nn += 1;
         console.log("In compare8");
         var ar = [];
@@ -3799,58 +4134,490 @@ king.bar4 = [
         var b = king.bar2
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {king.bar2s(); return 1} 
-        console.log("nn is", nn);
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; fOLL52(); return 1} 
+        console.log("nn is", nn);+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         if (nn < 4) {
             m(U);
             compare8();
             }
         else {
             nn = 0;
-            m(U);
+            m(U);        
             compare9();
         }
     }
+var obLL55 = [
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "blue",
+    "green",
+    "blue",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "red",
+    "red",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "orange",
+    "yellow",
+    "red",
+    "orange",
+    "yellow",
+    "blue",
+    "green",
+    "yellow",
+    "green"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
 
     function compare9 () {
+        B12 = "In compare9"
         nn += 1;
         console.log("In compare9");
         var ar = [];
         var a = m(dF3x);
-        var b = king.bar3
+        var b = obLL55 //king.bar3
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {
-            king.bar3s(); 
-            console.log("Success in compare3")
-            return 1;
-        }
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; fOLL55(); return 1} 
         else if (nn < 4) {
-            console.log("In compare3. nn is less than 4", nn);
             m(U);
-            compare9();
-            }
+            compare9();        var a = m(dF3x);
+        }
         else {
             nn = 0;
-            compare10();
+            M(U);
+            compare10()
         }
     }
 
+    var obLL56 = [
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "blue",
+    "yellow",
+    "blue",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "red",
+    "red",
+    "yellow",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "yellow",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "red",
+    "yellow",
+    "green",
+    "green",
+    "yellow",
+    "blue",
+    "orange",
+    "yellow",
+    "green"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
+
     function compare10 () {
+        B12 = "In compare10"
         nn += 1;
         console.log("In compare10");
         var ar = [];
         var a = m(dF3x);
-        var b = king.bar4
+        var b = obLL56
         var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
         var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
-        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; king.bar4s(); return 1} 
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {nn = 0; fOLL56(); return 1} 
         console.log("nn is", nn);
         if (nn < 4) {
             m(U);
-            compare10();
+            compare10()}
+        else {
+            nn = 0;
+            M(U);
+          //  compare11
         }
     }
+
+    /*
+    count = 0;
+    function comp (b) {
+        var a = m(dF3x);
+        var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
+        var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {
+            count = 0; king.bar4st(); return 1} 
+        console.log("nn is", nn);
+        
+    }
+
+    */
+
+      //  console.log("king is", king);
+    console.log("m(dF3x) is", m(dF3x))
+    wait(1400);
+    m = M(cubeStart);
+
+    function fOLL47 () {
+        fmoves([Fz, Lz, Uz, L, U, Lz, Uz, L, U, F ])    
+    }
+
+    function fOLL48 () {
+        fmoves([F, R, U, Rz, Uz, R, U, Rz, Uz, Fz ])    
+    }
+
+    function fOLL49 () {
+        fmoves([T, Uz, T, T, U, T, T, U, T, T, Uz, T])    
+    }
+
+    function fOLL50 () {    
+        fmoves([Tz, U, T, T, Uz, T, T, Uz, T, T, U, Tz])    
+    }
+
+    function fOLL53 () {
+        fmoves([Tz, Uz, R, Uz, Rz, U, R, Uz, Rz, U, U, T ])    
+    }      
+                 
+    function fOLL54 () {
+        fmoves([T, U, Rz, U, R, Uz, Rz, U, R, U, U, Tz])    
+    }       //    Yro,R,U,U,Rz,Rz,F,R,Fz,U,U
+
+    function fOLL1 () { 
+        fmoves([R, U, U, Rz, Rz, F, R, Fz, U, U, Rz, F, R, Fz])   
+    }
+    function LL1 () {  
+        Start();
+        fmoves([ F, Rz, Fz, R, Uz, Uz, F, Rz, Fz, Rz, Rz, Uz, Uz, Rz])   
+    }
+
+    function fOLL2 () {  
+        fmoves([F, R, U, Rz, Uz, Fz, F, Cz, R, U, Rz, Uz, Fz, Czr ])    
+    }   
+   function LL2 () {  
+        Start(); 
+        fmoves([F, Cz, U, R, Uz, Rz, Fz, Czr, F, U, R, Uz, Rz, Fz])    
+    }   
+
+    function fOLL3 () { 
+        fmoves([F, Cz, R, U, Rz, Uz, Fz, Czr, Uz, F, R, U, Rz, Uz, Fz ])    
+    } 
+   function LL3 () {   
+        Start();
+        fmoves([F, U, R, Uz, Rz, Fz, U, F, Cz, U, R, Uz, Rz, Fz, Czr ])    
+    }   
+// 
+
+    function fOLL4 () {
+        fmoves([F, Cz, R, U, Rz, Uz, Fz, Czr, U, F, R, U, Rz, Uz, Fz])    
+    }
+   function LL4 () {   
+        Start();
+        fmoves([F, U, R, Uz, Rz, Fz, Uz, F, Cz, U, R, Uz, Rz, Fz, Czr])    
+    }   
+
+    function fOLL17 () {
+        fmoves([R, U, Rz, U, Rz, F, R, Fz, U, U, Rz, F, R, Fz])    
+    }
+   function LL17 () {   
+        Start();
+        fmoves([F, Rz, Fz, R, U, U, F, Rz, Fz, R, Uz, R, Uz, Rz])    
+    }   
+
+
+    function fOLL18 () { 
+        fmoves([T, U, Rz, U, R, Uz, Uz, T, T, Uz, R, Uz, Rz, U, U, T])    
+    }     
+   function LL18 () {   
+        Start(); 
+        fmoves([Tz, U, U, R, U, Rz, U, Tz, Tz, U, U, Rz, Uz, R, Uz, Tz])    
+    }     
+    function fOLL19 () {
+        console.log("Fuck") 
+        fmoves([Cx, U, R, U, Rz, Uz, Cxr, Rz, F, R, Fz ])    
+    }
+   function LL19 () {   
+        Start();
+        fmoves([F, Rz, Fz, R, Cx, U, R, Uz, Rz, Uz, Cxr])    
+    }   
+
+    function fOLL20 () {
+        fmoves([ Cx, U, R, U, Rz, Uz, Cx, Cx, U, R, Uz, Tz ])    
+    }
+    function LL20 () {   
+        Start();
+        fmoves([T, U, Rz, Uz, Cxr, Cxr, U, R, Uz, Rz, Uz, Cxr])    
+    }   
+
+// bar codes
+
+    function fOLL51 () {
+        fmoves([F,U,R,Uz,Rz,U,R,Uz,Rz,Fz])    
+    }
+    function LL51 () {   
+        Start();
+        fmoves([F, R, U, Rz, Uz, R, U, Rz, Uz, Fz])    
+    }   
+   
+    function fOLL52 () {
+        fmoves([F,R,U,Rz,Uz,R,Fz,R,Cxr,U,Rz,Uz,Rz,Cx])    
+    }
+    function LL52() {   
+        Start();
+        fmoves([Cxr,R,U,R,Uz,Cx,Rz,F,Rz,U,R,Uz,Rz,Fz])    
+    }   
+   
+
+    var B2a = [F,R,U,Rz,Uz,R,Fz,R,Cxr,U,Rz,Uz,Rz,Cx]
+    king.bar2st = () => fmoves(B2a);
+
+
+    var B3a = [R,U,Rz,U,R,Uz,B,Uz,Bz,Rz]
+    king.bar3st = () => fmoves(B3a);
+
+    var B4a = [R,U,U,R,R,Uz,R,Uz,Rz,U,U,F,R,Fz]
+    king.bar4st = () => fmoves(B4a);
+
+
+
+    function fOLL56 () {
+        fmoves([R,U,Rz,U,R,Uz,B,Uz,Bz,Rz])    
+    }
+    function LL56 () {   
+        Start();
+        fmoves([R,B,U,Bz,U,Rz,Uz,R,Uz,Rz])    
+    }   
+
+    function fOLL55 () {
+        fmoves([R, U, U, R, R, Uz, R, Uz, Rz, U, U, F, R, Fz]);    
+        log("fmoves([R, U, U, R, R, Uz, R, Uz, Rz, U, U, F, R, Fz]);")    
+    }
+    function LL55 () {   
+        Start();
+        fmoves([F, Rz, Fz, Uz, Uz, R, U, Rz, U, Rz, Rz, Uz, Uz, Rz])    
+    }   
+
+
+
+
+    function fOLL9 () {
+        fmoves([])    
+    }
+   function LL9 () {   
+        Start();
+        fmoves([])    
+    }   
+
+
+    function fOLL10 () {
+        fmoves([])    
+    }
+
+    function fOLL11 () {
+        fmoves([])    
+    }
+
+    function fOLL12 () {
+        fmoves([])    
+    }
+
+    function fOLL13 () {
+        fmoves([]) 
+    }
+
+    function fOLL14 () {
+        fmoves([]) 
+    }
+
+    function fOLL15 () {
+        fmoves([])    
+    }
+    
+    function fOLL21 () {
+        fmoves([])    
+    }
+
+    function fOLL22 () {
+        fmoves([])    
+    }
+
+    function fOLL23 () {
+        fmoves([])    
+    }
+
+    function fOLL24 () {
+        fmoves([])    
+    }
+
+    function fOLL25 () {
+        fmoves([])    
+    }
+    
+    function fOLL27 () {
+        fmoves([])    
+    }
+       
+
+    function fOLL30 () {
+        fmoves([])    
+    }
+
+    function fOLL33  () {
+        fmoves([])    
+    }
+
+    function fOLL34 () {
+        fmoves([])    
+    }
+
+    function fOLL37 () {
+        fmoves([])    
+    }
+    
+   // ********************************************************************88
+    function LL47 () {
+        Start();
+        fmoves([Fz,Uz,Lz,U,L,Uz,Lz,U,L,F])
+    } 
+
+    function LL48 () {
+        Start();
+        fmoves([F, U, R, Uz, Rz, U, R, Uz, Rz, Fz])
+    }
+
+    function LL49 () {
+        Start();
+        fmoves([Tz, U, Tz, Tz, Uz, Tz, Tz, Uz, Tz, Tz, U, Tz])
+    }
+
+    function LL50 () {
+        Start();
+        fmoves([T, Uz, T, T, U, T, T, U, T, T, Uz, T])
+    }
+
+    function LL53 () {
+        Start();
+        fmoves([Tz, Uz, Uz, R, U, Rz, Uz, R, U, Rz, U, T])
+    }
+
+    function LL54 () {
+        Start();
+        fmoves([T, Uz, Uz, Rz, Uz, R, U, Rz, Uz, R, Uz, Tz])
+    }
+
+ // log('fOLL55()', fOLL55()); 
+ // log('fOLL56()', fOLL56()); 
+
+
+var m3 = M();
+
+m3 = m3(() => m(dF3x))
+console.log("HELLO")
+console.log("m3(dF3x) === m(dF3x)", m3(dF3x) === m(dF3x))
+m3(R)
+console.log("m3(dF3x) === m(dF3x)", m3(dF3x) === m(dF3x))
+m(R);
+console.log("m3(dF3x)[4] === m(dF3x)[4]", m3(dF3x)[4] === m(dF3x)[4])   // false
+console.log("m3(dF3x)[4][0] === m(dF3x)[4][0]", m3(dF3x)[4][0] === m(dF3x)[4][0])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][1] === m(dF3x)[4][1])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][2] === m(dF3x)[4][2])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][3] === m(dF3x)[4][3])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][4] === m(dF3x)[4][4])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][5] === m(dF3x)[4][5])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][6] === m(dF3x)[4][6])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][7] === m(dF3x)[4][7])   // true
+console.log("m3(dF3x)[4][8] === m(dF3x)[4][8]", m3(dF3x)[4][8] === m(dF3x)[4][8])   // true
+
+m(Rz)
+console.log(m(dF3x))
+console.log(m3(dF3x))
+
 
 
 
@@ -3858,11 +4625,368 @@ king.bar4 = [
     // ***********************************************************
     // ***********************************************************
     
+    var LX1 = [
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "green",
+    "yellow",
+    "green",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "orange",
+    "yellow",
+    "red",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "red",
+    "green",
+    "orange",
+    "red",
+    "yellow",
+    "orange",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+]
+
+    var zz = 0;
+
+    function compare (b, f) {
+        zz += 1;
+        var a = m(dF3x);
+        var a1 = a[0][0]+a[0][1]+a[0][2]+a[1][0]+a[1][1]+a[1][2]+a[2][0]+a[2][1]+a[2][2]
+        var b1 = b[0][0]+b[0][1]+b[0][2]+b[1][0]+b[1][1]+b[1][2]+b[2][0]+b[2][1]+b[2][2]
+        if (JSON.stringify(a1) == JSON.stringify(b1)) {
+            nn = 0; 
+            f(); 
+            console.log("nn is", nn);
+            return 1
+        } 
+        else if (zz < 4) {
+            m(U);
+            compare();
+            }
+        else {
+            zz = 0;
+            m(U);
+            return 0;
+        }
+    }
+
+    function fastmoves (ar) { 
+        m(dF3ar).length = 0;            
+        for (let k = 0; k < ar.length ; k += 1) {
+            m = m(ar[k]);
+        }
+    };
+
+    function reversemoves (ar) { 
+        m(dF3ar).length = 0;            
+        for (let k = ar.length - 1; k >= 0; k -= 1) {
+            m = m(ar[k]);
+        }
+    };
+
+    async function fmovesR (ar) { // Pauses for 100 microseconds.
+        m(dF3ar).length = 0;              // Empties ar
+        var len = ar.length - 1;
+        for (let k = len; k > -1; k -= 1) {
+            await wait(t)
+            m = m(ar[k]);
+        }
+    };
+
+
+
+var P1z = [U, R, Uz, Rz, F, R, Uz, Rz, U, R, U, Rz, Fz]
+var sz = [F, R, U, Rz, Uz, Fz];
+
+var tio = P1;
+
+    async function fmoves (ar) { 
+        m(dF3ar).length = 0;              // Empties ar
+        for (let k = 0; k < ar.length ; k += 1) {
+            await wait(t)
+            m = m(ar[k]);
+        }
+    };
+
+    async function fmo (ar) { 
+        m(dF3ar).length = 0;              // Empties ar
+        for (let k = 0; k < ar.length ; k += 1) {
+            await wait(600)
+            m = m(ar[k]);
+        }
+    };
+
+// fmoves([R,U]);
+
+// fmo([R,U])
+// goback ();
+
+
+async function goback () { if (m(dF3ar).length > 0) 
+    {
+    reverse()
+    await wait(t);
+    console.log(m(dF3ar));
+    goback();
+    }
+    else return;
+};
+
+var algs;
+async function backforth () {
+    console.log("backforth JUST GOT CALLED. <s><s><s><s><s><s><s><s> JUST GOT CALLED!")
+    let end = algs.pop();
+    console.log("end is", end);
+    await fmoves(end)
+    console.log("m(dF3ar).length)", m(dF3ar).length)
+    if (m(dF3x)[1][0] === "green" &&  m(dF3x)[1][1] === "green" && m(dF3x)[1][2] === "green" && m(dF3x)[1][3] === "green" && m(dF3x)[0][0] === "blue" &&  m(dF3x)[0][1] === "blue" && m(dF3x)[0][2] === "blue" && m(dF3x)[0][3] === "red" && m(dF3x)[2][0] === "red" &&  m(dF3x)[2][1] === "red" && m(dF3x)[2][2] === "red" && m(dF3x)[3][0] === "orange" &&  m(dF3x)[3][1] === "orange" &&  m(dF3x)[3][2] === "orange" && m(dF3x)[3][3] === "orange") {return}   
+    else {
+        clone.pop();
+        goback();
+        if (clone.length > 0) backforth();
+    }
+}
+    
+// backforth(P1);
+
+// reversemoves(PI)
+
+
+algs = [ [Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R],
+ [x,z,R,Uz,Rz,D,R,U,Rz,Dz,R,U,Rz,D,R,Uz,Rz,Dz],
+ [M,M,U,M,M,U,U,M,M,U,M,M],
+ [U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R, U,U,Rz],
+ [R,U,Rz,Uz,Rz,F,R,R,Uz,Rz,Uz,R,U,Rz,Fz],
+ [F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz],
+ [R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,R,Uz,Rz,Uz],
+ [R,Uz,R,U,R,U,R,Uz,Rz,Uz,R,R],
+ [R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz],
+ [R,U,Rz,Uz,R,U,Rz,Uz,R,Uz,Rz,U,R,U,R,R,Uz,Rz],
+ [ U,U,Rz,Uz,R,R,U,Rz,U,R, U,U,R,R,Uz],
+ [R, U,U,Rz,Uz,R,Uz,Rz],
+ [R,U,Rz,U,R,Uz,Rz,Uz,Rz, U,U,R,U,Rz,U,R],
+ [Rz, U,U,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz,U,R,Uz,Rz,R,Cx,U,Rz,U,R,Uz,Rz,U,R,U,U,Rz,Czr],
+ [M,M,U,M, U,U,M,M,M,U,M,M],
+ [F,R,Uz,Rz,Uz,R,U,Rz,Fz],
+ [R,Uz,Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R,R,Uz,Rz],
+ [R,R,Uz,Rz,Uz,R,U,R,U,R,Uz,R],
+ [R,U,Rz, U,U,R,Uz,Rz,U,U,R,U,U,U,Rz],
+ [M,M,M,U,M,M,M,U,M, U,U,M,M,M,U,M,M,M, U,U,M, U,U],
+ [R,R,U,R,U,Rz,Uz,Rz,Uz,U,Rz],
+ [Rz,Uz,Rz,U,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R],
+ [U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R, U,U,Rz],
+ [R,U,Rz,U,R,Uz,Rz,U,R, U,U,Rz],
+ [R,Uz,B,Uz,Bz,R,R, U,U,R,Bz,U,B,Rz],
+ [Fz,U,F,Uz,Fz,U,F,R,U,Rz,Uz,Rz,F,R],
+ [R,U,Rz,U,R,Uz,Rz,Fz,U,F,Uz,Fz,U,F],
+ [F,U,R,Uz,Rz,Fz,Uz,F,R,U,Rz,Uz,Fz],
+ [R,U,Rz,Fz,U,F,R, U,U,Rz,Uz,F,Uz,Fz],
+ // [R,U,Rz,U,R,Uz,Rz,Uz,R,Uz,Rz, U,U,R,U,Rz,N,(89),J,Perm,Rz,U,Lz, U,U,R,Uz,Rz, U,U,L],
+ [R, U,U,Rz,Uz,R, U,U,Lz,U,Rz,Uz,L],
+ [Lz, U,U,L,U,Lz, U,U,R,Uz,L,U,Rz],
+ [R,Uz,Rz,Uz,R,U,Rz,F,R,U,Rz,Uz,Rz,F,R,R,Uz,Rz],
+ [F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz],
+ [Rz,F,R,Fz, U,U,Rz,F,R,Fz],
+ [F,R,U,Rz,Uz,R,U,Rz,Uz,Fz],
+ [R,U,Rz,Uz,Rz,F,R,R,Uz,Rz,Uz,R,U,Rz,Fz],
+ [R,Uz,R,U,R,U,R,Uz,Rz,Uz,R,R],
+ [Rz, U,U,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz],
+ [R,U,Rz,U,R,Uz,Rz,U,R, U,U,Rz],
+ [R, U,U,R, U,U,R,R,U,R,R,U,R],
+ [R,U,Rz,U,R, U,U,Rz],
+ [U,x,Uz,R,U,Rz,D,R,Uz,Rz,Dz],
+ [y,U,Rz,U,R,R, U,U,R,Uz,R,R,U,R,U,Rz],
+ [R,Uz,Lz,U,R,Uz,L,U],
+ [M,M,M,U,(R,U,Rz,Uz),M],
+ [(M,M,M,U),(R,Uz,Rz,U,R, U,U,Rz,U,M)],
+ [M,M,U,M,M,M, U,U,M,U,M,M],
+ [y,Rz,Uz,Rz,Uz,Rz,U,R,U,R,Uz,R,R,U,Rz,U,R,Uz,B,Uz,Bz,Rz,Rz],
+ [x,D,D,R,U,Rz,D,D,R,Uz,Rz],
+ [F,U,R, U,U,Rz,Uz,R,U,Rz,U,Fz],
+ [R,U,Rz,Uz,Rz,F,R,R,U,Rz,Uz,Fz],
+ [Uz,R,U,Rz,U,R,Uz,Rz,U,R,Uz,Rz, U,U,R],
+ [F,U,R,Uz,Rz,F,Uz,F,U,R,Uz,Rz,Fz],
+ [Gz,R,G,Rz,U,z,Rz,U,R,Gz],
+ [F,R,Uz,Rz,Uz,R,U,Rz,Fz,M,M,Uz,M,U,U,M,M,M,Uz,M,M] ]  
+
+
+
+
+
+var P1 = [F, R, Uz, Rz, Uz, R, U, Rz, Fz, R, U, Rz, Uz]; 
+/*
+` AbPerm = [Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R]
+ E Perm: xz,R,Uz,Rz,D,R,U,Rz,Dz,R,U,Rz,D,R,Uz,Rz,Dz
+ H,Perm:, M,M,U, M,M,U2, M,M,U, M,M
+ Z,Perm:,U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R,U2,Rz
+ T,Perm:,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz,R,U,Rz,Fz
+ Y,Perm:,F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz
+ J,Perm:,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz
+ R,Perm:,R,Uz,R,U,R,U,R,Uz,Rz,Uz,R2
+ F,Perm:,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz
+ V,Perm:,R,U,Rz,Uz,R,U,Rz,Uz,R,Uz,Rz,U,R,U,R2,Uz,Rz
+ N,Perm:,U2,Rz,Uz,R2,U,Rz,U,R,U2,R2,Uz
+ G,Perm:,R,U2,Rz,Uz,R,Uz,Rz
+ S,Perm:,R,U,Rz,U,R,Uz,Rz,Uz,Rz,U2,R,U,Rz,U,R
+ E,Perm:,Rz,U2,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz,U,R,Uz,RzR,,Cx,,U,,Rz,,U,,R,,Uz,,Rz,,U,,R,,U,,U,,Rz,,Czr)
+ M,Perm:, M,M,U,M,U2,Mz,U, M,M
+ Conjugate:,F,R,Uz,Rz,Uz,R,U,Rz,Fz
+ Double,J,Perm:,R,Uz,Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R2,Uz,Rz
+ Double,R,Perm:,R2,Uz,Rz,Uz,R,U,R,U,R,Uz,R
+ F,Perm:,R,U,Rz,U2,R,Uz,Rz,U2,R,U3,Rz
+ Funky,H,Perm:,Mz,U,Mz,U,M,U2,Mz,U,Mz,U2,M,U2
+ Inverse,Sexy,Move:,R2,U,R,U,Rz,Uz,Rz,Uz,U,Rz
+ Perfect,Match:,Rz,Uz,Rz,U,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R
+ Super,Flip:,U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R,U2,Rz
+ Triple,Sune:,R,U,Rz,U,R,Uz,Rz,U,R,U2,Rz
+ Zeroing:,R,Uz,B,Uz,Bz,R2,U2,R,Bz,U,B,Rz
+ Chameleon:,Fz,U,F,Uz,Fz,U,F,R,U,Rz,Uz,Rz,F,R
+ Reverse,Chameleon:,R,U,Rz,U,R,Uz,Rz,Fz,U,F,Uz,Fz,U,F
+ Sleek,Dog:,F,U,R,Uz,Rz,Fz,Uz,F,R,U,Rz,Uz,Fz
+ Smooth,Cat:,R,U,Rz,Fz,U,F,R,U2,Rz,Uz,F,Uz,Fz
+ J,Perm:,R,U,Rz,U,R,Uz,Rz,Uz,R,Uz,Rz,U2,R,U,Rz,N,(89),J,Perm,Rz,U,Lz,U2,R,Uz,Rz,U2,L
+ Niklas:,R,U2,Rz,Uz,R,U2,Lz,U,Rz,Uz,L
+ Anti-Niklas:,Lz,U2,L,U,Lz,U2,R,Uz,L,U,Rz
+ Reverse,Sexy,Move:,R,Uz,Rz,Uz,R,U,Rz,F,R,U,Rz,Uz,Rz,F,R2,Uz,Rz
+ Rubikzs,Move:,F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz
+ Sledgehammer:,Rz,F,R,Fz,U2,Rz,F,R,Fz
+ Soon:,F,R,U,Rz,Uz,R,U,Rz,Uz,Fz
+ Turbo:,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz,R,U,Rz,Fz
+ Diag:,R,Uz,R,U,R,U,R,Uz,Rz,Uz,R2
+ AS,Perm:,Rz,U2,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz
+ Triple,Sune:,R,U,Rz,U,R,Uz,Rz,U,R,U2,Rz
+ Double,Sune:,R,U2,R,U2,R2,U,R2,U,R
+ Single,U:,R,U,Rz,U,R,U2,Rz
+ CLL,E,Perm:,U,x,Uz,R,U,Rz,D,R,Uz,Rz,Dz
+ CLL,G,Perm:,y,U,Rz,U,R2,U2,R,Uz,R2,U,R,U,Rz
+ CLL,L,Perm:,R,Uz,Lz,U,R,Uz,L,U
+ CLL,N,Perm:,Mz,U,(R,U,Rz,Uz),M
+ CLL,R,Perm:,F,(Mz,U),(R,Uz,Rz,U,R,U2,Rz,U,M)
+ CLL,S,Perm:, M,M,U,Mz,U2,M,U, M,M
+ CLL,U,Perm:,y,Rz,Uz,Rz,Uz,Rz,U,R,U,R,Uz,RR,U,Rz,U,R,Uz,B,Uz,Bz,Rz2
+ CLL,V,Perm:,x,D2,R,U,Rz,D2,R,Uz,Rz
+ CLL,W,Perm:,F,U,R,U2,Rz,Uz,R,U,Rz,U,Fz
+ CLL,Y,Perm:,R,U,Rz,Uz,Rz,F,R2,U,Rz,Uz,Fz
+ CLL,Z,Perm:,Uz,R,U,Rz,U,R,Uz,Rz,U,R,Uz,Rz,U2,R
+ CLL,ZZ,Perm:,F,U,R,Uz,Rz,F,Uz,F,U,R,Uz,Rz,Fz
+ Livid,last,layer,Gz,RG,,Rz,U,z,Rz,U,R,Gz
+ Y-premutation:,F,R,Uz,Rz,Uz,R,U,Rz,Fz, M,M,Uz,M,U2,M,M,M,Uz, M,M  `
+
+
+
+`    Ab Perm: Rz U R Uz Rz Fz R U Rz Uz Rz F R
+     E Perm: xz R Uz Rz D R U Rz Dz R U Rz D R Uz Rz Dz
+     H Perm: M2 U M2 U2 M2 U M2
+     Z Perm: U R U Rz Uz Rz Uz Rz U R Uz Rz Uz Rz U R U2 Rz
+     T Perm: R U Rz Uz Rz F R2 Uz Rz Uz R U Rz Fz
+     Y Perm: F R Uz Rz Uz R U Rz Fz R U Rz Uz Rz F R Fz
+     J Perm: R U Rz Fz R U Rz Uz Rz F R2 Uz Rz Uz
+     R Perm: R Uz R U R U R Uz Rz Uz R2
+     F Perm: R U Rz Uz R U Rz Uz R U Rz Uz R U Rz Uz R U Rz Uz
+     V Perm: R U Rz Uz R U Rz Uz R Uz Rz U R U R2 Uz Rz
+     N Perm: U2 Rz Uz R2 U Rz U R U2 R2 Uz
+     G Perm: R U2 Rz Uz R Uz Rz
+     S Perm: R U Rz U R Uz Rz Uz Rz U2 R U Rz U R
+     E Perm: Rz U2 R Uz Rz Uz R Uz Rz U R U Rz U R Uz RzR, Cx, U, Rz, U, R, Uz, Rz, U, R, U, U, Rz, Czr)
+     M Perm: M2 U M U2 M,M,M U M2
+     Conjugate: F R Uz Rz Uz R U Rz Fz
+     Double J Perm: R Uz Rz U R Uz Rz Fz R U Rz Uz Rz F R2 Uz Rz
+     Double R Perm: R2 Uz Rz Uz R U R U R Uz R
+     F Perm: R U Rz U2 R Uz Rz U2 R U3 Rz
+     Funky H Perm: M,M,M U M,M,M U M U2 M,M,M U M,M,M U2 M U2
+     Inverse Sexy Move: R2 U R U Rz Uz Rz Uz U Rz
+     Perfect Match: Rz Uz Rz U R U Rz Fz R U Rz Uz Rz F R
+     Super Flip: U R U Rz Uz Rz Uz Rz U R Uz Rz Uz Rz U R U2 Rz
+     Triple Sune: R U Rz U R Uz Rz U R U2 Rz
+     Zeroing: R Uz B Uz Bz R2 U2 R Bz U B Rz
+     Chameleon: Fz U F Uz Fz U F R U Rz Uz Rz F R
+     Reverse Chameleon: R U Rz U R Uz Rz Fz U F Uz Fz U F
+     Sleek Dog: F U R Uz Rz Fz Uz F R U Rz Uz Fz
+     Smooth Cat: R U Rz Fz U F R U2 Rz Uz F Uz Fz
+     J Perm: R U Rz U R Uz Rz Uz R Uz Rz U2 R U Rz N (89) J Perm Rz U Lz U2 R Uz Rz U2 L
+     Niklas: R U2 Rz Uz R U2 Lz U Rz Uz L
+     Anti-Niklas: Lz U2 L U Lz U2 R Uz L U Rz
+     Reverse Sexy Move: R Uz Rz Uz R U Rz F R U Rz Uz Rz F R2 Uz Rz
+     Rubikzs Move: F R Uz Rz Uz R U Rz Fz R U Rz Uz Rz F R Fz
+     Sledgehammer: Rz F R Fz U2 Rz F R Fz
+     Soon: F R U Rz Uz R U Rz Uz Fz
+     Turbo: R U Rz Uz Rz F R2 Uz Rz Uz R U Rz Fz
+     Diag: R Uz R U R U R Uz Rz Uz R2
+     AS Perm: Rz U2 R Uz Rz Uz R Uz Rz U R U Rz
+     Triple Sune: R U Rz U R Uz Rz U R U2 Rz
+     Double Sune: R U2 R U2 R2 U R2 U R
+     Single U: R U Rz U R U2 Rz
+    CLL E Perm: U x Uz R U Rz D R Uz Rz Dz
+    CLL G Perm: y U Rz U R2 U2 R Uz R2 U R U Rz
+    CLL L Perm: R Uz Lz U R Uz L U
+    CLL N Perm: M,M,M U (R U Rz Uz) M
+    CLL R Perm: F (M,M,M U) (R Uz Rz U R U2 Rz U M)
+    CLL S Perm: M2 U M,M,M U2 M U M2
+    CLL U Perm: y Rz Uz Rz Uz Rz U R U R Uz RR,U,Rz,U,R,Uz,B,Uz,Bz,Rz2
+    CLL V Perm: x D2 R U Rz D2 R Uz Rz
+    CLL W Perm: F U R U2 Rz Uz R U Rz U Fz
+    CLL Y Perm: R U Rz Uz Rz F R2 U Rz Uz Fz
+    CLL Z Perm: Uz R U Rz U R Uz Rz U R Uz Rz U2 R
+    CLL ZZ Perm: F U R Uz Rz F Uz F U R Uz Rz Fz
+    Livid last layer Gz RG, Rz U zRz U RGz
+    Y-premutation: F R Uz Rz Uz R U Rz Fz M2 Uz M U2 M,M,M Uz M2 ` 
+*/
 
 
 
 
 </script>
+
+
+
 
 <svelte:window on:keypress={handleEvent} />
 <section class="columns">
@@ -3883,6 +5007,7 @@ king.bar4 = [
             "red", "orange", "yellow", and "white." Users have at their disposal
             12 basic functions (top row below) and their inverses (bottom row).
         </p>
+
 
         <button on:click={() => (m = m(U))}>U</button>
         <button on:click={() => (m = m(D))}>D</button>
@@ -4173,7 +5298,8 @@ king.bar4 = [
             </p>
 
             <h2 style="text-align: center;">Some Algorithm Shortcuts</h2>
-            <p></p>
+            <p>The function "fmoves" uses arrays of functions to incrementally transform the virtual Rubik's cube: </p>
+            <pre>{fmovesCode}</pre>
             <button on:click={corners}
                 >PLL Corners: R' F R' B2 R F' R' B2 R2</button
             >
@@ -4198,6 +5324,8 @@ king.bar4 = [
                 >doubleFish R' F R B' R' F' R B
             </button>
             <br />
+            <button on:click={generic}>generic</button>
+            <br />
             <button on:click={sune}>Sune: R U R' U R U2 R'</button>
             <br />
             <button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
@@ -4205,6 +5333,10 @@ king.bar4 = [
             <button on:click={sexy}>Sexy: R U R' U'</button>
             <br />
             <button on:click={reverse_sexy}>Reverse Sexy: U R U' R'</button>
+            <br />
+            <button on:click={sides2}>sides2: r, U, R', U', r', F, R, F'</button>
+            <br />
+            <button on:click={corners}>corners: </button>
             <br />
             <button on:click={orient_corners}
                 >Revolve: U R U' L' U R' U' L</button
@@ -4614,37 +5746,63 @@ king.bar4 = [
         <pre>{reverseCode}</pre>
 
         <h3>*********************************************************</h3>
+    <p> After solving the first two layers, if you happen to have one of the 24 possible 'L' shapes, or one the 16 possible bar shapes on top, you can watch an automated solution go to completion. Here's how:
+        (1) Turn the orange two layers toward you by pressing the "Y" key.
+        (2) If you have an "L" shape on top, click the "Solve L" button below.  
+        (3) If you have a bar shape on top, click the "Solve Bar" button below. </p> 
+        
+        <p>Here are some additional feature that might interest you:
+        (4) Click the "King" buttons (below) to see the possible "L" and bar configurations.F,U,R,Uz,Rz,U,R,Uz,Rz,Fz
+        (5) If pressing the "F12" key loads a developer-tools screen, you can watch the log of progress unfold in the console. To see the log in Firefox after clicking "King 6" and pressing "U" three times, go to the bottom of this page. </p>
+        <p> Clicking "Solve L" causes 
+        it will call U(), turning your cube's top 90 degrees, and try again. If there is still no match after trying two more 90 degree turns, it will move on to king_2. It keeps going until it finds a match and shows the solution. If it gets all the way to king_6 and the first three tries fail, it's a sure bet that the 24th attempt will succeed. </p>
+    <p> You can test this by clicking "king_6", pressing 'U' three times, the then clicking (Solve L). If pressing F12 makes a console available, you can see the log of 23 test failurs and then then, one by one, the moves that complete the solution.</p>
+<p> Here's another demonstration: click "king.L1" and then "Solve L". "In compare1" is displayed and "F,R,U,Rz,Uz,R,U,Rz,Uz,Fz" appears incrementally while the functioins with those names operate on x in the m-M(x) closure. </p>
+<p> Now click "king.L1" again, followed by "king.L2st" and then "Solve L." This time, "In compare4" displays, indicating king.L4st is solving the (king.L1, king.L2st) configuration. And, that's what happens.</p>
+<p> But wait! Clicking king.L1, king.L2st, then king.L4st (quotation marks were annoying me) doesn't solve the king.L2st(king.L1) configuration. </p>
+<p> Pressing F12 reveals that "Solve L" fails, runs "U", fails, runs "U" again, and then begins calling the king.L4st functions (Rz, Cx, U, ...) that solve the cube.
+<div style = "color:gold; font-size: 30px; padding-left:66px;">  
+In compare4 +page.svelte:4014:16
+    <br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn is 2 +page.svelte:4021:16
+    <br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func.key is U +page.svelte:94:20
+    <br>  
+In compare4 +page.svelte:4014:16
+    <br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nn is 3 +page.svelte:4021:16
+    <br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func.key is U +page.svelte:94:20
+    <br> 
+In compare4 +page.svelte:4014:16
+    <br> 
 
-    <p> After solving the first two layers, if you happen to have one of the 24 possible 'L' shapes, or one the 16 possible bar shapes on top, one of the buttons below will show you how to finish solving the cube. If you have an 'L' shape, "Solve L" will see if your configuation matches king_1. To see what it is, click the king_1 button (below). If king_1 and your configuration don't match, it will call U(), turning your cube's top 90 degrees, and try again. If there is still no match after trying two more 90 degree turns, it will move on to king_2. It keeps going until it finds a match and shows the solution. If it gets all the way to king_6 and the first three tries fail, it's a sure bet that the 24th attempt will succeed. </p>
-    <p> You can test this by clicking "king_6", the pressing 'U' three times. If pressing F12 makes a console available, you can see the log of 23 test failurs and then then, one by one, the moves that complete the solution.</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func.key is Rz +page.svelte:94:20
+    <br>  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func.key is Cx +page.svelte:94:20
+    <br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func.key is U +page.svelte:94:20 
+</div>
 
 
+<!--
 
-        <span id="test"></span>
-        <p style = "text-align: right">{m(dF3ar)}</p>
-    </div>
-
-</section>
-<h2 style = "color:bb000; font-size:24px">{B12}</h2>
-<button on:click={compare1}>Solve L</button>
-<button on:click={compare7}>Solve Bar</button>
-<br /><br />
-<br /><br />
-
-
-<!-- <button on:click={king.L1s}>king.L1s</button>
+<p> king.X can't be solved with any of six common "L-shape" algorithms. king.L1 through king.L6 are configurations solvable by the six "L-shape" algorithms. To see this in action, you could, for example, click king.L4 and then press the the "U" key twice. After that, click "Solve L" to watch the step by step solution.    </p>
+<button on:click={king.L0s}>king.L0s</button>
+<button on:click={king.L1s}>king.L1s</button>
 <button on:click={king.L2s}>king.L2s</button>
 <button on:click={king.L3s}>king.L3s</button>
 <button on:click={king.L4s}>king.L4s</button>
 <button on:click={king.L5s}>king.L5s</button>
-<button on:click={king.L6s}>king.L6s</button>
-<br /><br />
+<button on:click={king.L6s}>king.L6s</button>  
+<br /><br /> 
 
 <button on:click={king.bar1s}>king.bar1s</button>
 <button on:click={king.bar2s}>king.bar2s</button>
 <button on:click={king.bar3s}>king.bar3s</button>
 <button on:click={king.bar4s}>king.bar4s</button>
-<br /><br /> -->
+<br /><br /> 
+<br><br> 
 <button on:click={queenL1}>king.L1</button>
 <button on:click={queenL2}>king.L2</button>
 <button on:click={queenL3}>king.L3</button>
@@ -4656,10 +5814,118 @@ king.bar4 = [
 <button on:click={queenbar1}>king.bar1</button>
 <button on:click={queenbar2}>king.bar2</button>
 <button on:click={queenbar3}>king.bar3</button>
-<button on:click={queenbar4}>king.bar4</button>
-<br /><br /> 
+<button on:click={queenbar4}>king.bar4</button> -->
+
+<p> The buttons below run the standard OLL algorithms on the current cube configuration. You can ignore them. Just turn the orange side toward yourself (press the "Y" key) and click "Solve L" or "Solve Bar". Each algorithm will be tried, with 0, 1, 2, and 3 90 degree turns of the top layer until a solution is found or "FAIL" is displayed. The default milliseconds between turns is 30. You can change that here:   </p>
+        <div>
+        <span>pause interveral now is</span> 
+        <span style = "color: #ff0000">{t} milliseconds</span>
+        <br>
+        <span>You can enter a different number of milliseconds here:</span>
+        <input type="number" id="timeID" name="t" />
+        <br><br>
+
+<button on:click={() => backforth(P1)}>backforth</button>      
+
+        
+<button on:click={compare1}>Solve L</button>
+<button on:click={compare7}>Solve Bar</button>
+            <h2>{B12}</h2>
+            <span id="test"></span>
+            <p style = "text-align: right">{m(dF3ar)}</p>
+      <h2> "L" Patterns</h2>      
+<button on:click={LL47}>OLL47</button>
+    <img src={OLL47} alt="OLL47" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL48}>OLL48</button>
+    <img src={OLL48} alt="OLL48" style="width:65px;height:66px;color:#44ff33;" />
+
+<button on:click={LL49}>OLL49</button>
+    <img src={OLL49} alt="OLL49" style="width:65px;height:66px;color:#44ff33;" />
+
+<button on:click={LL50}>OLL50</button>
+    <img src={OLL50} alt="OLL50" style="width:65px;height:66px;color:#44ff33;" />
+
+<button on:click={LL53}>OLL53</button>
+    <img src={OLL53} alt="OLL53" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL54}>OLL54</button>
+    <img src={OLL54} alt="OLL54" style="width:65px;height:66px;color:#44ff33;" />
+<br><br>
+<button on:click={fOLL47}>fOLL47</button>
+<button on:click={fOLL48}>fOLL48</button>
+<button on:click={fOLL49}>fOLL49</button>
+<button on:click={fOLL50}>fOLL50</button>
+<button on:click={fOLL53}>fOLL53</button>
+<button on:click={fOLL54}>fOLL54</button>
+<br><br>
+
+    <h2>Line Patterns</h2>
+<button on:click={LL51}>LL51</button>
+    <img src={OLL51} alt="OLL51" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL52}>LL52</button>
+    <img src={OLL52} alt="OLL52" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL55}>LL55</button>
+    <img src={OLL55} alt="OLL55" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL56}>LL56</button>
+    <img src={OLL56} alt="OLL56" style="width:65px;height:66px;color:#44ff33;" />
+<br><br>
+<button on:click={fOLL51}>fOLL51</button>
+<button on:click={fOLL52}>fOLL52</button>
+<button on:click={fOLL55}>fOLL55</button>
+<button on:click={fOLL56}>fOLL56</button>
+
+        <p style = "text-align: right">{m(dF3ar)}</p>
+
+      <h2> Dot Patterns</h2>      
+<button on:click={LL1}>LL1</button>
+    <img src={OLL1} alt="OLL1" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL2}>LL2</button>
+    <img src={OLL2} alt="OLL2" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL3}>LL3</button>
+    <img src={OLL3} alt="OLL3" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL4}>LL4</button>
+    <img src={OLL4} alt="OLL4" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL17}>LL17</button>
+    <img src={OLL17} alt="OLL17" style="width:65px;height:66px;color:#44ff33;" />
+<br><br>
+<button on:click={LL18}>LL18</button>
+    <img src={OLL18} alt="OLL18" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL19}>LL19</button>
+    <img src={OLL19} alt="OLL19" style="width:65px;height:66px;color:#44ff33;" />
+<button on:click={LL20}>LL20</button>
+    <img src={OLL20} alt="OLL20" style="width:65px;height:66px;color:#44ff33;" />
+<br><br>
+<button on:click={fOLL1}>fOLL1</button>
+<button on:click={fOLL2}>fOLL2</button>
+<button on:click={fOLL3}>fOLL3</button>
+<button on:click={fOLL4}>fOLL4</button>
+<button on:click={fOLL17}>fOLL17</button>
+<button on:click={fOLL18}>fOLL18</button>
+<button on:click={fOLL19}>fOLL19</button>
+<button on:click={fOLL20}>fOLL20</button>
+<br><br>
+
+
+
+<!--<button on:click={king.L1st}>king.L1st</button>
+<button on:click={king.L2st}>king.L2st</button>
+<button on:click={king.L3st}>king.L3st</button>
+<button on:click={king.L4st}>king.L4st</button>
+<button on:click={king.L5st}>king.L5st</button>
+<button on:click={king.L6st}>king.L6st</button>
+<br><br>
+<button on:click={king.bar1st}>king.bar1st</button>
+<button on:click={king.bar2st}>king.bar2st</button>
+<button on:click={king.bar3st}>king.bar3st</button>
+<button on:click={king.bar4st}>king.bar4st</button> -->
+
+<p>Special Buttons</p>
+
 <button on:click={console.log(m(dF3x))}>log x</button>
 <button on:click={console.log(m(dF3ar))}>log ar</button>
+<button on:click={console.log("nn is", {nn})}>log nn</button>
+<button on:click={test8}>test8</button>
+
+
 
 <!--<button on:click={compare2}>compare2</button>
 <button on:click={compare3}>compare3</button>
@@ -4673,6 +5939,36 @@ king.bar4 = [
 <button on:click={compare10}>compare10</button> -->
 
         <h3>*********************************************************</h3>
+<p> Clicking L1, L2, ... or L6 displays one of the    <img src={OLL1} alt="OLL1" style="width:65px;height:66px;color:#44ff33;" /> six commonly encountered last-layer L configurations. Clicking "Solve L" </p>
+LL51
+
+
+<p> 
+
+<br><br>
+Welcome to access Lunabot, the chatbot for your website. You can ask me anything, and I will try my best to answer you.
+<br><br>LL52
+
+Web app is released: https://lunabot.ai/webapF,U,R,Uz,Rz,U,R,Uz,Rz,Fzp
+<br><br>
+
+
+My question: This question is about algorithms for completing the last layer of a Rubik's cube. One gets the impression that only 57 algorithms are required. Only six algorithms are presented for the "L" configuration. It's easy to configure the cube into an L shape that these algorithms don't solve. For example, take any "L" configuration x and run the algorithm for swapping opposite edges. The algorithm that solves x doesn't work. Neither do any of the other published algorithms for solving "L" configurations. What is going on? Am I missing something?
+<img src={OLL55} alt="OLL55" style="width:65px;height:66px;color:#44ff33;" />
+Lunabot's answeer: It sounds like you may be encountering a specific case or scenario that the published algorithms for solving the "L" configuration don't cover. It's not uncommon for certain algorithms to work for a majority of cases but not all possible permutations.
+
+In this case, it's possible that the specific "L" configuration you are encountering requires a different algorithm or a combination of algorithms to solve. It's also possible that there may be alternate algorithms or methods for solving such cases that are not widely published.
+
+If you're encountering a specific case that the published algorithms don't solve, you may want to try searching for alternative algorithms or methods, or consider experimenting with different sequences of moves to see if you can find a solution.
+
+Additionally, there are many online communities and resources dedicated to Rubik's cube solving, so seeking help from other enthusiasts or experts in those forums may also provide valuable insight and alternative solutions to your specific case.
+Gemini
+
+My follow-up question: In the case I presented, running the algorithm for swapping opposite corners followed by the algorithm for solving x does the job.
+
+Lunabot's comment: That's great to hear! It sounds like you've found a solution to the specific "L" configuration that works for you. Experimenting with different combinations of algorithms and sequences of moves can often lead to discovering alternative solutions to specific cases that may not be covered by standard algorithms.
+    import OLL52 from "$lib/OLL52.png";
+        <h3>*********************************************************</h3>
         <h2 style = "text-align:left">400,000 rotations (10,000 scrambles) in {elapsedTime} milliseconds.</h2>
 
         <button on:click={et2}>10,000 Scrambles</button>
@@ -4682,17 +5978,112 @@ king.bar4 = [
         </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
         <pre>{et2Code}</pre>
 <br /><br /><br />
-<br /><br /><br />
-<br /><br /><br />
+<p><br>
+ <!--   What are the 57 common last-layer Rubik's cube algorithms </p>
 
+   <pre>{` Aa Perm: F R U' R' U' R U R' F' R U R' U'
+     Ab Perm: R' U R U' R' F' R U R' U' R' F R
+     E Perm: x' R U' R' D R U R' D' R U R' D R U' R' D'
+     H Perm: M2 U M2 U2 M2 U M2
+     Z Perm: U R U R' U' R' U' R' U R U' R' U' R' U R U2 R'
+     T Perm: R U R' U' R' F R2 U' R' U' R U R' F'
+     Y Perm: F R U' R' U' R U R' F' R U R' U' R' F R F'
+     J Perm: R U R' F' R U R' U' R' F R2 U' R' U'
+     R Perm: R U' R U R U R U' R' U' R2
+     F Perm: R U R' U' R U R' U' R U R' U' R U R' U' R U R' U'
+     V Perm: R U R' U' R U R' U' R U' R' U R U R2 U' R'
+     N Perm: U2 R' U' R2 U R' U R U2 R2 U'
+     G Perm: R U2 R' U' R U' R'
+     S Perm: R U R' U R U' R' U' R' U2 R U R' U R
+     E Perm: R' U2 R U' R' U' R U' R' U R U R' U R U' R'R, Cx, U, Rz, U, R, Uz, Rz, U, R, U, U, Rz, Czr)
+     M Perm: M2 U M U2 M' U M2
+     Conjugate: F R U' R' U' R U R' F'
+     Double J Perm: R U' R' U R U' R' F' R U R' U' R' F R2 U' R'
+     Double R Perm: R2 U' R' U' R U R U R U' R
+     F Perm: R U R' U2 R U' R' U2 R U3 R'
+     Funky H Perm: M' U M' U M U2 M' U M' U2 M U2
+     Inverse Sexy Move: R2 U R U R' U' R' U' U R'
+     Perfect Match: R' U' R' U R U R' F' R U R' U' R' F R
+     Super Flip: U R U R' U' R' U' R' U R U' R' U' R' U R U2 R'
+     Triple Sune: R U R' U R U' R' U R U2 R'
+     Zeroing: R U' B U' B' R2 U2 R B' U B R'
+     Chameleon: F' U F U' F' U F R U R' U' R' F R
+     Reverse Chameleon: R U R' U R U' R' F' U F U' F' U F
+     Sleek Dog: F U R U' R' F' U' F R U R' U' F'
+     Smooth Cat: R U R' F' U F R U2 R' U' F U' F'
+     J Perm: R U R' U R U' R' U' R U' R' U2 R U R' N (89) J Perm R' U L' U2 R U' R' U2 L
+     Niklas: R U2 R' U' R U2 L' U R' U' L
+     Anti-Niklas: L' U2 L U L' U2 R U' L U R'
+     Reverse Sexy Move: R U' R' U' R U R' F R U R' U' R' F R2 U' R'
+     Rubik's Move: F R U' R' U' R U R' F' R U R' U' R' F R F'
+     Sledgehammer: R' F R F' U2 R' F R F'
+     Soon: F R U R' U' R U R' U' F'
+     Turbo: R U R' U' R' F R2 U' R' U' R U R' F'
+     Diag: R U' R U R U R U' R' U' R2
+     AS Perm: R' U2 R U' R' U' R U' R' U R U R'
+     Triple Sune: R U R' U R U' R' U R U2 R'
+     Double Sune: R U2 R U2 R2 U R2 U R
+     Single U: R U R' U R U2 R'
+    CLL E Perm: U x U' R U R' D R U' R' D'
+    CLL G Perm: y U R' U R2 U2 R U' R2 U R U R'
+    CLL L Perm: R U' L' U R U' L U
+    CLL N Perm: M' U (R U R' U') M
+    CLL R Perm: F (M' U) (R U' R' U R U2 R' U M)
+    CLL S Perm: M2 U M' U2 M U M2
+    CLL U Perm: y R' U' R' U' R' U R U R U' RR,U,Rz,U,R,Uz,B,Uz,Bz,Rz2
+    CLL V Perm: x D2 R U R' D2 R U' R'
+    CLL W Perm: F U R U2 R' U' R U R' U F'
+    CLL Y Perm: R U R' U' R' F R2 U R' U' F'
+    CLL Z Perm: U' R U R' U R U' R' U R U' R' U2 R
+    CLL ZZ Perm: F U R U' R' F U' F U R U' R' F'
+    Livid last layer G' RG, R' U 'R' U RG'
+    Y-premutation: F R U' R' U' R U R' F' M2 U' M U2 M' U' M2 ` }</pre>  -->
+
+<br /><br /><br />
+   <p>  <br>  GPT 3.5   <br>
+How many Rubik's cube last-layer configurations cannot be solved using the 57 common algorithms?
+
+<br /><br />
+There are 43,252,003,274,489,856,000 (approximately 43 quintillion) possible combinations for the last layer of a Rubik's cube. The 57 common algorithms are designed to solve the majority of these configurations, but there will still be a significant number of configurations that cannot be solved using these algorithms. It is difficult to accurately determine the exact number of unsolvable configurations, but it is safe to assume that a large percentage of the 43 quintillion possibilities will not be solvable using the 57 common algorithms.
+GPT 3.5
+
+<br /><br />
+So OLL websites that say the probabilities of most of the configurations corresponding to the popular 57 algorithms are 1/57
+
+<br /><br />
+I'm not sure what you mean by "OLL websites," but if you're referring to websites that provide information on the OLL (Orientation of Last Layer) algorithms for solving the Rubik's Cube, it's important to note that the probabilities of specific algorithm configurations are not likely to be exactly 1/57.
+
+<br /><br />
+The probability of a specific algorithm configuration depends on a variety of factors, including the initial state of the Rubik's Cube, the sequence of moves used to reach that state, and the particular algorithm being applied. As such, it's unlikely that the probability would be exactly 1/57 for most configurations.
+
+<br /><br />
+It's possible that the 1/57 figure is being used in a more general context, such as to represent the likelihood of encountering a specific OLL case in a random solve. However, it's important to approach such statistics with a critical eye and consider the specific context in which they are being presented.
+</p>
+
+
+<br /><br /><br />
+<br /><br /><br />
+</div>
+</section> 
 <slot />
 
+
+
+
+
+
+
+
+
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
+var m3 = M(m(dF3x))
+console.log("HELLO")
+console.log("m3(dF3x) === m(dF3x)", m3(dF3x) === m(dF3x))
 
 <style>
     ::before,
@@ -4701,10 +6092,26 @@ king.bar4 = [
         margin: 0;
         padding: 0;
     }
+    
+    img {
+
+    }
 
     button {
         height: 60px;
         border-radius: 10px;
+        background: #000;
+    }
+
+    button:hover {
+        height: 60px;
+        border-radius: 10px;
+        background: #baefeb;
+    }
+
+    label {
+        color:rgb(252, 97, 97);
+        font-size: 30px;
     }
 
     .less {
@@ -5469,4 +6876,8 @@ king.bar4 = [
     /* *********************************************************** */
     /* *************************************************************** */
     /* *************************************************************** */
+
+
+
+
 </style>

@@ -1,0 +1,17 @@
+    var log = console.log;81
+    var dF3x = () => {}
+
+    function M (x) {
+      return function go (func)
+        {
+            if (func === dF3x) return x;
+            else x = func(x);
+            return go;
+        }
+    }
+
+
+
+
+
+    

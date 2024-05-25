@@ -38,8 +38,10 @@ function double (x) {return x + x};
 
         <a href="./cube">Rubik's Cube</a>
 
-        <a href="./async5">Async</a>
+        <a href="./Clones">Clones</a>
         
+        <a href="./async5">Async</a>
+                
         <a href="./score">Game of Score</a>
 
         <!--<a href="./functional">Functional</a>

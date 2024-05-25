@@ -1,0 +1,27 @@
+0000000000000000000000000000000000000000 502ef15eb37ffcdbbcaf7b3fc7bd16ff5b0b4b40 David <d@db11.2> 1650217853 -0400	clone: from https://github.com/dschalk/Useful-Recursive-Closures-in-JavaScript.git
+502ef15eb37ffcdbbcaf7b3fc7bd16ff5b0b4b40 f133540d5c76e9c6ab998e703a63e92ede3d646d David <d@db11.2> 1650225400 -0400	commit: Added content to README.md.
+f133540d5c76e9c6ab998e703a63e92ede3d646d 8c7adb813d3103150b9b2f7740f8735e568603e5 David <d@db11.2> 1650225764 -0400	commit: Added content to README.md.
+8c7adb813d3103150b9b2f7740f8735e568603e5 89be87a8ad46f51fcb5bac1e44f0578e46785cde David <d@db11.2> 1650226228 -0400	commit: Revised some content in Home
+89be87a8ad46f51fcb5bac1e44f0578e46785cde 570e2fc18391c61796d3d3d299fe55d0da632c93 dschalk <pyschalk@gmail.com> 1706114568 -0500	commit: Removed some unused pages
+570e2fc18391c61796d3d3d299fe55d0da632c93 1d7ace78e6198e4af3239fc5f7dbf2dea45b734b dschalk <pyschalk@gmail.com> 1706371569 -0500	commit: Adding commentary
+1d7ace78e6198e4af3239fc5f7dbf2dea45b734b 76233b4c681beb0a8999d924068fee0e1fc3cc31 dschalk <pyschalk@gmail.com> 1707251888 -0500	commit: Revising some explanitory commentary
+76233b4c681beb0a8999d924068fee0e1fc3cc31 8a7640c656a784b222870c3e5cd571201b95eaec dschalk <pyschalk@gmail.com> 1707356917 -0500	commit: Now using a dictionary with reverse().
+8a7640c656a784b222870c3e5cd571201b95eaec 51b21d4cac76be4cb5f4a3db85f60ec9fb75af15 dschalk <pyschalk@gmail.com> 1707425597 -0500	commit: Work around SvelteKit build renaming moves in the virtural Rubik's cube demo
+51b21d4cac76be4cb5f4a3db85f60ec9fb75af15 f0084c6c04c25505ebb0f04b58e1b304be75f26e dschalk <pyschalk@gmail.com> 1707455443 -0500	commit: Continued improving the explanation of the virtual Rubik's cube code.
+f0084c6c04c25505ebb0f04b58e1b304be75f26e 1cabf5a685b9ed736bcca083a0a9bffc56e4764a dschalk <pyschalk@gmail.com> 1707456450 -0500	commit: Improving the commentary
+1cabf5a685b9ed736bcca083a0a9bffc56e4764a 8960e8693d2988846907f9f2e729ba44d00ca113 dschalk <pyschalk@gmail.com> 1707483425 -0500	commit: Added complaint about SvelteKit mangling data
+8960e8693d2988846907f9f2e729ba44d00ca113 741e9914dc85579e318b1d97c29605cbb727c553 dschalk <pyschalk@gmail.com> 1707632287 -0500	commit: Made the Rubik's cube explanation easier to understand
+741e9914dc85579e318b1d97c29605cbb727c553 9158a39b44bda3636a557cbd82aba6104a1f1004 dschalk <pyschalk@gmail.com> 1707685417 -0500	commit: Added Other under the cube
+9158a39b44bda3636a557cbd82aba6104a1f1004 6978a4b161262e6f398281d63cbfe89627924028 dschalk <pyschalk@gmail.com> 1708642471 -0500	commit: Made the Reverse button responsive
+6978a4b161262e6f398281d63cbfe89627924028 fc3174df279b2b727d1ecec58dbe805eda5d9895 dschalk <pyschalk@gmail.com> 1709161163 -0500	commit: Added some funtions at the top of the virtual Rubik's cube page
+fc3174df279b2b727d1ecec58dbe805eda5d9895 1e5242efd5707d2cab3b18de6b4b07389a691be4 dschalk <pyschalk@gmail.com> 1709166342 -0500	commit: Fixed a typo
+1e5242efd5707d2cab3b18de6b4b07389a691be4 0c2d4d60fa06fe28230b958fe101b29ff658d5d3 dschalk <dschalkdesk@gmail.com> 1709334530 -0500	commit: Added three demo buttons to the Rubik's cube page (cube9)
+0c2d4d60fa06fe28230b958fe101b29ff658d5d3 63e32c0a5d8e36fad53573ea36d7f520047a241f dschalk <dschalkdesk@gmail.com> 1709355677 -0500	commit: Added features to the three new demos in the Rubik's cube page (cube9)
+63e32c0a5d8e36fad53573ea36d7f520047a241f 5a41c3d51c9babca08a561f69732ce6583bc1acb dschalk <dschalkdesk@gmail.com> 1709526621 -0500	commit: Revising commentary.
+5a41c3d51c9babca08a561f69732ce6583bc1acb c16179b6082bc172628820cc48d39c3c0f4bf140 dschalk <dschalkdesk@gmail.com> 1709541465 -0500	commit: Fleshed out the 'Recursive Closures' splash page
+c16179b6082bc172628820cc48d39c3c0f4bf140 83e4ea994c92c372e518138f16a6f96925bc2745 dschalk <dschalkdesk@gmail.com> 1709596102 -0500	commit: Corrected an error
+83e4ea994c92c372e518138f16a6f96925bc2745 9caf05fef63a9b7e56c27d9a01360e05dc462a01 dschalk <dschalkdesk@gmail.com> 1709597696 -0500	commit: Added some commentary
+9caf05fef63a9b7e56c27d9a01360e05dc462a01 868ae7bbb6153ae6f10812377362323e3248bcc5 dschalk <dschalkdesk@gmail.com> 1711047599 -0400	commit: Added some commentary.
+868ae7bbb6153ae6f10812377362323e3248bcc5 fa7b80833f0eee236596a7b516d63d7a4edc0787 dschalk <dschalkdesk@gmail.com> 1711079138 -0400	commit: Added some commentary.
+fa7b80833f0eee236596a7b516d63d7a4edc0787 c12107fc98710a65a322a23eeffc77233a354b4c dschalk <dschalkdesk@gmail.com> 1711079809 -0400	commit: Added some commentary.
+c12107fc98710a65a322a23eeffc77233a354b4c ab42350aea4c2e6bb698ec1101953185bb2ac529 dschalk <dschalkdesk@gmail.com> 1711591788 -0400	commit: More algorithm material added.
