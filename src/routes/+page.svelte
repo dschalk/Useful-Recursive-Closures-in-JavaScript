@@ -296,8 +296,6 @@ let Fcode = `  function F(ar) {
     return temp;
   } `
 
-
-
   var reverseShow = `function reverse () { 
   let fu = m(dF3ar).pop(); 
   // discards the function being reversed.
@@ -361,8 +359,6 @@ m(rd)(dF3x);   // 42 `;
 
   var classCode2 = "Cow"; 
   var v1 = ` var  m = M(3)`;
-
-  var v2 = `M()(()=>3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
 
   var v3 = `x = M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) 
 console.log('x is', x);`
@@ -888,10 +884,9 @@ function fib (n) {
 }`;
 
 var result = `Array(10) [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ]`;
-var result2 = `Array(8) [ 0, 1, 1, 2, 3, 5, 8, 13 ]`;
+var result2 = `fib(8) // m(dF3x) returns [ 0, 1, 1, 2, 3, 5, 8, 13 ]`;
 
-var another2 = `fib(2);
-console.log(m(dF3ar)) // [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ] `;
+var another2 = `fib(2) // m(dF3ar)) now returns [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ] `;
 
 var MCode = `    const dF3x = () => {}
 
@@ -905,6 +900,16 @@ var MCode = `    const dF3x = () => {}
     }`
 var k = 397421;
 
+var v2 = `M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`
+
+var v5 = `var ar = [ [6], [mult = (a,b) => a*b] ];
+var arClone = M(ar)(dF3x);
+log(arClone); // [ [6], [mult = (a,b) => a*b] ]
+ar = {hello: "Hello World"};
+log(arClone) // [ [6], [mult = (a,b) => a*b] ]
+arClone = [ 1, 2, {yes:"You bet!"} ];
+log(ar); // {"hello": "Hello World"}
+log(arClone); // [1, 2, {yes: "You bet!"}]`;
 
 </script>
 
@@ -913,34 +918,26 @@ var k = 397421;
 
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
   <h1 class="middle">Recursive Closures</h1>
- <p> Recursive closures ...</p> 
-<p style="text-indent:3% ">The function 'M' (below) returns the recursive function go. Used anonymously, it facilitates efficient and transparent function composition as in, for example, "M(3)(v=>v**3)(v=>v*2)(v=>v-5)(Math.sqrt)(v=>v*6)(dF3x) = 42" where "dF3x" in the definition of the function returned by "M(3)" triggers the return of what 3 becames after being cubed, doubled, diminished by 5, etc. </p> 
+
+ <p> The reader will likely be surprised by the usefulness of closures instantiated by statements "m = M(x)" (called "m-M(x)" closures), where x can be any value, and "M" is defined as:
+ 
 <pre>{MCode}</pre>
-<p> The statement "m = M(x)" creates an m-M(x) closure, where "x" can be any value. Encapsulated in the m-M(x) closure, "x" is insulated away from other functions that might accidentally clobber it, and safe from being garbage-collected. If the <span style = "word-break:keep-all">m-M(x)</span> closure is maintained in a database, x is preserved until such time as m(func) is called for some function "func" causing the value held in the closure to become "func(x)". The definition of M can be modified to avoid mutation. To see how M can be modified to handle asynchronous functions, go to <a href="./async5#yes">Async</a>.</p>
-  
- <!--
-  <div style="<color:#880000; font-size:32">
-  <pre>{x3}</pre>
-  <pre>{Mdis}</pre>
-  <pre>{I}</pre>
-  <pre>{H}</pre>
-  <pre>{G}</pre>
-  </div> -->
-  
-<h1 class = "middle2"> Maintaining State in Named Closures</h1>
+ 
+ <p>Blogers and YouTube presenters demonstrate recursive closures by computing factorials and Fibonacci numbers, but here you will see how m-M(x) closures facilitate:</p> 
+ 
+ <span>(1) function composition with unmatched elegance and transparency,</span><br><span style="color: #eeccbb">{v2} </span>
+ <br><br> 
+
+<br>
+<span>(2) sequestering the effects of user input before they manifest in the DOM. The <a href="./cube">Rubik's cube</a> page features an m-M(x) closure in which callbacks "func" are handled by m(func) causing the cube representation "x", an array of 6 arrays of 9 strings named "blue, green, red, orange, yellow, and white", to mutate to func(x). The cube image on the display screen immediately changes because the DOM representation of the cube contains 27 separate "background-color: m(dF3x)[j][k]" statements corresponding to the 3 * 9 = 27 visible squares on the cube. </span>
 
 
-<p> At <a href="./cube">Rubik's cube</a> and <a href="./score">Game of Score</a>, x in the m-M(x) closures is the a JavaScript representation of the current configuration of a Rubik's cube and the current state of game play, respectively. These can be ignored for a time; then later, the Rubik's cube can be solved and the game of Score finished. JavaScript garbage collectors don't destroy closures. </p>
-
-  
+<h1>Discussion</h1>
 
 
+<p> The statement "m = M(x)" creates an m-M(x) closure, where "x" can be any value. Encapsulated in the m-M(x) closure, "x" is insulated from other functions that might accidentally clobber it, and safe from being garbage-collected. If m(dF3x) is preserved, for example, in a database, the m-M(x) closure can later be revived with the statement m = M(m(dF3x)). The definition of M can be modified to avoid mutation, reverse a series of actions as in the<a href="cube">Rubik's cube</a> example, handle asynchronous functions, as in <a href="./async5#yes">Async</a>, and other purposes.</p>
 
-<h1 class = middle2> Defining Clones</h1>
-
-<p> Neither JSON.parse(JSON.stringify()), Object.assign(), spread operators, nor structuredClone can clone m, M, or m-M(x) closures, such as those defined at <a href= "./">here</a> and <a href = "./cube">Rubik's Cube</a>. None of them can clone data structures that contain functions. The <a href="./Clones">Clones page</a> demonstrates how, for any m-M(x) closure, "mclone = m" followed by "mclone = M(mclone(dF3x))" creates a deep clone named "mclone."  </p>  
-
-<h1 class = "middle2">Fibonacci Series Using a Recursive Closure</h1>
+<h1 class = "middle2">Another modification of M</h1>
 
 <p> Here we use a slightly modified definition of 'M' named 'M2' to define a recursive x-M2(x) closure in the function 'fib':</p>
 <pre>{fibCode}</pre>
@@ -958,9 +955,9 @@ var k = 397421;
 <pre>{mCode}</pre>
 <p> After pressing "F", clicking the "F" button, or clicking the upper or lower right side of the front of the virtual cube, x in the m-M(x) closure rearranges to this configuration:
 <pre>{Fcode2}</pre>
-<p> And the cube looks like this:</p>example:
+<p> And the cube looks like this:</p>
 
-<img src={Cubeshot  } alt="Right side turned" style="width:150px;height:155px;" />
+<img src={Cubeshot} alt="Right side turned" style="width:150px;height:155px;" />
 <p> Here's the definition of F:</p>
 <pre>{functionF}</pre>
 <p> F populates a temporary array "temp" with values taken from locations on the current configuration of x. It populates temp[0][0], temp[0][3], temp[0][6], with whatever strings happen to be at x[4][2], x[4][5], and x[4][8]. When m(F) returns temp, temp becomes the value of x in the m-M(x) closure. </p>

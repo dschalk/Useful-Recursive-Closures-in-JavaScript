@@ -4980,6 +4980,16 @@ var P1 = [F, R, Uz, Rz, Uz, R, U, Rz, Fz, R, U, Rz, Uz];
     Y-premutation: F R Uz Rz Uz R U Rz Fz M2 Uz M U2 M,M,M Uz M2 ` 
 */
 
+var archive;
+var stored;
+$: archive = [];
+$: stored = []
+function save (v) {
+    archive = archive.concat([v]);
+    stored = stored.concat([v(dF3x)]);
+    console.log(archive);
+    console.log(stored);
+};
 
 
 
@@ -5924,8 +5934,10 @@ In compare4 +page.svelte:4014:16
 <button on:click={console.log(m(dF3ar))}>log ar</button>
 <button on:click={console.log("nn is", {nn})}>log nn</button>
 <button on:click={test8}>test8</button>
-
-
+<button on:click={() => save(m)}>save</button>
+<br><br>
+<h3>This is the archive: {archive}</h3>
+<h3>You</h3>
 
 <!--<button on:click={compare2}>compare2</button>
 <button on:click={compare3}>compare3</button>
