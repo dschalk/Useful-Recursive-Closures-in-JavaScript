@@ -11,14 +11,15 @@ function M(x, ar = [0]) {
     };
 }
 
+var m = M([0,1])
 function fib (n) {
-  var m = M([0,1])
-  for (let k = 1; k < n; k+=1) {
+  for (let k = 1; k <= n; k+=1) {
     m(([a, b]) => [b, a + b]);
   }
   return m(dF3ar);
 }
   
 log(fib(9))
+log(fib(2))
 
 

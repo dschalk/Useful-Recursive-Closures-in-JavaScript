@@ -29,6 +29,19 @@
   </nav>
   </div>
 <style>
+
+
+:global(.h3) {
+    color: gold;
+    font-size: 27px;
+    text-align: center;
+    }
+
+:global(.i3) {
+  margin-left: 3%;
+  text-align: left;
+}
+    
   :global(a) {
     color: #e37eec;
     font-size: 22px;

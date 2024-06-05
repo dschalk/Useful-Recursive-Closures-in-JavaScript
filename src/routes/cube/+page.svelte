@@ -1308,7 +1308,7 @@
         return temp;
     };
 
-    var L = function L(ar) {
+    function L(ar) {
         let temp = [];
         temp[0] = ar[0];
 
@@ -2058,12 +2058,12 @@
         m = m;
     };
             
-    var sexy = () => {
-        m(R)(U)(Rz)(Uz);
+    var FsexyFz = () => {
+        m(F)(R)(U)(Rz)(Uz)(Fz);
         m = m;
     };
-    var reverse_sexy = () => {
-        m(U)(R)(Uz)(Rz);
+    var Freverse_sexyFz = () => {
+        m(F)(U)(R)(Uz)(Rz)(Fz);
         m = m;
     };
 
@@ -2616,7 +2616,7 @@
     }
 
     const reverseCode = `function reverse () { 
-    m = m(ob[m(dF3ar).pop()]); // Pops the key and runs m on value.   
+    m = m(ob[m(dF3ar).pop()]); // Pops a function name and runs its reverse.   
     m(dF3ar).pop(); // Discard the function that m just pushed onto ar.
   }`;
 
@@ -2751,7 +2751,9 @@ await wait(400);
 
 var sides2 = () => fmoves([T,U,Rz,Uz,Tz,F,R,Fz], 0);
 
-var corners = () => fmoves ([Rz,F,Rz,B,B,R,Fz,Rz,B,B,R,R],75);
+var top_corner_L = () => fmoves(F,R,U,Rz,Uz,Fz)
+var corners = () => m = m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R)
+var corners = () => fmoves ([Rz,F,Rz,B,B,R,Fz,Rz,B,B,R,R]);
 var test8 = () => fmoves([
   Cx,
   Cx,
@@ -4991,9 +4993,83 @@ function save (v) {
     console.log(stored);
 };
 
+var F2L =[
+  [
+    "yellow",
+    "yellow",
+    "yellow",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue",
+    "blue"
+  ],
+  [
+    "blue",
+    "green",
+    "red",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green",
+    "green"
+  ],
+  [
+    "green",
+    "orange",
+    "orange",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red",
+    "red"
+  ],
+  [
+    "green",
+    "yellow",
+    "red",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange",
+    "orange"
+  ],
+  [
+    "yellow",
+    "yellow",
+    "orange",
+    "yellow",
+    "yellow",
+    "blue",
+    "yellow",
+    "red",
+    "blue"
+  ],
+  [
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white",
+    "white"
+  ]
+];
+
+var f2l = () => m = m(() => F2L)
+
+var Lupleft = () => m = m(F)(U)(R)(Uz)(Rz)(Fz)
+
+var bar = () => m = m(F)(R)(U)(Rz)(Uz)(Fz)
 
 
-</script>
+</script>   // END SCRIPT
 
 
 
@@ -5340,9 +5416,9 @@ function save (v) {
             <br />
             <button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
             <br />
-            <button on:click={sexy}>Sexy: R U R' U'</button>
+            <button on:click={FsexyFz}>Sexy: F R U R' U' F'</button>
             <br />
-            <button on:click={reverse_sexy}>Reverse Sexy: U R U' R'</button>
+            <button on:click={Freverse_sexyFz}>Reverse Sexy: F U R U' R' F'</button>
             <br />
             <button on:click={sides2}>sides2: r, U, R', U', r', F, R, F'</button>
             <br />
@@ -5370,6 +5446,12 @@ function save (v) {
             <button on:click={reverse_niklas}
                 >Reverse Niklas: L' U R U' L U R'</button
             >
+            <button on:click={f2l}>F2L</button>
+            <button on:click={Lupleft}>Lupleft</button>
+            <button on:click={bar}>bar</button>
+
+
+
             <p>
                 Press the "v" key or click <button on:click={Start}
                     >Start</button
@@ -5677,7 +5759,7 @@ function save (v) {
             right center 3 more times to re-orient the cube.
         </p>
 
-        <p>
+        <p id = "reverse">
             This is the expected result of pressing "LBD" or following the
             instructions of Method 2 (above): <img
                 src={clickDemo}
@@ -5707,50 +5789,24 @@ function save (v) {
         </p>
 
         <p>
-            Note: The attribute "key" added to the functions "func" discussed
-            above are identical to the built-in string attributes "name." When
-            trying to use "func.name," it was discovered that running "build"
-            mutated names in the "ar" array in M, but an array of "func.key"
-            emerged unchanged.
+            Note: The attributes "key" that were added to each function discussed
+            above are identical to the built-in string attributes "name." Running "build"
+            mutated the name attributes, making it necessary to add the redundant "key" attributes.
         </p>
+        
         <p>
-            Some of the definitions of "func" in m(func) expressions (described
-            above), can be found at <a href="./">Home</a>. All of them are in
-            the
-            <a href="https://github.com/dschalk/Recursive-Closures"
-                >Github repository</a
-            >. Each time m(func) is called, func's key is appended to ar in M.
-            Rapidly clicking "10,000 Scrambles" five times and waiting for it to
-            finish indicates that 2,000,000 simulated 90 degree turns were
-            performed and recorded in ar in around 3 seconds.
-        </p>
-        <h3>*********************************************************</h3>
-        <p>
-            I'll continue using SvelteKit, but I'm perturbed by having to add
-            the attribute "key" to my functions when I would prefer to use the
-            already-present attribute "name." Notice "func.key" in the
-            definition of M at the top of this page. If "ar" in "M" contains
-            "func.name" for each function that is called, SvelteKet renames many
-            of them, causing the function "reverse" to fail.
-        </p>
-        <p>
-            Functions are objects in JavaScript. Here's a screenshot of simple
-            function's internals taken in Firefox Developer Tools (accessed by
-            pressing F12).
+            Here's a screenshot of function logged into Firefox Developer Tools (accessed by pressing F12).
         </p>
 
         <img src={func} alt="Screenshot" style="width:800px;height:600px;" />
 
         <p>
-            I had to add the "key" attribute. Why SvelteKit build mangles func.name but not my added func.key escapes
-            me. I'm glad that whoever "optimized" SvelteKit this way spared developer-added attributes. Of course, I would have preferred to use the built-in "name" attribute, but I won't have time to make a pull request and submit a modified version of build.
+            I had to add the "key" attribute. Why SvelteKit build mangles func.name but not my added func.key escapes me. I'm glad that whoever "optimized" SvelteKit this way spared developer-added attributes. 
         </p>
-        <h3>*********************************************************</h3>
         <p>
             The efficiency of the "reverse" function can be observed by clicking
-            "Scramble" or pressing the "W" key five times, and then holding down
-            the "Q" key. You can watch the simulated cube perform 200 reverse
-            moves in about five seconds.
+            "Scramble" or pressing the "W" a few times, and then holding down
+            the "Q" key. You can watch the simulated cube perform 40 X the number of scrambles reverse moves in several seconds.
         </p>
 
         <pre>{reverseCode}</pre>
@@ -5762,7 +5818,7 @@ function save (v) {
         (3) If you have a bar shape on top, click the "Solve Bar" button below. </p> 
         
         <p>Here are some additional feature that might interest you:
-        (4) Click the "King" buttons (below) to see the possible "L" and bar configurations.F,U,R,Uz,Rz,U,R,Uz,Rz,Fz
+        (4) Click the "King" buttons (below) to see the possible "L" and bar configurations.
         (5) If pressing the "F12" key loads a developer-tools screen, you can watch the log of progress unfold in the console. To see the log in Firefox after clicking "King 6" and pressing "U" three times, go to the bottom of this page. </p>
         <p> Clicking "Solve L" causes 
         it will call U(), turning your cube's top 90 degrees, and try again. If there is still no match after trying two more 90 degree turns, it will move on to king_2. It keeps going until it finds a match and shows the solution. If it gets all the way to king_6 and the first three tries fail, it's a sure bet that the 24th attempt will succeed. </p>
@@ -5932,9 +5988,9 @@ In compare4 +page.svelte:4014:16
 
 <button on:click={console.log(m(dF3x))}>log x</button>
 <button on:click={console.log(m(dF3ar))}>log ar</button>
+<button on:click={f2l}>F2L</button>
 <button on:click={console.log("nn is", {nn})}>log nn</button>
 <button on:click={test8}>test8</button>
-<button on:click={() => save(m)}>save</button>
 <br><br>
 <h3>This is the archive: {archive}</h3>
 <h3>You</h3>
@@ -6050,6 +6106,8 @@ Lunabot's comment: That's great to hear! It sounds like you've found a solution 
     CLL ZZ Perm: F U R U' R' F U' F U R U' R' F'
     Livid last layer G' RG, R' U 'R' U RG'
     Y-premutation: F R U' R' U' R U R' F' M2 U' M U2 M' U' M2 ` }</pre>  -->
+
+
 
 <br /><br /><br />
    <p>  <br>  GPT 3.5   <br>

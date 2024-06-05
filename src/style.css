@@ -1,4 +1,16 @@
 
+
+  .h3 {
+    color: gold;
+    font-size: 27px;
+    text-align: center;
+    }
+
+.i3 {
+  margin-left: 3%;
+  text-align: left;
+}
+    
 html {background-color:#0c0c0c;}
 
 div {
