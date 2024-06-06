@@ -89,15 +89,16 @@ log("B", arr2[2][0]( arr2[0][0], arr2[1][0] )) // 13 `;
 <pre>{c0}</pre>
 <p> 'b', in the code below, copies 'a' and is then modified. The modification of 'b' changes 'a', as expected. 'a' and 'b' both refer to the same object in memory.  </p>
 <pre>{d0}</pre>
-<p>Reassignment of a or b severs a from b. After reassignment, each refer to distinct, sepagate memory addresses. </p>
+<p>Reassignment of a or b severs a from b. After reassignment, each refer to distinct, separate memory addresses. </p>
 <pre>{d1}</pre> 
 <p> Running m(func) for some function "func" doesn't immediately look like a reassignment of x in its m-M(x) closure, but m(func) causes x = func(x) inside of M. After that reassignment, clone(dF3x) is independent from m(dF3x).   </p>
 <pre>{c2}</pre>
 
 <span style="font-size:26px; font-weight: 'bold'; color: orange " >&nbsp;&nbsp; clone(v => [ v[0], v[1], [mult] ] )</span> <span>&nbsp; // Now a true clone, with its own memory address</span> 
 <pre>{c22}</pre>
-
-<p> If "clone" hadn't been called, it seems it wouldn't have been assigned its unique memory address. "m(dF3x) === clone(dF3x) would have remained true.  </p>
+<br>
+<h3>Lazy Assignment</h3>
+<p style="white-space"> If "clone" hadn't been called, it wouldn't have been assigned its unique memory address. "m(dF3x) === clone(dF3x) would have remained true. A unique memory address was assigned to the function "clone" when it executed on the function "v => [ v[0], v[1], [mult] ]" </p>
 
 
 
@@ -108,7 +109,12 @@ log("B", arr2[2][0]( arr2[0][0], arr2[1][0] )) // 13 `;
 <br><br><br>
 <br><br><br>
 <style>
-
+h3 {
+  color:rgb(245, 220, 146);
+  text-align: center;
+  font-size: 27px;
+  white-space: inherit;
+}
 
   .H33 {
     color: gold;

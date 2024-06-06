@@ -972,7 +972,7 @@ log("m(dF3x) === clone(dF3x)", m(dF3x) === clone(dF3x) ) // false`;
 <span class="i3">The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates how user key presses and button clicks avoid causing side effects outside of the m-M(x) closure. User actions pull functions "func" into the m-M(x) closure with the expression "m(func)". This causes x = func(x) to execute, rearranging some of the 54 elements of 'x', an array of six nine-member arrays of the strings "blue, green, red, orange, yellow, and white".</span>
 <br><br>
 <span class="i3"> When a user presses, for example, the "R" key, m(R) is called, causing R(x) to execute. This rearranges the color strings of x, and consequently, the corresponding background colors of the HTML representation of the cube in the DOM. The state of the cube, 'x', can remain in the m-M(x) closure from user key strokes and button clicks all the way to the DOM, affecting nothing in its outer scope in the process. This is similar to what the Haskell IO monad does, allowing user input to be processed without side effects until the final result is printed or displayed. </span>
-
+<br><br>
 <div class = "h3"> Cloning M (Including x) In m-M(x) Closures </div>
 <span class="i3"> Cloning is discussed on the <a href="./clone">Clone</a> page. "x = func(x)" in go's definition in M is the reassignment that does the trick.</span>
 <pre>{cloneCode}</pre>
