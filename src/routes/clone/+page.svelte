@@ -66,7 +66,7 @@ const clone = M(m(dF3x))
 function add (a,b) {return a+b};
 function mult (a,b) {return a*b};
 
-clone(v => [ v[0], v[1], [mult] ] )   // Now a true clone, with its own memory address
+clone(v => [ v[0], v[1], [mult] ] )  // clone's memory address is no longer different from m's.
 
 log("m === clone", m === clone);  // false
 log("m(dF3x) === clone(dF3x)", m(dF3x) === clone(dF3x) ) // false
@@ -190,12 +190,14 @@ var turn = "function func (v) { return [ v[0], v[1], [mult] ] })"
 <pre>{d1}</pre> 
 <p>Below is some similar code, only this time involving an m-M(x) closure. Changing clone changes m, as expected.  </p>
 <pre>{c2}</pre>
-<p>There's a simple way to make "clone" a true clone of m, but this time it doesn't involve reassigning m or clone. They're constants; they can't be reassigned. Merely substituting "clone = M(m(dF3x))" for "m = clone" is all it takes to make m and clone independent. They're still identical, but when clone changes, its modified value gets a unique address in memory. 'm' is not affected. </p>
+<p>There's a simple way to make "clone" a true clone of m, but this time it doesn't involve reassigning m or clone. They're constants; they can't be reassigned. Merely substituting "clone = M(m(dF3x))" for "m = clone" is all it takes to make m and clone independent. They're still identical, but when clone changes, its modified value gets a unique address in memory, and 'm' is not affected. </p>
 <pre>{c3}</pre>
 <p> Changing 'm' after "clone = M(m(dF3x))" is another way to give "clone" its own, separate address in memory, only this time, 'm' gets the new address.    </p>
 <pre>{c4b}</pre>
 <h2>Discussion</h2>
-<p> When "clone(v => [ v[0], v[1], [mult] ] )" is called, x = func(x) in the definition of "go" in "M" is called. "func" can be stated more precisely as <span>"func = v => [ v[0], v[1], [mult] ]"</span> or <span>{turn}</span>. The statement, "x = func(x)", reassigns x in the clone-M(x) closure, thereby placing it at a new address in memory. That makes it independent from x in the m-M(x) closure. At that point, the function "clone" becomes a true clone of m; but, for all practical purposes, the statement "clone = M(m(dF3x))" made it a clone of "m". From then on, it was destined to become independent of m the first time clone(func) ran on some function "func". </p>
+<p> When "clone(v => [ v[0], v[1], [mult] ] )" is called, "x = func(x)" in the definition of "go" (returned by "M") is called. "func" can be stated more precisely as <span>"func = v => [ v[0], v[1], [mult] ]"</span> or <span>{turn}</span>. The statement "clone = M(m(dF3x))" (above) created a clone-M(x) closure, but its "x" and the "x" in the m-M(x) closure referred to the same value. This can be deduced from the code above, where m(dF3x) === clone(dF3x) returned true and m === clone returned false. </p>
+  
+<p> When "x" gets reassigned to the value func(x) in the clone-M(x) closure, m continues to point to its original value, which is the previous value of x in the clone-M(x) closure. At that point, the function "clone" is a true clone of m. But for all practical purposes, the statement "clone = M(m(dF3x))" made the function "clone" a clone of "m" because, from then on, it was destined to become independent of m the first time clone(func) or m(func) ran. "x" in all closures of the form f-M(x) gets reassigned to f(func) (unless func is dF3x) each time f(func) is called. </p>
 
 
 
