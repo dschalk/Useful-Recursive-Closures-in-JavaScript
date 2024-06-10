@@ -965,16 +965,19 @@ log("m(dF3x) === clone(dF3x)", m(dF3x) === clone(dF3x) ) // false`;
  
   <pre>{MCode}</pre>
  
-<div class = "h3"> Concise and Transparent Function Composition </div> <span class = "i3"> An anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8). </span><span style="color: #eeccbb">{v2} </span>
+<div class = "h3"> Concise and Transparent Function Composition </div> <span class = "i3"> An anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8). </span><span class = "or">{v2} </span>
+
 <br><br>
 
 <div class = "h3"> Isolation of Sequences of Computations</div>
-<span class="i3">The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates how user key presses and button clicks avoid causing side effects outside of the m-M(x) closure. User actions pull functions "func" into the m-M(x) closure with the expression "m(func)". This causes x = func(x) to execute, rearranging some of the 54 elements of 'x', an array of six nine-member arrays of the strings "blue, green, red, orange, yellow, and white".</span>
+<span class="i3">The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates how user key presses and button clicks avoid causing side effects outside of the m-M(x) closure. User actions pull functions "func" into the m-M(x) closure with calls to "m(func)" for functions affecting the array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white". "m(func)" causes x = func(x) to execute inside of M, rearranging some of the 54 elements of the array of arrays'x', mentioned above. </span>
 <br><br>
-<span class="i3"> When a user presses, for example, the "R" key, m(R) is called, causing R(x) to execute. This rearranges the color strings of x, and consequently, the corresponding background colors of the HTML representation of the cube in the DOM. The state of the cube, 'x', can remain in the m-M(x) closure from user key strokes and button clicks all the way to the DOM, affecting nothing in its outer scope in the process. This is similar to what the Haskell IO monad does, allowing user input to be processed without side effects until the final result is printed or displayed. </span>
+<span class="i3"> For example, When a user presses the "R" key, m(R) is called, causing x to be reassigned whih the statement "x =R(x)".  to execute inside of the m-M(x) closure. This rearranges the color strings of x, and consequently, the corresponding background colors of the HTML representation of the cube in the DOM. The state of the cube, 'x', can remain in the m-M(x) closure from user key strokes and button clicks all the way to the DOM without affecting, or being affected by, any Svelte code inside of the <script></script> tags.  This is similar to what the Haskell IO monad does, allowing user input to be processed without side effects until the final result is printed or displayed. The lazy evaluation of newly defined clones demonstrated on the <a href="./clone">clone</a> page is also reminscent of Haskell. When the dynamic state of applications are kept in recursive sures  </span>
 <br><br>
 <div class = "h3"> Cloning M (Including x) In m-M(x) Closures </div>
-<span class="i3"> Cloning is discussed on the <a href="./clone">Clone</a> page. "x = func(x)" in go's definition in M is the reassignment that does the trick.</span>
+<span class="i3"> Cloning is discussed on the <a href="./clone">Clone</a> page. Cloning m is a two-step procedure. Frist, define the clone with "const m_clone = M(m(dF3x))". That creates a new, independent-from-m closure, an m_clone-M(x) closure. "x" inside of the m_clone-M(x) closure and "x" in the m-M(x) closure are references to the same object, both pointing to the same memory address. At this stage, m_clone is, for all practical purposes, a perfect deep clone. It's just lazily waiting to be used before it automatically becomes independent of the other "x", the one in the m-M(x) closure. "m_clone(func) reassigns "x" with "x = func(x)", giving it its own unique place in memory, while having no effect on the "x" in the m-M(x) closure. </span>
+
+<p>No matter how nested, convoluted, and circular "x" is, and no matter how many functions it contains, placing a copy of "m(dF3x)" in a newly-defined closure (m_clone-M(x)) and assigning "x" a new memory address with the statement "m_clone(func)" (causing x = func(x)) seems like a remarkably elegant way to clone an m-M(x) closure.</p>
 <pre>{cloneCode}</pre>
 <span style="font-size:26px; font-weight: 'bold'; color: orange " >&nbsp;&nbsp; clone(v => [ v[0], v[1], [mult] ] )</span> <span>&nbsp; // Now a true clone, with its own memory address</span> 
 <pre>{cloneCode2}</pre>
@@ -986,7 +989,7 @@ log("m(dF3x) === clone(dF3x)", m(dF3x) === clone(dF3x) ) // false`;
 <p> The definition of M can be modified to avoid mutation (push new results into an array, for example), reverse a series of actions as in the<a href="cube#star">Rubik's cube</a> example, handle asynchronous functions, as in <a href="./cube#reverse">the cube reverse function</a>,  <a href="./async5#yes">Async</a>, and other purposes.</p>
 
 
-<p> There are much better ways to generate Fibonacci numbers. This example shows that the result of running fib(11) can be obtained by running fib(9) and later fib(2).  </p>
+<p> There are better ways to generate Fibonacci numbers. This example shows that the result of running fib(11) can be obtained by running fib(9) and later fib(2).  </p>
 <pre>{fibCode}</pre>
 
 <h1 class="middle2"> A Fast and Efficient Virtual Rubik's Cube </h1> 
@@ -1046,7 +1049,11 @@ log("m(dF3x) === clone(dF3x)", m(dF3x) === clone(dF3x) ) // false`;
 }
 
 h2 {
-  color: #f5ee9f;
+  color: #f5a976;
+}
+
+.or {
+  color:rgb(254, 148, 62)
 }
 
 span {

@@ -180,7 +180,49 @@ console.log("mClone(dF3x) is", mClone(dF3x));
 console.log("m(dF3x) is", m(dF3x))`
 
 var turn = "function func (v) { return [ v[0], v[1], [mult] ] })"
+
+var finalClone = `var log = console.log;
+var dF3x = () => {}; 
+function M (x) {
+    return function go (func) {
+    if (func === dF3x) return x;
+    else x = func(x);
+    return go;
+    }
+  }
+
+var ar1 = M([1]);
+var ar2 = M([2]);
+var ar3 = M([3]);
+var ar4 = M([4]);
+var ar5 = M([5]);
+var ar6 = M([6]);
+var ar7 = M([7]);
+
+var ar = [ [ ar1, [ar2,  [ar3, [ [ar4] ] ] ] ] ];
+// log("ar[0][0] is", ar[0][0](dF3x));
+// log("ar[0][1][0] is", ar[0][1][0](dF3x));
+// log("ar[0][1][1][0] is", ar[0][1][1][0](dF3x));
+// log("ar[0][1][1][1][0][0] is", ar[0][1][1][1][0][0](dF3x));
+var m = M(ar);
+var m_clone = M(m(dF3x));
+m_clone(() => [ [ ar6, [ar5,  [ar7, [ [ar6] ] ] ] ] ]  )
+log(m_clone(dF3x)[0][1][0](dF3x)) // [5]
+log(m(dF3x)[0][1][0](dF3x))       // [2]  no change
+log("***************************************************")
+log(m_clone(dF3x)[0][1][1][0](dF3x))  // [7]
+log(m(dF3x)[0][1][1][0](dF3x))        // [3]  no change
+log("***************************************************")
+log(m_clone(dF3x)[0][1][1][1][0][0](dF3x))  // [6]
+log(m(dF3x)[0][1][1][1][0][0](dF3x))        // [4]  no change`
+
+
 </script>
+
+
+
+
+
 
 <h1 style="text-align: center">Cloning m-M(x) Closures</h1>
 <pre>{c0}</pre>
@@ -195,9 +237,14 @@ var turn = "function func (v) { return [ v[0], v[1], [mult] ] })"
 <p> Changing 'm' after "clone = M(m(dF3x))" is another way to give "clone" its own, separate address in memory, only this time, 'm' gets the new address.    </p>
 <pre>{c4b}</pre>
 <h2>Discussion</h2>
-<p> When "clone(v => [ v[0], v[1], [mult] ] )" is called, "x = func(x)" in the definition of "go" (returned by "M") is called. "func" can be stated more precisely as <span>"func = v => [ v[0], v[1], [mult] ]"</span> or <span>{turn}</span>. The statement "clone = M(m(dF3x))" (above) created a clone-M(x) closure, but its "x" and the "x" in the m-M(x) closure referred to the same value. This can be deduced from the code above, where m(dF3x) === clone(dF3x) returned true and m === clone returned false. </p>
-  
+<p> When "clone(v => [ v[0], v[1], [mult] ] )" is called, "x = func(x)" in the definition of "go" (returned by "M") is called. "func" can be stated more precisely as <span>"func = v => [ v[0], v[1], [mult] ]"</span> or <span>{turn}</span>. The statement "clone = M(m(dF3x))" (above) created a clone-M(x) closure, but its "x" and the "x" in the m-M(x) closure referred to the same object (pointed to the same memory address). This can be deduced from the code above, where m(dF3x) === clone(dF3x) returned true and m === clone returned false. </p>
+
 <p> When "x" gets reassigned to the value func(x) in the clone-M(x) closure, m continues to point to its original value, which is the previous value of x in the clone-M(x) closure. At that point, the function "clone" is a true clone of m. But for all practical purposes, the statement "clone = M(m(dF3x))" made the function "clone" a clone of "m" because, from then on, it was destined to become independent of m the first time clone(func) or m(func) ran. "x" in all closures of the form f-M(x) gets reassigned to f(func) (unless func is dF3x) each time f(func) is called. </p>
+
+<p>Here's an example with deeply nested recursive closures. After the usual "m_clone = M(m(dF3x)), changes deep into "x" in the m_clone-M(x) closure left "x" in the m-M(x) closure unchanged. </p>
+<pre>{finalClone}</pre>
+
+  
 
 
 
