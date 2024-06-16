@@ -114,7 +114,6 @@
             else if (func === dF3ar) return ar;
             x = func(x);
             if (func.key) ar.push(func.key);
-            console.log("func.key is", func.key);
             return go;
         };
     }
@@ -2002,6 +2001,9 @@
         m = m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
     }  
 
+
+
+
     var corners = () => {
         m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
         m = m;
@@ -2017,6 +2019,10 @@
         m = m;
     };
 
+    var two_sidelights = () => {
+        m(Mz)(R)(U)(R)(Uz)(M)(R);
+        m = m;
+    }
     var edgesOpposite = () => {
         m(Cx)(Cx)(Uz)(Cx)(Cx)(U)(U)(Cx)(Cx)(Uz)(Cx)(Cx);
         m = m;
@@ -2753,7 +2759,8 @@ var sides2 = () => fmoves([T,U,Rz,Uz,Tz,F,R,Fz], 0);
 
 var top_corner_L = () => fmoves(F,R,U,Rz,Uz,Fz)
 var corners = () => m = m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R)
-var corners = () => fmoves ([Rz,F,Rz,B,B,R,Fz,Rz,B,B,R,R]);
+//var corners = () => fmoves ([Rz,F,Rz,B,B,R,Fz,Rz,B,B,R,R]);
+
 var test8 = () => fmoves([
   Cx,
   Cx,
@@ -4368,7 +4375,11 @@ var obLL55 = [
     }      
                  
     function fOLL54 () {
-        fmoves([T, U, Rz, U, R, Uz, Rz, U, R, U, U, Tz])    
+        m = m(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Tz)    
+    }       //    Yro,R,U,U,Rz,Rz,F,R,Fz,U,U
+
+    function f2l () {
+        m = m(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Tz)    
     }       //    Yro,R,U,U,Rz,Rz,F,R,Fz,U,U
 
     function fOLL1 () { 
@@ -4992,7 +5003,7 @@ function save (v) {
     console.log(archive);
     console.log(stored);
 };
-
+/*
 var F2L =[
   [
     "yellow",
@@ -5063,11 +5074,14 @@ var F2L =[
 ];
 
 var f2l = () => m = m(() => F2L)
+var f2l = () => (m = m(R)(Cxr)(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Rz)(Cx));
+*/
 
 var Lupleft = () => m = m(F)(U)(R)(Uz)(Rz)(Fz)
 
 var bar = () => m = m(F)(R)(U)(Rz)(Uz)(Fz)
 
+var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corners(), generic(), doubleFish(), nicklas(), adjacent(), Jb_Perm(), sune(), sune(), generic() ) 
 
 </script>   // END SCRIPT
 
@@ -5449,6 +5463,7 @@ var bar = () => m = m(F)(R)(U)(Rz)(Uz)(Fz)
             <button on:click={f2l}>F2L</button>
             <button on:click={Lupleft}>Lupleft</button>
             <button on:click={bar}>bar</button>
+            <button on:click={topSramble}>topScramble</button>
 
 
 
