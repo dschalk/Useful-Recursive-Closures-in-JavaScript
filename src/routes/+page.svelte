@@ -1005,7 +1005,7 @@ log("W is", W); // "Ford" `
 <p>Modifying "W" modified O. Next, W gets reassigned. From then on, chaging W no longer changes  'O'.</p>
 
 <pre>{a3}</pre>
-<p> O.car and W.car happen to have the same valuem, but not for long. When W.car becomes "Ford", O.car remains "Chevy". </p>
+<p> O.car and W.car happen to have the same value, but not for long. When W.car becomes "Ford", O.car remains "Chevy". </p>
 <pre>{a4}</pre>
   <p>
 

@@ -1997,17 +1997,9 @@
     m = m;  // This triggers the DOM update
   };`;
 
-    var generic = () => {
+    var switch_corners = () => {
         m = m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
     }  
-
-
-
-
-    var corners = () => {
-        m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
-        m = m;
-    };
 
     var triclock = () => {
         m(Cx)(Cx)(Uz)(Cx)(U)(U)(Cx)(Cx)(Cx)(Uz)(Cx)(Cx);
@@ -2747,11 +2739,11 @@ await wait(400);
         f77("");
     }
 
-    var fmovesCode = `async function fmoves (ar, t = 100) { // Pauses for 100 microseconds.
-        m(dF3ar).length = 0;              // Empties ar
+    var fmovesCode = `async function fmoves (ar, t = 100, f=m) { // Pauses for 100 microseconds.
+        f(dF3ar).length = 0;              // Empties ar
         for (let k = 0; k < ar.length ; k += 1) {
             await wait(t);
-            m = m(ar[k]);
+            f = m(ar[k]);
         };
     };`;    
 
@@ -4378,11 +4370,7 @@ var obLL55 = [
         m = m(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Tz)    
     }       //    Yro,R,U,U,Rz,Rz,F,R,Fz,U,U
 
-    function f2l () {
-        m = m(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Tz)    
-    }       //    Yro,R,U,U,Rz,Rz,F,R,Fz,U,U
-
-    function fOLL1 () { 
+      function fOLL1 () { 
         fmoves([R, U, U, Rz, Rz, F, R, Fz, U, U, Rz, F, R, Fz])   
     }
     function LL1 () {  
@@ -4746,11 +4734,11 @@ console.log(m3(dF3x))
     };
 
     async function fmovesR (ar) { // Pauses for 100 microseconds.
-        m(dF3ar).length = 0;              // Empties ar
+        f(dF3ar).length = 0;              // Empties ar
         var len = ar.length - 1;
         for (let k = len; k > -1; k -= 1) {
             await wait(t)
-            m = m(ar[k]);
+            f = f(ar[k]);
         }
     };
 
@@ -4761,7 +4749,7 @@ var sz = [F, R, U, Rz, Uz, Fz];
 
 var tio = P1;
 
-    async function fmoves (ar) { 
+    async function fmoves (ar, f=m, t=100) { 
         m(dF3ar).length = 0;              // Empties ar
         for (let k = 0; k < ar.length ; k += 1) {
             await wait(t)
@@ -4776,11 +4764,6 @@ var tio = P1;
             m = m(ar[k]);
         }
     };
-
-// fmoves([R,U]);
-
-// fmo([R,U])
-// goback ();
 
 
 async function goback () { if (m(dF3ar).length > 0) 
@@ -4870,129 +4853,7 @@ algs = [ [Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R],
  [Gz,R,G,Rz,U,z,Rz,U,R,Gz],
  [F,R,Uz,Rz,Uz,R,U,Rz,Fz,M,M,Uz,M,U,U,M,M,M,Uz,M,M] ]  
 
-
-
-
-
 var P1 = [F, R, Uz, Rz, Uz, R, U, Rz, Fz, R, U, Rz, Uz]; 
-/*
-` AbPerm = [Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R]
- E Perm: xz,R,Uz,Rz,D,R,U,Rz,Dz,R,U,Rz,D,R,Uz,Rz,Dz
- H,Perm:, M,M,U, M,M,U2, M,M,U, M,M
- Z,Perm:,U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R,U2,Rz
- T,Perm:,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz,R,U,Rz,Fz
- Y,Perm:,F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz
- J,Perm:,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz
- R,Perm:,R,Uz,R,U,R,U,R,Uz,Rz,Uz,R2
- F,Perm:,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz,R,U,Rz,Uz
- V,Perm:,R,U,Rz,Uz,R,U,Rz,Uz,R,Uz,Rz,U,R,U,R2,Uz,Rz
- N,Perm:,U2,Rz,Uz,R2,U,Rz,U,R,U2,R2,Uz
- G,Perm:,R,U2,Rz,Uz,R,Uz,Rz
- S,Perm:,R,U,Rz,U,R,Uz,Rz,Uz,Rz,U2,R,U,Rz,U,R
- E,Perm:,Rz,U2,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz,U,R,Uz,RzR,,Cx,,U,,Rz,,U,,R,,Uz,,Rz,,U,,R,,U,,U,,Rz,,Czr)
- M,Perm:, M,M,U,M,U2,Mz,U, M,M
- Conjugate:,F,R,Uz,Rz,Uz,R,U,Rz,Fz
- Double,J,Perm:,R,Uz,Rz,U,R,Uz,Rz,Fz,R,U,Rz,Uz,Rz,F,R2,Uz,Rz
- Double,R,Perm:,R2,Uz,Rz,Uz,R,U,R,U,R,Uz,R
- F,Perm:,R,U,Rz,U2,R,Uz,Rz,U2,R,U3,Rz
- Funky,H,Perm:,Mz,U,Mz,U,M,U2,Mz,U,Mz,U2,M,U2
- Inverse,Sexy,Move:,R2,U,R,U,Rz,Uz,Rz,Uz,U,Rz
- Perfect,Match:,Rz,Uz,Rz,U,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R
- Super,Flip:,U,R,U,Rz,Uz,Rz,Uz,Rz,U,R,Uz,Rz,Uz,Rz,U,R,U2,Rz
- Triple,Sune:,R,U,Rz,U,R,Uz,Rz,U,R,U2,Rz
- Zeroing:,R,Uz,B,Uz,Bz,R2,U2,R,Bz,U,B,Rz
- Chameleon:,Fz,U,F,Uz,Fz,U,F,R,U,Rz,Uz,Rz,F,R
- Reverse,Chameleon:,R,U,Rz,U,R,Uz,Rz,Fz,U,F,Uz,Fz,U,F
- Sleek,Dog:,F,U,R,Uz,Rz,Fz,Uz,F,R,U,Rz,Uz,Fz
- Smooth,Cat:,R,U,Rz,Fz,U,F,R,U2,Rz,Uz,F,Uz,Fz
- J,Perm:,R,U,Rz,U,R,Uz,Rz,Uz,R,Uz,Rz,U2,R,U,Rz,N,(89),J,Perm,Rz,U,Lz,U2,R,Uz,Rz,U2,L
- Niklas:,R,U2,Rz,Uz,R,U2,Lz,U,Rz,Uz,L
- Anti-Niklas:,Lz,U2,L,U,Lz,U2,R,Uz,L,U,Rz
- Reverse,Sexy,Move:,R,Uz,Rz,Uz,R,U,Rz,F,R,U,Rz,Uz,Rz,F,R2,Uz,Rz
- Rubikzs,Move:,F,R,Uz,Rz,Uz,R,U,Rz,Fz,R,U,Rz,Uz,Rz,F,R,Fz
- Sledgehammer:,Rz,F,R,Fz,U2,Rz,F,R,Fz
- Soon:,F,R,U,Rz,Uz,R,U,Rz,Uz,Fz
- Turbo:,R,U,Rz,Uz,Rz,F,R2,Uz,Rz,Uz,R,U,Rz,Fz
- Diag:,R,Uz,R,U,R,U,R,Uz,Rz,Uz,R2
- AS,Perm:,Rz,U2,R,Uz,Rz,Uz,R,Uz,Rz,U,R,U,Rz
- Triple,Sune:,R,U,Rz,U,R,Uz,Rz,U,R,U2,Rz
- Double,Sune:,R,U2,R,U2,R2,U,R2,U,R
- Single,U:,R,U,Rz,U,R,U2,Rz
- CLL,E,Perm:,U,x,Uz,R,U,Rz,D,R,Uz,Rz,Dz
- CLL,G,Perm:,y,U,Rz,U,R2,U2,R,Uz,R2,U,R,U,Rz
- CLL,L,Perm:,R,Uz,Lz,U,R,Uz,L,U
- CLL,N,Perm:,Mz,U,(R,U,Rz,Uz),M
- CLL,R,Perm:,F,(Mz,U),(R,Uz,Rz,U,R,U2,Rz,U,M)
- CLL,S,Perm:, M,M,U,Mz,U2,M,U, M,M
- CLL,U,Perm:,y,Rz,Uz,Rz,Uz,Rz,U,R,U,R,Uz,RR,U,Rz,U,R,Uz,B,Uz,Bz,Rz2
- CLL,V,Perm:,x,D2,R,U,Rz,D2,R,Uz,Rz
- CLL,W,Perm:,F,U,R,U2,Rz,Uz,R,U,Rz,U,Fz
- CLL,Y,Perm:,R,U,Rz,Uz,Rz,F,R2,U,Rz,Uz,Fz
- CLL,Z,Perm:,Uz,R,U,Rz,U,R,Uz,Rz,U,R,Uz,Rz,U2,R
- CLL,ZZ,Perm:,F,U,R,Uz,Rz,F,Uz,F,U,R,Uz,Rz,Fz
- Livid,last,layer,Gz,RG,,Rz,U,z,Rz,U,R,Gz
- Y-premutation:,F,R,Uz,Rz,Uz,R,U,Rz,Fz, M,M,Uz,M,U2,M,M,M,Uz, M,M  `
-
-
-
-`    Ab Perm: Rz U R Uz Rz Fz R U Rz Uz Rz F R
-     E Perm: xz R Uz Rz D R U Rz Dz R U Rz D R Uz Rz Dz
-     H Perm: M2 U M2 U2 M2 U M2
-     Z Perm: U R U Rz Uz Rz Uz Rz U R Uz Rz Uz Rz U R U2 Rz
-     T Perm: R U Rz Uz Rz F R2 Uz Rz Uz R U Rz Fz
-     Y Perm: F R Uz Rz Uz R U Rz Fz R U Rz Uz Rz F R Fz
-     J Perm: R U Rz Fz R U Rz Uz Rz F R2 Uz Rz Uz
-     R Perm: R Uz R U R U R Uz Rz Uz R2
-     F Perm: R U Rz Uz R U Rz Uz R U Rz Uz R U Rz Uz R U Rz Uz
-     V Perm: R U Rz Uz R U Rz Uz R Uz Rz U R U R2 Uz Rz
-     N Perm: U2 Rz Uz R2 U Rz U R U2 R2 Uz
-     G Perm: R U2 Rz Uz R Uz Rz
-     S Perm: R U Rz U R Uz Rz Uz Rz U2 R U Rz U R
-     E Perm: Rz U2 R Uz Rz Uz R Uz Rz U R U Rz U R Uz RzR, Cx, U, Rz, U, R, Uz, Rz, U, R, U, U, Rz, Czr)
-     M Perm: M2 U M U2 M,M,M U M2
-     Conjugate: F R Uz Rz Uz R U Rz Fz
-     Double J Perm: R Uz Rz U R Uz Rz Fz R U Rz Uz Rz F R2 Uz Rz
-     Double R Perm: R2 Uz Rz Uz R U R U R Uz R
-     F Perm: R U Rz U2 R Uz Rz U2 R U3 Rz
-     Funky H Perm: M,M,M U M,M,M U M U2 M,M,M U M,M,M U2 M U2
-     Inverse Sexy Move: R2 U R U Rz Uz Rz Uz U Rz
-     Perfect Match: Rz Uz Rz U R U Rz Fz R U Rz Uz Rz F R
-     Super Flip: U R U Rz Uz Rz Uz Rz U R Uz Rz Uz Rz U R U2 Rz
-     Triple Sune: R U Rz U R Uz Rz U R U2 Rz
-     Zeroing: R Uz B Uz Bz R2 U2 R Bz U B Rz
-     Chameleon: Fz U F Uz Fz U F R U Rz Uz Rz F R
-     Reverse Chameleon: R U Rz U R Uz Rz Fz U F Uz Fz U F
-     Sleek Dog: F U R Uz Rz Fz Uz F R U Rz Uz Fz
-     Smooth Cat: R U Rz Fz U F R U2 Rz Uz F Uz Fz
-     J Perm: R U Rz U R Uz Rz Uz R Uz Rz U2 R U Rz N (89) J Perm Rz U Lz U2 R Uz Rz U2 L
-     Niklas: R U2 Rz Uz R U2 Lz U Rz Uz L
-     Anti-Niklas: Lz U2 L U Lz U2 R Uz L U Rz
-     Reverse Sexy Move: R Uz Rz Uz R U Rz F R U Rz Uz Rz F R2 Uz Rz
-     Rubikzs Move: F R Uz Rz Uz R U Rz Fz R U Rz Uz Rz F R Fz
-     Sledgehammer: Rz F R Fz U2 Rz F R Fz
-     Soon: F R U Rz Uz R U Rz Uz Fz
-     Turbo: R U Rz Uz Rz F R2 Uz Rz Uz R U Rz Fz
-     Diag: R Uz R U R U R Uz Rz Uz R2
-     AS Perm: Rz U2 R Uz Rz Uz R Uz Rz U R U Rz
-     Triple Sune: R U Rz U R Uz Rz U R U2 Rz
-     Double Sune: R U2 R U2 R2 U R2 U R
-     Single U: R U Rz U R U2 Rz
-    CLL E Perm: U x Uz R U Rz D R Uz Rz Dz
-    CLL G Perm: y U Rz U R2 U2 R Uz R2 U R U Rz
-    CLL L Perm: R Uz Lz U R Uz L U
-    CLL N Perm: M,M,M U (R U Rz Uz) M
-    CLL R Perm: F (M,M,M U) (R Uz Rz U R U2 Rz U M)
-    CLL S Perm: M2 U M,M,M U2 M U M2
-    CLL U Perm: y Rz Uz Rz Uz Rz U R U R Uz RR,U,Rz,U,R,Uz,B,Uz,Bz,Rz2
-    CLL V Perm: x D2 R U Rz D2 R Uz Rz
-    CLL W Perm: F U R U2 Rz Uz R U Rz U Fz
-    CLL Y Perm: R U Rz Uz Rz F R2 U Rz Uz Fz
-    CLL Z Perm: Uz R U Rz U R Uz Rz U R Uz Rz U2 R
-    CLL ZZ Perm: F U R Uz Rz F Uz F U R Uz Rz Fz
-    Livid last layer Gz RG, Rz U zRz U RGz
-    Y-premutation: F R Uz Rz Uz R U Rz Fz M2 Uz M U2 M,M,M Uz M2 ` 
-*/
-
 var archive;
 var stored;
 $: archive = [];
@@ -5003,85 +4864,8 @@ function save (v) {
     console.log(archive);
     console.log(stored);
 };
-/*
-var F2L =[
-  [
-    "yellow",
-    "yellow",
-    "yellow",
-    "blue",
-    "blue",
-    "blue",
-    "blue",
-    "blue",
-    "blue"
-  ],
-  [
-    "blue",
-    "green",
-    "red",
-    "green",
-    "green",
-    "green",
-    "green",
-    "green",
-    "green"
-  ],
-  [
-    "green",
-    "orange",
-    "orange",
-    "red",
-    "red",
-    "red",
-    "red",
-    "red",
-    "red"
-  ],
-  [
-    "green",
-    "yellow",
-    "red",
-    "orange",
-    "orange",
-    "orange",
-    "orange",
-    "orange",
-    "orange"
-  ],
-  [
-    "yellow",
-    "yellow",
-    "orange",
-    "yellow",
-    "yellow",
-    "blue",
-    "yellow",
-    "red",
-    "blue"
-  ],
-  [
-    "white",
-    "white",
-    "white",
-    "white",
-    "white",
-    "white",
-    "white",
-    "white",
-    "white"
-  ]
-];
 
-var f2l = () => m = m(() => F2L)
-var f2l = () => (m = m(R)(Cxr)(T)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Rz)(Cx));
-*/
-
-var Lupleft = () => m = m(F)(U)(R)(Uz)(Rz)(Fz)
-
-var bar = () => m = m(F)(R)(U)(Rz)(Uz)(Fz)
-
-var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corners(), generic(), doubleFish(), nicklas(), adjacent(), Jb_Perm(), sune(), sune(), generic() ) 
+var topSramble = () => (sune(),  FsexyFz(), switch_corners(), triclock(), orient_corners(), switch_corners(), doubleFish(), nicklas(), adjacent(), Jb_Perm(), sune(),  switch_corners()); 
 
 </script>   // END SCRIPT
 
@@ -5397,12 +5181,12 @@ var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corner
                 virtual Rubik's cube, makes it seem that rotation occurred.
             </p>
 
-            <h2 style="text-align: center;">Some Algorithm Shortcuts</h2>
+            <h2 style="text-align: center;">Some Last Layer Shortcuts</h2>
             <p>The function "fmoves" uses arrays of functions to incrementally transform the virtual Rubik's cube: </p>
             <pre>{fmovesCode}</pre>
-            <button on:click={corners}
-                >PLL Corners: R' F R' B2 R F' R' B2 R2</button
-            >
+            <p> For most of the shortcuts below, "t" is set to 0,</p>
+            <p> After a while, solving the first two layers of a physical cube becomes pretty routine. Virtual cubes, such as the one on the right, take a while to get used to.</p>
+            <p> Experts learn to minimize the number of moves involved by cleverly looking ahead and using alternate algorithms. Cubers who can solve physical cubes in less than five minutes have little trouble solving the first two layers. Most, I suspect, make the white cross very quickly and finish using mostly their common sense, with very little reliance on what they may have learned from tutorials. </p>    
             <br />
             <button on:click={triclock}
                 >Triangle Clockwise: M2 U' M U2 M' U' M2</button
@@ -5424,7 +5208,7 @@ var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corner
                 >doubleFish R' F R B' R' F' R B
             </button>
             <br />
-            <button on:click={generic}>generic</button>
+            <button on:click={switch_corners}>switch_corners  R' F R' B B R F' R' B B R R</button>
             <br />
             <button on:click={sune}>Sune: R U R' U R U2 R'</button>
             <br />
@@ -5435,8 +5219,6 @@ var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corner
             <button on:click={Freverse_sexyFz}>Reverse Sexy: F U R U' R' F'</button>
             <br />
             <button on:click={sides2}>sides2: r, U, R', U', r', F, R, F'</button>
-            <br />
-            <button on:click={corners}>corners: </button>
             <br />
             <button on:click={orient_corners}
                 >Revolve: U R U' L' U R' U' L</button
@@ -5460,11 +5242,8 @@ var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corner
             <button on:click={reverse_niklas}
                 >Reverse Niklas: L' U R U' L U R'</button
             >
-            <button on:click={f2l}>F2L</button>
-            <button on:click={Lupleft}>Lupleft</button>
-            <button on:click={bar}>bar</button>
+            
             <button on:click={topSramble}>topScramble</button>
-
 
 
             <p>
@@ -5666,9 +5445,27 @@ var topSramble = () => (sune(),  FsexyFz(), generic(), triclock(), orient_corner
         <br /><br /><br /><br />
         <button
             style="font-size: 22px; height:90px "
-            on:click={() => (m = m(Zro)(Zro)(Yro))}
-            >Other View<br /> Click or Press O</button
-        >
+            on:click={() => (m = m(Xro))}>X</button>
+        <button
+            style="font-size: 22px; height:90px "
+            on:click={() => (m = m(Xror))}>X'</button>
+
+        <button    
+            style="font-size: 22px; height:90px "
+            on:click={() => (m = m(Yro))}>Y</button>
+        <button
+            style="font-size: 22px; height:90px "
+            on:click={() => (m = m(Yror))}>Y'</button>
+
+        <button
+            style="font-size: 22px; height:90px "
+            on:click={() => (m = m(Zro))}>Z</button>
+        <button
+            style="font-size: 22px; height:90px "
+            on:click={() => (m = m(Zror))}>Z'</button>
+
+
+
         <br /><br />
         <button style="font-size: 19px; height:30px;" on:click={shu}
             >Scramble W
@@ -6003,7 +5800,6 @@ In compare4 +page.svelte:4014:16
 
 <button on:click={console.log(m(dF3x))}>log x</button>
 <button on:click={console.log(m(dF3ar))}>log ar</button>
-<button on:click={f2l}>F2L</button>
 <button on:click={console.log("nn is", {nn})}>log nn</button>
 <button on:click={test8}>test8</button>
 <br><br>
