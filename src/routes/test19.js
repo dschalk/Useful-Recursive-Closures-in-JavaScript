@@ -66,6 +66,7 @@ async function gamble() {
 
   log("Mean net outcome:", mean);
   log("Standard deviation of net outcomes:", standardDeviation);
+  log("Standard deviation ")
 }
 
 gamble();
