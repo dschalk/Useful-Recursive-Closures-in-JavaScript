@@ -244,7 +244,6 @@ log(m(dF3x)[0][1][1][1][0][0](dF3x))        // [4]  no change`
 <p>Here's an example with deeply nested recursive closures. After the usual "m_clone = M(m(dF3x)), changes deep into "x" in the m_clone-M(x) closure left "x" in the m-M(x) closure unchanged. </p>
 <pre>{finalClone}</pre>
 
-<p> CAVEAT: My thoughts regarding the lazy evaluation of m(x)-M clones is not based on an analysis of the raw svelte code. I deduced my tentative conclusions from what I saw the code doing in the browser. This was my way of acknowledging and explaining the failure of "original object === clone" to return "false" before the clone had been used. Then "original object === clone" does return "false", as expected.   </p>
   
 
 

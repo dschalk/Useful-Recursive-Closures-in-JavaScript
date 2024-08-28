@@ -971,45 +971,6 @@ log("O is", O); // "Chevy"
 log("W is", W); // "Ford" `
 
 
-var stdCode = `    import { leftShift } from "mathjs";
-    var log = console.log;
-    var dF3x = () => {};
-
-    function M(x) {
-        return function go(func) {
-            if (func === dF3x) return x;
-            x = func(x);
-            return go;
-        };
-    }
-    var aa = 25;
-    var m = M([aa,1,aa,0]); // x in the m(x)-M closure is [25,1,25,0]
- // The elements of x (above) represent a starting dollars, first bet, goal, and wins.
-
-    function f1 (v) {
-        let result = Math.floor(Math.random()*2);
-        if (result) {           // 1 is true, 0 is false.
-          v[0] += v[1];         // The player gains $1.00
-          log("2<><><><><><><>, m(dF3x) is", m(dF3x));
-          if (v[3] < aa) m(f1)  // Another coin flip, 
-          else {
-            log("Double", m(dF3x))
-            return;
-          }  
-        }
-        else {
-            v[0] = v[0] - v[1];
-            v[1] = leftShift(v[1], 1);          
-            log("2******, m(dF3x) is", m(dF3x));
-            if (v[1] > v[0]) {
-              log("Fail", m(dF3x));
-              return
-            }
-            else m(f1);
-        } 
-        return v;
-      };`;
-
 
 
 
@@ -1021,7 +982,7 @@ var stdCode = `    import { leftShift } from "mathjs";
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
   <h1 class="middle">Recursive Closures</h1>
 
- <p> This webpage, and those that follow, explore the utility of what will be called "m-M(x) closures"; i.e., closures resulting from statements "m = M(x)", where x can be any value, and "M" is basically defined as:
+ <p> This webpage, and those that follow, explore the utility of what will be called "m-M(x) closures"; i.e., closures resulting statements "m = M(x)", where x can be any value, and "M" is basically defined as:
  
   <pre>{MCode}</pre>
  
@@ -1041,7 +1002,7 @@ var stdCode = `    import { leftShift } from "mathjs";
 <pre>{a1}</pre>
 <pre>{a2}</pre>
 
-<p>Modifying "W" modified O. Next, W gets reassigned. From then on, changing W no longer changes  'O'.</p>
+<p>Modifying "W" modified O. Next, W gets reassigned. From then on, chaging W no longer changes  'O'.</p>
 
 <pre>{a3}</pre>
 <p> O.car and W.car happen to have the same value, but not for long. When W.car becomes "Ford", O.car remains "Chevy". </p>
@@ -1079,7 +1040,7 @@ var stdCode = `    import { leftShift } from "mathjs";
 <pre>{functionF}</pre>
 <p> F populates a temporary array "temp" with values taken from locations on the current configuration of x. It populates temp[0][0], temp[0][3], temp[0][6], with whatever strings happen to be at x[4][2], x[4][5], and x[4][8]. When m(F) returns temp, temp becomes the value of x in the m-M(x) closure. </p>
 
-<h1 class="middle2"> The Game of Score </h1>
+<h1 style = "text-align: center; color: #f5ee9f"> The Game of Score </h1>
     <p>
       The <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided,
       one twelve-sided, and one twenty-sided dice along with arithmetic and concatenation
@@ -1091,18 +1052,6 @@ var stdCode = `    import { leftShift } from "mathjs";
      Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
      [], ['+'], [], [0], [], [0], [] 
 ]);</pre>
-
-<h1 class="middle2">Crunching Numbers</h1>
-<p><a href="./game2">Martingale</a> runs the Martingale betting strategy thousands of times to show that it neither increases nor decreases the odds of coming out ahead. x in the m(x)-M closure is [starting amount,1,goal,0] where "starting amount" is the amount of money the player tries to double. "goal is fixed, starting at "starting amount. m operates on the function "f1", which randomly generates 0 or 1 wth equal probability, increasing or decreasing v[1] (the mount of the bet) and v[0] (the players current stake). </p>
-<p> If you go to <a href="./game2">Martingale</a>, you can try it yourself, learn the betting algorithm, and see the outcomes of tens of thousands of coin flips. m needs only one function, f1, shown below.</p>
-
-<pre>{stdCode}</pre>
-
-
-
-
-
-
 
 </div> 
 
