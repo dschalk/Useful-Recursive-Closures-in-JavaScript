@@ -110,46 +110,75 @@ var gambleCode = `async function gamble () {
 
 clear();
 
-var runs_10000 = `
-gain is 347756
-loss is 347627
-percent deviation from equality is 0.018550928049722238 %
 
-gain is 347789
-loss is 347657
-percent deviation from equality is 0.01898062538284784 %
+var runs_100000 = `gain is 8306925
+loss is 8308713
+dbl/100000 is 0.36959
+1/Euler's number is 0.368
+percent deviation from equality is -0.010760947006669259 %
 
-gain is 346507
-loss is 350132
-percent deviation from equality is -0.520355593069007 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8309877
+loss is 8313498
+dbl/100000 is 0.36897
+1/Euler's number is 0.368
+percent deviation from equality is -0.021782580252205103 %
 
-gain is 351964
-loss is 351750
-percent deviation from equality is 0.030410081368283135 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8312262
+loss is 8301838
+dbl/100000 is 0.37098
+1/Euler's number is 0.368
+percent deviation from equality is 0.06274188791448228 %
 
-gain is 349077
-loss is 349832
-percent deviation from equality is -0.10802550832797976 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8326477
+loss is 8316122
+dbl/100000 is 0.37035
+1/Euler's number is 0.368
+percent deviation from equality is 0.06221984919542915 %
 
-gain is 346093
-loss is 347058
-percent deviation from equality is -0.13921930430743085 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8331954
+loss is 8322345
+dbl/100000 is 0.3706
+1/Euler's number is 0.368
+percent deviation from equality is 0.05769681449816651 %
 
-gain is 355417
-loss is 352470
-percent deviation from equality is 0.4163093827122126 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8312439
+loss is 8309928
+dbl/100000 is 0.36999
+1/Euler's number is 0.368
+percent deviation from equality is 0.015106151849492915 %
 
-gain is 349547
-loss is 348232
-percent deviation from equality is 0.1884550839162543 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8314156
+loss is 8316033
+dbl/100000 is 0.36927
+1/Euler's number is 0.368
+percent deviation from equality is -0.011286702754851434 %
 
-gain is 349345
-loss is 350016
-percent deviation from equality is -0.09594472668621785 %
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8323725
+loss is 8330640
+dbl/100000 is 0.36863
+1/Euler's number is 0.368
+percent deviation from equality is -0.041520646389099795 %
 
-gain is 353833
-loss is 349899
-percent deviation from equality is 0.5590196267897438 %`;
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8354956
+loss is 8339631
+dbl/100000 is 0.37151
+1/Euler's number is 0.368
+percent deviation from equality is 0.09179622113443117 %
+
+p@p:~/monad/Useful-Recursive-Closures-in-JavaScript/src/routes$ node test13
+gain is 8286734
+loss is 8303624
+dbl/100000 is 0.36738
+1/Euler's number is 0.368
+percent deviation from equality is -0.10180612136278192 %`
 
 var f1Code2 = `import { leftShift } from "mathjs";
     var log = console.log;
@@ -225,7 +254,7 @@ var f1Code2 = `import { leftShift } from "mathjs";
  
 <pre>{gambleCode}</pre>  
 <span style = "margin: 3%"> The result of calling gamble() ten consecutive times, each time trying to double $25 10,000 times, supports the assertion that repeated use of the Martingale betting strategy is a 50-50, break even proposition, similar to betting the same amount on coin flips thousands of times. I don't know how to prove it, but it seems self-evident that no pattern of changing the amounts of bets can possibly increase or decrease the odds of coming out ahead after repeatedly betting on fair flips of a fair coin.  </span>
-<pre>{runs_10000}</pre>
+<pre>{runs_100000}</pre>
 <p> The "f1" function was slightly modified to keep track of gains and losses as follows</p>
 <pre>{f1Code2}</pre>
 <br>

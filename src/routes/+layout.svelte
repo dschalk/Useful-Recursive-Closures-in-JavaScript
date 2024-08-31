@@ -22,7 +22,7 @@ function rotateCube() {
 
 function double (x) {return x + x};
 
-	})
+	}) 
 </script>
 
 <style>
@@ -33,6 +33,9 @@ function double (x) {return x + x};
     color: rgb(135, 86, 135);
   }
 </style>
+
+X-Content-Type-Options: nosniff
+
 <nav>
         <a href="./">Home</a>
 
@@ -42,7 +45,7 @@ function double (x) {return x + x};
                 
         <a href="./clone">Clones</a>
          
-        <a href="./game2">Martingale</a>
+        <a href="./Martingale">Martingale</a>
                 
         <a href="./score">Game of Score</a>
 
