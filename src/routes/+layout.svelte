@@ -1,6 +1,6 @@
 <script>
-  import "./style.css"
-	import { onMount } from 'svelte';
+import "./style.css"
+/*	import { onMount } from 'svelte';
 
 	onMount(async () => {
     const rubiksCube = document.querySelector('.rubiks-cube');
@@ -23,6 +23,7 @@ function rotateCube() {
 function double (x) {return x + x};
 
 	}) 
+*/
 </script>
 
 <style>
@@ -34,7 +35,7 @@ function double (x) {return x + x};
   }
 </style>
 
-X-Content-Type-Options: nosniff
+<!--X-Content-Type-Options: nosniff -->
 
 <nav>
         <a href="./">Home</a>
@@ -48,10 +49,6 @@ X-Content-Type-Options: nosniff
         <a href="./Martingale">Martingale</a>
                 
         <a href="./score">Game of Score</a>
-
-        <!--<a href="./functional">Functional</a>
-
-        <a href="./WebSockets">WebSockets</a> -->
 
   </nav>
 

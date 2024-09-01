@@ -1,6 +1,5 @@
 
     import { leftShift } from "mathjs";
-    import { std } from "mathjs";
     var log = console.log;
     var dF3x = () => {};
 
@@ -20,20 +19,18 @@
     var m = M([aa, 1, aa, 0]);
 
     function f1 (v) {
-      //  log(m(dF3x));
+        log(m(dF3x));
         let result = Math.floor(Math.random()*2);
         if (result) {
           gain += v[1]  
           v[0] += v[1];
           v[1] = 1;
           v[3] += 1;
-       //   log("<><><><><><><>, m(dF3x) is", m(dF3x));
           if (v[3] < aa) {
             m(f1)
         }
           else {
               dbl += 1;
-       //     log("Double", m(dF3x))
               return v;
           }  
         }
@@ -41,25 +38,22 @@
             v[0] = v[0] - v[1];
             loss += v[1];
             v[1] = leftShift(v[1], 1);          
-       //     log("******, m(dF3x) is", m(dF3x));
             if (v[1] > v[0]) {
-       //       log("Fail", m(dF3x));
               return
             }
             else m(f1);
         } 
-        // return v;
         return v;
       } 
 
 async function gamble () {   
   let k = 0;
-  while (k < 100000) {
+  while (k < 100) {
       k += 1; 
       await m(f1)
       m(() => [50, 1, 50, 0]);
   } 
-  if (k > 99998) {
+  if (k > 98) {
       log("gain is", gain);
       log("loss is", loss);
       log("dbl/100000 is", dbl/100000);
