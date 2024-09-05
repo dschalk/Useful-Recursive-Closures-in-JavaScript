@@ -1,4 +1,3 @@
-
 var log = console.log;
 var dF3x = () => {};
 
@@ -17,7 +16,7 @@ function gamble() {
     let k = 0;
 
     // Main loop
-    while (k < 10000000000) {
+    while (k < 1000000000) {
         k += 1;
 
         // Place another bet.
