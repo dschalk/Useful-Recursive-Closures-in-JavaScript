@@ -4867,6 +4867,15 @@ function save (v) {
 
 var topSramble = () => (sune(),  FsexyFz(), switch_corners(), triclock(), orient_corners(), switch_corners(), doubleFish(), nicklas(), adjacent(), Jb_Perm(), sune(),  switch_corners()); 
 
+var square_0_2 = `                    <button
+                        style="background-color: {m(dF3x)[0][2]}"
+                        on:click={() => {
+                            m = m(R);
+                        }}
+                    /> `;
+
+
+
 </script>   // END SCRIPT
 
 
@@ -5463,9 +5472,6 @@ var topSramble = () => (sune(),  FsexyFz(), switch_corners(), triclock(), orient
         <button
             style="font-size: 22px; height:90px "
             on:click={() => (m = m(Zror))}>Z'</button>
-
-
-
         <br /><br />
         <button style="font-size: 19px; height:30px;" on:click={shu}
             >Scramble W

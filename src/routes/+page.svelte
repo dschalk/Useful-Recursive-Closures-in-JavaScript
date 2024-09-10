@@ -1,6 +1,10 @@
 <script>
   import Cubeshot from "$lib/Cubeshot.png"
   import CubeshotR from "$lib/CubeshotR.png"
+  import shot3 from "$lib/Screenshot3.png"
+  import shot4 from "$lib/shot4.png"
+  import shot5 from "$lib/shot5.png"
+  import shot6 from "$lib/shot6.png"
   import F from "$lib/F.png"
   
   var Mdisplay = `function M (x) {
@@ -1010,6 +1014,60 @@ var stdCode = `    import { leftShift } from "mathjs";
         return v;
       };`;
 
+let topCenter = `    <button
+        style="background-color: {m(dF3x)[4][4]}"
+        on:click={() => {
+            m = m(Yro);
+        }}
+    />` 
+
+
+var square_0_2 = `                    <button
+                        style="background-color: {m(dF3x)[0][2]}"
+                        on:click={() => {
+                            m = m(R);
+                        }}
+                    /> `;
+
+var square_4_4 = `                    <button
+                        style="background-color: {m(dF3x)[4][4]}"
+                        on:click={() => {
+                            m = m(Yro);
+                        }}
+                    /> `;
+
+
+var YroCode = `    var Yro = function Yro(ar) {
+        let temp = [];
+        temp[0] = ar[2];
+        temp[1] = ar[3];
+        temp[2] = ar[1];
+        temp[3] = ar[0];
+        temp[4] = [
+            ar[4][6],
+            ar[4][3],
+            ar[4][0],
+            ar[4][7],
+            ar[4][4],
+            ar[4][1],
+            ar[4][8],
+            ar[4][5],
+            ar[4][2],
+        ];
+        temp[5] = [
+            ar[5][2],
+            ar[5][5],
+            ar[5][8],
+            ar[5][1],
+            ar[5][4],
+            ar[5][7],
+            ar[5][0],
+            ar[5][3],
+            ar[5][6],
+        ];
+        return temp;
+    };`
+
 
 
 
@@ -1024,14 +1082,31 @@ var stdCode = `    import { leftShift } from "mathjs";
  <p> This webpage, and those that follow, explore the utility of what will be called "m-M(x) closures"; i.e., closures resulting from statements "m = M(x)", where x can be any value, and "M" is basically defined as:
  
   <pre>{MCode}</pre>
- 
+ <p> It's sometimes useful to modify the basic definition of m-M(x) closures (above); for example, to make "m(dF3x) return a clone of x, rather than x. The modified definition of M used in the <a href="./cube">Rubik's cube example </a> saves the names of functions operated on by m, making it convenient for players to reverse a series of moves by repeatedly pressing the "Q" key. <a href="./cube#reverse">Link to the reverse function</a> </p>
 
-<div class = "h3"> Concise and Transparent Function Composition </div> <p class = "i3"> An anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8). <span class = "or">{v2} </span> </p>
+<div class = "h2"> Concise and Transparent Function Composition </div> <p class = "i3"> An anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8). <span class = "or">{v2} </span> </p>
 
-<div class = "h3"> Isolation of Sequences of Computations</div>
-<p>The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates how user key presses and button clicks avoid causing side effects outside of the m-M(x) closure. User actions pull functions "func" into the m-M(x) closure with calls to "m(func)" for functions affecting the array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white". "m(func)" causes x = func(x) to execute inside of M, rearranging some of the 54 elements of x in ways corresponding to turning the faces and middle sections of a Rubik's cube. </p>
+<div class = "h2"> Isolation of Sequences of Computations</div>
+<p>The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates key presses and button clicks turning the sides, middle sections, or entire body of the virtual Rubik's cube that is displayed in browsers. The application code contains two representations; one written in JavaScript, and the other in HTML.</p> 
+<div class = "h3"> The Two Representations of the Virtual Cube</div>
+  
+<p> The JavaScript representation of the virtual Rubik's cube consists of 54 strings contained in an array of six nine-member arrays. This array of arrays is "x" in the application's m-M(x) closure. "m" handles events triggered by key presses and mouse clicks. Events that rearrange strings in the m-M(x) closure cause m to operate on one of the functions (let's call it "func") defined within the script tags. Pursuant to the definition of M, m(func) rearranges the strings of x, transforming x to func(x). 
+</p>
+<p> The HTML representation of the cube consists of 54 buttons contained in an array of three nine-member arrays, corresponding to the three sides of the cube which are visible in the browser: front, top, and right. Rotating the virtual cube does not change this fact. For example, clicking the top center square, clicking "Y", and pressing the "Y" key changes x in the m-M(x) closure and also in the DOM, since m(dF3x) is x pursuant to the definition of M. </p>        
+<pre>{square_4_4}</pre>  
+  
+<p> by x in an m-M(x) closure, where x is an array of six nine-member arrays of the strings "blue", "green", "red", "orange", "yellow", and "white". These clicks and key presses call m on functions, causing those functions to operate on the Rubik's cube representation in the m-M(x) closure. Rearranging the color strings of x, which are reactive and embedded in the DOM as "background-color = m(dF3x)[j][k]" for j between 0 and 6, and k between 0 and 9, automatically transforms the background colors of the buttons that comprise the Rubik's cube representation in the DOM. Rearranging the buttons'background colors creates the appearance, in the browser, of the virtual Rubik's cube, or one of its sides or middle sections, rotating 45 degrees. For example, The top, center square seen in the browser corresponds to this button element in the DOM: </p>
+<p> The function Yro rearranges the virtual Rubik's cube seen in the monitor in a manner corresponding to a 45-degree clockwise rotation of the entire Rubik's cube around the vertical axis. It operates on x inside of the m-M(x) closure, insulated from possible interactions with other JavaScript code. The only side effects are changes in the HTML buttons' background colors. </p>
+                    <pre>{topCenter}</pre>
+                    
+<p>The illustration below shows the color changes that are seen in browser monitors when the center square on the top of a solved virtual Rubik's cube is clicked three times. The color strings of the x array of arrays in the m-M(x) closure rearrange to Yro(x). Overall, three clicks change x to Yro(Yro(Yro(x))). The definition of Yro is in the appendix at the bottom of this page.</p> 
 
-<p> For example, When a user presses the "R" key, m(R) is called, causing x to be reassigned whih the statement "x =R(x)".  to execute inside of the m-M(x) closure. This rearranges the color strings of x, and consequently, the corresponding background colors of the HTML representation of the cube in the DOM. The state of the cube, 'x', can remain in the m-M(x) closure from user key strokes and button clicks all the way to the DOM without affecting, or being affected by, any Svelte code inside of the script tags.  This is similar to what the Haskell IO monad does, allowing user input to be processed without side effects until the final result is printed or displayed. The lazy evaluation of newly defined clones demonstrated on the <a href="./clone">clone</a> page is also reminscent of Haskell. When the dynamic state of applications are kept in recursive closures  </p>
+<img src={shot3} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
+<img src={shot4} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
+<img src={shot5} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
+<img src={shot6} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
+
+
 
 <div class = "h3"> Cloning M (Including x) In m-M(x) Closures </div>
 <p class="i3"> Cloning is discussed on the <a href="./clone">Clone</a> page. Cloning m is a two-step procedure. Frist, define the clone with "const m_clone = M(m(dF3x))". That creates a new, independent-from-m closure, an m_clone-M(x) closure. "x" inside of the m_clone-M(x) closure and "x" in the m-M(x) closure are references to the same object in memory. At this stage, m_clone is, for all practical purposes, a perfect deep clone. It's just lazily waiting to be used before it automatically becomes independent of the other "x", the one in the m-M(x) closure. </p>
@@ -1063,7 +1138,49 @@ var stdCode = `    import { leftShift } from "mathjs";
 <p> There are better ways to generate Fibonacci numbers. This example shows that the result of running fib(11) can be obtained by running fib(9) and later fib(2).  </p>
 <pre>{fibCode}</pre>
 
-<h1 class="middle2"> A Fast and Efficient Virtual Rubik's Cube </h1> 
+<h1 class="middle2"> The Game of Score </h1>
+    <p>
+      The <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided,
+      one twelve-sided, and one twenty-sided dice along with arithmetic and concatenation
+      to arrive at the number 20 in two or more moves. The initial value of "x" in
+      the m-M(x) closure is shown in the definition of m2:
+    </p>
+    <pre>m2 = M([ 
+    [Math.floor(Math.random() * 6)   + 1, Math.floor(Math.random() * 6) + 1,
+     Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
+     [], ['+'], [], [0], [], [0], [] 
+]);</pre>
+
+<div class = "h2">Efficiently Crunching Numbers</div>
+<p><a href="./game2">Martingale</a> runs the Martingale betting strategy millions of times, demonstrating that even-odds games of chance are, in the long run, break-even endeavors. Sometimes you end up ahead, sometimes behind. The Martingale strategy doesn't change that.</p> 
+<p> to show that it neither increases nor decreases the odds of coming out ahead. x in the m(x)-M closure is [starting amount,1,goal,0] where "starting amount" is the amount of money the player tries to double. "goal is fixed, starting at "starting amount. m operates on the function "f1", which randomly generates 0 or 1 wth equal probability, increasing or decreasing v[1] (the mount of the bet) and v[0] (the players current stake). </p>
+<p> If you go to <a href="./game2">Martingale</a>, you can try it yourself, learn the betting algorithm, and see the outcomes of tens of thousands of coin flips. m needs only one function, f1, shown below.</p>
+
+<pre>{stdCode}</pre>
+
+
+
+
+
+
+
+</div> 
+
+<a href="#top">Back to the top</a>
+<br>
+
+
+<h2>Appendix</h2>
+<p>In the m-M(x) representation of a Rubik's cube as an array of six nine-member arrays of strings, the solved cube is x = ([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
+      ["green", "green", "green", "green", "green", "green", "green", "green", "green"],
+      ["red", "red", "red", "red", "red", "red", "red", "red", "red"],
+      ["orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange", "orange"],
+      ["yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"],
+      ["white", "white", "white", "white", "white", "white", "white", "white", "white"] ]  The default orientation of the visible sides of a solved cube is yellow on top, blue on the right, and orange facing outward.  </p>
+<p>When m(Yro) executes, Yro constructs an array of six nine-member arrays named "temp," using the 54 strings constituting x in its current state. Finally, pursuant to the definition of M, x = temp, the return value of Yro(x). Here's the definition of Yro: </p>
+<pre>{YroCode}</pre>
+
+<h1 class="middle2"> Further Discussion of the Fast and Efficient Virtual Rubik's Cube </h1> 
 
 <p> Some of the code responsible for the <a href="./cube">virtual Rubik's cube</a> is shown below. Here's the HTML code:</p>  
 
@@ -1079,37 +1196,6 @@ var stdCode = `    import { leftShift } from "mathjs";
 <pre>{functionF}</pre>
 <p> F populates a temporary array "temp" with values taken from locations on the current configuration of x. It populates temp[0][0], temp[0][3], temp[0][6], with whatever strings happen to be at x[4][2], x[4][5], and x[4][8]. When m(F) returns temp, temp becomes the value of x in the m-M(x) closure. </p>
 
-<h1 class="middle2"> The Game of Score </h1>
-    <p>
-      The <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided,
-      one twelve-sided, and one twenty-sided dice along with arithmetic and concatenation
-      to arrive at the number 20 in two or more moves. The initial value of "x" in
-      the m-M(x) closure is shown in the definition of m2:
-    </p>
-    <pre>m2 = M([ 
-    [Math.floor(Math.random() * 6)   + 1, Math.floor(Math.random() * 6) + 1,
-     Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
-     [], ['+'], [], [0], [], [0], [] 
-]);</pre>
-
-<h1 class="middle2">Crunching Numbers</h1>
-<p><a href="./game2">Martingale</a> runs the Martingale betting strategy thousands of times to show that it neither increases nor decreases the odds of coming out ahead. x in the m(x)-M closure is [starting amount,1,goal,0] where "starting amount" is the amount of money the player tries to double. "goal is fixed, starting at "starting amount. m operates on the function "f1", which randomly generates 0 or 1 wth equal probability, increasing or decreasing v[1] (the mount of the bet) and v[0] (the players current stake). </p>
-<p> If you go to <a href="./game2">Martingale</a>, you can try it yourself, learn the betting algorithm, and see the outcomes of tens of thousands of coin flips. m needs only one function, f1, shown below.</p>
-
-<pre>{stdCode}</pre>
-
-
-
-
-
-
-
-</div> 
-
-
-
-
-<a href="#top">Back to the top</a>
 
 <br><br><br>
 <br><br><br>
@@ -1173,9 +1259,21 @@ span {
     font-size: 22px;
     }
 
+  .h2 {
+    color: gold;
+    font-size: 32px;
+    text-align: center;
+    }
+
   .h3 {
     color: gold;
     font-size: 27px;
+    text-align: center;
+    }
+
+  .h4 {
+    color: gold;
+    font-size: 22px;
     text-align: center;
     }
 
@@ -1257,3 +1355,4 @@ span {
 */
 
 </style>
+

@@ -1,72 +1,78 @@
 
-import { leftShift } from "mathjs";
-import { std } from "mathjs";
+
 var log = console.log;
 var dF3x = () => {};
 
-// Function M for continuation-passing style
 function M(x) {
-  return function go(func) {
-    if (func === dF3x) return x;
-    x = func(x);
-    return go;
-  };
+    return function go(func) {
+        if (func === dF3x) return x;
+        x = func(x);
+        return go;
+    };
 }
 
-let gain = 0;
-let loss = 0;
-let aa = 100;
-let bb = 1;
-let arr = [aa, bb, aa, 0]; // Initial state
-var m = M([aa, 1, aa, 0]); // Initializing the M function
 
-// Main function for each attempt
-function f1(v) {
-  let result = Math.floor(Math.random() * 2);
-  if (result) {
-    gain += v[1];
-    v[0] += v[1];
-    v[1] = 1; // Reset bet after win
-    v[3] += 1; // Increment winnings count
-    log("Win, m(dF3x) is", m(dF3x));
-    if (v[3] < aa) m(f1); // Continue if goal not reached
-    else {
-      log("Goal reached, m(dF3x) is", m(dF3x));
-      return v;
+    let m = M([50, 1, 50, 0]);  // [stake, bet, goal, number successes] 
+    let jumpUp = 0;
+    let jumpBack = 0;
+    let jumpZero = 0;
+    let gain = 0;
+    let loss = 0;
+    let k = 0;
+    let x = Date.now();
+    let q1 = true;
+    let q2 = false;
+    let q3 = false;
+    
+
+    // Main loop
+    while (k < 1000000000) {
+        k += 1;
+
+        // if (gain === loss) even += 1;
+        // Reset the closure state in preparation for another round.
+        m(() => [50, 1, 50, 0]);
+        // Place another bet.
+        m(f1);
     }
-  } else {
-    v[0] = v[0] - v[1]; // Deduct the bet amount from stake
-    loss += v[1];
-    v[1] = leftShift(v[1], 1); // Double the bet
-    log("Loss, m(dF3x) is", m(dF3x));
-    if (v[1] > v[0]) {
-      log("Bankrupt, m(dF3x) is", m(dF3x));
-      return;
-    } else m(f1); // Continue if not bankrupt
-  }
-  return v;
-}
 
-// Asynchronous gambling function to simulate multiple attempts
-async function gamble() {
-  let netOutcomes = []; // Array to store net outcomes for each game
-
-  for (var k = 0; k < 10000; k += 1) {
-    await m(f1);
-    netOutcomes.push(gain - loss); // Store the net outcome of each game
-    m(() => [aa, 1, aa, 0]); // Reset state after each game
-
+    // Log results after loop
+    log("End", (Date.now() - x) / 1000)
+    log(k, "attempts");
     log("gain is", gain);
     log("loss is", loss);
-  }
+    // log("Player jumped out of the red ",jumpUp, "times")
+    // log("Player fell back into the red ",jumpBack, "times")
+    log("jumpUp is", jumpUp);
+    log("jumpBack is", jumpBack);
+    log("percent deviation from equality is", ((gain - loss) / (gain + loss)) * 100, "%");
+  
+    function f1(v) {
+        let result = Math.floor(Math.random() * 2);
+        q1 = (gain > loss);
+        q2 = (loss > gain);
 
-  // Calculate mean and standard deviation
-  let mean = (gain - loss) / netOutcomes.length;
-  let standardDeviation = std(netOutcomes);
+        if (result) {      // Success
+            gain += v[1];
 
-  log("Mean net outcome:", mean);
-  log("Standard deviation of net outcomes:", standardDeviation);
-  log("Standard deviation ")
-}
+            v[0] += v[1];  // Increase stake by current bet
+            v[1] = 1;      // Reset bet to 1
+            v[3] += 1;     // Increment success counter
+            // Recursively continue if stake is less than goal
+            if (q2 && (gain > loss)) jumpUp += 1;    
+            if (v[0] < 100) {
+                m(f1);  // Continue playing
+            }
+        } else {            // Failure
+            v[0] -= v[1];   // Subtract bet from stake (loss)
+            loss += v[1];   // Add to total loss
+            v[1] <<= 1;     // Double the bet (using bit shift)
+            if (q1 && (gain < loss)) jumpBack += 1;
+            // Check if the current bet exceeds stake; if not, continue
+            if (v[1] <= v[0]) {
+                m(f1);  // Continue playing
+            }
+        }
+    }
 
-gamble();
+
