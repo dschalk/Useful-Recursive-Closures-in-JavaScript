@@ -1,61 +1,35 @@
-var log = console.log;
+/*
+The following is a universal cloning technique for JavaScript data structures. m and cl begin as closures located at separate addresses in memory, both pointing to one address in memory containing [ [ 6 ], [ 7 ], [ [Function: add] ].  Calling cl(v => [ v[0], v[1], [mult] ]) reassigns the value in the cl closure to cl(v => [ v[0], v[1], [mult] ]). Cloning is accomplished by re-assigning memory addresses, and should work with any m(v) , cl = m, and cl(a => a') where a is any JavaScript value and a' is a modification of v, accomplished by reassigning the value in cl to a.  Using the terminology in the definition of M, func = a => a' and x = func(x) is the reassignment. This method works for any JavaScript data structure because it doesn't attempt to operate on individual aspects of data structures, it simply places the modification of the data structure originally contained in the closure m into a separate location in memory by means of reassignment inside of the cl closure. Please carefully evaluate the code below and tell me if what I wrote above is correct. 
+*/
 var dF3x = () => {};
+var log = console.log;
 
-function M(x) {
-    return function go(func) {
-        if (func === dF3x) return x;
-        x = func(x);
-        return go;
-    };
-}
-
-function gamble() {
-    let m = M([50, 1, 50, 0]);  // [stake, bet, goal, number successes] 
-    let gain = 0;
-    let loss = 0;
-    let k = 0;
-
-    // Main loop
-    while (k < 1000000000) {
-        k += 1;
-
-        // Place another bet.
-        m(f1);
-        
-        // Reset the closure state in preparation for another round.
-        m(() => [50, 1, 50, 0]);
-    }
-
-    // Log results after loop
-    log("k is", k);
-    log("gain is", gain);
-    log("loss is", loss);
-    log("percent deviation from equality is", ((gain - loss) / (gain + loss)) * 100, "%");
-
-    function f1(v) {
-        let result = Math.floor(Math.random() * 2);
-
-        if (result) {
-            gain += v[1];
-            v[0] += v[1];  // Increase stake by current bet
-            v[1] = 1;      // Reset bet to 1
-            v[3] += 1;     // Increment success counter
-
-            // Recursively continue if stake is less than goal
-            if (v[0] < 100) {
-                m(f1);  // Continue playing
-            }
-        } else {
-            v[0] -= v[1];   // Subtract bet from stake (loss)
-            loss += v[1];   // Add to total loss
-            v[1] <<= 1;     // Double the bet (using bit shift)
-
-            // Check if the current bet exceeds stake; if not, continue
-            if (v[1] <= v[0]) {
-                m(f1);  // Continue playing
-            }
+    function M (x) {
+      return function go (func)
+        {
+            if (func === dF3x) return x;
+            else x = func(x);
+            return go;
         }
     }
-}
 
-gamble();
+const m = M([ [6], [7], [add] ]);
+const cl = M(m(dF3x))
+function add (a,b) {return a+b};
+function mult (a,b) {return a*b};
+log("m === cl", m === cl); // false
+log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ); // true
+log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+
+log("cl(v => [ v[0], v[1], [mult] ] )");  
+cl(v => [ v[0], v[1], [mult] ]); 
+log("m === cl", m === cl);  // false 
+log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ) // false
+log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult] ] ]
+log("m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])",
+   m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])) // 13
+log("cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0])", 
+   cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0] )) // 42
+

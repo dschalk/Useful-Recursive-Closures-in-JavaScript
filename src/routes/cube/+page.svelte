@@ -2615,7 +2615,8 @@
 
     const reverseCode = `function reverse () { 
     m = m(ob[m(dF3ar).pop()]); // Pops a function name and runs its reverse.   
-    m(dF3ar).pop(); // Discard the function that m just pushed onto ar.
+    m(dF3ar).pop(); // Discard the inverse functions's name, that m just 
+                    // pushed onto ar (inside of the m-M(x) closure). 
   }`;
 
     var buttonCode = `<button style="background-color: {m(dF3x)[3][3]}" 
@@ -2625,6 +2626,7 @@
     function f77(x) {
         F7 = x;
     }
+    
 
     async function faces() {
         f77("R");
@@ -4866,14 +4868,6 @@ function save (v) {
 };
 
 var topSramble = () => (sune(),  FsexyFz(), switch_corners(), triclock(), orient_corners(), switch_corners(), doubleFish(), nicklas(), adjacent(), Jb_Perm(), sune(),  switch_corners()); 
-
-var square_0_2 = `                    <button
-                        style="background-color: {m(dF3x)[0][2]}"
-                        on:click={() => {
-                            m = m(R);
-                        }}
-                    /> `;
-
 
 
 </script>   // END SCRIPT

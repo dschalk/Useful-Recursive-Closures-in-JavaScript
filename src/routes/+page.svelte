@@ -1069,7 +1069,185 @@ var YroCode = `    var Yro = function Yro(ar) {
     };`
 
 
+var cloneLimitations = `var log = console.log;
+var dF3x = () => {};
 
+function M(x) {
+    return function go(func) {
+        if (func === dF3x) return x;
+        x = func(x);
+        return go;
+    };
+}
+
+var m = M({a:1, b:2});
+var b = m(dF3x);  // b is just another name for x in the m-M(x) closure.
+b.c = 3; 
+log("b is", b);  // b is { a: 1, b: 2, c: 3 }
+log("m(dF3x) is", m(dF3x));  // m(dF3x) is { a: 1, b: 2, c: 3 }
+// Mutating b mutated x in the m-M(x) closure.
+
+function M(x) {
+    return function go(func) {
+        if (func === dF3x) return JSON.parse(JSON.stringify(x));
+        x = func(x);
+        return go;
+    };
+}
+
+var m = M({a:1, b:2});
+var b = m(dF3x);  // b is a clone
+b.c = 3;
+log("b is", b);  // b is { a: 1, b: 2, c: 3 }
+log("m(dF3x) is", m(dF3x));  // m(dF3x) is { a: 1, b: 2 }
+// x in the m-M(x) closure is not affected by the modification of b.
+
+JSON.parse(JSON.stringify(x)) is unable to make clones of functions, 
+undefined values, Symbols, circular references, custom class instances (methods and prototype), dates (converted to strings), regular Expressions (lost), typed Arrays and special objects (converted to plain objects).
+
+JSON.parse(JSON.stringify(x)) is a common technique to create a deep clone of an object in JavaScript. However, it fails to handle certain types of data. Here are the values of x for which this method cannot make a proper clone:
+
+(1) Functions: Functions are not valid JSON data types, so they are omitted during stringification.
+
+const obj = { fn: function() { return "hello"; } };
+JSON.parse(JSON.stringify(obj)); // { } - the function is lost
+
+(2) Undefined values: undefined is not a valid JSON type, so any property with undefined as a value will be omitted.
+
+const obj = { key: undefined };
+JSON.parse(JSON.stringify(obj)); // { } - the undefined property is lost
+
+(3) Symbol values: Symbols are not valid in JSON and are excluded during stringification.
+
+const obj = { key: Symbol("sym") };
+JSON.parse(JSON.stringify(obj)); // { } - the symbol is lost
+
+(4) Circular references: JSON cannot represent circular structures, so attempting to stringify an object with circular references will throw an error.
+
+const obj = {};
+obj.self = obj;
+JSON.stringify(obj); // Error: Converting circular structure to JSON
+
+(5) Custom class instances: Instances of custom classes will be converted to plain objects, and their methods and prototype chain will be lost.
+
+class MyClass {
+  constructor() { this.val = 10; }
+  method() { return this.val; }
+}
+const obj = new MyClass();
+JSON.parse(JSON.stringify(obj)); // { val: 10 } - methods are lost
+
+(6) Date objects: Dates will be serialized as strings and will not retain their Date type.
+
+const obj = { date: new Date() };
+JSON.parse(JSON.stringify(obj)); // { date: "2024-09-10T00:00:00.000Z" } - Date is converted to string
+
+(7) Regular Expressions: RegExps are not supported and will be converted to empty objects.
+
+const obj = { regex: /abc/ };
+JSON.parse(JSON.stringify(obj)); // { regex: {} } - Regular expression is lost
+
+(8) Typed Arrays and other special objects: Objects like Map, Set, WeakMap, WeakSet, Int8Array, Uint8Array, etc., will lose their special behavior and be serialized as empty or plain objects.
+
+const obj = { map: new Map(), set: new Set() };
+JSON.parse(JSON.stringify(obj)); // { map: {}, set: {} } - Map and Set are lost`;
+
+var betterClone = `You can combine Object.create(Object.getPrototypeOf(obj)) 
+with Object.getOwnPropertyDescriptors(obj) to both preserve the prototype and 
+copy the own properties of obj using property descriptors. This approach 
+allows you to create a new object with the same prototype as obj, while also 
+copying all its own properties (including non-enumerable properties and 
+getters/setters) in a concise and efficient way.
+
+How It Works:
+
+    Object.getOwnPropertyDescriptors(obj) returns an object containing 
+    all the property descriptors of obj's own properties. Object.create() 
+    allows you to specify the prototype for the new object and also pass 
+    a property descriptor object as the second argument to define its properties.
+
+Here’s how you can use them together:
+
+javascript
+
+const newObj = Object.create(
+  Object.getPrototypeOf(obj),   // Set the prototype of the new object
+  Object.getOwnPropertyDescriptors(obj)  // Copy all own properties of 'obj'
+);
+
+Example:
+
+javascript
+
+const obj = {
+  a: 1,
+  get b() { return this.a + 1; }
+};
+
+// Create a new object with the same prototype and properties as 'obj'
+const newObj = Object.create(
+  Object.getPrototypeOf(obj), 
+  Object.getOwnPropertyDescriptors(obj)
+);
+
+console.log(newObj.a);  // Output: 1
+console.log(newObj.b);  // Output: 2 (getter works)
+console.log(Object.getPrototypeOf(newObj) === Object.getPrototypeOf(obj)); // true
+
+Why This Is Useful:
+
+    Retains Prototype: You retain the original prototype chain of obj, 
+    meaning newObj will inherit methods and properties from the same 
+    prototype as obj. Copies Own Properties: The own properties 
+    (including getters, setters, and non-enumerable properties) of obj 
+    are copied to newObj. Efficient: This is an efficient way to create 
+    a new object with the same prototype and properties, without 
+    manually copying or assigning them.
+
+    However, deep copying is still not automatic: If any of the properties are objects 
+    themselves, they will be shallow copied, and you may need to handle deep 
+    copying manually if necessary. Works for non-enumerable properties: This 
+    method also copies non-enumerable properties, which Object.assign() would 
+    not handle.
+
+Example With Non-enumerable Properties:
+
+const obj = {};
+
+Object.defineProperty(obj, 'a', {
+  value: 42,
+  enumerable: true,
+  writable: true,
+  configurable: true
+});
+
+Object.defineProperty(obj, 'b', {
+  value: 100,
+  enumerable: false,  // Non-enumerable property
+  writable: true,
+  configurable: true
+});
+
+const newObj = Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj)
+);
+
+console.log(newObj.a);   // Output: 42
+console.log(newObj.b);   // Output: 100 (non-enumerable property is copied)
+console.log(Object.keys(newObj)); // Output: ['a'], 'b' is non-enumerable` ;
+
+    const obCode = `const ob = {'R': Rz, 'L': Lz, 'U': Uz, 'D': Dz, 'F': Fz, 'B': Bz, 'Cx': Cxr,
+   'Cy': Cyr, 'Cz': Czr, 'Xro': Xror, 'Yro': Yror, 'Zro': Zror, 'Rz': R,
+   'Lz': L, 'Uz': U, 'Dz': D, 'Fz': F, 'Bz': B, 'Cxr': Cx, 'Cyr': Cy, 'Czr': Cz,
+   'Xror': Xro, 'Yror': Yro, 'Zror': Zro};`;
+
+
+    const reverseCode = `function reverse () { 
+    m = m(ob[m(dF3ar).pop()]); // Pops a function name and runs its reverse.   
+    m(dF3ar).pop(); // Discard the inverse functions's name, that m just 
+                    // pushed onto ar (inside of the m-M(x) closure). 
+  }`;
 
 </script>
 
@@ -1089,8 +1267,8 @@ var YroCode = `    var Yro = function Yro(ar) {
 <div class = "h2"> Isolation of Sequences of Computations</div>
 <p>The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates key presses and button clicks turning the sides, middle sections, or entire body of the virtual Rubik's cube that is displayed in browsers. The application code contains two representations; one written in JavaScript, and the other in HTML.</p> 
 <div class = "h3"> The Two Representations of the Virtual Cube</div>
-  
-<p> The JavaScript representation of the virtual Rubik's cube consists of 54 strings contained in an array of six nine-member arrays. This array of arrays is "x" in the application's m-M(x) closure. "m" handles events triggered by key presses and mouse clicks. Events that rearrange strings in the m-M(x) closure cause m to operate on one of the functions (let's call it "func") defined within the script tags. Pursuant to the definition of M, m(func) rearranges the strings of x, transforming x to func(x). 
+  For what values of x  is json.parse(Json.stringify(x)) unable to make a clone?
+<p> The JavaScript representation of the virtual Rubik's cube consists of 54 strings contained in an array of six nine-member arrays. This array of arrays is "x" in the application's m-M(x) closure. "m" handles events triggered by key presses and mouse clicks. Events that rearrange strings in the m-M(x) closure cause m to operate on one of the functions (let's call it "func") defined within the script tags. Pursuant to the definition of M, m(func) rearranges the strings of x, mutating x to func(x). 
 </p>
 <p> The HTML representation of the cube consists of 54 buttons contained in an array of three nine-member arrays, corresponding to the three sides of the cube which are visible in the browser: front, top, and right. Rotating the virtual cube does not change this fact. For example, clicking the top center square, clicking "Y", and pressing the "Y" key changes x in the m-M(x) closure and also in the DOM, since m(dF3x) is x pursuant to the definition of M. </p>        
 <pre>{square_4_4}</pre>  
@@ -1170,7 +1348,9 @@ var YroCode = `    var Yro = function Yro(ar) {
 <br>
 
 
-<h2>Appendix</h2>
+<div class="h2">Appendix</div>
+<div class="h3">The Virtual Rubik's Cube</div>
+<p> Additional discussion is at <a href="./cube">Virtual Rubik's Cube</a></p>
 <p>In the m-M(x) representation of a Rubik's cube as an array of six nine-member arrays of strings, the solved cube is x = ([ ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
       ["green", "green", "green", "green", "green", "green", "green", "green", "green"],
       ["red", "red", "red", "red", "red", "red", "red", "red", "red"],
@@ -1197,10 +1377,17 @@ var YroCode = `    var Yro = function Yro(ar) {
 <p> F populates a temporary array "temp" with values taken from locations on the current configuration of x. It populates temp[0][0], temp[0][3], temp[0][6], with whatever strings happen to be at x[4][2], x[4][5], and x[4][8]. When m(F) returns temp, temp becomes the value of x in the m-M(x) closure. </p>
 
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+<div class="h3">Additional Protection of "x" in m-M(x) closures</div>
+<p> If x is not a primitive value, changing m(dF3x) changes x in the m-M(x) closure. This can be convenient, as in the function "reverse" in <a href="./cube">Rubik's Cube</a>. The array "ar" in the modified definition of M holds an array of the names of the functions called when users press keys or click buttons that change the virtual Rubik's cube. m(dF3ar) returns ar. "ob" is an object that produces the inverse of the Rubik's cube manipulation functions. For example, ob.R is Rz, the inverse of R. Here are the definitions of reverse and ob: </p>
+<pre>{reverseCode}</pre>
+<pre>{obCode}</pre>
+
+
+<p> </p>
+<pre>{cloneLimitations}</pre>
+
+<p> While not universally effective, this method covers many cases:</p>
+<pre>{betterClone}</pre>
 
 <slot />
 

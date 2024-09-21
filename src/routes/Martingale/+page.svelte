@@ -337,14 +337,10 @@ it manages memory efficiently despite a high number of recursive calls.`
  <p>A file named test13.js is shown below. Entering "node test13" in my Linux desktop computer's simulated terminal starts a process that takes about 25 minutes to complete.  It uses only 6.2% of the available CPU potential, and a miniscule 60 megabytes of the 64 gigabytes of installed memory. There's obviously no danger of piling too many frames onto the stack.  </p>
 <p> Here's test13.js: </p>
 <pre>{gambleCode}</pre>  
-<p style = "margin: 3%"> The result of calling gamble (above) five consecutive times, each time trying to double $50 a billion times, strongly suggests that the assertion repeated use of the Martingale betting strategy is a 50-50, break even proposition, similar to betting the same amount on coin flips thousands of times. I don't know how to prove it, but it seems self-evident that no pattern of changing the amounts of bets can possibly increase or decrease the odds of coming out ahead after repeatedly betting on fair flips of a fair coin.  </p>
+<p style = "margin: 3%"> The result of calling gamble (above) five consecutive times, each time trying to double $50 a billion times, strongly suggests that repeated use of the Martingale betting strategy is a 50-50, break even proposition, similar to betting the same amount on coin flips thousands of times. I don't know how to prove it, but it seems self-evident that no pattern of changing the amounts of bets can possibly increase or decrease the odds of coming out ahead after repeatedly betting on fair flips of a fair coin.  </p>
 <p> Here are the results: </p>
 <pre>{runs}</pre>
 
-<h2>DISCUSSION</h2>
-<p> Here's what ChatGPT's wrote:</p>
-<pre>{chatGPT}</pre>
-<br><br><br>
-<br><br><br>
+
 <br><br><br>
 </div>
