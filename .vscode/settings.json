@@ -2,6 +2,6 @@
     "editor.tabCompletion": "on",
     "diffEditor.codeLens": true,
     "MutableAI.upsell": false,
-    "workbench.layoutControl.type": "both",
+    "workbench.layoutControl.type": "menu",
     "terminal.integrated.allowMnemonics": true
 }

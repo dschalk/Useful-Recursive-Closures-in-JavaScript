@@ -2,8 +2,8 @@
 
 <script>
 let cloneChat = "$lib/Clones";  
-var A1 = `var dF3x = () => {};
-var log = console.log;
+var A1 = `    var dF3x = () => {};
+    var log = console.log;
 
     function M (x) {
       return function go (func)
@@ -14,103 +14,91 @@ var log = console.log;
         }
     }
 
-const m = M([ [6], [7], [add] ]);
+    const m = M([ [6], [7], [add] ]);
+    const cl = M(m(dF3x))
+    function add (a,b) {return a+b};
+    function mult (a,b) {return a*b};`;
+
+var B2 = `const m = M([ [6], [7], [add] ]);
 const cl = M(m(dF3x))
 function add (a,b) {return a+b};
-function mult (a,b) {return a*b};`;
 
-var B2 = `log("m === cl", m === cl); // false
-log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ); // true
-log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
-log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]`;
-
-var C3 = `log("cl(v => [ v[0], v[1], [mult] ] )");  
-cl(v => [ v[0], v[1], [mult] ]); 
-log("m === cl", m === cl);  // false 
-log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ) // false
-log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
-log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult] ] ]
-log("m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])",
-   m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])) // 13
-log("cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0])", 
-   cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0] )) // 42`
-
-var D4 = `log("m === cl", m === cl); // false
-log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ); // true
 log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true 
+log("m(() => [7777])");
+m(() => [7777]);
+log("m(dF3x)", m(dF3x)); // [7777] 
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false `
 
-// log("cl(v => [ v[0], v[1], [mult] ] )");  
-// cl(v => [ v[0], v[1], [mult] ]); 
-log("cl(dF3x)[2] = [mult]")''
-cl(dF3x)[2] = [mult];
-log("m === cl", m === cl);  // false
-log("m(dF3x) === cl(dF3x)", m(dF3x) === cl(dF3x) ) // true
-log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult] ] ]
-log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult] ] ]
-log("m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])",
-   m(dF3x)[2][0]( m(dF3x)[0][0], m(dF3x)[1][0])) // 42
-log("cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0])", 
-   cl(dF3x)[2][0]( cl(dF3x)[0][0], cl(dF3x)[1][0] )) // 42`
+var B3 = `const m = M([ [6], [7], [add] ]);
+const cl = M(m(dF3x))
+function add (a,b) {return a+b};
+function mult (a,b) {return a*b};
+
+log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true 
+
+cl(v => [ v[0], v[1], [mult] ]); 
+log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false `;
+
+var D4 = `const m = M([ [6], [7], [add] ]);
+const cl = M(m(dF3x))
+function add (a,b) {return a+b};
+
+log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true 
+m(dF3x).push(42);
+log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true`
+
+
 </script>
 <h1>Cloning Deeply Nested Data Structures </h1>   
-<h2 style="font-style: italic">Containing Self-References, Functions, Any JavaScript values </h2>
+<h2 style="font-style: italic">Works On Every Kind of Object </h2>
 
 <p>Another advantage of holding state in m-M(x) closures (see <a href="./">Home</a>) is the ease with which clones can be created.  </p>
 <div class = "chat">
 <pre>{A1}</pre>
-<p> cl is a clone of m, although both hold references to the value at the same location in memory, as shown below. </p> 
+
+<h2>Lazy Evaluation</h2>
+
+<p> Object.is, when applied to objects, tests whether they share the same address in memory. Below, Object.is is used to show that cl is independent of m, although both hold references to a single value in memory. Sharing the reference to [ [6], [7], [add] ] at the same memory address doesn't change the fact that cl is a clone of m.  Using m(func1) or cl(func2), where func1 and func2 operate on 'x' in the m-M(x) and cl-M(x) closures, affects only cl or m, depending on which made the function call. </p> 
+<p> Below, the value held in m will change without affecting cl.</p>
 </div>
 <div class = "chat">
 <pre>{B2}</pre>
 </div>
-<h2>Lazy Evaluation</h2>
+<p>Conversely, changes to x in the cl-M(x) closure has no affect on x in the m-M(x) closure.</p>
+<pre>{B3}</pre>
 <p> Running cl(func) results in "x = func(x)," pursuant to the definition of M. This reassigns x to a new location in memory, rendering it completely independent from x in the m-M(x) closure. If cl(func) isn't called on any function that modifies x in the cl-M(x) closure, browser engines and Node let it remain a reference to x in the m-M(x) closure. Encapsulating operations on the values held in m-M(x) closures is reminiscent of monads in the Haskell programming language, as is lazy evaluation. Without carrying the analogy too far, it's interesting to observe functional programming in two very different languages converging this way.     </p>
 
-<div class = "chat">
-<pre>{C3}</pre>
-
- <p class="chat">m and cl begin as closures located at separate addresses in memory, both pointing to one address in memory containing [ [ 6 ], [ 7 ], [ [Function: add] ].  Calling cl(v => [ v[0], v[1], [mult] ]) reassigns the value in the cl closure to cl(v => [ v[0], v[1], [mult] ]). Cloning is accomplished by re-assigning memory addresses, and should work with any m(v) , cl = m, and cl(a => a') where a is any JavaScript value and a' is a modification of v, accomplished by reassigning the value in cl to a.  Using the terminology in the definition of M, func = a => a' and x = func(x) is the reassignment. This method works for any JavaScript data structure because it doesn't attempt to operate on individual aspects of data structures, it simply places the modification of the data structure contained in the closure m into a separate location in memory. Am I correct?</p>
-
-<p class="chat">Let’s break it down to confirm your understanding and clarify any points. <br><br>
-
-1. Closures and Memory/ <br><br>
+ <p> m and cl begin as closures located at separate addresses in memory. Both are closures around [ [ 6 ], [ 7 ], [ add ]] located at some address in memory.  Calling cl(v => [ v[0], v[1], [mult] ]) reassigns the value in the cl closure to some address holding [v[0], v[1], [mult]]) </p> 
+  
+  <p>Cloning is accomplished by reassigning x in the cl-M(x) closure. This is accomplished in line 5 of M (else x = func(x)). The following two lines of code create a clone of m named "cl", where ob can be any JavaScript object, no matter how deeply nested, self-referential, complicated, or unusual it might be: </p>
+<pre>        m = M(v);
+        cl = M(m(dF3x));</pre>
+<p> All non-primitive JavaScript values are objects, either because they are in the Object prototype chain, or because they were explicitly created with Object.create(null) and therefore have no prototype. "cl = M(m(dF3x)" works for any JavaScript object because, whenever cl(func) is called on a function func that modifies x in the cl-M(x) closure, x = func(x) runs in M, and the new value of x gets a new address in memory. </p>
 
 
-You are correct that closures in JavaScript capture variables from their surrounding scope, and each closure has its own reference to the variables it captures. When you create two closures (m and cl) that both initially point to the same value, they both reference the same memory location. <br><br>
+<h2>Back Door Access</h2>
 
-    When you create cl from m using cl = M(m(dF3x)), both closures (m and cl) initially reference the same memory location holding [ [6], [7], [ [Function: add] ] ]. <br><br>
-
-2. Reassignment and Memory Locations <br><br>
-
-The critical part of your question is that reassignment in JavaScript modifies references, not the values directly.
- <br><br>
-    When you call cl(v => [ v[0], v[1], [mult] ]), you're invoking the function and passing a modification function (v => [ v[0], v[1], [mult] ]). This reassigns the value in cl's closure (i.e., x is updated in cl's scope) to a new array [ [6], [7], [ [Function: mult] ] ], stored at a new memory location. <br><br>
-
-    m continues to reference the original memory location because m's value hasn’t changed. <br><br>
-
-3. Generalization of Your Approach  <br><br>
-
-You are also correct in observing that this method works with any JavaScript data structure because you're not directly manipulating the internal components of the data structures. Instead, you are:
- <br><br>
-    Reassigning the entire structure in cl with the new value, and that reassignment is done at the level of the reference (i.e., pointing cl's closure to a new memory location). <br><br>
-
-    This is effective for any mutable or reference-based JavaScript data structure (arrays, objects, functions, etc.) because the reassignment happens at the reference level—you're not dealing with cloning or copying each internal element manually, but rather replacing the reference to the structure entirely. <br><br>
-
-4. Why This Method Works
-
-Your method works because JavaScript uses reference assignment for objects and arrays, meaning that when you reassign the value in cl: <br><br>
-
-    You’re not cloning or copying individual aspects of the structure but rather replacing the entire reference with a new one created by the modification function (v => v').<br><br>
-
-    This works for all types of JavaScript objects because JavaScript handles object references uniformly, regardless of the complexity of the object. Whether it's an array, object, function, or more complex structure (like Map or Set), as long as you reassign the reference to a modified value, the system behaves consistently. </p>
-
-</div>
-
-<p> We can verify that the values initially held in the m and cl closures are, in addition to being identical, also reside in the same place in memory. Modifying the value in cl, without reassigning it, is expected to modify the value held in m. That's what is observed when the following code is run:  </p>
-<div class="marginLeft">
+<p> It's possible to modify x in the cl-M(x) closure directly. If the modification doesn't reassign x, the change gets reflected in both closures, as illustrated below.  </p>
 <pre>{D4}</pre>
-</div>
+
+<br><br>
 
 <br><br><br>
 <br><br><br>
@@ -119,7 +107,7 @@ Your method works because JavaScript uses reference assignment for objects and a
 
 <style>
 span {
-  color:rgb(252, 173, 75);
+  color: #91d1f9;
 }
 
 h2 {
@@ -149,7 +137,7 @@ h3 {
 }
     
 .chat {
-  margin: 3%;
+  margin: 1px;
   color: #91d1f9;
 }    
 
