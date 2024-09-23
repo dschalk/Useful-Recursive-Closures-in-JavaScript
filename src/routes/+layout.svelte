@@ -40,8 +40,6 @@ function double (x) {return x + x};
 <nav>
         <a href="./">Home</a>
         
-        <a href="./overview">Overview</a>
-
         <a href="./cube">Rubik's Cube</a>
 
         <a href="./async5">Async</a>

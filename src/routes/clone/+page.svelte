@@ -29,7 +29,7 @@ log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true
 log("m(() => [7777])");
 m(() => [7777]);
 log("m(dF3x)", m(dF3x)); // [7777] 
-log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]`
 
 var B3 = `const m = M([ [6], [7], [add] ]);
 const cl = M(m(dF3x))
@@ -44,7 +44,7 @@ log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true
 cl(v => [ v[0], v[1], [mult] ]); 
 log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
 log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult ] ]
-log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m, cl)", Object.is(m, cl)); // false `
 
 var D4 = `const m = M([ [6], [7], [add] ]);
 const cl = M(m(dF3x))
@@ -60,6 +60,20 @@ log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
 log("Object.is(m, cl)", Object.is(m, cl)); // false 
 log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true`
 
+var E5 = `const m = M([ [6], [7], [add] ]);
+const cl = M(m(dF3x))
+function add (a,b) {return a+b};
+
+log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true 
+//m(dF3x).push(42);
+m(v => v.concat(42));
+log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
+log("cl(dF3x)", cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
+log("Object.is(m, cl)", Object.is(m, cl)); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false`
 
 </script>
 <h1>Cloning Deeply Nested Data Structures </h1>   
@@ -93,7 +107,8 @@ log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true`
 
 <p> It's possible to modify x in the cl-M(x) closure directly. If the modification doesn't reassign x, the change gets reflected in both closures, as illustrated below.  </p>
 <pre>{D4}</pre>
-
+<p> Appending 42 to x in the m-M(x) closure, without affecting x in the cl-M(x) closure, can be accomplished as follows:</p>
+<pre>{E5}</pre>
 <br><br>
 
 <br><br><br>
