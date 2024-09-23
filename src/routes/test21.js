@@ -21,10 +21,8 @@ log("m(dF3x)", m(dF3x)); //  [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 log("Object.is(m, cl)", Object.is(m, cl)); // false 
 log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true 
-log("m(() => [5555])");
-// m(() => 5555);
 m(dF3x).push(42);
-log("m(dF3x)", m(dF3x)); // [7777] 
-log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
+log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
+log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 42 ]
 log("Object.is(m, cl)", Object.is(m, cl)); // false 
-log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false 
+log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true

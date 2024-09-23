@@ -1,5 +1,4 @@
 
-
 <script>
 let cloneChat = "$lib/Clones";  
 var A1 = `    var dF3x = () => {};
@@ -31,8 +30,6 @@ log("m(() => [7777])");
 m(() => [7777]);
 log("m(dF3x)", m(dF3x)); // [7777] 
 log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
-log("Object.is(m, cl)", Object.is(m, cl)); // false 
-log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false `
 
 var B3 = `const m = M([ [6], [7], [add] ]);
 const cl = M(m(dF3x))
@@ -48,7 +45,6 @@ cl(v => [ v[0], v[1], [mult] ]);
 log("m(dF3x)", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add ] ]
 log("cl(dF3x)",cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: mult ] ]
 log("Object.is(m, cl)", Object.is(m, cl)); // false 
-log("Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // false `;
 
 var D4 = `const m = M([ [6], [7], [add] ]);
 const cl = M(m(dF3x))
