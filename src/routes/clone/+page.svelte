@@ -24,7 +24,7 @@ log("1. Object.is(m(dF3x), m_clone(dF3x))", Object.is(m(dF3x), m_clone(dF3x))); 
 m(v => v.concat(888)); 
 log("After m(v => v.concat(888))", m(dF3x));// [[ 6 ], [ 7 ], [ [Function: add] ], [ 888 ]]
 log("1. Object.is(m(dF3x), cl(dF3x))", Object.is(m(dF3x), cl(dF3x))); // true
-log("1. Object.is(m(dF3x), m_clone(dF3x))", Object.is(m(dF3x), m_clone(dF3x))); // true
+log("1. Object.is(m(dF3x), m_clone(dF3x))", Object.is(m(dF3x), m_clone(dF3x))); // false
 log("m(dF3x) is", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 888 ]
 log("cl(dF3x) is", cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 888 ]
 log("m_clone(dF3x) is", m_clone(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ] ]
