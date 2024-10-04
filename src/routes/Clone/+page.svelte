@@ -1,12 +1,12 @@
+
 <script>
 var code = `// Utility function for logging
 var log = console.log;
 
-// Function used in M (below) to retrieve the 
-// current value of x in the closure
-var dF3x = () => {}
+// Special function used to retrieve the current value of x in the closure
+var dF3x = () => { };
 
-// Function M(x) that creates a closure over any JavaScript value x
+// Function M(x) that creates a closure over x
 function M(x) {
     return function go(func) {
         if (func === dF3x) {
@@ -46,7 +46,7 @@ log("Object.is(m(dF3x), m_clone(dF3x)):", Object.is(m(dF3x), m_clone(dF3x))); //
 
 // **Caption**: Reassigning x in m - This breaks the shared reference
 m(v => v.concat(888)); // Reassign x in m to a new array
-log("After m(v => v.concat(888)):");
+log("\nAfter m(v => v.concat(888)):");
 log("m(dF3x) is", m(dF3x));           // New array with 888
 log("cl(dF3x) is", cl(dF3x));         // Also updated (same closure as m)
 log("m_clone(dF3x) is", m_clone(dF3x));   // Remains unchanged with 1111
@@ -54,7 +54,7 @@ log("Object.is(m(dF3x), m_clone(dF3x)):", Object.is(m(dF3x), m_clone(dF3x))); //
 
 // **Caption**: Reassigning x in m_clone - Independent state
 m_clone(v => v.concat(777)); // Reassign x in m_clone to a new array
-log("After m_clone(v => v.concat(777)):");
+log("\nAfter m_clone(v => v.concat(777)):");
 log("m(dF3x) is", m(dF3x));           // Unchanged from previous step
 log("cl(dF3x) is", cl(dF3x));         // Unchanged (same as m)
 log("m_clone(dF3x) is", m_clone(dF3x));   // New array with 1111 and 777
@@ -62,20 +62,19 @@ log("Object.is(m(dF3x), m_clone(dF3x)):", Object.is(m(dF3x), m_clone(dF3x))); //
 
 // **Caption**: Mutating x in m_clone after reassignment
 m_clone(dF3x).push(2222);
-log("After m_clone(dF3x).push(2222):");
+log("\nAfter m_clone(dF3x).push(2222):");
 log("m(dF3x) is", m(dF3x));           // Unchanged
 log("cl(dF3x) is", cl(dF3x));         // Unchanged
 log("m_clone(dF3x) is", m_clone(dF3x));   // Now includes 1111, 777, 2222
 
 // **Caption**: Mutating x in m
 m(dF3x).push(3333);
-log("After m(dF3x).push(3333):");
+log("\nAfter m(dF3x).push(3333):");
 log("m(dF3x) is", m(dF3x));           // Includes 888, 3333
 log("cl(dF3x) is", cl(dF3x));         // Also includes 888, 3333
-log("m_clone(dF3x) is", m_clone(dF3x));   // Unchanged`
+log("m_clone(dF3x) is", m_clone(dF3x));   // Unchanged`;
 
-var output = `
-Initial State:
+var output = `Initial State:
 m(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 cl(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
@@ -108,42 +107,23 @@ m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 777, 2222 ]
 After m(dF3x).push(3333):
 m(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
 cl(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
-m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 777, 2222 ]
-
-
-`
-var Obis = `        log(Object.is(NaN, NaN)); // true
-        log(NaN === NaN);         // false
-        log(Object.is(-0, 0));    // true
-        log(-0 === 0)             // false `
+m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 777, 2222 ]`;
 </script>
-<h1>Simply Cloning Any Object</h1>
-<h2>Deeply Nested With Functions, Self-References, etc </h2>
-
-<p>Another advantage of coding state transformations inside of m-M(x) closures (see examples at Home) is the ease with which clones can be created. For any m-M(x) closure, where x can be any JavaScript object, even a deeply nested object containing sets, functions, and any other valid JavaScript values, let m_clone = M(m(dF3x_)) and let func be a function that mutates x in the m_clone-M(x) closure. Running m_clone(func) replaces x in the m_clone-M(x) closure with func(x) pursuant to line 4 of M, but has no effect on x in the m-M(x) closure. Likewise, m(func) has no effect on x in the m_clone closure. The example code and resulting output shown below clarifies this, and demonstrates the effect of modifying m_clone(dF3x) directly before calling m(func) or m_clone(func) have reassigned x to func(x) in either closure.  </p>
-    
-<p>Note: Object.is() and === (strict equality) are both used to compare values, but they work differently in two ways: Object.is(NaN, NaN) returns true, whereas NaN === NaN returns false. Object.is(-0, +0) returns true, but -0 === +0 returns false. "===" could have been used in the demonstration below.</p>
-
-<pre>{Obis}</pre>
-
-<p>In the example below, m is defined as an array containing three arrays, one of which contains a function. cl is copy of m. m_clone is a clone of m, m_clone = M(m(dF3x)). The value returned by m_clone(dF3x) is, at first, a reference to the array held in the m-M(x) closure. When m(func) reassigns x in the m-M(x) closure, or m_clone(func) reassigns x in its closure for some function "func", the value of x in the m-M(x) closure and the value of x in the m_clone-M(x) become independent of one another. These reassignment happen on the 4th line of M. </p>
-
-<p>As shown in the following examples, changes in m(dF3x) caused by m(v => v.concat(888)) don't change m_clone(dF3x), and changing m_clone(dF3x) by running m_clone(v => v.concat(777)) has no effect on m or cl. Unlike m and m_clone, m and cl point to the same place in memory, as do the values held in the m-M(x) and cl-M(x) closures; i.e., m(dF3x) and cl(dF3x). Therefore, changing x in either closure changes x in the other. </p>
-
-<p> Here's the demonstration code:</p>
-<pre>{code}</pre>
-<p> This is the text returned by the demonstration code using Node.js: </p>
-<pre>{output}</pre>
-
 
 
 <style>
-    h1 {text-align: center;}
-    h2 {text-align: center;}
-    pre {
-        font-size: 20px;
-        white-space: pre-wrap;       /* Since CSS 2.1 */
-        word-break: keep-all;
-    }
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
 
 </style>
+
+
+
+
+
