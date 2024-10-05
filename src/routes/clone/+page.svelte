@@ -1,4 +1,20 @@
 <script>
+
+var MCode = `
+
+  var dF3x = () => {}; // This flag is never called. See line 3 of M, below. 
+
+  function M(x) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      else x = func(x);
+      return go;
+    };
+  }
+
+  var m = M(x); // x can be any JavaScript value
+  var m_clone = M(m(dF3x)); `;
+
 var code = `// Utility function for logging
 var log = console.log;
 
@@ -72,10 +88,17 @@ m(dF3x).push(3333);
 log("After m(dF3x).push(3333):");
 log("m(dF3x) is", m(dF3x));           // Includes 888, 3333
 log("cl(dF3x) is", cl(dF3x));         // Also includes 888, 3333
-log("m_clone(dF3x) is", m_clone(dF3x));   // Unchanged`
+log("m_clone(dF3x) is", m_clone(dF3x));   // Unchanged
 
-var output = `
-Initial State:
+// Mutating x via m_clone after any reassignment
+m_clone(dF3x).push(444);
+log("\nAfter m_clone(dF3x).push(444):");
+log("m(dF3x) is", m(dF3x));           // Does not include 444
+log("cl(dF3x) is", cl(dF3x));         // Also does not include 444
+log("m_clone(dF3x) is", m_clone(dF3x));   // Only the clone has been updated
+log("Object.is(m(dF3x), m_clone(dF3x)):", Object.is(m(dF3x), m_clone(dF3x))); // Now it's false`    
+
+var output = `Initial State:
 m(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 cl(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
 m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ] ]
@@ -110,19 +133,44 @@ m(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
 cl(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
 m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 777, 2222 ]
 
-
-`
+After m_clone(dF3x).push(444):
+m(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
+cl(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 888, 3333 ]
+m_clone(dF3x) is [ [ 6 ], [ 7 ], [ [Function: add] ], 1111, 777, 2222, 444 ]
+Object.is(m(dF3x), m_clone(dF3x)): false `
 var Obis = `        log(Object.is(NaN, NaN)); // true
         log(NaN === NaN);         // false
         log(Object.is(-0, 0));    // true
         log(-0 === 0)             // false `
-</script>
-<h1>Simply Cloning Any Object</h1>
-<h2>Deeply Nested With Functions, Self-References, etc </h2>
 
-<p>Another advantage of coding state transformations inside of m-M(x) closures (see examples at Home) is the ease with which clones can be created. For any m-M(x) closure, where x can be any JavaScript object, even a deeply nested object containing sets, functions, and any other valid JavaScript values, let m_clone = M(m(dF3x_)) and let func be a function that mutates x in the m_clone-M(x) closure. Running m_clone(func) replaces x in the m_clone-M(x) closure with func(x) pursuant to line 4 of M, but has no effect on x in the m-M(x) closure. Likewise, m(func) has no effect on x in the m_clone closure. The example code and resulting output shown below clarifies this, and demonstrates the effect of modifying m_clone(dF3x) directly before calling m(func) or m_clone(func) have reassigned x to func(x) in either closure.  </p>
-    
-<p>Note: Object.is() and === (strict equality) are both used to compare values, but they work differently in two ways: Object.is(NaN, NaN) returns true, whereas NaN === NaN returns false. Object.is(-0, +0) returns true, but -0 === +0 returns false. "===" could have been used in the demonstration below.</p>
+var ex1 = `    var a, b;
+    var a = b = [1,2,3]; 
+    a.push(4); 
+    console.log(a); // [1,2,3,4];
+    console.log(b); // [1,2,3,4]`;
+
+var ex2 = `    var a, b;
+    a = b = [1,2,3];
+    a = a.concat(4);
+    console.log(a); // [1,2,3,4]
+    console.log(b); // [1,2,3]`
+
+
+</script>
+
+
+<h1>Simply Cloning Any Object</h1>
+<h2>Even Deeply Nested Data Structures Containing Functions, Self-References, etc </h2>
+<pre>{MCode}</pre>
+<p>Calling m(func) for some function "func" changes x in the m-M(x) closure to func(x) (unless it throws an error); but  has no effect on x in the m_clone-M(x) closure. Likewise, running m_clone(func) does not affect m. Why? <span style="color:coral">Because x gets reassigned on line 4 of M.</span> </p>
+
+<h2>Two Essential Facts</h2>
+<p> 1. When two variables point to the same object in memory, either variable can modify that object, thereby changing the value of both variables. For example,
+    <pre>{ex1}</pre>
+<p> 2. When two variables point to the same object in memory, and one gets reassigned  <span style="color:coral">(as happens on line 4 of M)</span>, the variables become independent from one another. For example,
+    <pre>{ex2}</pre>
+   
+<p>Note: Object.is and === (strict equality) are both used to compare values, but they work differently in two ways: Object.is(NaN, NaN) returns true, whereas NaN === NaN returns false. Object.is(-0, +0) returns true, but -0 === +0 returns false. "===" could have been used in the demonstration below.</p>
 
 <pre>{Obis}</pre>
 
@@ -132,6 +180,7 @@ var Obis = `        log(Object.is(NaN, NaN)); // true
 
 <p> Here's the demonstration code:</p>
 <pre>{code}</pre>
+<br>
 <p> This is the text returned by the demonstration code using Node.js: </p>
 <pre>{output}</pre>
 
