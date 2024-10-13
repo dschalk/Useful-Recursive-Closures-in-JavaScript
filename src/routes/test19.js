@@ -26,7 +26,7 @@ function M(x) {
     
 
     // Main loop
-    while (k < 1000000000) {
+    while (k < 1000) {
         k += 1;
 
         // if (gain === loss) even += 1;
@@ -60,7 +60,7 @@ function M(x) {
             v[3] += 1;     // Increment success counter
             // Recursively continue if stake is less than goal
             if (q2 && (gain > loss)) jumpUp += 1;    
-            if (v[0] < 100) {
+            if (v[0] < 2*v[2]) {
                 m(f1);  // Continue playing
             }
         } else {            // Failure
