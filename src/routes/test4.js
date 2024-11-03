@@ -1,34 +1,33 @@
-    var m, mclone;
-    var dF3x = () => {};
-    var log = console.log;
+  var log = console.log;
+  var dF3x = () => {};
 
-function M (x) {
-    return function go (func) {
-        if (func === dF3x) return x;
-        else x = func(x);
-        return go;
+  function M(x) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      else x = func(x);
+      return go;
+    };
+  }
+
+var m = M([179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368,0]);
+m(f);
+
+function f(arr) {
+    if (arr[0] > Number. MAX_VALUE) {
+        log ("Forget about it");
+        return arr[0].toString() + " is not an integer";
     }
- }
-
-function clone (v) {
-   return M((v)(dF3x));
+    if (arr[1] === 0) log("Testing the number", arr[0].toString());
+    if (arr[0] === 1) return arr;
+    arr[1] += 1;
+    if (arr[0] % 2 === 0) {
+        arr[0] = arr[0] / 2;
+    } else {
+        arr[0] = 3 * arr[0] + 1;
+    }
+    // log(arr)
+    m(f);    
+    return "The number of steps is " + arr[1].toString();
 }
 
-// var m = M({arr: [ [ [2], [3], [4] ], [ [ [7], ['alpha'], ['beta'] ],  [ ["clown"], [v=>v**3] ] ], 888 ], ob: { z: "skyblue" } } );
-var m = M({value: 10})
-// log("var m = M({arr: [ [ [2], [3], [4] ], [ [ [7], ['alpha'], ['beta'] ],  [ ['clown'], [v=>v**3] ] ], 888 ], ob: { z: 'skyblue' } }" ) ;
-log("mclone = clone(m)");
-mclone = clone(m);
-log("mclone(dF3x) is", mclone(dF3x));
-log("mclone === m", mclone === m);
-log("mclone(dF3x) === m(dF3x)", mclone(dF3x) === m(dF3x));
-
-log("mclone = M(['Hello World')]");
-mclone = M(["Hello World"]);  
-log("mclone(dF3x) === m(dF3x", mclone(dF3x) === m(dF3x));
-log("m(dF3x) is", m(dF3x));
-log("mclone(dF3x) is", mclone(dF3x));
-log("m(() => [8, {yes: 'You bet!')]")
-m(() => [8, {yes: 'You bet!'}]);
-log("m(dF3x) is", m(dF3x));
-log("mclone(dF3x) is", mclone(dF3x));
+log(m(dF3x));

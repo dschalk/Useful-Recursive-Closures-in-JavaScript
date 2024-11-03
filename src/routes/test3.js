@@ -10,13 +10,15 @@
     };
   }
 
+var m = M([]);  
 var n;
 n = 5;
 var m;
 
 async function runCollatz (n) {
-    m = M([n, 0]);
+    m = M([BigInt(n), 0]);
     await m(f);
+    log ("m{dF3x) is", m(dF3x));
 }
 var out = [];
 
@@ -31,11 +33,12 @@ function f (d) {
           f(d);
       }
       else {
-        // log(d);
+        log(d);
         log("The number of steps is", d[1]);
         return;
       }
 }
-runCollatz(95676260903887607)
+
+runCollatz(10**4);
 
 

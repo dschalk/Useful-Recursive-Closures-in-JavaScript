@@ -1,4 +1,5 @@
 
+
 <script>
 
 var conjecture = `For any positive integer n, the Collatz sequence is defined as follows:
