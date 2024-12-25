@@ -203,7 +203,6 @@ function* generatorFunction() {
 var generator = generatorFunction()
 
 function cow () {
-    console.log("Fuck you")
     var z = generator.next().value;
     console.log("z is", z);
     if (z != undefined) G = z
@@ -218,7 +217,7 @@ console.log("Fuck you")
 
 </script>
 
-<svelte:window on:keypress={handleEvent} />
+svelte:window on:keypress={handleEvent} />
 
 <p> Using the modified version of M below, m can handle mixtures of synchronous and asynchronous arguments. idP(a) has no effect if a is a promise. Otherwise, idP transforms a into a promise. To see this in action, click "Restart" (below).</p>
 <pre>{Mcode}</pre>
@@ -242,12 +241,6 @@ console.log("Fuck you")
 
 <p> Here's the restart code: </p>
 <pre>{restartCode}</pre>
-
-<h2>m = M(3)</h2>
-<h2>{G}</h2>
-
-<br><br><br>
-
 
 
 <br><br><br>

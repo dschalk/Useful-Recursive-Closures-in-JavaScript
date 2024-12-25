@@ -49,6 +49,8 @@ function double (x) {return x + x};
         <a href="./Collatz">Collatz</a>
          
         <a href="./Martingale">Martingale</a>
+
+        <a href="./Python">Python</a>
                 
         <a href="./score">Game of Score</a>
 

@@ -1,4 +1,20 @@
 <script>
+    /*import { onMount } from 'svelte';
+    onMount(() => {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    });
+*/
+
+
   import Cubeshot from "$lib/Cubeshot.png"
   import CubeshotR from "$lib/CubeshotR.png"
   import shot3 from "$lib/Screenshot3.png"
@@ -893,8 +909,6 @@ function fib (f,n) {
 log(fib(m,9)); // [0, 1,  1,  2,  3, 5, 8, 13, 21, 34]
 log(fib(m,2)); // [0, 1,  1,  2,  3, 5, 8, 13, 21, 34, 55, 89]`
 
-var log = console.log;
-var dF3x = () => {};
 var dF3ar = () => {};
 
 /*function M(x, ar = [0]) {
@@ -1249,24 +1263,192 @@ console.log(Object.keys(newObj)); // Output: ['a'], 'b' is non-enumerable` ;
                     // pushed onto ar (inside of the m-M(x) closure). 
   }`;
 
-</script>
+// Async code
+    function M2 (x) {
+        x = idP(x);
+        return function go (func){
+            if (func === dF3x) return x;
+            else x = x.then(v => func(v));
+            return go;
+        };
+    };
+    
+var m = M2(1);
+var add = a => b => a + b;
+var mult = a => b => a * b;
+var div = a => b => a / b;
 
+    function wait(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function squareP(x) {
+        await wait(300);
+        return x * x;    
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    let pause = (t) => async (x) => {
+        await wait(t);
+        return x;
+    };
+var A,B,C,D;
+var arr = [A,B,C,D];
+    async function hello(x) {
+        await wait(500);
+        A = 3;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500);
+        B = 2;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500)
+        C = 1;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500);
+        D = "Blast off";
+        arr = [A,B,C,D];
+        log(arr);
+        return x;
+    }
+
+    let addP = (x) => async (y) => {
+        await wait(1000);
+        return x + y;
+    };
+
+    let multP = (a) => async (b) => {
+        await wait(2000);
+        return b * a;
+    };
+
+        m(dF3x).then(v=>log("m(dF3x resolves to", v));
+        
+        async function idP(x) {
+            if (x instanceof Promise) return x;
+            return Promise.resolve(x);
+        }
+
+    async function restart() {
+        A = "A";
+        B = "B";
+        C = "C";
+        D = "D";
+        hello();
+        log(A,B,C,D);
+        m(add(6))(multP(6))(add(8))(multP(2))(Math.sqrt)(dF3x)
+        .then(v => log("m(dF3x) is", v)); // 10
+        m(add(4))(mult(3))(dF3x).then(v => log("m(dF3x) is", v));  // 42
+        m(dF3x).then(v => log("Confirming that m(dF3x) is", v));  // 42
+        await wait(5000);
+    };
+
+restart();
+
+var asyncCode = `    function M2 (x) {
+        x = idP(x);
+        return function go (func){
+            if (func === dF3x) return x;
+            else x = x.then(v => func(v));
+            return go;
+        };
+    };
+    
+var m = M2(1);
+var add = a => b => a + b;
+var mult = a => b => a * b;
+var div = a => b => a / b;
+
+    function wait(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    async function squareP(x) {
+        await wait(300);
+        return x * x;    
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    let pause = (t) => async (x) => {
+        await wait(t);
+        return x;
+    };
+var A,B,C,D;
+var arr = [A,B,C,D];
+    async function hello(x) {
+        await wait(500);
+        A = 3;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500);
+        B = 2;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500)
+        C = 1;
+        arr = [A,B,C,D];
+        log(arr);
+        await wait(500);
+        D = "Blast off";
+        arr = [A,B,C,D];
+        log(arr);
+        return x;
+    }
+
+    let addP = (x) => async (y) => {
+        await wait(1000);
+        return x + y;
+    };
+
+    let multP = (a) => async (b) => {
+        await wait(2000);
+        return b * a;
+    };
+
+        m(dF3x).then(v=>log("m(dF3x resolves to", v));
+        
+        async function idP(x) {
+            if (x instanceof Promise) return x;
+            return Promise.resolve(x);
+        }
+
+    async function restart() {
+        A = "A";
+        B = "B";
+        C = "C";
+        D = "D";
+        hello();
+        log(A,B,C,D);
+        m(add(6))(multP(6))(add(8))(multP(2))(Math.sqrt)(dF3x)
+        .then(v => log("m(dF3x) is", v)); // 10
+        m(add(4))(mult(3))(dF3x).then(v => log("m(dF3x) is", v));  // 42
+        m(dF3x).then(v => log("Confirming that m(dF3x) is", v));  // 42
+        await wait(5000);
+    };`
+</script>
 
 <svelte:window on:keypress={handleEvent} />
 
 <div style="margin-left: 8%; margin-right: 8%" id = "top">
   <h1 class="middle">Recursive Closures</h1>
 
- <p> This webpage, and those that follow, explores the utility of what will be called "m-M(x) closures"; i.e., closures resulting from statements "m = M(x)", where x can be any value, and "M" is basically defined as:
+ <p> This website explores some of the useful features of m-M(x) closures; i.e., closures created instantiated by statements "m = M(x)", where x can be any value, and the simplest definition of "M" is:
  
   <pre>{MCode}</pre>
- <p> It's sometimes useful to modify the basic definition of m-M(x) closures (above); for example, to make "m(dF3x) return a clone of x, rather than x. The modified definition of M used in the <a href="./cube">Rubik's cube example </a> saves the names of functions operated on by m, making it convenient for players to reverse a series of moves by repeatedly pressing the "Q" key. <a href="./cube#reverse">Link to the reverse function</a> </p>
+ <p> A modified version of M can be found at <a href="./cube">Rubik's cube example </a>, where M holds an array of function names, making it convenient for players to reverse a series of moves by repeatedly pressing the "Q" key (see <a href="./cube#reverse">function reverse</a>. Another variant of M is demonstrated at <a href="./async5">Synchronous and Asynchronous Functions Handled</a> where the line "x = func(x)" in M (above) is replaced by "x = idP(x).then(v => func(v))", idP(x),and where idP(x) returns a promise holding x.</p>
+  <p> The above definition of M is no more complex than needed to demonstrate the core features of m-M(x) closures. Unless you are sure it is unnecessary, it might be wise to include a try-catch block in the definition of M to handle values of func that are not dF3x, are not functions, or are functions that are incompatible with x. Sometimes, you might even check for functions that change x in a way that makes it incompatible with other necessary functions.  
+</p>
+ 
+<h2> Function Composition </h2>  
+<p> Instead of writing f1(f2(f3(f4(f5(x))))), which can get very messy if the five functions are verbose, you can (A) write m(f1)(f2)(f3)(f4)(f5) where m = M(x) to preserve the modified value of x in the m-M(x) closure for future transformations, for example running m(f6)(f7) at a later time, or for use of the value m(dF3x), for example, console.log("The final result is", m(dF3x)).</p>
+<p>Alternatively, M(v)(f1)(f2)(f3)(f4)(f5)(dF3x) returns the result of running five functions on some value v, leaving the temporary closure for the garbage collector to delete. This anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8): <span class = "or">{v2} </span> </p>
 
-<div class = "h2"> Concise and Transparent Function Composition </div> <p class = "i3"> This anonymous, and therefore temporary, closure returns 10 after taking the square root of ((3 cubed times 4) minus 8): <span class = "or">{v2} </span> </p>
-
-<div class = "h2"> Isolation of Sequences of Computations</div>
+<h2> Isolation of Sequences of Computations</h2>
 <p>The virtual Rubik's cube shown on the <a href=./cube>Rubik's cube page</a> demonstrates key presses and button clicks turning the sides, middle sections, or entire body of the virtual Rubik's cube that is displayed in browsers. The application code contains two entwined representations of the cube; one written in JavaScript, and the other in HTML.</p> 
-<div class = "h3"> The Two Representations of the Virtual Cube</div>
+
+<h2> The Two Representations of the Virtual Cube</h2>
 <p> The JavaScript representation of the virtual Rubik's cube consists of 54 strings contained in an array of six nine-member arrays. This array of arrays is "x" in the application's m-M(x) closure. "m" handles events triggered by key presses and mouse clicks. Events that rearrange strings in the m-M(x) closure cause m to operate on one of the functions (let's call it "func") defined within the script tags. Pursuant to the definition of M, m(func) rearranges the strings of x, mutating x to func(x). 
 </p>
 <p> The HTML representation of the cube consists of 54 buttons contained in an array of three nine-member arrays, corresponding to the three sides of the cube which are visible in the browser: front, top, and right. Rotating the virtual cube does not change this fact. For example, clicking the top center square, clicking "Y", and pressing the "Y" key changes x in the m-M(x) closure and also in the DOM, since m(dF3x) is x pursuant to the definition of M. </p>        
@@ -1283,14 +1465,14 @@ console.log(Object.keys(newObj)); // Output: ['a'], 'b' is non-enumerable` ;
 <img src={shot5} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
 <img src={shot6} alt="Screenshot3.png" style="width:100px;height:104px;color:#44ff33;" />
 
-
-
 <div class = "h3"> Cloning With Astonishing Ease</div>
 <p class="i3"> Cloning is discussed on the <a href="./clone">Clone</a> page. Deeply nested, self-referential, function-containing, complex and complicated objects are cloned with the greatest of ease. </p>
 
 <div class = "h3"> Modifying M For Special Purposes</div>
 <p> The definition of M can be modified to avoid mutation (push new results into an array, for example), reverse a series of actions as in the<a href="cube#star">Rubik's cube</a> example, handle asynchronous functions, as in <a href="./cube#reverse">the cube reverse function</a>,  <a href="./async5#yes">Async</a>, and other purposes.</p>
-
+<p>M2, a modified version of M, returns functions that can operate on synchronous and asynchronous, in any order:</p>
+<pre>{asyncCode}</pre>
+{arr}
 <div class = "h2">Efficiently Crunching Numbers</div>
 <p><a href="./game2">Martingale</a> runs the Martingale betting strategy millions of times, demonstrating that even-odds games of chance are, in the long run, break-even endeavors. Sometimes you end up ahead, sometimes behind. The Martingale strategy doesn't change that.</p> 
 <p> to show that it neither increases nor decreases the odds of coming out ahead. x in the m(x)-M closure is [starting amount,1,goal,0] where "starting amount" is the amount of money the player tries to double. "goal is fixed, starting at "starting amount. m operates on the function "f1", which randomly generates 0 or 1 wth equal probability, increasing or decreasing v[1] (the mount of the bet) and v[0] (the players current stake). </p>
@@ -1298,18 +1480,10 @@ console.log(Object.keys(newObj)); // Output: ['a'], 'b' is non-enumerable` ;
 
 <pre>{stdCode}</pre>
 
-
-
-
-
-
-
 </div> 
 
 <a href="#top">Back to the top</a>
 <br>
-
-
 <div class="h2">Appendix</div>
 <div class="h3">The Virtual Rubik's Cube</div>
 <p> Additional discussion is at <a href="./cube">Virtual Rubik's Cube</a></p>
@@ -1351,10 +1525,10 @@ console.log(Object.keys(newObj)); // Output: ['a'], 'b' is non-enumerable` ;
 <p> While not universally effective, this method covers many cases:</p>
 <pre>{betterClone}</pre>
 
-<slot />
-
 <style>
-
+h1, h2 {
+  text-align: center;
+}
 .middle {
   text-align: center;
   width: 100%;
@@ -1505,3 +1679,5 @@ span {
 
 </style>
 
+
+<slot />
