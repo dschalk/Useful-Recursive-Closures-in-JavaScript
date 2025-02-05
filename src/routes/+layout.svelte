@@ -43,6 +43,8 @@ function double (x) {return x + x};
         <a href="./cube">Rubik's Cube</a>
 
         <a href="./async5">Async</a>
+        
+        <a href="./digitalannealing">Annealing</a>
                 
         <a href="./clone">Clones</a>
 

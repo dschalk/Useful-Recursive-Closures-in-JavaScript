@@ -98,3 +98,9 @@ log("1. Object.is(m(dF3x), m_clone(dF3x))", Object.is(m(dF3x), m_clone(dF3x))); 
 log("m(dF3x) is", m(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 888, 999 ]
 log("cl(dF3x) is", cl(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 888, 999 ]
 log("m_clone(dF3x) is", m_clone(dF3x)); // [ [ 6 ], [ 7 ], [ [Function: add] ], 777 ]
+
+log("m_clone(dF3x) is", m_clone(dF3x)); 
+Here an explanation of cloning with recursive closures:
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+var log = console.log;  
