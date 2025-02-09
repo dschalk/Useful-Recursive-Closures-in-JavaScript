@@ -44,7 +44,7 @@ function double (x) {return x + x};
 
         <a href="./async5">Async</a>
         
-        <a href="./digitalannealing">Annealing</a>
+        <a href="./digitalannealing">2-opt</a>
                 
         <a href="./clone">Clones</a>
 

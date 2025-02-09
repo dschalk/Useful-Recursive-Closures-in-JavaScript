@@ -1,4 +1,5 @@
 
+
 <script>
 const rgb = (r = 0, g = r, b = r) => (r << 16) + (g << 8) + b;
 function rgbToHex( r = 0, g = r, b = r ) {
@@ -47,13 +48,4 @@ const _graphicsProcessing = (resolution = 1, frameRate = 60) => {
 const _createGraphicsObject = _graphicsProcessing();
 </script>
 <h1>Blow me</h1>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-    </style>
-
-
-
+   

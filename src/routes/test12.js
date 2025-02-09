@@ -1,7 +1,4 @@
-let x = [1, 2, 3];
-let y = x; // y points to the same array as x
-console.log(Object.is(x, y)); // true, they share the same reference
-x.concat(4);
-console.log(x); // [1, 2, 3]
-console.log(y); // [1, 2, 3] - unchanged
-console.log(Object.is(x, y)); // false, they now point to different arrays
+
+console.log(50*49*48*45*44*43*42*41*40*39*38*37*36*35*34*33*32*31*30*29*28*27*26*25*24*23*22*21*20*19*18*17*16*15*14*13*12*11*10*9*8*7*6*5*4*3*2*1)  
+
+console.log(1.4067573173780477e+6173780477e+61)
