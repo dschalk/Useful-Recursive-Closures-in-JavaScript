@@ -1,29 +1,6 @@
 <script>
 import "./style.css"
-/*	import { onMount } from 'svelte';
 
-	onMount(async () => {
-    const rubiksCube = document.querySelector('.rubiks-cube');
-const faces = document.querySelectorAll('.rubiks-cube-face');
-
-let angle = 0;
-
-function rotateCube() {
-  angle += 1;
-  rubiksCube.style.transform = `rotateY(${angle}deg)`;
-
-  for (const face of faces) {
-    const faceAngle = angle * (Number(face.dataset.angle) / 90);
-    face.style.transform = `rotateZ(${faceAngle}deg)`;
-  }
-
-  requestAnimationFrame(rotateCube);
-}
-
-function double (x) {return x + x};
-
-	}) 
-*/
 </script>
 
 <style>
@@ -40,7 +17,7 @@ function double (x) {return x + x};
 <nav>
         <a href="./">Home</a>
         
-        <a href="./cube">Rubik's Cube</a>
+        <a href="./cube7">Rubik's Cube</a>
 
         <a href="./async5">Async</a>
         
