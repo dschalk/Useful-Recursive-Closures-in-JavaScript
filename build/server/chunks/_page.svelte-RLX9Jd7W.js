@@ -1,0 +1,70 @@
+import { c as create_ssr_component, e as escape } from './ssr-DgjyUhy2.js';
+
+const css = {
+  code: "input.svelte-1rld2h7{margin-left:5%;size:16px;font-size:22px}.big.svelte-1rld2h7{font-size:25px;font-weight:700}.marg.svelte-1rld2h7{margin-left:5%;font-size:22px}p.svelte-1rld2h7{font-size:24px}pre.svelte-1rld2h7{font-size:22px}",
+  map: '{"version":3,"file":"+page.svelte","sources":["+page.svelte"],"sourcesContent":["<script>\\n    let N = 1;\\n    let ar = [];\\n    import {fade} from \\"svelte/transition\\";\\n    var first = function first (e) {\\n        ar = [];\\n        if (e.keyCode == 13) {\\n            let num = parseInt(e.target.value);\\n            main(num);\\n        };\\n    };\\n    \\n    let i = 2;\\n    \\n    function main (n) {\\n        if (n === 1) return;\\n        N = n;\\n        var buf = new ArrayBuffer(Math.ceil(N/8));\\n        var view = new Uint8Array(buf); \\n        var top = Math.ceil(Math.sqrt(N));\\n        let i = 2;\\n        for(i; i <= N; i+=1){\\n            if(test(view, i)) {\\n                for(let j = i; j <= N; j+=i) {\\n                    set(view, j);\\n                    if (j === N) {\\n                        ar.push(\\" \\" + i);\\n                        N = N / i;\\n                        main(N);\\n                    }\\n                }\\n            }\\n        }\\n    };\\n    \\n    function set(ar,i) {\\n      var a = Math.floor(i / 8)\\n      var b = i % 8\\n      ar[a] |= (1 << b)\\n    };\\n    \\n    function test (ar,i) {\\n      var a = Math.floor(i / 8);\\n      var b = i % 8;\\n      var value = ar[a] & (1 << b);\\n      return value === 0;\\n    }\\n    var display_main = `function main (n) {\\n        if (n === 1) return;\\n        N = n;\\n        var buf = new ArrayBuffer(Math.ceil(N/8));\\n        var view = new Uint8Array(buf); \\n        var top = Math.ceil(Math.sqrt(N));\\n        let i = 2;\\n        for(i; i <= N; i+=1){\\n            if(test(view, i)) {\\n                for(let j = i; j <= N; j+=i) {\\n                    set(view, j);\\n                    if (j === N) {\\n                        ar.push(\\" \\" + i);\\n                        N = N / i;\\n                        main(N);\\n                    }\\n                }\\n            }\\n        }\\n    };\\n    \\n    function set(ar,i) {\\n      var a = Math.floor(i / 8)\\n      var b = i % 8\\n      ar[a] |= (1 << b)\\n    };\\n    \\n    function test (ar,i) {\\n      var a = Math.floor(i / 8);\\n      var b = i % 8;\\n      var value = ar[a] & (1 << b);\\n      return value === 0;\\n    }`;\\n    \\n    let N2 = 1;\\n    let ar2 = [];\\n    \\n    var first2 = function first (e) {\\n        ar2 = [];\\n        if (e.keyCode == 13) {\\n            let num = parseInt(e.target.value);\\n            main2(num);\\n        };\\n    };\\n    \\n    function main2 (n) {\\n        N2 = n;\\n        var top = n+1;\\n        for(let i = 2; i < top; i+=1){\\n            while (N2 % i === 0) {\\n                ar2.push(\\" \\" + i);\\n                N2 = N2 / i;\\n                if (N2 == 1) return\\n            }\\n        }\\n    };\\n    var code = `let N2 = 1;\\n    let ar2 = [];\\n    \\n    var first2 = function first (e) {\\n        ar2 = [];\\n        if (e.keyCode == 13) {\\n            let num = parseInt(e.target.value);\\n            main2(num);\\n        };\\n    };\\n    \\n    function main2 (n) {\\n        N2 = n;\\n        for(let i = 2; i <= N2; i+=1){\\n            while (N2 % i === 0) {\\n                ar2.push(\\" \\" + i);\\n                N2 = N2 / i;\\n                if (N2 == 1) return\\n            }\\n        }\\n    }`;\\n    <\/script>\\n    \\n    <style>\\n        input {\\n            margin-left: 5%;\\n            size: 16px;\\n            font-size: 22px;\\n        }\\n        .big {\\n            font-size: 25px;\\n            font-weight: 700;\\n        }\\n        .marg {\\n            margin-left: 5%;\\n            font-size: 22px;    \\n        }\\n        p {font-size: 24px}\\n        pre {font-size: 22px}\\n    </style>\\n    <div style = \\"font-family: Times New Roman;  text-align: center; font-size: 38px;\\" transition:fade>\\n        <br>\\n       Two Factorization Algorithms  \\n    </div>\\n    \\n    \\n    <p class = \\"big\\">Efficient Algorithm</p>\\n    <p>Enter a number between 2 and a few <span class = \\"big\\">quadrillion</span><span>.</span></p>\\n    <input type=\\"text\\" on:keydown={first2} />\\n    <h3 class = \\"marg\\">{ar2}</h3>\\n    <p class = \\"big\\">Inefficient Algorithm</p>\\n    <p>Just for fun, I tried finding factors using bitwise operators instead of \\"%\\", the modulo operater. The Google Chrome engine processed it very slowly.</p>\\n    <p>Enter a number between 2 and not much greater than a <span class = \\"big\\">billion</span><span>.</span></p>\\n    \\n    <input type=\\"text\\" on:keydown={first} />\\n    \\n    <br>\\n    <h3 class = \\"marg\\">{ar}</h3>\\n    \\n    <p>Here\'s the code for the more efficient, modulo-operator algorithm:</p>\\n    <pre>{code}</pre>\\n    <p>This is the code for the bitwise-operator algorithm:</p>\\n    <pre>{display_main}</pre> \\n    <a href = \\"http://score.schalk.net\\">Game of Score</a>"],"names":[],"mappings":"AA+HQ,oBAAM,CACF,WAAW,CAAE,EAAE,CACf,IAAI,CAAE,IAAI,CACV,SAAS,CAAE,IACf,CACA,mBAAK,CACD,SAAS,CAAE,IAAI,CACf,WAAW,CAAE,GACjB,CACA,oBAAM,CACF,WAAW,CAAE,EAAE,CACf,SAAS,CAAE,IACf,CACA,gBAAE,CAAC,SAAS,CAAE,IAAI,CAClB,kBAAI,CAAC,SAAS,CAAE,IAAI"}'
+};
+const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let ar = [];
+  var display_main = `function main (n) {
+        if (n === 1) return;
+        N = n;
+        var buf = new ArrayBuffer(Math.ceil(N/8));
+        var view = new Uint8Array(buf); 
+        var top = Math.ceil(Math.sqrt(N));
+        let i = 2;
+        for(i; i <= N; i+=1){
+            if(test(view, i)) {
+                for(let j = i; j <= N; j+=i) {
+                    set(view, j);
+                    if (j === N) {
+                        ar.push(" " + i);
+                        N = N / i;
+                        main(N);
+                    }
+                }
+            }
+        }
+    };
+    
+    function set(ar,i) {
+      var a = Math.floor(i / 8)
+      var b = i % 8
+      ar[a] |= (1 << b)
+    };
+    
+    function test (ar,i) {
+      var a = Math.floor(i / 8);
+      var b = i % 8;
+      var value = ar[a] & (1 << b);
+      return value === 0;
+    }`;
+  let ar2 = [];
+  var code = `let N2 = 1;
+    let ar2 = [];
+    
+    var first2 = function first (e) {
+        ar2 = [];
+        if (e.keyCode == 13) {
+            let num = parseInt(e.target.value);
+            main2(num);
+        };
+    };
+    
+    function main2 (n) {
+        N2 = n;
+        for(let i = 2; i <= N2; i+=1){
+            while (N2 % i === 0) {
+                ar2.push(" " + i);
+                N2 = N2 / i;
+                if (N2 == 1) return
+            }
+        }
+    }`;
+  $$result.css.add(css);
+  return `<div style="font-family: Times New Roman; text-align: center; font-size: 38px;" data-svelte-h="svelte-1qcx4le"><br>
+       Two Factorization Algorithms</div> <p class="big svelte-1rld2h7" data-svelte-h="svelte-qrbugj">Efficient Algorithm</p> <p class="svelte-1rld2h7" data-svelte-h="svelte-zcyupp">Enter a number between 2 and a few <span class="big svelte-1rld2h7">quadrillion</span><span>.</span></p> <input type="text" class="svelte-1rld2h7"> <h3 class="marg svelte-1rld2h7">${escape(ar2)}</h3> <p class="big svelte-1rld2h7" data-svelte-h="svelte-rb5daq">Inefficient Algorithm</p> <p class="svelte-1rld2h7" data-svelte-h="svelte-pk8e92">Just for fun, I tried finding factors using bitwise operators instead of &quot;%&quot;, the modulo operater. The Google Chrome engine processed it very slowly.</p> <p class="svelte-1rld2h7" data-svelte-h="svelte-5ey14x">Enter a number between 2 and not much greater than a <span class="big svelte-1rld2h7">billion</span><span>.</span></p> <input type="text" class="svelte-1rld2h7"> <br> <h3 class="marg svelte-1rld2h7">${escape(ar)}</h3> <p class="svelte-1rld2h7" data-svelte-h="svelte-13ug16w">Here&#39;s the code for the more efficient, modulo-operator algorithm:</p> <pre class="svelte-1rld2h7">${escape(code)}</pre> <p class="svelte-1rld2h7" data-svelte-h="svelte-m44qop">This is the code for the bitwise-operator algorithm:</p> <pre class="svelte-1rld2h7">${escape(display_main)}</pre> <a href="http://score.schalk.net" data-svelte-h="svelte-1ruktk0">Game of Score</a>`;
+});
+
+export { Page as default };
+//# sourceMappingURL=_page.svelte-RLX9Jd7W.js.map

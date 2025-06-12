@@ -1,0 +1,128 @@
+export { matchers } from './matchers.js';
+
+export const nodes = [
+	() => import('./nodes/0'),
+	() => import('./nodes/1'),
+	() => import('./nodes/2'),
+	() => import('./nodes/3'),
+	() => import('./nodes/4'),
+	() => import('./nodes/5'),
+	() => import('./nodes/6'),
+	() => import('./nodes/7'),
+	() => import('./nodes/8'),
+	() => import('./nodes/9'),
+	() => import('./nodes/10'),
+	() => import('./nodes/11'),
+	() => import('./nodes/12'),
+	() => import('./nodes/13'),
+	() => import('./nodes/14'),
+	() => import('./nodes/15'),
+	() => import('./nodes/16'),
+	() => import('./nodes/17'),
+	() => import('./nodes/18'),
+	() => import('./nodes/19'),
+	() => import('./nodes/20'),
+	() => import('./nodes/21'),
+	() => import('./nodes/22'),
+	() => import('./nodes/23'),
+	() => import('./nodes/24'),
+	() => import('./nodes/25'),
+	() => import('./nodes/26'),
+	() => import('./nodes/27'),
+	() => import('./nodes/28'),
+	() => import('./nodes/29'),
+	() => import('./nodes/30'),
+	() => import('./nodes/31'),
+	() => import('./nodes/32'),
+	() => import('./nodes/33'),
+	() => import('./nodes/34'),
+	() => import('./nodes/35'),
+	() => import('./nodes/36'),
+	() => import('./nodes/37'),
+	() => import('./nodes/38'),
+	() => import('./nodes/39'),
+	() => import('./nodes/40'),
+	() => import('./nodes/41'),
+	() => import('./nodes/42'),
+	() => import('./nodes/43'),
+	() => import('./nodes/44'),
+	() => import('./nodes/45'),
+	() => import('./nodes/46'),
+	() => import('./nodes/47'),
+	() => import('./nodes/48'),
+	() => import('./nodes/49'),
+	() => import('./nodes/50'),
+	() => import('./nodes/51'),
+	() => import('./nodes/52')
+];
+
+export const server_loads = [];
+
+export const dictionary = {
+		"/": [2],
+		"/Bell-Inequality": [3],
+		"/Clones_backup": [5],
+		"/Clone": [4],
+		"/Collatz": [6],
+		"/Cube2LL": [7],
+		"/D&S": [8],
+		"/FormTest": [9],
+		"/Intro": [10],
+		"/Martingale": [11],
+		"/Pilot-Wave": [12],
+		"/Python": [13],
+		"/Quantum": [14],
+		"/Snippets": [15],
+		"/WebSockets": [16],
+		"/arrays": [17],
+		"/async2": [19],
+		"/async3": [20],
+		"/async4": [21],
+		"/async5": [22],
+		"/async": [18],
+		"/clone": [23],
+		"/cube1": [25],
+		"/cube2": [26],
+		"/cube3": [27],
+		"/cube4": [28],
+		"/cube5": [29],
+		"/cube6": [30],
+		"/cube7": [31],
+		"/cube8": [32],
+		"/cube9": [33],
+		"/cube": [24],
+		"/digitalannealing": [34],
+		"/factors": [35],
+		"/functional": [36],
+		"/game": [37],
+		"/jump_rope": [38],
+		"/matrix": [39],
+		"/overview": [40],
+		"/pagejs": [41],
+		"/rc1": [42],
+		"/rc2": [43],
+		"/score": [44],
+		"/sockets": [45],
+		"/td": [46],
+		"/test2": [48],
+		"/test": [47],
+		"/transformations": [49],
+		"/trash": [50],
+		"/war": [51],
+		"/websocket": [52]
+	};
+
+export const hooks = {
+	handleError: (({ error }) => { console.error(error) }),
+	
+	reroute: (() => {}),
+	transport: {}
+};
+
+export const decoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.decode]));
+
+export const hash = false;
+
+export const decode = (type, value) => decoders[type](value);
+
+export { default as root } from '../root.svelte';

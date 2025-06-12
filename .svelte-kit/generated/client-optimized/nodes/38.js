@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/jump_rope/+page.svelte";

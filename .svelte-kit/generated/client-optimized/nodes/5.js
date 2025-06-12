@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/Clones_backup/+page.svelte";

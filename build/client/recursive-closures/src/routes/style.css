@@ -1,0 +1,114 @@
+
+html {background-color:#000;}
+
+div {
+    color: blue;
+}
+
+body {
+    background-color: #121;
+    font-size: 22px;
+    color: darkblue;
+    padding-left: 3%;
+    padding-right: 3%demo.png;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 100vh;
+    border-radius: 17px;
+}
+
+p {
+    color: rgb(219, 253, 244);
+    font-size: 24px;
+    text-indent: 3%;
+}
+
+.p2 {
+    color: rgb(195, 219, 255);
+}
+
+.columns {
+    column-count: 2;
+    display: flex;
+}
+	
+  button {
+    margin-left: 1%;
+    background-color: rgb(72, 7, 162);
+    border-width: 2px;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    color: gold;
+    font-size: 22px;
+    box-shadow: 0px 0px 5px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px; 
+  } 
+
+  
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+    font-size: 23px;
+  }
+
+pre {
+    color: rgb(241, 206, 206);
+    font-size: 24px;
+}
+
+div {
+    color: darkgreen;
+}
+
+h3 {
+    color: rgb(140, 216, 248);
+}
+
+h1, h2 {
+    color: gold;
+}
+
+span {
+    color: rgb(214, 247, 214);
+}
+
+p span {
+    /*text-transform: uppercase; */
+    color: rgb(214, 247, 214);
+}
+
+a {
+    /*background-color: lightblue; */
+    border-color: #E8F7C1;
+    color: rgb(232, 217, 241);
+    font-size: 22px;
+  } 
+
+  a:hover {
+    color: magenta; 
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+  }
+
+   .h3a {
+    font-size: 32px; 
+    font-weight: bold;
+  }
+
+   .h3b {
+    font-size: 32px; 
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+
+
+

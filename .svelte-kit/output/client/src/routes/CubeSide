@@ -1,0 +1,8 @@
+export enum CubeSide {
+  Front = 'front',
+  Back = 'back',
+  Left = 'left',
+  Right = 'right',
+  Top = 'top',
+  Bottom = 'bottom'
+}

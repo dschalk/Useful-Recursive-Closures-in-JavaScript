@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/cube4/+page.svelte";
